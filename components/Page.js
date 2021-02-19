@@ -3,15 +3,15 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
 
 const GlobalStyles = createGlobalStyle`
+/* Add back in if a custom font is wanted */
 @font-face {
-  font-family: 'radnika_next' ;
-  src: url('/static/radnikanext-medium-webfont.woff2')
-  format('woff2');
-font-weight: normal;
+  font-family: "Octin College W05 Regular" ;
+  src: url("Fonts/5102478/7c222601-7f4a-4740-a161-3246855fd27d.woff2") format("woff2"),url("Fonts/5102478/57f4d403-121f-4a38-bae4-9b763b490955.woff") format("woff");
+font-weight: 400;
 font-style: normal;
 }
 html {
-  --red: #ff0000;
+  --red: #1c3549;
   --black: #393939;
   --grey: #3A3A3A;
   --gray: var(--grey);
@@ -27,7 +27,7 @@ html {
   box-sizing: inherit;
  }
  body{
-   font-family: 'radnika_next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-family:  'Octin College W05 Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    padding: 0;
    margin: 0;
    font-size: 1.6rem;
@@ -42,7 +42,7 @@ a:hover{
   text-decoration: underline;
 }
 button{
-  font-family: 'radnika_next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:  'Octin College W05 Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 `;
 
