@@ -11,8 +11,10 @@ font-weight: 400;
 font-style: normal;
 }
 html {
-  --red: #1c3549;
-  --black: #393939;
+  --navyBlue: #1c3549;
+  --red: var(----navyBlue);
+  --light-blue: #b2e2f5;
+  --black: #231f20;
   --grey: #3A3A3A;
   --gray: var(--grey);
   --lightGrey: #e1e1e1;
@@ -52,7 +54,7 @@ const InnerStyles = styled.div`
   padding: 2rem;
 `;
 
-export default function Page({ children, cool }) {
+export default function Layout({ children, cool }) {
   return (
     <div>
       <GlobalStyles />
@@ -62,7 +64,7 @@ export default function Page({ children, cool }) {
   );
 }
 
-Page.propTypes = {
+Layout.propTypes = {
   cool: PropTypes.string,
   children: PropTypes.any,
 };

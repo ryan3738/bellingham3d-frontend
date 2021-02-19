@@ -1,6 +1,6 @@
 import Document, { Html, Head, NextScript, Main } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import Page from '../components/Page';
+import Layout from '../components/Layout';
 
 // Server style sheet for styled components on next.js
 // This forces next.js to look for styled components and prerender them.
