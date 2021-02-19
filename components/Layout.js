@@ -12,7 +12,7 @@ font-style: normal;
 }
 html {
   --navyBlue: #1c3549;
-  --red: var(----navyBlue);
+  --red: var(--navyBlue);
   --light-blue: #b2e2f5;
   --black: #231f20;
   --grey: #3A3A3A;

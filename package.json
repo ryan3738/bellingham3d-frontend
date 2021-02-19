@@ -1,7 +1,17 @@
 {
-  "name": "sick-fits-frontend",
-  "version": "2.0.0",
-  "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
+
+
+
+
+  "name": "bellingham-3d-frontend",
+  "author": "Ryan Fraser",
+  "version": "0.1.0",
+  "description": "Bellingham 3D e-commerce website! Tech used includes: React, GraphQL, Next and Apollo",
+  "keywords": [
+    "website",
+    "nextjs",
+    "ecommerce"
+  ],
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
@@ -9,7 +19,6 @@
     "start": "next start -p 7777",
     "test": "NODE_ENV=test jest --watch"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.3.8",
