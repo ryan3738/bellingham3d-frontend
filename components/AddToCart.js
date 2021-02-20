@@ -24,7 +24,6 @@ export default function AddToCart({ id }) {
       type="button"
       onClick={() => {
         addToCart();
-        openCart();
       }}
     >
       Add{loading && 'ing'} To Cart
