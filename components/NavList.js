@@ -75,7 +75,13 @@ export default function NavList(props) {
       )}
       {!user && (
         <>
-          <Link href="/signin">Sign In</Link>
+          <span
+            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+              'burgerMenuLink' in props && 'burger-menu-link'
+            }`}
+          >
+            <Link href="/signin">Sign In</Link>
+          </span>
         </>
       )}
 
