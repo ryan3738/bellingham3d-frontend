@@ -1,16 +1,21 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
+import NavBar from './NavBar';
 import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
 
+// Deprecated component
+
 export default function Nav() {
-  const user = useUser();
-  const { openCart } = useCart();
+  // const user = useUser();
+  // const { openCart } = useCart();
 
   return (
-    <NavStyles>
-      <Link href="/products">Products</Link>
+    <>
+      {/* <NavStyles> */}
+      {/* <Link href="/products">Products</Link>
       {user && (
         <>
           <Link href="/sell">Sell</Link>
@@ -32,7 +37,8 @@ export default function Nav() {
         <>
           <Link href="/signin">Sign In</Link>
         </>
-      )}
-    </NavStyles>
+      )} */}
+      {/* </NavStyles> */}
+    </>
   );
 }
