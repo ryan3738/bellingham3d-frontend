@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { siteData } from '../public/site-data';
 import Cart from './Cart';
+import HeaderSpacer from './HeaderSpacer';
 // import Nav from './Nav';
 import NavBar from './NavBar';
 import Search from './Search';
@@ -40,12 +41,7 @@ export default function Header() {
       </div>
       <div className="sub-bar">{/* <Search /> */}</div>
       {/* <Cart /> */}
-      <style jsx>{`
-        .header-spacer {
-          height: 7em;
-        }
-      `}</style>
-      <div className="header-spacer" />
+      <HeaderSpacer />
     </>
   );
 }

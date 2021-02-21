@@ -4,6 +4,7 @@ import siteData from '../public/site-data';
 import { useUser } from './User';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
+import HeaderSpacer from './HeaderSpacer';
 // import Image from 'next/image'
 
 export default function NavList(props) {

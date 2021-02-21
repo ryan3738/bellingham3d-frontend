@@ -64,17 +64,17 @@ export default function NavBar({ children, open, setOpen }) {
   return (
     <HeaderStyles>
       <div className="nav-bar">
-        <div className="burger">
-          <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-          </div>
-          <BurgerMenu open={open} setOpen={setOpen} />
-        </div>
         <nav className="nav-list">
           <LogoStyles>
             <Link href="/">B-3D</Link>
           </LogoStyles>
           <NavList showOnLarge />
+          <div className="burger">
+            <div ref={node}>
+              <Burger open={open} setOpen={setOpen} />
+            </div>
+            <BurgerMenu open={open} setOpen={setOpen} />
+          </div>
         </nav>
         <div className="sub-bar">
           <Search />
