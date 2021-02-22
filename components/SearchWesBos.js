@@ -2,12 +2,11 @@ import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SEARCH_PRODUCTS_QUERY($searchTerm: String!) {
-    # Rename property name of query. Good if you want to have mutliple queries of the same property.
     searchTerms: allProducts(
       where: {
         OR: [
@@ -49,7 +48,6 @@ export default function Search() {
   } = useCombobox({
     items,
     onInputValueChange() {
-      console.log('Input changed!');
       findItemsButChill({
         variables: {
           searchTerm: inputValue,
@@ -79,8 +77,8 @@ export default function Search() {
         {isOpen &&
           items.map((item, index) => (
             <DropDownItem
-              key={item.id}
               {...getItemProps({ item })}
+              key={item.id}
               highlighted={index === highlightedIndex}
             >
               <img

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import RequestReset from './RequestReset';
 import SignOut from './SignOut';
@@ -24,8 +25,10 @@ export default function Account(props) {
   return (
     <ContainerStyles>
       {/* Account summary for {me.name} */}
-      <SignOut>Sign Out</SignOut>
+      <Link href="/sell">Sell New Product</Link>
+      <Link href="/orders">Previous Orders</Link>
       <RequestReset />
+      <SignOut>Sign Out</SignOut>
     </ContainerStyles>
   );
 }

@@ -40,13 +40,6 @@ export default function NavList(props) {
               'burgerMenuLink' in props && 'burger-menu-link'
             }`}
           >
-            <Link href="/sell">Sell</Link>
-          </span>
-          <span
-            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-              'burgerMenuLink' in props && 'burger-menu-link'
-            }`}
-          >
             <Link href="/orders">Orders</Link>
           </span>
           <span
@@ -102,9 +95,13 @@ export default function NavList(props) {
       />
       <style jsx>{`
         .nav-link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           text-transform: uppercase;
           padding: 1em;
           margin: auto;
+          font-weight: 900;
         }
         button {
           padding: 1rem 3rem;
