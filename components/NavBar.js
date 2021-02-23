@@ -64,7 +64,6 @@ const HeaderStyles = styled.header`
 export default function NavBar({ children, open, setOpen }) {
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-
   return (
     <HeaderStyles>
       <div className="nav-bar">
@@ -76,8 +75,8 @@ export default function NavBar({ children, open, setOpen }) {
           <div className="burger">
             <div ref={node}>
               <Burger open={open} setOpen={setOpen} />
+              <BurgerMenu open={open} setOpen={setOpen} />
             </div>
-            <BurgerMenu open={open} setOpen={setOpen} />
           </div>
         </nav>
 

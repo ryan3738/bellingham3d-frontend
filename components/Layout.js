@@ -38,7 +38,7 @@ html {
    font-size: 1.6rem;
    line-height: 2;
    letter-spacing: 1px;
-   height: 100%
+   height: 100%;
  }
 
 a{
@@ -56,14 +56,18 @@ button{
 `;
 
 const InnerStyles = styled.div`
+  width: 100%;
   max-width: var(--maxWidth);
   margin: 0 auto;
   padding: 2rem;
   display: flex;
   flex-flow: column;
-  justify-items: center;
   align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: stretch;
   height: 100%;
+  min-height: 90vh;
 `;
 
 export default function Layout({ children, cool }) {

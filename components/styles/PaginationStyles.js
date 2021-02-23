@@ -20,6 +20,7 @@ const PaginationStyles = styled.div`
   }
   a[aria-disabled='true'] {
     color: grey;
+    opacity: 0.5;
     pointer-events: none;
   }
 `;

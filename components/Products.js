@@ -23,8 +23,12 @@ export const ALL_PRODUCTS_QUERY = gql`
 
 const ProductsListStyles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
+  justify-items: center;
+  align-content: stretch;
+  justify-content: center;
+  grid-gap: 1rem;
 `;
 
 export default function Products({ page }) {
@@ -38,12 +42,12 @@ export default function Products({ page }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <div>
+    <>
       <ProductsListStyles>
         {data.allProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>
-    </div>
+    </>
   );
 }
