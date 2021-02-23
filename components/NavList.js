@@ -12,27 +12,36 @@ export default function NavList(props) {
   const { openCart } = useCart();
   return (
     <>
-      <span
-        className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-          'burgerMenuLink' in props && 'burger-menu-link'
-        }`}
-      >
-        <Link href="/products">Products</Link>
-      </span>
-      <span
-        className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-          'burgerMenuLink' in props && 'burger-menu-link'
-        }`}
-      >
-        <Link href="/about">ABOUT</Link>
-      </span>
-      <span
-        className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-          'burgerMenuLink' in props && 'burger-menu-link'
-        }`}
-      >
-        <Link href="/contact">Contact</Link>
-      </span>
+      <Link href="/products">
+        <span
+          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+            'burgerMenuLink' in props && 'burger-menu-link'
+          }`}
+        >
+          Products
+        </span>
+      </Link>
+
+      <Link href="/about">
+        <span
+          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+            'burgerMenuLink' in props && 'burger-menu-link'
+          }`}
+        >
+          ABOUT
+        </span>
+      </Link>
+
+      <Link href="/contact">
+        <span
+          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+            'burgerMenuLink' in props && 'burger-menu-link'
+          }`}
+        >
+          Contact
+        </span>
+      </Link>
+
       {user && (
         <>
           {/* <span
@@ -42,13 +51,17 @@ export default function NavList(props) {
           >
             <Link href="/orders">Orders</Link>
           </span> */}
-          <span
-            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-              'burgerMenuLink' in props && 'burger-menu-link'
-            }`}
-          >
-            <Link href="/account">Account</Link>
-          </span>
+
+          <Link href="/account">
+            <span
+              className={`nav-link ${
+                'showOnLarge' in props && 'show-on-large'
+              } ${'burgerMenuLink' in props && 'burger-menu-link'}`}
+            >
+              Account
+            </span>
+          </Link>
+
           <span
             className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
               'burgerMenuLink' in props && 'burger-menu-link'
@@ -78,21 +91,18 @@ export default function NavList(props) {
       )}
       {!user && (
         <>
-          <span
-            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-              'burgerMenuLink' in props && 'burger-menu-link'
-            }`}
-          >
-            <Link href="/signin">Sign In</Link>
-          </span>
+          <Link href="/signin">
+            <span
+              className={`nav-link ${
+                'showOnLarge' in props && 'show-on-large'
+              } ${'burgerMenuLink' in props && 'burger-menu-link'}`}
+            >
+              Sign In
+            </span>
+          </Link>
         </>
       )}
 
-      <div
-        className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-          'burgerMenuLink' in props && 'burger-menu-link'
-        }`}
-      />
       <style jsx>{`
         .nav-link {
           display: flex;
@@ -102,6 +112,7 @@ export default function NavList(props) {
           padding: 1em;
           margin: auto;
           font-weight: 900;
+          cursor: pointer;
         }
         button {
           padding: 0;

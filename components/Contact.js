@@ -6,10 +6,8 @@ import { siteData } from '../public/site-data';
 export default function Contact() {
   return (
     <>
-      {/* <div className='contact-header'> */}
-      {/* <h3 className={utilStyles.lightText}>CONTACT US</h3> */}
-      {/* </div> */}
       <div className="contact-content">
+        <h2>This is the contact page</h2>
         <div id="contact-info">
           <h2>LOCATION</h2>
           <p>

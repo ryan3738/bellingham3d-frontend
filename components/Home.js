@@ -4,6 +4,7 @@ import Grid4Styles from './styles/Grid4Styles';
 export default function Home() {
   return (
     <div>
+      <h2>This is the home page</h2>
       <p>
         <strong>Bellingham 3D</strong> is a 3D printing and design company based
         in Bellingham, Washington.

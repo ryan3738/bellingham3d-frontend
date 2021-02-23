@@ -2,7 +2,10 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 import styled from 'styled-components';
+import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
 import DisplayError from './ErrorMessage';
+import PriceTag from './styles/PriceTag';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -46,15 +49,21 @@ export default function SingleProduct({ id }) {
   return (
     <ProductStyles>
       <Head>
-        <title>Sicks Fits | {Product.name} </title>
+        <title>Bellingham 3D | {Product.name} </title>
       </Head>
       <img
         src={Product.photo.image.publicUrlTransformed}
         alt={Product.photo.altText}
       />
       <div className="details">
-        <h2>{Product.name}</h2>
+        <div>
+          <h2>
+            {Product.name} - {formatMoney(Product.price)}
+          </h2>
+          <div />
+        </div>
         <p>{Product.description}</p>
+        <AddToCart id={Product.id} />
       </div>
     </ProductStyles>
   );
