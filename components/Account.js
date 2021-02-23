@@ -8,25 +8,28 @@ const ContainerStyles = styled.div`
   max-width: 1120px;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
-  flex: 1 1 auto;
+  display: inline-grid;
+  align-items: start;
+  align-content: start;
+  justify-content: start;
+  justify-items: start;
+  grid-gap: 10px;
   padding: 0;
   margin: 0 auto;
 `;
 
 export default function Account(props) {
   const me = useUser();
-  console.log(me);
+  // console.log(me);
   return (
     <ContainerStyles>
-      {/* Account summary for {me.name} */}
-      <Link href="/sell">Sell New Product</Link>
-      <Link href="/orders">Previous Orders</Link>
+      <h2>Account Info For {me.name}</h2>
+      <h3>
+        <Link href="/sell">Add New Product</Link>
+      </h3>
+      <h3>
+        <Link href="/orders">Previous Orders</Link>
+      </h3>
       <RequestReset />
       <SignOut>Sign Out</SignOut>
     </ContainerStyles>

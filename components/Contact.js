@@ -46,13 +46,13 @@ export default function Contact() {
             <Social
               href="https://www.instagram.com/"
               img="/images/instagram-logo.png"
-              alt="frasers instagram"
+              alt="instagram"
               color="--color-instagram"
             />
             <Social
               href="http://facebook.com/"
               img="/images/facebook-logo.png"
-              alt="frasers facebook"
+              alt="facebook"
               color="--color-facebook"
             />
           </div>

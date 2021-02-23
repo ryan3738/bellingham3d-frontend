@@ -9,14 +9,13 @@ export default function Button({ children, buttonLink }) {
 
       <style jsx>{`
         .button-text {
-          /* display: flex;
-          flex-direction: column;
-          place-items: center; */
-          /* display: inline-block; */
-          /* vertial-align: middle; */
-          /* line-height: normal; */
-          /* margin: 1%; */
-          /* padding: 1%; */
+          width: auto;
+          background: var(--red);
+          color: white;
+          border: 0;
+          font-size: 2rem;
+          font-weight: 600;
+          padding: 0.5rem 1.2rem;
         }
       `}</style>
     </>

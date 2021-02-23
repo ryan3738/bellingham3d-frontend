@@ -39,7 +39,7 @@ const LogoStyles = styled.h1`
   position: relative;
   z-index: 2;
   background: var(--red);
-  padding: 0.25em;
+  padding: 0.75rem;
   margin: 2.5px;
   /* transform: skew(-7deg); */
 

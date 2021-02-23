@@ -24,14 +24,14 @@ export default function NavList(props) {
           'burgerMenuLink' in props && 'burger-menu-link'
         }`}
       >
-        <Link href="/#about">ABOUT</Link>
+        <Link href="/about">ABOUT</Link>
       </span>
       <span
         className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
           'burgerMenuLink' in props && 'burger-menu-link'
         }`}
       >
-        <Link href="/#contact">Contact</Link>
+        <Link href="/contact">Contact</Link>
       </span>
       {user && (
         <>

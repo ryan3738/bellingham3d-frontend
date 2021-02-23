@@ -21,7 +21,7 @@ export default function Social({ href, img, alt, color }) {
           width: 45px;
           height: 45px;
           vertical-align: center;
-          background-color: var(--primary-color);
+          background-color: var(--lightBlue);
           border-radius: 5px;
           grid-column: 1/2;
           margin: 5px;

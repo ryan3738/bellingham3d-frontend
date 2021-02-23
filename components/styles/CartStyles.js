@@ -9,7 +9,7 @@ const CartStyles = styled.div`
   top: 0;
   right: 0;
   width: 40%;
-  min-width: 500px;
+  min-width: 250px;
   bottom: 0;
   transform: translateX(100%);
   transition: all 0.3s;

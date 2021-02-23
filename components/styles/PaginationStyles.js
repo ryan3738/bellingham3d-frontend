@@ -12,7 +12,7 @@ const PaginationStyles = styled.div`
   border-radius: 10px;
   & > * {
     margin: 0;
-    padding: 15px 30px;
+    padding: 1rem;
     border-right: 1px solid var(--lightGray);
     &:last-child {
       border-right: 0;
