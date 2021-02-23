@@ -5,6 +5,7 @@ import Link from 'next/link';
 import DisplayError from './ErrorMessage';
 import PaginationStyles from './styles/PaginationStyles';
 import { perPage } from '../config';
+import { siteData } from '../public/site-data';
 
 export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
@@ -24,7 +25,7 @@ export default function Pagination({ page }) {
     <PaginationStyles>
       <Head>
         <title>
-          Sick Fits - Page {page} of {pageCount}
+          {siteData.businessName} - Page {page} of {pageCount}
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>

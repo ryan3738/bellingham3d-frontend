@@ -1,7 +1,7 @@
 // import utilStyles from '../styles/utils.module.css'
-import Social from './social';
-import Button from './button';
-import siteData from '../public/data/site-data.json';
+import Social from './Social';
+import Button from './Button';
+import { siteData } from '../public/site-data';
 
 export default function Contact() {
   return (
@@ -37,23 +37,20 @@ export default function Contact() {
 
         <div className="social-media-container">
           <h3>Sign up for our newsletter to receive updates</h3>
-          <Button
-            buttonText="SIGN UP"
-            buttonLink="https://squareup.com/outreach/sgPDT7/subscribe"
-          />
+          <Button buttonText="SIGN UP" buttonLink="" />
           <br />
           <br />
           <p>We respect your privacy</p>
           <h3>For specials and event info follow us on social media</h3>
           <div className="social-media-contents">
             <Social
-              href="https://www.instagram.com/frasersgourmethideaway/"
+              href="https://www.instagram.com/"
               img="/images/instagram-logo.png"
               alt="frasers instagram"
               color="--color-instagram"
             />
             <Social
-              href="http://facebook.com/frasersgh"
+              href="http://facebook.com/"
               img="/images/facebook-logo.png"
               alt="frasers facebook"
               color="--color-facebook"

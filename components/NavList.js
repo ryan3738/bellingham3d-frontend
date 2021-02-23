@@ -35,13 +35,13 @@ export default function NavList(props) {
       </span>
       {user && (
         <>
-          <span
+          {/* <span
             className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
               'burgerMenuLink' in props && 'burger-menu-link'
             }`}
           >
             <Link href="/orders">Orders</Link>
-          </span>
+          </span> */}
           <span
             className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
               'burgerMenuLink' in props && 'burger-menu-link'
@@ -104,13 +104,11 @@ export default function NavList(props) {
           font-weight: 900;
         }
         button {
-          padding: 1rem 3rem;
+          padding: 0;
           display: flex;
           align-items: center;
           position: relative;
           text-transform: uppercase;
-          font-weight: 900;
-          font-size: 1em;
           background: none;
           border: 0;
           cursor: pointer;

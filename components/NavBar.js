@@ -35,11 +35,12 @@ const LogoStyles = styled.h1`
 
   font-size: 4rem;
   margin-left: 2rem;
+  line-height: 1;
   position: relative;
   z-index: 2;
   background: var(--red);
-  padding: 0;
-  margin: 0;
+  padding: 0.25em;
+  margin: 2.5px;
   /* transform: skew(-7deg); */
 
   a {
@@ -79,12 +80,10 @@ export default function NavBar({ children, open, setOpen }) {
             <BurgerMenu open={open} setOpen={setOpen} />
           </div>
         </nav>
-        <div className="sub-bar">
-          <Search />
-          <Cart />
-        </div>
+
+        <Search />
+        <Cart />
       </div>
-      {children}
       <style jsx>{`
         .welcome-logo {
           position: absolute;
@@ -115,8 +114,9 @@ export default function NavBar({ children, open, setOpen }) {
           display: flex;
           justify-content: center;
           align-items: center;
+          align-content: center;
+          justify-items: center;
           height: 4em;
-          position: sticky;
           top: 0;
           border-bottom: 2.5px solid var(--black, black);
         }

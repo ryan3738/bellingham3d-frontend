@@ -21,6 +21,7 @@ export default function BurgerMenu({ open }) {
           position: absolute;
           top: 0;
           right: 0;
+          z-index: 9;
           transition: transform 0.2s ease-in-out;
         }
 
