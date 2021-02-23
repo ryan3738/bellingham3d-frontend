@@ -28,7 +28,7 @@ export default function Account(props) {
         <Link href="/sell">Add New Product</Link>
       </h3>
       <h3>
-        <Link href="/orders">Previous Orders</Link>
+        <Link href="/orders">Order History</Link>
       </h3>
       <RequestReset />
       <SignOut>Sign Out</SignOut>

@@ -43,4 +43,3 @@ const CartStyles = styled.div`
 `;
 
 export default CartStyles;
-
