@@ -9,14 +9,13 @@ Tech used:
     Redux
     GraphQL
     MongoDB
-    Mongoose ORM
     Apollo Client
     Styled-Components
     React-Transition-Group
     Stripe
-    Deployed to Vercel
+    Frontend Deployed to Vercel
     Keystone-next
-    Deployed to Digital Ocean
+    Backend Deployed to Digital Ocean
 
 Server Side Rendering with Next.js
 
@@ -24,7 +23,7 @@ Next.js allows for choosing between Server Side Rendering and Static Page Genera
 
 Crafting API Resolvers in Keystone-next
 
-The back end is Keystone-next host on Digital Ocean. Since this iteration of the app only needed to interact with MongoDB to fetch items in the restaurant inventory, a lighter server seemed a great fit! The server takes in hand-crafted GraphQL schemas and resolvers. The resolvers then fetch the data from MongoDB through interacting with Mongoose schemas.
+The back end is Keystone-next host on Digital Ocean. The server takes in GraphQL schemas and resolvers. The resolvers then fetch the data from MongoDB through interacting with Mongoose schemas.
 
 Integration with Stripe API for Customer Checkout
 
