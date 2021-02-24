@@ -25,6 +25,11 @@ export default function AddToCart({ id }) {
       }}
     >
       Add{loading && 'ing'} To Cart
+      <style jsx>{`
+        button {
+          color: var(--black);
+        }
+      `}</style>
     </button>
   );
 }

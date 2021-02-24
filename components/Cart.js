@@ -64,7 +64,7 @@ export default function Cart() {
         ))}
       </ul>
       <footer>
-        <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+        <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
 
         <Checkout />
       </footer>

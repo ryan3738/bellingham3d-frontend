@@ -33,7 +33,7 @@ const LogoStyles = styled.h1`
     0% 100%
   );
 
-  font-size: 4rem;
+  /* font-size: 4rem; */
   margin-left: 2rem;
   line-height: 1;
   position: relative;
@@ -75,11 +75,10 @@ export default function NavBar({ children, open, setOpen }) {
           <div className="burger">
             <div ref={node}>
               <Burger open={open} setOpen={setOpen} />
-              <BurgerMenu open={open} setOpen={setOpen} />
             </div>
+            <BurgerMenu open={open} setOpen={setOpen} />
           </div>
         </nav>
-
         <Search />
         <Cart />
       </div>

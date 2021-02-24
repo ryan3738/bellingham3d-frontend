@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import Button from './Button';
-import siteData from '../public/site-data';
 import { useUser } from './User';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
-import HeaderSpacer from './HeaderSpacer';
 // import Image from 'next/image'
 
 export default function NavList(props) {
@@ -12,6 +10,15 @@ export default function NavList(props) {
   const { openCart } = useCart();
   return (
     <>
+      <Link href="/">
+        <span
+          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+            'burgerMenuLink' in props && 'burger-menu-link'
+          }`}
+        >
+          Home
+        </span>
+      </Link>
       <Link href="/products">
         <span
           className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
@@ -63,7 +70,7 @@ export default function NavList(props) {
           </Link>
 
           <span
-            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
+            className={`nav-link  ${
               'burgerMenuLink' in props && 'burger-menu-link'
             }`}
           >

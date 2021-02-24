@@ -2,13 +2,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 
 const Dot = styled.div`
-  background: var(--red);
-  color: white;
-  border-radius: 50%;
+  /* background: var(--red); */
+  color: black;
+  /* border-radius: 50%; */
   padding: 0.5rem;
-  line-height: 2rem;
-  min-width: 3rem;
-  margin-left: 1rem;
+  /* font-size: 1rem; */
+  /* line-height: 2rem; */
+  /* min-width: 2.5rem; */
+  /* margin-left: 1rem; */
   /* Makes all numbers the same width. Two different browser supports */
   font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;

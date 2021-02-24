@@ -3,7 +3,12 @@ import { bool, func } from 'prop-types';
 export default function Burger({ open, setOpen }) {
   return (
     <>
-      <div className="styled-burger" open={open} onClick={() => setOpen(!open)}>
+      <div
+        className="styled-burger"
+        role="button"
+        open={open}
+        onClick={() => setOpen(!open)}
+      >
         <div className="top-bun" />
         <div className="patty" />
         <div className="bottom-bun" />

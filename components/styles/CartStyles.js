@@ -8,8 +8,9 @@ const CartStyles = styled.div`
   height: 100%;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 90%;
   min-width: 250px;
+  max-width: 769px;
   bottom: 0;
   transform: translateX(100%);
   transition: all 0.3s;
@@ -28,7 +29,7 @@ const CartStyles = styled.div`
     margin-top: 2rem;
     padding-top: 2rem;
     align-items: center;
-    font-size: 3rem;
+    /* font-size: 2rem; */
     font-weight: 900;
     p {
       margin: 0;

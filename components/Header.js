@@ -29,18 +29,9 @@ export default function Header() {
   return (
     <>
       <div className="bar">
-        {/* <Logo> */}
-        {/* <Image
-          src=""
-          /> */}
-        {/* <Link href="/">B-3D</Link> */}
-        {/* </Logo> */}
-        {/* <Nav /> */}
-
         <NavBar open={open} setOpen={setOpen} />
       </div>
       <div className="sub-bar">{/* <Search /> */}</div>
-      {/* <Cart /> */}
       <HeaderSpacer />
     </>
   );
