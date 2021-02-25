@@ -194,7 +194,7 @@ const InnerStyles = styled.div`
   min-height: 90vh;
 `;
 
-export default function Layout({ children, cool }) {
+export default function Layout({ children }) {
   return (
     <div>
       <GlobalStyles />
@@ -205,6 +205,5 @@ export default function Layout({ children, cool }) {
 }
 
 Layout.propTypes = {
-  cool: PropTypes.string,
   children: PropTypes.any,
 };
