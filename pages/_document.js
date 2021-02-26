@@ -11,7 +11,6 @@ export default class MyDocument extends Document {
       sheet.collectStyles(<App {...props} />)
     );
     const styleTags = sheet.getStyleElement();
-    console.log(styleTags);
     return { ...page, styleTags };
   }
 
@@ -19,8 +18,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         {/* <Head></Head> */}
+        <Head />
         <body>
-          <Head />
           <Main />
           <NextScript />
         </body>
