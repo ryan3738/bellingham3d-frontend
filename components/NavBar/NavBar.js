@@ -4,10 +4,10 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 import BurgerMenu from './BurgerMenu';
-import { useOnClickOutside } from '../lib/hooks';
+import { useOnClickOutside } from '../../lib/hooks';
 import NavList from './NavList';
-import Search from './Search';
-import Cart from './Cart';
+import Search from '../Search';
+import Cart from '../Cart';
 
 const LogoStyles = styled.h1`
   --notchSize: 15px;
@@ -55,9 +55,9 @@ const HeaderStyles = styled.header`
   .bar {
     border-bottom: 10px solid var(--black, black);
     display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -65,19 +65,23 @@ export default function NavBar({ children, open, setOpen }) {
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
   return (
-    <HeaderStyles>
-      <div className="nav-bar">
-        <nav className="nav-list">
-          <LogoStyles>
-            <Link href="/">B-3D</Link>
-          </LogoStyles>
-          <NavList showOnLarge />
-          <div className="burger">
-            <div ref={node}>
-              <Burger open={open} setOpen={setOpen} />
+    <>
+      <div className="bar">
+        <nav>
+          <ul className="nav-list">
+            <div className="burger">
+              <li ref={node}>
+                <Burger open={open} setOpen={setOpen} />
+              </li>
+              <BurgerMenu open={open} setOpen={setOpen} />
             </div>
-            <BurgerMenu open={open} setOpen={setOpen} />
-          </div>
+            <li>
+              <LogoStyles>
+                <Link href="/">B-3D</Link>
+              </LogoStyles>
+            </li>
+            <NavList showOnLarge />
+          </ul>
         </nav>
         <Search />
         <Cart />
@@ -94,7 +98,14 @@ export default function NavBar({ children, open, setOpen }) {
           font-size: 2.2rem;
           color: white;
         }
-        .nav-bar {
+        a,
+        ul,
+        li {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .bar {
           right: 0;
           left: 0;
           z-index: 999;
@@ -103,19 +114,27 @@ export default function NavBar({ children, open, setOpen }) {
           opacity: 0.97;
           width: 100%;
           height: 7em;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 1fr);
+          justify-content: stretch;
+          align-items: stretch;
+          align-content: stretch
+          justify-items: stretch;
         }
         .sub-bar {
           display: grid;
           grid-template-columns: auto 1fr;
         }
         .nav-list {
+          /*
+          */
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
-          align-content: center;
+          align-content: center
           justify-items: center;
+          width: 100%;
           height: 4em;
-          top: 0;
           border-bottom: 2.5px solid var(--black, black);
         }
 
@@ -133,6 +152,6 @@ export default function NavBar({ children, open, setOpen }) {
           }
         }
       `}</style>
-    </HeaderStyles>
+    </>
   );
 }

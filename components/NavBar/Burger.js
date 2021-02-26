@@ -14,19 +14,24 @@ export default function Burger({ open, setOpen }) {
         <div className="bottom-bun" />
         <style jsx>{`
           .styled-burger {
+            /*
             position: absolute;
             top: 1rem;
             right: 2rem;
+
+            */
+            margin: 1rem;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: space-evenly;
             width: 2rem;
             height: 2rem;
             background: white;
             border: 0;
             /* box-shadow: 0 0 0 7px var(--secondary-color); */
             cursor: pointer;
-            padding: 0;
+
             z-index: 10;
             border-radius: 7px;
           }
@@ -39,7 +44,7 @@ export default function Burger({ open, setOpen }) {
             border-radius: 10px;
             transition: all 0.2s linear;
             position: relative;
-            transform-origin: 1px;
+            transform-origin: 0.2rem;
           }
         `}</style>
         {/* animation styles */}

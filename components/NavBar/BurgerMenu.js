@@ -1,6 +1,5 @@
 // import Link from 'next/link'
 import { bool } from 'prop-types';
-import HeaderSpacer from './HeaderSpacer';
 import NavList from './NavList';
 
 export default function BurgerMenu({ open }) {
@@ -14,6 +13,7 @@ export default function BurgerMenu({ open }) {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          justify-items: center;
           background: white;
           height: 100vh;
           width: 40%;

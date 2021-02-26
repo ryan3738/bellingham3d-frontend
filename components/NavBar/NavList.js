@@ -1,79 +1,62 @@
 import Link from 'next/link';
-import Button from './Button';
-import { useUser } from './User';
-import { useCart } from '../lib/cartState';
-import CartCount from './CartCount';
+import Button from '../Button';
+import { useUser } from '../User';
+import { useCart } from '../../lib/cartState';
+import CartCount from '../CartCount';
+import NavItem from './NavItem';
 // import Image from 'next/image'
 
-export default function NavList(props) {
+export default function NavList({ showOnLarge, burgerMenuLink, props }) {
   const user = useUser();
   const { openCart } = useCart();
   return (
     <>
-      <Link href="/">
-        <span
-          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-            'burgerMenuLink' in props && 'burger-menu-link'
-          }`}
-        >
-          Home
-        </span>
-      </Link>
-      <Link href="/products">
-        <span
-          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-            'burgerMenuLink' in props && 'burger-menu-link'
-          }`}
-        >
-          Products
-        </span>
-      </Link>
-
-      <Link href="/about">
-        <span
-          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-            'burgerMenuLink' in props && 'burger-menu-link'
-          }`}
-        >
-          ABOUT
-        </span>
-      </Link>
-
-      <Link href="/contact">
-        <span
-          className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-            'burgerMenuLink' in props && 'burger-menu-link'
-          }`}
-        >
-          Contact
-        </span>
-      </Link>
+      <NavItem
+        href="/"
+        showOnLarge={showOnLarge}
+        burgerMenuLink={burgerMenuLink}
+      >
+        Home
+      </NavItem>
+      <NavItem
+        href="/products"
+        showOnLarge={showOnLarge}
+        burgerMenuLink={burgerMenuLink}
+      >
+        Products
+      </NavItem>
+      <NavItem
+        href="/about"
+        showOnLarge={showOnLarge}
+        burgerMenuLink={burgerMenuLink}
+      >
+        About
+      </NavItem>
+      <NavItem
+        href="/contact"
+        showOnLarge={showOnLarge}
+        burgerMenuLink={burgerMenuLink}
+      >
+        Contact
+      </NavItem>
 
       {user && (
         <>
-          {/* <span
-            className={`nav-link ${'showOnLarge' in props && 'show-on-large'} ${
-              'burgerMenuLink' in props && 'burger-menu-link'
+          {/* <li
+            className={`nav-link ${showOnLarge && 'show-on-large'} ${
+              burgerMenuLink && 'burger-menu-link'
             }`}
           >
             <Link href="/orders">Orders</Link>
-          </span> */}
-
-          <Link href="/account">
-            <span
-              className={`nav-link ${
-                'showOnLarge' in props && 'show-on-large'
-              } ${'burgerMenuLink' in props && 'burger-menu-link'}`}
-            >
-              Account
-            </span>
-          </Link>
-
-          <span
-            className={`nav-link  ${
-              'burgerMenuLink' in props && 'burger-menu-link'
-            }`}
+          </li> */}
+          <NavItem
+            href="/account"
+            showOnLarge={showOnLarge}
+            burgerMenuLink={burgerMenuLink}
           >
+            Account
+          </NavItem>
+          <NavItem burgerMenuLink={burgerMenuLink}>
             <button type="button" onClick={openCart}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,20 +76,18 @@ export default function NavList(props) {
                 )}
               />
             </button>
-          </span>
+          </NavItem>
         </>
       )}
       {!user && (
         <>
-          <Link href="/signin">
-            <span
-              className={`nav-link ${
-                'showOnLarge' in props && 'show-on-large'
-              } ${'burgerMenuLink' in props && 'burger-menu-link'}`}
-            >
-              Sign In
-            </span>
-          </Link>
+          <NavItem
+            href="/signin"
+            showOnLarge={showOnLarge}
+            burgerMenuLink={burgerMenuLink}
+          >
+            Sign In
+          </NavItem>
         </>
       )}
 
@@ -116,13 +97,14 @@ export default function NavList(props) {
           flex-direction: column;
           align-items: center;
           text-transform: uppercase;
-          padding: 1em;
+          padding: 1rem;
           margin: auto;
           font-weight: 900;
           cursor: pointer;
         }
         button {
           padding: 0;
+          margin: 0;
           display: flex;
           align-items: center;
           position: relative;

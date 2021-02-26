@@ -1,4 +1,4 @@
-export default function HeaderSpacer() {
+export default function NavSpacer() {
   return (
     <>
       <div className="header-spacer" />
