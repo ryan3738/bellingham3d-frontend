@@ -8,6 +8,7 @@ import { useOnClickOutside } from '../../lib/hooks';
 import NavList from './NavList';
 import Search from '../Search';
 import Cart from '../Cart';
+import NavSpacer from './NavSpacer';
 
 const LogoStyles = styled.h1`
   --notchSize: 15px;
@@ -51,17 +52,8 @@ const LogoStyles = styled.h1`
   }
 `;
 
-const HeaderStyles = styled.header`
-  .bar {
-    border-bottom: 10px solid var(--black, black);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 1fr);
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-export default function NavBar({ children, open, setOpen }) {
+export default function NavBar({ children }) {
+  const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
   return (
@@ -86,6 +78,7 @@ export default function NavBar({ children, open, setOpen }) {
         <Search />
         <Cart />
       </div>
+      <NavSpacer />
       <style jsx>{`
         .welcome-logo {
           position: absolute;
@@ -126,8 +119,6 @@ export default function NavBar({ children, open, setOpen }) {
           grid-template-columns: auto 1fr;
         }
         .nav-list {
-          /*
-          */
           display: flex;
           justify-content: space-between;
           align-items: center;

@@ -16,8 +16,8 @@ export default function BurgerMenu({ open }) {
           justify-items: center;
           background: white;
           height: 100vh;
-          width: 40%;
-          min-width: 240px;
+          width: 100%;
+          max-width: 350px;
           /* text-align: right; */
           padding: 2rem;
           position: absolute;

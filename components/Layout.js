@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
-import Header from './Header';
+import NavBar from './NavBar/NavBar';
 
 const GlobalStyles = createGlobalStyle`
 /* Add back in if a custom font is wanted */
@@ -198,7 +198,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <GlobalStyles />
-      <Header />
+      <NavBar />
       <InnerStyles>{children}</InnerStyles>
     </div>
   );
