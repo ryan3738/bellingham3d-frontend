@@ -61,8 +61,8 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="-3 -4 24 24"
-                width="24"
-                height="24"
+                width="32"
+                height="32"
                 preserveAspectRatio="xMinYMin"
                 className="icon__icon"
               >

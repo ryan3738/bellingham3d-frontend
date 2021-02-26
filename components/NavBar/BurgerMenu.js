@@ -17,7 +17,7 @@ export default function BurgerMenu({ open }) {
           background: white;
           height: 100vh;
           width: 100%;
-          max-width: 350px;
+          max-width: 450px;
           /* text-align: right; */
           padding: 2rem;
           position: absolute;
