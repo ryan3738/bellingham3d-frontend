@@ -9,7 +9,7 @@ const ContainerGrid = styled.div`
   align-content: start;
   justify-content: start;
   justify-items: start;
-  grid-gap: 1rem;
+  grid-gap: var(--spacing);
   padding: 0;
   margin: 0 auto;
 `;

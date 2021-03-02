@@ -28,7 +28,7 @@ const ProductsListStyles = styled.div`
   justify-items: center;
   align-content: stretch;
   justify-content: center;
-  grid-gap: 1rem;
+  grid-gap: var(--spacing);
 `;
 
 export default function Products({ page }) {

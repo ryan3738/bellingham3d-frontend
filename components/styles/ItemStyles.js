@@ -16,7 +16,7 @@ const ItemStyles = styled.div`
     line-height: 2;
     font-weight: 300;
     flex-grow: 1;
-    padding: 0 3rem;
+    padding: 0 var(--spacing);
     /* font-size: 1.5rem; */
   }
   .buttonList {
@@ -33,7 +33,7 @@ const ItemStyles = styled.div`
       background: white;
       border: 0;
       font-size: 1rem;
-      padding: 1rem;
+      padding: var(--spacing);
     }
   }
 `;

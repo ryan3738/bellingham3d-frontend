@@ -3,13 +3,12 @@ import styled from 'styled-components';
 const Grid4Styles = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  grid-gap: 0.5rem;
-  padding: 0.5rem;
+  grid-gap: var(--spacing);
 
   div {
     text-align: left;
     /* border: 1px solid var(--navyBlue); */
-    padding: 1rem;
+    padding: var(--spacing);
     background: var(--lightBlue);
   }
 `;

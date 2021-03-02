@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CartStyles = styled.div`
-  padding: 20px;
+  padding: var(--spacing);
   position: relative;
   background: white;
   position: fixed;
@@ -22,13 +22,13 @@ const CartStyles = styled.div`
   ${(props) => props.open && `transform: translateX(0);`};
   header {
     border-bottom: 5px solid var(--black);
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: var(--spacing);
+    padding-bottom: var(--spacing);
   }
   footer {
-    border-top: 10px double var(--black);
-    margin-top: 2rem;
-    padding-top: 2rem;
+    border-top: var(--spacing) double var(--black);
+    margin-top: var(--spacing);
+    padding-top: var(--spacing);
     align-items: center;
     /* font-size: 2rem; */
     font-weight: 900;

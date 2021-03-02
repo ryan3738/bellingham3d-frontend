@@ -40,7 +40,7 @@ const OrderUl = styled.ul`
   /* align-items: stretch; */
   /* align-content: stretch; */
   /* align-content: stretch; */
-  grid-gap: 0.5rem;
+  grid-gap: var(--spacing);
   padding: 0rem;
   margin: 0;
 `;

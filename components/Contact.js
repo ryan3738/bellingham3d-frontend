@@ -69,7 +69,7 @@ export default function Contact() {
           flex-direction: column;
           /* justify-content: flex-start; */
           /* align-items: flex-start; */
-          margin: 10px;
+          margin: var(--spacing);
         }
         .social-media-contents {
           display: flex;
