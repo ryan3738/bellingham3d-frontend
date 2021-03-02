@@ -80,6 +80,7 @@ export default function NavBar({ children }) {
       </div>
       <NavSpacer />
       <style jsx>{`
+
         .welcome-logo {
           position: absolute;
           top: 0.5rem;
@@ -113,6 +114,7 @@ export default function NavBar({ children }) {
           align-items: stretch;
           align-content: stretch
           justify-items: stretch;
+          
         }
         .sub-bar {
           display: grid;

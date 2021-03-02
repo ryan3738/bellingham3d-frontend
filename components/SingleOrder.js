@@ -75,7 +75,7 @@ export default function SingleOrder({ id }) {
           </div>
         ))}
       </div>
-      <p>{formatMoney(order.total)}</p>
+      <p>Order Total: {formatMoney(order.total)}</p>
     </OrderStyles>
   );
 }

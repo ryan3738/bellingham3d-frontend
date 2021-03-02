@@ -33,6 +33,8 @@ html {
  }
  *, *:before, *:after {
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
  }
  html,
  body{
@@ -43,6 +45,7 @@ html {
   line-height: 2;
   letter-spacing: 1px; */
   height: 100%;
+  min-height: 100%;
   font-size: 100%;
   line-height: 1.5rem;
   letter-spacing: 0.03125rem;

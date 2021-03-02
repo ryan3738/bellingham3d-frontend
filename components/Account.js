@@ -13,7 +13,7 @@ export default function Account(props) {
     <ContainerGrid>
       <h1>Account Dashboard</h1>
       <Link href="/sell">Add New Product</Link>
-      <Link href="/orders">Order History</Link>
+      <Link href="/orderhistory">Order History</Link>
       <Link href="/requestreset">Reset Your Password</Link>
       <SignOut>Sign Out</SignOut>
     </ContainerGrid>

@@ -33,33 +33,32 @@ const USER_ORDERS_QUERY = gql`
 `;
 
 const OrderUl = styled.ul`
-  width: 100%;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  /* align-content: stretch; */
-  /* align-items: stretch; */
-  /* align-content: stretch; */
-  /* align-content: stretch; */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   grid-gap: var(--spacing);
-  padding: 0rem;
+  justify-items: center;
+  padding: 0;
   margin: 0;
+  min-width: 100%;
 `;
 
 function countItemsInAnOrder(order) {
   return order.items.reduce((tally, item) => tally + item.quantity, 0);
 }
 
-export default function Orders() {
+export default function OrderHistory() {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { allOrders } = data;
   return (
-    <div>
+    <div className="wrapper">
       <Head>
         <title>Your Orders ({allOrders.length}) </title>
       </Head>
       <h2>You have {allOrders.length} orders! </h2>
+      <p>Click an order below to see details</p>
       <OrderUl>
         {allOrders.map((order) => (
           <OrderHistoryStyles>
@@ -90,6 +89,10 @@ export default function Orders() {
           </OrderHistoryStyles>
         ))}
       </OrderUl>
+      <style jsx>{`
+        .wrapper {
+        }
+      `}</style>
     </div>
   );
 }

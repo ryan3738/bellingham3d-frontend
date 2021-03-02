@@ -7,9 +7,12 @@ const Grid4Styles = styled.div`
 
   div {
     text-align: left;
-    /* border: 1px solid var(--navyBlue); */
+    border: 1px solid var(--navyBlue);
     padding: var(--spacing);
-    background: var(--lightBlue);
+    /* background: var(--lightBlue); */
+    ul li {
+      padding-left: 5px;
+    }
   }
 `;
 

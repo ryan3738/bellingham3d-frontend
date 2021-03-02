@@ -1,9 +1,9 @@
-import Orders from '../components/Orders';
+import OrderHistory from '../components/OrderHistory';
 
 export default function OrdersPage() {
   return (
     <div>
-      <Orders />
+      <OrderHistory />
     </div>
   );
 }

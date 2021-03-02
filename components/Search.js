@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
@@ -78,18 +79,20 @@ export default function Search() {
       <DropDown {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
-            <DropDownItem
-              key={item.id}
-              {...getItemProps({ item })}
-              highlighted={index === highlightedIndex}
-            >
-              <img
-                src={item.photo.image.publicUrlTransformed}
-                alt={item.name}
-                width="50"
-              />
-              {item.name}
-            </DropDownItem>
+            <Link href={`/product/${item.id}`}>
+              <DropDownItem
+                key={item.id}
+                {...getItemProps({ item })}
+                highlighted={index === highlightedIndex}
+              >
+                <img
+                  src={item.photo.image.publicUrlTransformed}
+                  alt={item.name}
+                  width="50"
+                />
+                {item.name}
+              </DropDownItem>
+            </Link>
           ))}
         {isOpen && !items.length && !loading && (
           <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>

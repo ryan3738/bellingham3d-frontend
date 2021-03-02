@@ -5,6 +5,7 @@ const OrderHistoryStyles = styled.li`
   list-style: none;
   padding: var(--spacing);
   border: 1px solid var(--offWhite);
+  height: 100%;
   h2 {
     border-bottom: 2px solid var(--navyBlue);
     margin-top: 0;
@@ -15,17 +16,18 @@ const OrderHistoryStyles = styled.li`
   .images {
     display: grid;
     grid-gap: var(--spacing);
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     margin-top: var(--spacing);
+    height: 230px;
     img {
-      height: 200px;
+      height: 100%;
       object-fit: cover;
       width: 100%;
     }
   }
   .order-meta {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     display: grid;
     grid-gap: var(--spacing);
     text-align: center;
