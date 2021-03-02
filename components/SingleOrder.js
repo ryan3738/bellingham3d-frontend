@@ -1,11 +1,9 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import DisplayError from './ErrorMessage';
 import OrderStyles from './styles/OrderStyles';
-import OrderItemStyles from './styles/OrderItemStyles';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
@@ -47,22 +45,22 @@ export default function SingleOrder({ id }) {
         <title>Sicks Fits | {order.id} </title>
       </Head>
       <h2>Order Summary</h2>
-      <p>
+      <div className="summary-item">
         <span>Order Id:</span>
         <span>{order.id}</span>
-      </p>
-      <p>
+      </div>
+      <div className="summary-item">
         <span>Charge:</span>
         <span>{order.charge}</span>
-      </p>
-      <p>
+      </div>
+      <div className="summary-item">
         <span>Order Total:</span>
         <span>{formatMoney(order.total)}</span>
-      </p>
-      <p>
+      </div>
+      <div className="summary-item">
         <span>Order Items:</span>
         <span>{order.items.length}</span>
-      </p>
+      </div>
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>

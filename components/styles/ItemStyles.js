@@ -5,7 +5,7 @@ const ItemStyles = styled.div`
   flex-direction: column;
   background: white;
   border: 1px solid var(--offWhite);
-  box-shadow: var(--bs);
+  /* box-shadow: var(--bs); */
   position: relative;
   img {
     width: 100%;

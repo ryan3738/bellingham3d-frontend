@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 
-const OrderItemStyles = styled.li`
-  box-shadow: var(--bs);
+const OrderHistoryStyles = styled.li`
+  /* box-shadow: var(--bs); */
   list-style: none;
-  padding: 2rem;
+  padding: 0.5rem;
   border: 1px solid var(--offWhite);
   h2 {
     border-bottom: 2px solid var(--navyBlue);
     margin-top: 0;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .images {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 0.5rem;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     img {
       height: 200px;
       object-fit: cover;
@@ -27,7 +27,7 @@ const OrderItemStyles = styled.li`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     text-align: center;
     & > * {
       margin: 0;
@@ -41,4 +41,4 @@ const OrderItemStyles = styled.li`
   }
 `;
 
-export default OrderItemStyles;
+export default OrderHistoryStyles;

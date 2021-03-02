@@ -184,13 +184,13 @@ const InnerStyles = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-items: center;
-  align-content: center;
-  justify-content: stretch;
+  align-content: space-evenly;
+  justify-items: start;
+  justify-content: start;
   height: 100%;
   min-height: 90vh;
 `;

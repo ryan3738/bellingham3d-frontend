@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import DisplayError from './ErrorMessage';
-import OrderItemStyles from './styles/OrderItemStyles';
+import OrderHistoryStyles from './styles/OrderHistoryStyles';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
@@ -33,9 +33,16 @@ const USER_ORDERS_QUERY = gql`
 `;
 
 const OrderUl = styled.ul`
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  /* align-content: stretch; */
+  /* align-items: stretch; */
+  /* align-content: stretch; */
+  /* align-content: stretch; */
+  grid-gap: 0.5rem;
+  padding: 0rem;
+  margin: 0;
 `;
 
 function countItemsInAnOrder(order) {
@@ -55,7 +62,7 @@ export default function Orders() {
       <h2>You have {allOrders.length} orders! </h2>
       <OrderUl>
         {allOrders.map((order) => (
-          <OrderItemStyles>
+          <OrderHistoryStyles>
             <Link href={`/order/${order.id}`}>
               <a>
                 <div className="order-meta">
@@ -80,7 +87,7 @@ export default function Orders() {
                 </div>
               </a>
             </Link>
-          </OrderItemStyles>
+          </OrderHistoryStyles>
         ))}
       </OrderUl>
     </div>

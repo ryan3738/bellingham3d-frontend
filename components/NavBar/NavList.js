@@ -88,6 +88,13 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
           >
             Sign In
           </NavItem>
+          <NavItem
+            href="/signup"
+            showOnLarge={showOnLarge}
+            burgerMenuLink={burgerMenuLink}
+          >
+            Sign Up
+          </NavItem>
         </>
       )}
 

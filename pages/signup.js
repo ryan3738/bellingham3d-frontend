@@ -1,15 +1,12 @@
-import Link from 'next/link';
 import RequestReset from '../components/RequestReset';
 import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 import ContainerGrid from '../components/styles/ContainerGrid';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <ContainerGrid>
-      <SignIn />
-      <div>
-        <Link href="/requestreset">Request Password Reset</Link>
-      </div>
+      <SignUp />
     </ContainerGrid>
   );
 }
