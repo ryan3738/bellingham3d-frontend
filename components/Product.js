@@ -26,7 +26,7 @@ export default function Product({ product }) {
       <div className="buttonList">
         {/* <EditButton id={product.id} /> */}
         <AddToCart id={product.id} />
-        {user.role?.canManageProducts && (
+        {user?.role?.canManageProducts && (
           <>
             <EditButton />
             <DeleteProduct id={product.id}>
