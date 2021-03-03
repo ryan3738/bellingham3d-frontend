@@ -19,7 +19,7 @@ const SEARCH_PRODUCTS_QUERY = gql`
     ) {
       id
       name
-      photo {
+      image {
         image {
           publicUrlTransformed
         }
@@ -76,6 +76,7 @@ export default function Search() {
           })}
         />
       </div>
+
       <DropDown {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
@@ -86,7 +87,7 @@ export default function Search() {
                 highlighted={index === highlightedIndex}
               >
                 <img
-                  src={item.photo.image.publicUrlTransformed}
+                  src={item.image.image.publicUrlTransformed}
                   alt={item.name}
                   width="50"
                 />

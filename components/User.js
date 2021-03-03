@@ -15,12 +15,15 @@ const CURRENT_USER_QUERY = gql`
             price
             name
             description
-            photo {
+            image {
               image {
                 publicUrlTransformed
               }
             }
           }
+        }
+        role {
+          canManageProducts
         }
       }
     }

@@ -64,7 +64,7 @@ export default function SignIn() {
           />
         </label>
         <label htmlFor="password">
-          Password <Link href="/requestreset">Forgot password?</Link>
+          Password
           <input
             type="password"
             name="password"

@@ -14,6 +14,8 @@ const CartItemStyles = styled.li`
   border-bottom: 1px solid var(--lightGrey);
   display: grid;
   grid-template-columns: auto 1fr auto;
+  /* justify-content: space-evenly; */
+  /* justify-items: center; */
   img {
     margin-right: 1rem;
   }
@@ -28,11 +30,15 @@ function CartItem({ cartItem }) {
   if (!product) return null;
   return (
     <CartItemStyles>
-      <img
-        width="100"
-        src={product.photo.image.publicUrlTransformed}
-        alt={product.name}
-      />
+      {product.image[0]?.image?.publicUrlTransformed ? (
+        <img
+          width="100"
+          src={product.image[0]?.image?.publicUrlTransformed}
+          alt={product.name}
+        />
+      ) : (
+        <img width="100" src="/public/android-chrome-512x512.png" alt="" />
+      )}
       <div>
         <h3>{product.name}</h3>
         <p>

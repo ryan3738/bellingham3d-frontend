@@ -19,7 +19,7 @@ const USER_ORDERS_QUERY = gql`
         description
         price
         quantity
-        photo {
+        image {
           id
           image {
             id
@@ -79,7 +79,7 @@ export default function OrderHistory() {
                   {order.items.map((item) => (
                     <img
                       key={`image-${item.id}`}
-                      src={item.photo?.image?.publicUrlTransformed}
+                      src={item.image?.image?.publicUrlTransformed}
                       alt={item.name}
                     />
                   ))}

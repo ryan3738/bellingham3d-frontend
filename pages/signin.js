@@ -7,9 +7,6 @@ export default function SignInPage() {
   return (
     <ContainerGrid>
       <SignIn />
-      <div>
-        <Link href="/requestreset">Request Password Reset</Link>
-      </div>
     </ContainerGrid>
   );
 }

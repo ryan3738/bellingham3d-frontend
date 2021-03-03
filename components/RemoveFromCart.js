@@ -3,9 +3,11 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 
 const BigButton = styled.button`
+  max-width: 50px;
   font-size: 3rem;
   background: none;
   border: 0;
+  color: var(--red);
   &:hover {
     color: var(--red);
     cursor: pointer;

@@ -27,7 +27,7 @@ const SINGLE_ITEM_QUERY = gql`
       price
       description
       id
-      photo {
+      image {
         altText
         image {
           publicUrlTransformed
@@ -45,25 +45,28 @@ export default function SingleProduct({ id }) {
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  const { Product } = data;
+  const { Product: product } = data;
+  console.log(data);
   return (
     <ProductStyles>
       <Head>
-        <title>Bellingham 3D | {Product.name} </title>
+        <title>Bellingham 3D | {product.name} </title>
       </Head>
-      <img
-        src={Product.photo.image.publicUrlTransformed}
-        alt={Product.photo.altText}
-      />
+      {product.image[0]?.image?.publicUrlTransformed && (
+        <img
+          src={product.image[0]?.image?.publicUrlTransformed}
+          alt={product.image.altText}
+        />
+      )}
       <div className="details">
         <div>
           <h2>
-            {Product.name} - {formatMoney(Product.price)}
+            {product.name} - {formatMoney(product.price)}
           </h2>
           <div />
         </div>
-        <p>{Product.description}</p>
-        <AddToCart id={Product.id} />
+        <p>{product.description}</p>
+        <AddToCart id={product.id} />
       </div>
     </ProductStyles>
   );
