@@ -52,12 +52,14 @@ export default function SingleProduct({ id }) {
       <Head>
         <title>Bellingham 3D | {product.name} </title>
       </Head>
-      {product.image[0]?.image?.publicUrlTransformed && (
+
+      {product.image.map((productImage) => (
         <img
-          src={product.image[0]?.image?.publicUrlTransformed}
-          alt={product.image.altText}
+          key=""
+          src={productImage.image.publicUrlTransformed}
+          alt={productImage.altText}
         />
-      )}
+      ))}
       <div className="details">
         <div>
           <h2>
