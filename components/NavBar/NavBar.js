@@ -60,20 +60,20 @@ export default function NavBar({ children }) {
     <>
       <div className="bar">
         <nav>
-          <ul className="nav-list">
+          <div className="nav-list">
             <div className="burger">
-              <li ref={node}>
+              <div ref={node}>
                 <Burger open={open} setOpen={setOpen} />
-              </li>
+              </div>
               <BurgerMenu open={open} setOpen={setOpen} />
             </div>
-            <li>
+            <div>
               <LogoStyles>
                 <Link href="/">B-3D</Link>
               </LogoStyles>
-            </li>
+            </div>
             <NavList showOnLarge />
-          </ul>
+          </div>
         </nav>
         <Search />
         <Cart />
@@ -114,7 +114,7 @@ export default function NavBar({ children }) {
           align-items: stretch;
           align-content: stretch
           justify-items: stretch;
-          
+
         }
         .sub-bar {
           display: grid;

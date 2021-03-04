@@ -10,22 +10,22 @@ export default function NavItem({
     <>
       {href ? (
         <Link href={href}>
-          <li
+          <div
             className={`nav-link ${showOnLarge && 'show-on-large'} ${
               burgerMenuLink && 'burger-menu-link'
             }`}
           >
             {children}
-          </li>
+          </div>
         </Link>
       ) : (
-        <li
+        <div
           className={`nav-link ${showOnLarge && 'show-on-large'} ${
             burgerMenuLink && 'burger-menu-link'
           }`}
         >
           {children}
-        </li>
+        </div>
       )}
       <style jsx>{`
         .nav-link {
