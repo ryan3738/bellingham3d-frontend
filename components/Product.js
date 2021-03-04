@@ -10,7 +10,7 @@ import { useUser } from './User';
 
 export default function Product({ product }) {
   const user = useUser();
-  console.log(user);
+  // console.log(user);
   return (
     // ? is "nested chaining" that checks for item at each level
     <ItemStyles>
