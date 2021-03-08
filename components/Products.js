@@ -23,12 +23,15 @@ export const ALL_PRODUCTS_QUERY = gql`
 
 const ProductsListStyles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  /* grid-template-rows: repeat(auto-fill, 200px); */
+  align-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
   justify-items: center;
-  align-content: stretch;
-  justify-content: center;
-  grid-gap: var(--spacing);
+  grid-gap: 5px;
+  padding: 5px 0;
+  /* grid-auto-flow: dense; */
 `;
 
 export default function Products({ page }) {
@@ -42,12 +45,18 @@ export default function Products({ page }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <>
+    <div className="products-wrapper">
       <ProductsListStyles>
         {data.allProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>
-    </>
+      <style jsx>{`
+        .products-wrapper {
+          width: 100%;
+          height: auto;
+        }
+      `}</style>
+    </div>
   );
 }
