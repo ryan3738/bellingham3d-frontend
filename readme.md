@@ -23,7 +23,7 @@ Next.js allows for choosing between Server Side Rendering and Static Page Genera
 
 Crafting API Resolvers in Keystone-next
 
-The back end is Keystone-next host on Digital Ocean. The server takes in GraphQL schemas and resolvers. The resolvers then fetch the data from MongoDB through interacting with Mongoose schemas.
+The back end uses Keystone-next which is a node & Typescript based Graphql server-side client that uses Next.js for its front end. This is hosted on a Digital Ocean droplet. Keystone takes in GraphQL schemas and resolvers. The resolvers then fetch the data from MongoDB through interacting with Mongoose schemas. It can also be used as a cms for performing CRUD operations on database items.
 
 Integration with Stripe API for Customer Checkout
 
