@@ -13,7 +13,7 @@ export default function Product({ product }) {
   const user = useUser();
   // console.log(user);
   return (
-    // ? is "nested chaining" that checks for item at each level
+    // ? is "optional chaining" that checks for item at each level
     <div className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
