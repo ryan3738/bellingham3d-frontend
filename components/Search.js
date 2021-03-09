@@ -87,7 +87,7 @@ export default function Search() {
                 highlighted={index === highlightedIndex}
               >
                 <img
-                  src={item.image.image.publicUrlTransformed}
+                  src={item?.image[0]?.image.publicUrlTransformed}
                   alt={item.name}
                   width="50"
                 />
