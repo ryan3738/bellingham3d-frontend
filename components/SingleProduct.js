@@ -23,10 +23,18 @@ const ProductStyles = styled.div`
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
     Product(where: { id: $id }) {
+      id
       name
       price
       description
-      id
+      variant {
+        id
+        name
+        variantType {
+          id
+          name
+        }
+      }
       image {
         altText
         image {
@@ -46,7 +54,14 @@ export default function SingleProduct({ id }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { Product: product } = data;
-  console.log(data);
+  // console.table(data);
+  // console.log('product:', product);
+  const uniqueVariants = [
+    ...new Set(
+      product?.variant?.map((productVariant) => productVariant.variantType.name)
+    ),
+  ];
+  // console.log('uniqueVariants', uniqueVariants);
   return (
     <ProductStyles>
       <Head>
@@ -55,7 +70,7 @@ export default function SingleProduct({ id }) {
 
       {product.image.map((productImage) => (
         <img
-          key=""
+          key={productImage.image.id}
           src={productImage.image.publicUrlTransformed}
           alt={productImage.altText}
         />
@@ -67,8 +82,30 @@ export default function SingleProduct({ id }) {
           </h2>
           <div />
         </div>
-        <p>{product.description}</p>
+        <div>
+          <div>
+            <div>
+              {uniqueVariants.map((uniqueVariant) => (
+                <div>
+                  <label htmlFor={uniqueVariant}>{uniqueVariant}:</label>
+                  <select name={uniqueVariant} id={uniqueVariant}>
+                    {product.variant
+                      .filter((e) => e.variantType.name === uniqueVariant)
+                      .map((productVariant) => (
+                        <>
+                          <option value={productVariant.name}>
+                            {productVariant.name}
+                          </option>
+                        </>
+                      ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
         <AddToCart id={product.id} />
+        <p>{product.description}</p>
       </div>
     </ProductStyles>
   );
