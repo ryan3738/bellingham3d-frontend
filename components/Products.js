@@ -11,6 +11,10 @@ export const ALL_PRODUCTS_QUERY = gql`
       name
       price
       description
+      status
+      category {
+        name
+      }
       image {
         id
         image {
@@ -42,19 +46,63 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
+
+  function getCategoryList(productList = {}) {
+    const List = [];
+    try {
+      productList.map((products) =>
+        products.category.map((categories) => List.push(categories.name))
+      );
+      return [...new Set(List)];
+    } catch {
+      return console.error('getCategoryList function error');
+    }
+  }
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div className="products-wrapper">
-      <ProductsListStyles>
-        {data.allProducts.map((product) => (
-          <Product key={product.id} product={product} />
+      {/* TODO: Add Category navigationy */}
+      {/* <div className="nav-list">
+        {getCategoryList(data.allProducts).map((category) => (
+          <div className="nav-link" key={category}>
+            {category}
+          </div>
         ))}
+      </div> */}
+      <ProductsListStyles>
+        {data.allProducts
+          .filter((e) => e.status === 'AVAILABLE')
+          .map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
       </ProductsListStyles>
       <style jsx>{`
         .products-wrapper {
           width: 100%;
           height: auto;
+        }
+
+        .nav-list {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          align-content: center
+          justify-items: center;
+          width: 100%;
+          height: 4em;
+
+        }
+        .nav-link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-transform: uppercase;
+          padding: 1rem;
+          margin: 0;
+          font-weight: 900;
+          cursor: pointer;
         }
       `}</style>
     </div>

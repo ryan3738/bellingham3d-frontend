@@ -28,6 +28,7 @@ export default function AddToCart({ id }) {
       <style jsx>{`
         button {
           color: var(--white);
+          margin: 10px 0;
         }
       `}</style>
     </button>
