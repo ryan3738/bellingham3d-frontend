@@ -5,8 +5,8 @@ import ContainerGrid from '../components/styles/ContainerGrid';
 
 export default function SignInPage() {
   return (
-    <ContainerGrid>
+    <>
       <SignIn />
-    </ContainerGrid>
+    </>
   );
 }

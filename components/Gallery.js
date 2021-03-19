@@ -30,8 +30,8 @@ const ProductsListStyles = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   /* grid-template-rows: repeat(auto-fill, 200px); */
   align-content: center;
-  justify-content: space-evenly;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
   justify-items: center;
   grid-gap: 5px;
   padding: 5px 0;
