@@ -1,61 +1,50 @@
 import Link from 'next/link';
+import Gallery from './Gallery';
+import Products from './Products';
 import Grid4Styles from './styles/Grid4Styles';
 
 export default function Home() {
   return (
     <div>
-      <h2>This is the home page</h2>
+      <h2>Work with us to make your idea into a useable part</h2>
       <p>
-        <strong>Bellingham 3D</strong> is a 3D printing and design company based
-        in Bellingham, Washington.
+        Have a look at our 3D printed products or get a quote for a custom
+        design and print solution.
       </p>
+      <br />
+      <br />
+      <h2>Latest Products</h2>
+      <Gallery page={1} />
       <div>
+        <h2>Custom Designs</h2>
+        <br />
+        <br />
         <Grid4Styles>
           <div>
-            <h3>
-              We offer predesigned products and custom solutions including:
-            </h3>
-            <ul>
-              <li>Wood Working Jigs</li>
-              <li>Snowbaording & Skiing Jigs</li>
-              <li>3D Printin accessories</li>
-              <li>Lighting Fixtures</li>
-              <Link href="/products">See Our Products</Link>
-            </ul>
+            <h3>Design</h3>
+            <p>
+              Got your own 3D CAD file you would like to have printed? Have an
+              idea but need help designing a 3D file to create a printable part?
+              Either way we can help you have a custom part made.
+            </p>
           </div>
           <div>
-            <h3>Our capabilities & services include:</h3>
-            <ul>
-              <li>Ultimaker 3D Printer</li>
-              <li>2 Filament Prints</li>
-              <li>Dissolvable Support Structures</li>
-              <li>Engineering & Design</li>
-              <li>CAD 3D Modelling</li>
-              Contact us now with your project details! (link to contact info)
-            </ul>
+            <h3>Print</h3>
+            <p>
+              We take care in printing each part to make sure it functions as
+              intended.
+            </p>
           </div>
           <div>
-            <h3>Our capabilities & services include:</h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem, repellat sit neque quod, ex consequuntur quaerat
-            maxime natus itaque, minus ullam earum vel distinctio cupiditate?
-            Quas perspiciatis sit ratione quis.
-          </div>
-          <div>
-            <h3>Our capabilities & services include:</h3>Lorem ipsum, dolor sit
-            amet consectetur adipisicing elit. Voluptatibus, iste cumque minus
-            vitae laborum illum! Quos vitae ut nemo reprehenderit fugit, animi
-            laudantium consequatur, modi in amet, voluptatum magni? Sequi!
-          </div>
-          <div>
-            <h3>Our capabilities & services include:</h3>Lorem ipsum dolor sit
-            amet consectetur, adipisicing elit. Animi aperiam omnis, eum, quo
-            porro suscipit odio dignissimos minima et perspiciatis ratione
-            quidem praesentium inventore. Similique reiciendis dolorem assumenda
-            reprehenderit adipisci!
+            <h3>Ship</h3>
+            We will ship your 3D printed parts to you once the printing process
+            is complete.
           </div>
         </Grid4Styles>
       </div>
+      <br />
+      <br />
+
       <style jsx>{`
         ul {
           padding-left: calc(2 * var(--spacing));

@@ -38,6 +38,10 @@ export default function NavItem({
           font-weight: 900;
           cursor: pointer;
         }
+
+        .nav-link:hover {
+          opacity: 0.54;
+        }
         button {
           padding: 0;
           display: flex;
@@ -47,11 +51,6 @@ export default function NavItem({
           background: none;
           border: 0;
           cursor: pointer;
-        }
-
-        a:hover {
-          color: var(--white);
-          background: var(--navyBlue);
         }
       `}</style>
       <style jsx>{`

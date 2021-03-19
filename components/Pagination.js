@@ -9,7 +9,7 @@ import { siteData } from '../public/site-data';
 
 export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
-    _allProductsMeta {
+    _allProductsMeta(where: { status: "AVAILABLE" }) {
       count
     }
   }

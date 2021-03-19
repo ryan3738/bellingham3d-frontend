@@ -9,7 +9,7 @@ export const siteData = {
     directions: '',
   },
   phoneNumber: '360-123-4567',
-  email: '',
+  email: 'sales@bellingham3d.com',
   hours: {
     Sunday: 'Closed',
     Monday: 'Closed',

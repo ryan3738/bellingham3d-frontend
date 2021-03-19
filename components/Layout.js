@@ -212,6 +212,10 @@ export default function Layout({ children }) {
         <meta name="keywords" content="3D, printing, design" />
         <link rel="icon" href="/favicon.ico" />
         <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/apple-touch-icon.png"
