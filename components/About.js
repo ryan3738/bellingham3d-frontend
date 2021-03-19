@@ -4,12 +4,13 @@ export default function About() {
   return (
     <>
       <Image
-        src="/public/images/ultimaker-closeup.jpg"
+        src="/images/ultimaker-closeup.jpg"
         alt="Ultimaker 3D printer closup image"
-        width={500}
+        width={1000}
         height={500}
+        objectFit="cover"
       />
-
+      <br />
       <img src="public/images/ultimaker-closeup.jpg" alt="" />
       <p>
         <h2>DESIGNED AND PRINTED IN THE PNW</h2> Bellingham 3D is a 3D printing
