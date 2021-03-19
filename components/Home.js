@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import Gallery from './Gallery';
 import Products from './Products';
@@ -5,9 +6,16 @@ import Grid4Styles from './styles/Grid4Styles';
 
 export default function Home() {
   return (
-    <div>
-      <h2>Work with us to make your idea into a useable part</h2>
+    <>
+      <Image
+        src="/images/laptop-parts-printer.jpg"
+        alt="Screenshot of a computer monitor with 3D CAD model"
+        width={1000}
+        height={500}
+        objectFit="cover"
+      />
       <p>
+        <h2>Work with us to make your idea into a useable part</h2>
         Have a look at our 3D printed products or get a quote for a custom
         design and print solution.
       </p>
@@ -16,9 +24,9 @@ export default function Home() {
       <h2>Latest Products</h2>
       <Gallery page={1} />
       <div>
+        <br />
+        <br />
         <h2>Custom Designs</h2>
-        <br />
-        <br />
         <Grid4Styles>
           <div>
             <h3>Design</h3>
@@ -42,14 +50,12 @@ export default function Home() {
           </div>
         </Grid4Styles>
       </div>
-      <br />
-      <br />
 
       <style jsx>{`
         ul {
           padding-left: calc(2 * var(--spacing));
         }
       `}</style>
-    </div>
+    </>
   );
 }

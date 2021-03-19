@@ -74,63 +74,26 @@ export default function GalleryItem({ product }) {
           width: 100%;
           height: auto;
           text-align: center;
-        border: 2px solid var(--lightGray);
-        box-shadow: var(--bs);
-        position: relative;
+          border: 2px solid var(--lightGray);
+          box-shadow: var(--bs);
+          position: relative;
         }
 
-        .productWrapper :hover{
-          opacity: .5;
+        .productWrapper :hover {
+          opacity: 0.5;
         }
 
-.productText{
-  font-size: 1.5rem;
-  font-weight: bold;
-
-  padding: calc(var(--spacing)/2) 0;
-
-}
-         {
-          /* #image-div {
-          display: inline-block;
-          height: auto;
-          max-width: 360px;
-          width: 100vw;
-          border: 0px solid red;
-          padding: 5px;
-        } */
+        .productText {
+          font-size: 1.5rem;
+          font-weight: bold;
+          padding: calc(var(--spacing) / 2) 0;
         }
+
         img {
-
           max-height: 240px;
           width: 100%;
           height: auto;
           object-fit: cover;
-
-
-        }
-
-
-        /*
-        .buttonList {
-          display: grid;
-          width: 100%;
-          grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-          grid-gap: 1px;
-          background: var(--lightGray);
-          */
-
-          /*
-    & > * {
-        display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      border: 0;
-      font-size: 1rem;
-      padding: var(--spacing);
-    }
-    */
         }
       `}</style>
     </div>

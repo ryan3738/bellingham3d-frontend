@@ -80,7 +80,7 @@ export default function Product({ product }) {
           align-items: stretch;
           background: white;
           max-width: 360px;
-          width: 100%;
+          width: 100vw;
           height: auto;
           text-align: center;
         border: 2px solid var(--lightGray);

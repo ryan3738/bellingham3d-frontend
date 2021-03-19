@@ -1,4 +1,5 @@
 // import utilStyles from '../styles/utils.module.css'
+import Image from 'next/image';
 import Social from './Social';
 import Button from './Button';
 import { siteData } from '../public/site-data';
@@ -6,6 +7,13 @@ import { siteData } from '../public/site-data';
 export default function Contact() {
   return (
     <>
+      <Image
+        src="/images/cad-screenshot.jpg"
+        alt="Screenshot of a computer monitor with 3D CAD model"
+        width={1000}
+        height={500}
+        objectFit="cover"
+      />
       <h2>Contact Us</h2>
       <div id="contact-info">
         <br />
