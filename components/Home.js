@@ -14,11 +14,13 @@ export default function Home() {
         height={500}
         objectFit="cover"
       />
-      <p>
+      <div>
         <h2>Work with us to make your idea into a useable part</h2>
-        Have a look at our 3D printed products or get a quote for a custom
-        design and print solution.
-      </p>
+        <p>
+          Have a look at our 3D printed products or get a quote for a custom
+          design and print solution.
+        </p>
+      </div>
       <br />
       <br />
       <h2>Latest Products</h2>

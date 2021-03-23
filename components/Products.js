@@ -63,7 +63,7 @@ export default function Products({ page }) {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div className="products-wrapper">
-      {/* TODO: Add Category navigationy */}
+      {/* TODO: Add Category navigation */}
       {/* <div className="nav-list">
         {getCategoryList(data.allProducts).map((category) => (
           <div className="nav-link" key={category}>
@@ -73,7 +73,7 @@ export default function Products({ page }) {
       </div> */}
       <ProductsListStyles>
         {data.allProducts
-          .filter((e) => e.status === 'AVAILABLE')
+          // .filter((e) => e.status === 'AVAILABLE')
           .map((product) => (
             <Product key={product.id} product={product} />
           ))}

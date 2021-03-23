@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { perPage } from '../config';
 import GalleryItem from './GalleryItem';
 
-export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
-    allProducts(first: $first, skip: $skip) {
+export const ALL_PRODUCTS_GALLERY_QUERY = gql`
+  query ALL_PRODUCTS_GALLERY_QUERY($skip: Int = 0, $first: Int) {
+    allProducts(where: { status: "AVAILABLE" }, first: $first, skip: $skip) {
       id
       name
       price
@@ -40,7 +40,7 @@ const ProductsListStyles = styled.div`
 
 export default function Gallery({ page }) {
   // Hook that will return query info
-  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
+  const { data, error, loading } = useQuery(ALL_PRODUCTS_GALLERY_QUERY, {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,
@@ -65,7 +65,7 @@ export default function Gallery({ page }) {
     <div className="products-wrapper">
       <ProductsListStyles>
         {data.allProducts
-          .filter((e) => e.status === 'AVAILABLE')
+          // .filter((e) => e.status === 'AVAILABLE')
           .map((product) => (
             <GalleryItem key={product.id} product={product} />
           ))}
