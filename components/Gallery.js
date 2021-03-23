@@ -72,7 +72,7 @@ export default function Gallery({ page }) {
       </ProductsListStyles>
       <style jsx>{`
         .products-wrapper {
-          width: 100vw;
+          width: 100%;
           height: auto;
         }
       `}</style>

@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const Grid4Styles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   grid-gap: var(--spacing);
+  justify-content: center;
+  justify-items: center;
 
   div {
     text-align: left;
