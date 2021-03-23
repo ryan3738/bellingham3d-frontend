@@ -5,8 +5,8 @@ export default function About() {
     <>
       <Image
         src="/images/ultimaker-closeup.jpg"
-        alt="Ultimaker 3D printer closup image"
-        width={1000}
+        alt="Ultimaker 3D printer closeup image"
+        width={1100}
         height={500}
         objectFit="cover"
       />

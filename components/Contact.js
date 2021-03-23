@@ -10,10 +10,11 @@ export default function Contact() {
       <Image
         src="/images/cad-screenshot.jpg"
         alt="Screenshot of a computer monitor with 3D CAD model"
-        width={1000}
+        width={1100}
         height={500}
         objectFit="cover"
       />
+      <br />
       <h2>Contact Us</h2>
       <div id="contact-info">
         <br />
