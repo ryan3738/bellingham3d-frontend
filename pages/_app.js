@@ -2,7 +2,6 @@ import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import { useState } from 'react';
-import SimpleReactLightbox from 'simple-react-lightbox';
 import Layout from '../components/Layout';
 import '../components/styles/nprogress.css';
 import withData from '../lib/withData';
@@ -17,13 +16,11 @@ function MyApp({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
       <CartStateProvider>
-        <SimpleReactLightbox>
-          {/* <NavBar open={open} setOpen={setOpen}> */}
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          {/* </NavBar> */}
-        </SimpleReactLightbox>
+        {/* <NavBar open={open} setOpen={setOpen}> */}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        {/* </NavBar> */}
       </CartStateProvider>
     </ApolloProvider>
   );

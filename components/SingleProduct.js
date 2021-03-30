@@ -1,12 +1,11 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import { SRLWrapper } from 'simple-react-lightbox';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
 import DisplayError from './ErrorMessage';
-import ImageLightBox from './ImageLightBox';
+import ImageSlider from './ImageSlider';
 import PriceTag from './styles/PriceTag';
 
 const ProductStyles = styled.div`
@@ -73,39 +72,12 @@ export default function SingleProduct({ id }) {
       <Head>
         <title>Bellingham 3D | {product.name} </title>
       </Head>
-      <img
+      {/* <img
         src={product?.image[0]?.image?.publicUrlTransformed}
         alt={product.name}
-      />
-      {/* <ImageLightBox>
-        <>
-          {product.image.map((productImage) => (
-            <img
-              key={productImage.image.id}
-              src={productImage.image.publicUrlTransformed}
-              alt={productImage.altText}
-            />
-          ))}
-        </>
-      </ImageLightBox> */}
-      {/* <SRLWrapper
-        options={{
-          buttons: {
-            showAutoplayButton: false,
-            showDownloadButton: false,
-            showFullscreenButton: true,
-            showThumbnailsButton: false,
-          },
-        }}
-      >
-        {product.image.map((productImage) => (
-          <img
-            key={productImage.image.id}
-            src={productImage.image.publicUrlTransformed}
-            alt={productImage.altText}
-          />
-        ))}
-      </SRLWrapper> */}
+      /> */}
+
+      <ImageSlider slides={product.image} />
       <div className="details">
         <div>
           <h2>

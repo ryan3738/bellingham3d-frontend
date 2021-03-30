@@ -37,8 +37,8 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
     "react-transition-group": "^4.4.1",
-    "simple-react-lightbox": "^3.6.4",
     "styled-components": "^5.2.1",
     "waait": "^1.0.5"
   },
