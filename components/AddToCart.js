@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import Button from './Button';
 import { CURRENT_USER_QUERY } from './User';
 
 const ADD_TO_CART_MUTATION = gql`
@@ -24,11 +25,15 @@ export default function AddToCart({ id }) {
         addToCart();
       }}
     >
+
+      <Button>
+        Add
+      </Button>
       Add{loading && 'ing'} To Cart
       <style jsx>{`
         button {
           color: var(--white);
-          margin: 10px 0;
+          margin: 1rem 0;
         }
         button:hover {
           color: var(--black);

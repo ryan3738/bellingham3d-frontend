@@ -9,12 +9,13 @@ export default function Button({ children, buttonLink }) {
 
       <style jsx>{`
         .button-text {
+          margin: 1rem 0;
           width: auto;
           background: var(--red);
           color: white;
           border: 0;
-          font-size: 2rem;
-          font-weight: 600;
+          font-size: 1rem;
+          font-weight: 500;
           padding: var(--spacing);
         }
       `}</style>

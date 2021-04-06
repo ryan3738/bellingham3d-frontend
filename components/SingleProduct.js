@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
+import Button from './Button';
 import DisplayError from './ErrorMessage';
 import ImageSlider from './ImageSlider';
 import PriceTag from './styles/PriceTag';
@@ -110,6 +111,8 @@ export default function SingleProduct({ id }) {
         </div>
         <AddToCart id={product.id} />
         <p>{product.description}</p>
+
+        <Button buttonLink="/products">All Products</Button>
       </div>
 
       <style jsx>{`
