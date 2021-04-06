@@ -77,7 +77,7 @@ export default function ImageSlider({ slides }) {
           width: 100%;
           top: 50%;
           left: 32px;
-          font-size: 3rem;
+          font-size: 2.5rem;
           color: var(--gray);
           z-index: 10;
           cursor: pointer;
