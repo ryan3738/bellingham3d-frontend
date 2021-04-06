@@ -16,20 +16,16 @@ export default function Home() {
         objectFit="cover"
       />
       <div>
-        <br />
         <h2>Work with us to make your idea into a useable part</h2>
         <p>
           Have a look at our 3D printed products or get a quote for a custom
           design and print solution.
         </p>
       </div>
-      <br />
-      <br />
+
       <h2>Latest Products</h2>
       <Gallery page={1} />
 
-      <br />
-      <br />
       <h2>Custom Designs</h2>
       <Grid4Styles>
         <div>

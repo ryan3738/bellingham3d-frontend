@@ -14,10 +14,9 @@ export default function Contact() {
         height={500}
         objectFit="cover"
       />
-      <br />
+
       <h2>Contact Us</h2>
       <div id="contact-info">
-        <br />
         <h3>
           For questions about custom design work or custom prints please email
           us at

@@ -95,7 +95,7 @@ h6 {
 h1 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 3rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -110,7 +110,7 @@ h1 {
 h2 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 2rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -125,7 +125,7 @@ h2 {
 h3 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 1.8rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -140,7 +140,7 @@ h3 {
 h4 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 1.8rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -155,7 +155,7 @@ h4 {
 h5 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 1.8rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -170,7 +170,7 @@ h5 {
 h6 {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0;
+  margin-top: 1.8rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
