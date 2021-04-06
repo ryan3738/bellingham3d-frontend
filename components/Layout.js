@@ -65,10 +65,17 @@ button{
   appearance: none;
   cursor: pointer;
   background-color: var(--navyBlue);
-  border: 2px solid var(--navyBlue);
   /* border-radius: 5px; */
   color: var(--white);
   padding: 5px;
+  margin: 1rem 0;
+  width: auto;
+  background: var(--red);
+  color: white;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--spacing);
   /* margin: 10px 5px; */
 
 }
@@ -76,7 +83,6 @@ button:hover {
   animation-name: background-color;
   animation-duration: 500ms;
   background-color: var(--lightBlue);
-  border-color: var(--lightBlue);
   color: var(--navyBlue);
   -webkit-appearance: none;
   -moz-appearance: none;

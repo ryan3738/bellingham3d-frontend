@@ -112,7 +112,7 @@ export default function SingleProduct({ id }) {
         <AddToCart id={product.id} />
         <p>{product.description}</p>
 
-        <Button buttonLink="/products">All Products</Button>
+        <Button buttonLink="/products">Return to All Products</Button>
       </div>
 
       <style jsx>{`
