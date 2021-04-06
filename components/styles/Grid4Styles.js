@@ -7,6 +7,14 @@ const Grid4Styles = styled.div`
   justify-content: center;
   justify-items: center;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0px;
+  }
   div {
     text-align: left;
     /* border: 1px solid var(--navyBlue); */

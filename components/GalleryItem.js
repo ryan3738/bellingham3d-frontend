@@ -77,6 +77,7 @@ export default function GalleryItem({ product }) {
           border: 2px solid var(--lightGray);
           box-shadow: var(--bs);
           position: relative;
+          cursor: pointer;
         }
 
         .productWrapper :hover {

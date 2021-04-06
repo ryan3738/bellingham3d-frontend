@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 export default function ImageSlider({ slides }) {
   const [current, setCurrent] = useState(0);
@@ -36,50 +37,69 @@ export default function ImageSlider({ slides }) {
       ))}
       {slides.length > 1 && (
         <>
-          <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-          <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+          <div className="slider-nav">
+            <div>
+              <FaArrowAltCircleLeft
+                className="left-arrow"
+                onClick={prevSlide}
+              />
+            </div>
+            <div>
+              <FaArrowAltCircleRight
+                className="right-arrow"
+                onClick={nextSlide}
+              />
+            </div>
+          </div>
         </>
       )}
 
       <style jsx>{`
         .slider {
-          /* position: relative;
           height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .slider-nav {
+          height: 100%;
+          width: 100%;
           display: flex;
           justify-content: center;
-          align-items: center; */
+          align-items: center;
+          align-content: center;
         }
-
         .image {
           /* width: 1000px;
           height: 600px;
           border-radius: 10px; */
         }
 
-        .right-arrow {
-          position: absolute;
+        :global(.right-arrow) {
+          width: 100%;
           top: 50%;
           left: 32px;
-          front-size: 3rem;
-          color #000;
+          font-size: 3rem;
+          color: var(--gray);
           z-index: 10;
           cursor: pointer;
           user-select: none;
         }
-        .left-arrow {
-          position: absolute;
+        :global(.left-arrow) {
           top: 50%;
           left: 32px;
-          front-size: 3rem;
-          color #000;
+          font-size: 3rem;
+          color: var(--gray);
           z-index: 10;
           cursor: pointer;
           user-select: none;
         }
 
-        .slide{
+        .slide {
           opacity: 0;
-          transition-duration: 1s ease;
+          transition-duration: 0.5s ease;
         }
 
         .slide.active {
@@ -87,7 +107,6 @@ export default function ImageSlider({ slides }) {
           transition-duration: 1s;
           /* transform: scale(1.08); */
         }
-
       `}</style>
     </section>
   );
