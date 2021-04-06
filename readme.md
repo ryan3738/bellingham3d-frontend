@@ -6,7 +6,6 @@ Tech used:
 
     Next.js
     React
-    Redux
     GraphQL
     MongoDB
     Apollo Client
