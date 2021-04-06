@@ -38,17 +38,11 @@ export default function ImageSlider({ slides }) {
       {slides.length > 1 && (
         <>
           <div className="slider-nav">
-            <div>
-              <FaArrowAltCircleLeft
-                className="left-arrow"
-                onClick={prevSlide}
-              />
+            <div className="left-arrow">
+              <FaArrowAltCircleLeft onClick={prevSlide} />
             </div>
-            <div>
-              <FaArrowAltCircleRight
-                className="right-arrow"
-                onClick={nextSlide}
-              />
+            <div className="right-arrow">
+              <FaArrowAltCircleRight onClick={nextSlide} />
             </div>
           </div>
         </>
@@ -70,6 +64,7 @@ export default function ImageSlider({ slides }) {
           justify-content: center;
           align-items: center;
           align-content: center;
+          text-align: center;
         }
         .image {
           /* width: 1000px;
@@ -77,7 +72,8 @@ export default function ImageSlider({ slides }) {
           border-radius: 10px; */
         }
 
-        :global(.right-arrow) {
+        .right-arrow,
+        .left-arrow {
           width: 100%;
           top: 50%;
           left: 32px;
@@ -87,14 +83,10 @@ export default function ImageSlider({ slides }) {
           cursor: pointer;
           user-select: none;
         }
-        :global(.left-arrow) {
-          top: 50%;
-          left: 32px;
-          font-size: 3rem;
-          color: var(--gray);
-          z-index: 10;
-          cursor: pointer;
-          user-select: none;
+
+        .left-arrow:hover,
+        .right-arrow:hover {
+          opacity: 0.5;
         }
 
         .slide {
@@ -104,7 +96,7 @@ export default function ImageSlider({ slides }) {
 
         .slide.active {
           opacity: 1;
-          transition-duration: 1s;
+          transition-duration: 0.5s;
           /* transform: scale(1.08); */
         }
       `}</style>
