@@ -30,6 +30,9 @@ export default function AddToCart({ id }) {
           color: var(--white);
           margin: 10px 0;
         }
+        button:hover {
+          color: var(--black);
+        }
       `}</style>
     </button>
   );
