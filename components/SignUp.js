@@ -1,9 +1,15 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { useState } from 'react';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
+import SignIn from './SignIn';
+
+const eye = <FaEye />;
+const eyeSlash = <FaEyeSlash />;
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -21,8 +27,8 @@ const SIGNUP_MUTATION = gql`
 
 export default function SignUp() {
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
     name: '',
+    email: '',
     password: '',
   });
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
@@ -44,51 +50,87 @@ export default function SignUp() {
   //   'UserAuthenticationWithPasswordFailure'
   //     ? data?.authenticateUserWithPassword
   //     : undefined;
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     //   method="post" makes sure the password doesn't go to the url
-    <Form method="post" onSubmit={handleSubmit}>
-      <h2>Sign Up For an Account</h2>
-      <Error error={error} />
-      <fieldset>
-        {data?.createUser && (
-          <p>Signed up with {data.createUser.email} - Please sign in!</p>
+    <>
+      <Form method="post" onSubmit={handleSubmit}>
+        {data?.createUser ? (
+          <>
+            <p>Signed up with {data.createUser.email} - Please sign in!</p>
+            <SignIn />
+          </>
+        ) : (
+          <>
+            <h2>Sign Up For an Account</h2>
+            <Error error={error} />
+            <fieldset>
+              <label htmlFor="email">
+                Name
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  autoComplete="name"
+                  value={inputs.name}
+                  onChange={handleChange}
+                />
+              </label>
+              <label htmlFor="email">
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email Address"
+                  autoComplete="email"
+                  value={inputs.email}
+                  onChange={handleChange}
+                />
+              </label>
+              <div className="pass-wrapper">
+                <label htmlFor="password">
+                  Password
+                  <input
+                    type={passwordShown ? 'text' : 'password'}
+                    name="password"
+                    placeholder="6 characters minimum"
+                    autoComplete="password"
+                    value={inputs.password}
+                    onChange={handleChange}
+                  />
+                </label>
+                <i onClick={togglePasswordVisiblity}>
+                  {passwordShown ? eyeSlash : eye}
+                </i>
+              </div>
+              <button type="submit">Sign Up!</button>
+            </fieldset>
+          </>
         )}
-        <label htmlFor="email">
-          Name
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            autoComplete="name"
-            value={inputs.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email Address"
-            autoComplete="email"
-            value={inputs.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter a Password"
-            autoComplete="password"
-            value={inputs.password}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Sign Up!</button>
-      </fieldset>
-    </Form>
+      </Form>
+      <style jsx>
+        {`
+          .pass-wrapper {
+            position: relative;
+            width: 100%;
+
+            margin-bottom: 14px;
+          }
+          i {
+            position: absolute;
+            top: 55%;
+            right: 10%;
+          }
+          i:hover {
+            color: var(--lightBlue);
+            cursor: pointer;
+          }
+        `}
+      </style>
+    </>
   );
 }
