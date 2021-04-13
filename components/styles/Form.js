@@ -17,9 +17,9 @@ const Form = styled.form`
   background: rgba(0, 0, 0, 0.02);
   border: 5px solid white;
   padding: 20px;
-  font-size: 1.5rem;
+  /* font-size: 1rem; */
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 500;
   label {
     display: block;
     margin-bottom: 1rem;
@@ -42,7 +42,7 @@ const Form = styled.form`
     background: var(--red);
     color: white;
     border: 0;
-    font-size: 2rem;
+    /* font-size: 2rem; */
     font-weight: 600;
     padding: 0.5rem 1.2rem;
   }
