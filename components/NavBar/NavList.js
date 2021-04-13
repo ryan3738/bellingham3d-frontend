@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FaShoppingCart } from 'react-icons/fa';
 import Button from '../Button';
 import { useUser } from '../User';
 import { useCart } from '../../lib/cartState';
@@ -58,7 +59,9 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
           </NavItem>
           <NavItem burgerMenuLink={burgerMenuLink}>
             <button type="button" onClick={openCart}>
-              <span className="material-icons md-dark">&#xe8cc;</span>
+              <div className="material-icons md-dark">
+                <FaShoppingCart />
+              </div>
               <CartCount
                 count={user.cart.reduce(
                   (tally, cartItem) =>
