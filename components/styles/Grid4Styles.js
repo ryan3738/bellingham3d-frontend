@@ -6,6 +6,7 @@ const Grid4Styles = styled.div`
   grid-gap: var(--spacing);
   justify-content: center;
   justify-items: center;
+  margin-bottom: var(--spacing);
 
   h1,
   h2,
