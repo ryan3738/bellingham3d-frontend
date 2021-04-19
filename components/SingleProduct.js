@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 import { string } from 'prop-types';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
@@ -109,7 +109,6 @@ export default function SingleProduct({ id }) {
           <ProductVariants
             variants={product.variants}
             addVariant={addVariant}
-            variantsState={variantsState}
             updateVariant={updateVariant}
           />
           <AddToCart id={product.id} variants={variantsState} />
