@@ -7,9 +7,8 @@ export default function ProductVariant({
   updateVariant,
 }) {
   console.log('<filteredVariant /> filteredVariant:', filteredVariant);
-  const [valueState, setValueState] = useState(
-    filteredVariant.variants[0].name
-  );
+  const [valueState, setValueState] = useState(filteredVariant.variants[0].id);
+
   const { typeName } = filteredVariant;
 
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function ProductVariant({
             onChange={handleChange}
           >
             {filteredVariant.variants.map((variant) => (
-              <option value={variant.name} key={variant.name}>
+              <option value={variant.id} key={variant.id}>
                 {variant.name}
               </option>
             ))}
