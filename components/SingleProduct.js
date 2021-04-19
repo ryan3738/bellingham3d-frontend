@@ -1,13 +1,15 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
+import { string } from 'prop-types';
+import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
 import Button from './Button';
 import DisplayError from './ErrorMessage';
 import ImageSlider from './ImageSlider';
-import PriceTag from './styles/PriceTag';
+import ProductVariants from './ProductVariants';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -33,7 +35,7 @@ const SINGLE_ITEM_QUERY = gql`
       name
       price
       description
-      variant {
+      variants {
         id
         name
         variantType {
@@ -52,82 +54,87 @@ const SINGLE_ITEM_QUERY = gql`
 `;
 
 export default function SingleProduct({ id }) {
+  const [variantsState, setVariantsState] = useState([]);
+
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
       id,
     },
   });
+
+  // const addVariant = useCallback((name, value) => {
+  //   setVariantsState({ ...variantsState, [name]: value });
+  //   // variantsState.push(newVariant);
+  //   console.log('VariantsState', variantsState);
+  // }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { Product: product } = data;
-  // console.table(data);
-  // console.log('product:', product);
-  const uniqueVariants = [
-    ...new Set(
-      product?.variant?.map((productVariant) => productVariant.variantType.name)
-    ),
-  ];
-  // console.log('uniqueVariants', uniqueVariants);
+
+  // Add a variant to the variantsState array for current product
+  const addVariant = (name, value) => {
+    setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
+  };
+  // console.log('VariantsState Initial', variantsState);
+  // Need to select correct variant and update to new state
+  const updateVariant = (name, value) => {
+    const newState = [...variantsState];
+    const variantIndex = variantsState.findIndex((e) => e.name === name);
+    newState[variantIndex] = {
+      ...variantsState[variantIndex],
+      value,
+    };
+    // console.log('newState', newState);
+    // variantsState.filter((variantState) => variantState);
+    setVariantsState(newState);
+    // setVariantsState((variantArray) => [...variantArray, newState]);
+  };
+
+  // function updateVariant(value, name) {
+  // setVariantsState((variantArray) => [...variantArray, newVariant]);
+  // }
+
   return (
-    <ProductStyles>
-      <Head>
-        <title>Bellingham 3D | {product.name} </title>
-      </Head>
-      {/* <img
-        src={product?.image[0]?.image?.publicUrlTransformed}
-        alt={product.name}
-      /> */}
-
-      <ImageSlider slides={product.image} />
-      <div className="details">
-        <div>
-          <h2>
-            {product.name} - {formatMoney(product.price)}
-          </h2>
-          <div />
+    <>
+      {/* {loading && <p>Loading...</p>} */}
+      {/* {error && <DisplayError error={error} />} */}
+      <ProductStyles>
+        <Head>
+          <title>Bellingham 3D | {product.name} </title>
+        </Head>
+        <ImageSlider slides={product.image} />
+        <div className="details">
+          <h2>{product.name}</h2>
+          <h3>{formatMoney(product.price)}</h3>
+          <ProductVariants
+            variants={product.variants}
+            addVariant={addVariant}
+            variantsState={variantsState}
+            updateVariant={updateVariant}
+          />
+          <AddToCart id={product.id} variants={variantsState} />
+          <p>{product.description}</p>
+          <Button buttonLink="/products">Return to All Products</Button>
         </div>
-        <div>
-          <div>
-            <div>
-              {uniqueVariants.map((uniqueVariant) => (
-                <div>
-                  <label htmlFor={uniqueVariant}>{uniqueVariant}</label>
-                  <div />
-                  <select name={uniqueVariant} id={uniqueVariant}>
-                    {product.variant
-                      .filter((e) => e.variantType.name === uniqueVariant)
-                      .map((productVariant) => (
-                        <>
-                          <option value={productVariant.name}>
-                            {productVariant.name}
-                          </option>
-                        </>
-                      ))}
-                  </select>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <AddToCart id={product.id} />
-        <p>{product.description}</p>
 
-        <Button buttonLink="/products">Return to All Products</Button>
-      </div>
-
-      <style jsx>{`
-        select {
-          width: 100%;
-          padding: 0.5rem;
-          font-size: 1rem;
-          border: 1px solid black;
-          margin: 5px 0 20px 0;
-        }
-        select:focus {
-          outline: 0;
-          border-color: var(--navyBlue);
-        }
-      `}</style>
-    </ProductStyles>
+        <style jsx>{`
+          select {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid black;
+            margin: 5px 0 20px 0;
+          }
+          select:focus {
+            outline: 0;
+            border-color: var(--navyBlue);
+          }
+        `}</style>
+      </ProductStyles>
+    </>
   );
 }
+
+SingleProduct.propTypes = {
+  id: string.isRequired,
+};

@@ -47,6 +47,7 @@ export default function Products({ page }) {
     },
   });
 
+  // console.log('data:', data);
   function getCategoryList(productList = {}) {
     const List = [];
     try {
@@ -58,7 +59,7 @@ export default function Products({ page }) {
       return console.error('getCategoryList function error');
     }
   }
-
+  // console.log('getCategoryList:', getCategoryList(data.allProducts));
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (

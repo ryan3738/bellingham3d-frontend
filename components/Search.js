@@ -50,7 +50,7 @@ export default function Search() {
   } = useCombobox({
     items,
     onInputValueChange() {
-      console.log('Input changed!');
+      // console.log('Input changed!');
       findItemsButChill({
         variables: {
           searchTerm: inputValue,

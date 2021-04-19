@@ -10,12 +10,11 @@ const ADD_TO_CART_MUTATION = gql`
   }
 `;
 
-export default function AddToCart({ id }) {
+export default function AddToCart({ id, variants }) {
   const [addToCart, { loading }] = useMutation(ADD_TO_CART_MUTATION, {
-    variables: { id },
+    variables: { id, variants },
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-
   return (
     <button
       disabled={loading}
