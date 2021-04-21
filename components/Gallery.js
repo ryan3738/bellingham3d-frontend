@@ -47,28 +47,26 @@ export default function Gallery({ page }) {
     },
   });
 
-  function getCategoryList(productList = {}) {
-    const List = [];
-    try {
-      productList.map((products) =>
-        products.category.map((categories) => List.push(categories.name))
-      );
-      return [...new Set(List)];
-    } catch {
-      return console.error('getCategoryList function error');
-    }
-  }
+  // function getCategoryList(productList = {}) {
+  //   const List = [];
+  //   try {
+  //     productList.map((products) =>
+  //       products.category.map((categories) => List.push(categories.name))
+  //     );
+  //     return [...new Set(List)];
+  //   } catch {
+  //     return console.error('getCategoryList function error');
+  //   }
+  // }
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div className="products-wrapper">
       <ProductsListStyles>
-        {data.allProducts
-          // .filter((e) => e.status === 'AVAILABLE')
-          .map((product) => (
-            <GalleryItem key={product.id} product={product} />
-          ))}
+        {data.allProducts.map((product) => (
+          <GalleryItem key={product.id} product={product} />
+        ))}
       </ProductsListStyles>
       <style jsx>{`
         .products-wrapper {
