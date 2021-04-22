@@ -62,11 +62,6 @@ export default function SingleProduct({ id }) {
     },
   });
 
-  // const addVariant = useCallback((name, value) => {
-  //   setVariantsState({ ...variantsState, [name]: value });
-  //   // variantsState.push(newVariant);
-  //   console.log('VariantsState', variantsState);
-  // }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { Product: product } = data;
@@ -76,7 +71,8 @@ export default function SingleProduct({ id }) {
     setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
   };
   // console.log('VariantsState Initial', variantsState);
-  // Need to select correct variant and update to new state
+
+  // Select variant from array and update state
   const updateVariant = (name, value) => {
     const newState = [...variantsState];
     const variantIndex = variantsState.findIndex((e) => e.name === name);
@@ -84,20 +80,17 @@ export default function SingleProduct({ id }) {
       ...variantsState[variantIndex],
       value,
     };
-    // console.log('newState', newState);
-    // variantsState.filter((variantState) => variantState);
     setVariantsState(newState);
-    // setVariantsState((variantArray) => [...variantArray, newState]);
   };
 
-  // function updateVariant(value, name) {
-  // setVariantsState((variantArray) => [...variantArray, newVariant]);
-  // }
+  function getVariantIds(variantsList) {
+    const variantIds = variantsList.map((variant) => variant.value);
+    // console.log('variantIds', variantIds);
+    return variantIds;
+  }
 
   return (
     <>
-      {/* {loading && <p>Loading...</p>} */}
-      {/* {error && <DisplayError error={error} />} */}
       <ProductStyles>
         <Head>
           <title>Bellingham 3D | {product.name} </title>
@@ -111,7 +104,10 @@ export default function SingleProduct({ id }) {
             addVariant={addVariant}
             updateVariant={updateVariant}
           />
-          <AddToCart id={product.id} variants={variantsState} />
+          <AddToCart
+            id={product.id}
+            variantIds={getVariantIds(variantsState)}
+          />
           <p>{product.description}</p>
           <Button buttonLink="/products">Return to All Products</Button>
         </div>

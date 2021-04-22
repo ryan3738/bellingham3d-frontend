@@ -6,7 +6,7 @@ export default function ProductVariant({
   addVariant,
   updateVariant,
 }) {
-  console.log('<filteredVariant /> filteredVariant:', filteredVariant);
+  // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
   const [valueState, setValueState] = useState(filteredVariant.variants[0].id);
 
   const { typeName } = filteredVariant;
