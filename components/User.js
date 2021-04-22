@@ -21,6 +21,12 @@ const CURRENT_USER_QUERY = gql`
               }
             }
           }
+          variants {
+            name
+            variantType {
+              name
+            }
+          }
         }
         role {
           canManageProducts

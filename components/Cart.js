@@ -36,9 +36,10 @@ const CartItemStyles = styled.div`
   }
 `;
 
-function CartItem({ cartItem: { product, quantity, id } }) {
+function CartItem({ cartItem: { product, quantity, id, variants } }) {
   // const { product } = cartItem;
   // const { quantity, id } = cartItem;
+  // console.log('Cart Variants', variants);
   const [updateCartItem, { loading }] = useMutation(UPDATE_CART_ITEM_MUTATION);
   // console.log(cartItem);
   if (!product) return null;
@@ -55,6 +56,11 @@ function CartItem({ cartItem: { product, quantity, id } }) {
       )}
       <div>
         <h3>{product.name}</h3>
+        {variants.map((variant) => (
+          <div key={variant.variantType.name}>
+            {variant.variantType.name} - {variant.name}
+          </div>
+        ))}
         <div>
           {formatMoney(product.price)}
           <button
