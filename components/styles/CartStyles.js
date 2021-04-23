@@ -6,6 +6,7 @@ const CartStyles = styled.div`
   background: white;
   position: fixed;
   height: 100%;
+  overflow-y: auto;
   top: 0;
   right: 0;
   width: 90%;
