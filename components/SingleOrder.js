@@ -17,6 +17,7 @@ const SINGLE_ORDER_QUERY = gql`
         description
         price
         quantity
+        variants
         image {
           id
           image {
@@ -66,7 +67,10 @@ export default function SingleOrder({ id }) {
           <div className="order-item" key={item.id}>
             <img src={item.image.image.publicUrlTransformed} alt={item.title} />
             <div className="item-details">
-              <h2>{item.name}</h2>
+              <strong>
+                {item.name}{item.variants && ` | ${item.variants}`}
+              </strong>
+
               <p>Qty: {item.quantity}</p>
               <p>Each: {formatMoney(item.price)}</p>
               <p>Sub Total: {formatMoney(item.price * item.quantity)} </p>
