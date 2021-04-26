@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import formatMoney from '../lib/formatMoney';
-import { useUser } from './User';
+import formatMoney from '../../lib/formatMoney';
+import { useUser } from '../User';
 
 export default function Product({ product }) {
   const user = useUser();

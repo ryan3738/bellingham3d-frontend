@@ -4,11 +4,11 @@ import Head from 'next/head';
 import { string } from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
-import formatMoney from '../lib/formatMoney';
-import AddToCart from './AddToCart';
-import Button from './Button';
-import DisplayError from './ErrorMessage';
-import ImageSlider from './ImageSlider';
+import formatMoney from '../../lib/formatMoney';
+import AddToCart from '../Cart/AddToCart';
+import Button from '../Button';
+import DisplayError from '../ErrorMessage';
+import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
 
 const ProductStyles = styled.div`

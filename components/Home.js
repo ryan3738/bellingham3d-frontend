@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import Contact from './Contact';
 import Gallery from './Gallery';
-import Products from './Products';
 import Grid4Styles from './styles/Grid4Styles';
 
 export default function Home() {

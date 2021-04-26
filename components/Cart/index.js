@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import CartStyles from './styles/CartStyles';
-import CloseButton from './styles/CloseButton';
-import Supreme from './styles/Supreme';
-import formatMoney from '../lib/formatMoney';
-import { useUser } from './User';
-import calcTotalPrice from '../lib/calcTotalPrice';
-import { useCart } from '../lib/cartState';
+import CartStyles from '../styles/CartStyles';
+import CloseButton from '../styles/CloseButton';
+import Supreme from '../styles/Supreme';
+import formatMoney from '../../lib/formatMoney';
+import { useUser } from '../User';
+import calcTotalPrice from '../../lib/calcTotalPrice';
+import { useCart } from '../../lib/cartState';
 import RemoveFromCart from './RemoveFromCart';
-import { Checkout } from './Checkout';
+import { Checkout } from '../Checkout';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {

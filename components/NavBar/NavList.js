@@ -3,7 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 import Button from '../Button';
 import { useUser } from '../User';
 import { useCart } from '../../lib/cartState';
-import CartCount from '../CartCount';
+import CartCount from '../Cart/CartCount';
 import NavItem from './NavItem';
 // import Image from 'next/image'
 
