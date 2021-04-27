@@ -7,6 +7,19 @@ const CURRENT_USER_QUERY = gql`
         id
         email
         name
+        defaultAddress {
+          id
+          firstName
+          lastName
+          company
+          address1
+          address2
+          city
+          region
+          country
+          zip
+          phone
+        }
         cart {
           id
           quantity

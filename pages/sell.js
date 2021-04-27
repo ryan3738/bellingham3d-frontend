@@ -1,4 +1,4 @@
-import CreateProduct from '../components/CreateProduct';
+import CreateProduct from '../components/Products/CreateProduct';
 
 export default function SellPage() {
   return (

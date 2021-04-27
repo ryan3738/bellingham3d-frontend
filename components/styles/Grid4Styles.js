@@ -18,10 +18,11 @@ const Grid4Styles = styled.div`
   }
   div {
     text-align: left;
-    /* border: 1px solid var(--navyBlue); */
+    border: 1px solid var(--lightGray);
     padding: var(--spacing);
     /* background: var(--lightBlue); */
     box-shadow: var(--bs);
+    border-radius: 1px;
     ul li {
       padding-left: 5px;
     }

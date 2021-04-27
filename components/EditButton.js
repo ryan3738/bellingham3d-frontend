@@ -1,16 +1,19 @@
 import Link from 'next/link';
+import { FaEdit } from 'react-icons/fa';
 
-export default function EditButton({ id, children }) {
+export default function EditButton({ id, children, pathname }) {
   return (
     <Link
       href={{
-        pathname: '/update',
+        pathname,
         query: {
           id,
         },
       }}
     >
-      Edit
+      <button type="button" className="button-text">
+        {children}
+      </button>
     </Link>
   );
 }

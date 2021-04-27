@@ -4,6 +4,7 @@ import Head from 'next/head';
 import formatMoney from '../lib/formatMoney';
 import DisplayError from './ErrorMessage';
 import OrderStyles from './styles/OrderStyles';
+import { formatDate } from '../lib/formatDate';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
@@ -11,6 +12,7 @@ const SINGLE_ORDER_QUERY = gql`
       id
       charge
       total
+      createdAt
       items {
         id
         name
@@ -40,6 +42,7 @@ export default function SingleOrder({ id }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { order } = data;
+  console.log('Order Date', order.createdAt);
   return (
     <OrderStyles>
       <Head>
@@ -55,6 +58,10 @@ export default function SingleOrder({ id }) {
         <span>{order.charge}</span>
       </div>
       <div className="summary-item">
+        <span>Order Date:</span>
+        <span>{formatDate(order.createdAt)}</span>
+      </div>
+      <div className="summary-item">
         <span>Order Total:</span>
         <span>{formatMoney(order.total)}</span>
       </div>
@@ -68,7 +75,8 @@ export default function SingleOrder({ id }) {
             <img src={item.image.image.publicUrlTransformed} alt={item.title} />
             <div className="item-details">
               <strong>
-                {item.name}{item.variants && ` | ${item.variants}`}
+                {item.name}
+                {item.variants && ` | ${item.variants}`}
               </strong>
 
               <p>Qty: {item.quantity}</p>

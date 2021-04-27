@@ -1,9 +1,10 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import Router from 'next/router';
+import { ALL_PRODUCTS_QUERY } from '.';
 import useForm from '../../lib/useForm';
 import DisplayError from '../ErrorMessage';
-import { ALL_PRODUCTS_QUERY } from '.';
+
 import Form from '../styles/Form';
 
 const CREATE_PRODUCT_MUTATION = gql`
@@ -59,6 +60,7 @@ export default function CreateProduct() {
         });
       }}
     >
+      <h2>Add A New Product</h2>
       <DisplayError error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="name">
@@ -92,16 +94,16 @@ export default function CreateProduct() {
             value={inputs.price}
             onChange={handleChange}
           />
-          <label htmlFor="Description">
-            Description
-            <textarea
-              id="description"
-              name="description"
-              placeholder="Description"
-              value={inputs.description}
-              onChange={handleChange}
-            />
-          </label>
+        </label>
+        <label htmlFor="Description">
+          Description
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Description"
+            value={inputs.description}
+            onChange={handleChange}
+          />
         </label>
         <button type="submit">+ Add Product</button>
       </fieldset>

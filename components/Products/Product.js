@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
 
@@ -7,7 +6,7 @@ export default function Product({ product }) {
   const user = useUser();
   // console.log(user);
   return (
-    // ? is "optional chaining" that checks for item at each level
+    // The question mark (?) is "optional chaining" that checks for nullish value at each level
     <div className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
@@ -43,13 +42,13 @@ export default function Product({ product }) {
       </Link>
       {/* <p>{product.description}</p> */}
       <div className="buttonList">
-        {/* <EditButton id={product.id} /> */}
+        {/* <EditButton id={product.id} pathName='/update' /> */}
         {/* <AddToCart id={product.id} /> */}
         {user?.role?.canManageProducts && (
           <>
             {/* <EditButton /> */}
             {/* <DeleteProduct id={product.id}>
-              Delet Product Icon
+              Delete Product Icon
             </DeleteProduct> */}
           </>
         )}
@@ -71,7 +70,7 @@ export default function Product({ product }) {
           width: 100vw;
           height: auto;
           text-align: center;
-          border: 2px solid var(--lightGray);
+          border: 1px solid var(--lightGray);
           box-shadow: var(--bs);
           position: relative;
         }

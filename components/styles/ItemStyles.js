@@ -4,7 +4,7 @@ const ItemStyles = styled.div`
   display: flex;
   flex-direction: column;
   background: white;
-  border: 1px solid var(--offWhite);
+  border: 1px solid var(--lightGray);
   /* box-shadow: var(--bs); */
   position: relative;
   img {

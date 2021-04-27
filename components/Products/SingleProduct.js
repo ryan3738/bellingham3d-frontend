@@ -109,7 +109,7 @@ export default function SingleProduct({ id }) {
             variantIds={getVariantIds(variantsState)}
           />
           <p>{product.description}</p>
-          <Button buttonLink="/products">Return to All Products</Button>
+          <Button internalLink="/products">Return to All Products</Button>
         </div>
 
         <style jsx>{`

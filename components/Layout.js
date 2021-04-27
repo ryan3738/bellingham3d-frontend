@@ -27,7 +27,7 @@ html {
   --white: #ffffff;
   --maxWidth: 1120px;
   --spacing: 0.75rem;
-  --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);
+  --bs: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
   box-sizing: border-box;
   font-size: 62.5%;
  }
