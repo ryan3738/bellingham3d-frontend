@@ -1,16 +1,13 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { FaEdit, FaTrash } from 'react-icons/fa';
-import Button from '../Button';
+import { useState } from 'react';
 import DisplayError from '../ErrorMessage';
 import ContainerGrid from '../styles/ContainerGrid';
 import Grid4Styles from '../styles/Grid4Styles';
-import OrderHistoryStyles from '../styles/OrderHistoryStyles';
-import DeleteAddress from './DeleteAddress';
-import EditButton from '../EditButton';
+import CreateAddress from './CreateAddress';
+import Address from './Address';
+import { MenuStateProvider } from '../../lib/menuState';
 
 export const USER_ADDRESSES_QUERY = gql`
   query USER_ADDRESSES_QUERY {
@@ -45,28 +42,12 @@ export default function Addresses() {
       {/* <p>Click an address below to see details</p> */}
       <Grid4Styles>
         {addresses.map((address) => (
-          <div className="address" key={address.id}>
-            <p>
-              {address.firstName} {address.lastName}
-            </p>
-            <p>{address.address1}</p>
-            <p>{address.address2}</p>
-            <p>
-              {address.city}, {address.region} {address.country}
-            </p>
-            <p>{address.zip}</p>
-            <p>{address.phone}</p>
-            <div className="buttonList">
-              <DeleteAddress id={address.id}>
-                <FaTrash />
-              </DeleteAddress>
-              <EditButton id={address.id} pathname="/account/updateaddress">
-                <FaEdit />
-              </EditButton>
-            </div>
-          </div>
+          <MenuStateProvider key={address.id}>
+            <Address address={address} />
+          </MenuStateProvider>
         ))}
-        <Button internalLink="/account/createaddress">Add A New Address</Button>
+        {/* <Button internalLink="/account/createaddress">Add A New Address</Button> */}
+        <CreateAddress />
       </Grid4Styles>
       <style jsx>{`
         .wrapper {
