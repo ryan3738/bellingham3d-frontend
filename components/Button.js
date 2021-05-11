@@ -5,9 +5,9 @@ export default function Button({ children, buttonLink, internalLink }) {
     <>
       {buttonLink && (
         <a href={buttonLink}>
-          <button type="button" className="button-text">
+          <Button type="button" className="button-text">
             {children}
-          </button>
+          </Button>
         </a>
       )}
       {internalLink && (
@@ -17,6 +17,13 @@ export default function Button({ children, buttonLink, internalLink }) {
           </button>
         </Link>
       )}
+
+      <style jsx>{`
+        .button-text {
+          min-height: 44px;
+          min-width: 72px;
+        }
+      `}</style>
     </>
   );
 }
