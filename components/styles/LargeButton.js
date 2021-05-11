@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SickButton = styled.button`
+const LargeButton = styled.button`
   background: var(--red);
   color: white;
   font-weight: 500;
@@ -9,7 +9,6 @@ const SickButton = styled.button`
   text-transform: uppercase;
   font-size: 1.5rem;
   padding: 0.8rem 1.5rem;
-  /* transform: skew(-2deg); */
   display: inline-block;
   transition: all 0.5s;
   &[disabled] {
@@ -17,4 +16,4 @@ const SickButton = styled.button`
   }
 `;
 
-export default SickButton;
+export default LargeButton;

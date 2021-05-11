@@ -11,7 +11,7 @@ import nProgress from 'nprogress';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
-import SickButton from './styles/SickButton';
+import LargeButton from './styles/LargeButton';
 import { useCart } from '../lib/cartState';
 import { CURRENT_USER_QUERY } from './User';
 
@@ -59,7 +59,7 @@ function CheckoutForm() {
     setError();
     setLoading(true);
 
-    console.log('We got to do some work');
+    console.log('Checking Out');
     // 2. Start the page transition
     nProgress.start();
     // 3. Create the payment method via stripe (Token comes back here if successful)
@@ -99,7 +99,7 @@ function CheckoutForm() {
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       {graphQlError && <p style={{ fontSize: 12 }}>{error.message}</p>}
       <CardElement />
-      <SickButton>Check Out Now</SickButton>
+      <LargeButton>Complete Checkout</LargeButton>
     </CheckoutFormStyles>
   );
 }
