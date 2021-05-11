@@ -7,7 +7,7 @@ const CURRENT_USER_QUERY = gql`
         id
         email
         name
-        defaultAddress {
+        defaultShipping {
           id
           firstName
           lastName
@@ -25,13 +25,17 @@ const CURRENT_USER_QUERY = gql`
           quantity
           product {
             id
-            price
             name
+            price
             description
             image {
               image {
                 publicUrlTransformed
               }
+            }
+            inventoryItem {
+              id
+              requiresShipping
             }
           }
           variants {
