@@ -76,6 +76,8 @@ button{
   font-size: 1rem;
   font-weight: 500;
   padding: var(--spacing);
+  /* min-height: 44px; */
+  /* min-width: 72px; */
   /* margin: 10px 5px; */
 
 }
