@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { FaEdit } from 'react-icons/fa';
 
 export default function EditButton({ id, children, pathname }) {
   return (
