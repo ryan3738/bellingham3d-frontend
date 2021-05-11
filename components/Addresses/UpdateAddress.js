@@ -1,6 +1,8 @@
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import { Router } from 'next/router';
+import { string } from 'prop-types';
+import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form';
@@ -68,6 +70,7 @@ const UPDATE_ADDRESS_MUTATION = gql`
 `;
 
 export default function UpdateAddress({ id }) {
+  const { closeMenu } = useMenu();
   // 1. We need to get the existing product
   const { data, error, loading } = useQuery(SINGLE_ADDRESS_QUERY, {
     variables: { id },
@@ -84,6 +87,7 @@ export default function UpdateAddress({ id }) {
     data?.CustomerAddress
   );
   // console.log(inputs);
+  if (!data) return null;
   if (loading) return <p>Loading...</p>;
   // 3. We need the form to handle the updates
   return (
@@ -104,16 +108,7 @@ export default function UpdateAddress({ id }) {
             phone: inputs.phone,
           },
         }).catch(console.error);
-
-        // console.log(res);
-        // Submit the intput fields to the backend
-        // TODO: Handle Submit!!!
-        // const res = await createProduct();
-        // clearForm();
-        // Go to that product's page!
-        // Router.push({
-        //   pathname: `/product/${res.data.createProduct.id}`,
-        // });
+        closeMenu();
       }}
     >
       <DisplayError error={error || updateError} />
@@ -245,7 +240,15 @@ export default function UpdateAddress({ id }) {
           />
         </label>
         <button type="submit">Update Address</button>
+        <button type="button" onClick={closeMenu}>
+          Cancel
+        </button>
       </fieldset>
     </Form>
   );
 }
+
+UpdateAddress.propTypes = {
+  id: string.isRequired,
+  // variantIds: array.isRequired,
+};
