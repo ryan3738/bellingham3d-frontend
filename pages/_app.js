@@ -12,15 +12,12 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps, apollo }) {
-  const [open, setOpen] = useState(false);
   return (
     <ApolloProvider client={apollo}>
       <CartStateProvider>
-        {/* <NavBar open={open} setOpen={setOpen}> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {/* </NavBar> */}
       </CartStateProvider>
     </ApolloProvider>
   );
