@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import Button from '../Button';
 import { useUser } from '../User';
 import { useCart } from '../../lib/cartState';
@@ -43,19 +43,14 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
 
       {user && (
         <>
-          {/* <li
-            className={`nav-link ${showOnLarge && 'show-on-large'} ${
-              burgerMenuLink && 'burger-menu-link'
-            }`}
-          >
-            <Link href="/orders">Orders</Link>
-          </li> */}
           <NavItem
             href="/account"
             showOnLarge={showOnLarge}
             burgerMenuLink={burgerMenuLink}
           >
-            Account
+            <div className="material-icons md-dark">
+              <FaUser />
+            </div>
           </NavItem>
           <NavItem burgerMenuLink={burgerMenuLink}>
             <button type="button" onClick={openCart}>
