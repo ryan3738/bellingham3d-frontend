@@ -14,10 +14,8 @@ export default function Account(props) {
       <h1>Account Dashboard</h1>
       <h2>{user?.name}</h2>
       <h3>{user.email}</h3>
-
-      <h4>Default Shipping Address</h4>
+      {/* <h4>Default Shipping Address</h4> */}
       {/* <DisplayAddress id={user?.defaultShipping.id} /> */}
-
       <Button internalLink="/account/addresses">Manage Addresses</Button>
       <Button internalLink="/account/orderhistory">Order History</Button>
       {user.role?.canManageProducts && (
