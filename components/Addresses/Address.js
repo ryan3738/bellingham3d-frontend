@@ -1,29 +1,49 @@
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaTrash } from 'react-icons/fa';
 import { useMenu } from '../../lib/menuState';
+import CreateAddress from './CreateAddress';
 import DeleteAddress from './DeleteAddress';
 import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
+import { returnAddress } from '../../lib/returnAddress';
 
-export default function Address({ address }) {
+export default function Address({ address, updateAddress }) {
   const { menuOpen, openMenu } = useMenu();
-
+  // function handleClick(e) {
+  //   updateShipping(address);
+  // }
   return (
-    <div className="address">
-      {!menuOpen && (
-        <>
-          <DisplayAddress id={address.id} />
-          <div className="buttonList">
-            <button type="button" onClick={openMenu}>
-              <FaEdit />
-            </button>
-            <DeleteAddress id={address.id}>
-              <FaTrash />
-            </DeleteAddress>
-          </div>
-        </>
-      )}
-      {menuOpen && <UpdateAddress id={address.id} />}
+    <>
+      {address && (
+        <div className="address">
+          {/* {!address && <CreateAddress />} */}
 
+          <>
+            {!menuOpen && (
+              <>
+                <DisplayAddress address={address} />
+                <div className="buttonList">
+                  {updateAddress && (
+                    <button
+                      type="button"
+                      onClick={() => returnAddress(updateAddress, address)}
+                    >
+                      <FaCheck />
+                    </button>
+                  )}
+
+                  <button type="button" onClick={openMenu}>
+                    <FaEdit />
+                  </button>
+                  <DeleteAddress id={address.id}>
+                    <FaTrash />
+                  </DeleteAddress>
+                </div>
+              </>
+            )}
+            {menuOpen && <UpdateAddress id={address.id} />}
+          </>
+        </div>
+      )}
       <style jsx>{`
         .wrapper {
           width: 100%;
@@ -44,6 +64,6 @@ export default function Address({ address }) {
           padding: var(--spacing);
         }
       `}</style>
-    </div>
+    </>
   );
 }
