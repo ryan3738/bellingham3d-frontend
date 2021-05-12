@@ -19,6 +19,9 @@ const CURRENT_USER_QUERY = gql`
           country
           zip
           phone
+          isDefaultShipping {
+            id
+          }
         }
         cart {
           id
