@@ -4,26 +4,9 @@ import { Router } from 'next/router';
 import { string } from 'prop-types';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
+import { SINGLE_ADDRESS_QUERY } from '../../queries/getSingleAddress';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form';
-
-const SINGLE_ADDRESS_QUERY = gql`
-  query SINGLE_ADDRESS_QUERY($id: ID!) {
-    CustomerAddress(where: { id: $id }) {
-      id
-      firstName
-      lastName
-      company
-      address1
-      address2
-      city
-      region
-      country
-      zip
-      phone
-    }
-  }
-`;
 
 const UPDATE_ADDRESS_MUTATION = gql`
   mutation UPDATE_ADDRESS_MUTATION(
@@ -65,6 +48,9 @@ const UPDATE_ADDRESS_MUTATION = gql`
       country
       zip
       phone
+      isDefaultShipping {
+        id
+      }
     }
   }
 `;
