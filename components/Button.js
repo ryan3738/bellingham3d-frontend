@@ -1,18 +1,23 @@
 import Link from 'next/link';
 
-export default function Button({ children, buttonLink, internalLink }) {
+export default function Button({
+  children,
+  buttonLink,
+  internalLink,
+  onClick,
+}) {
   return (
     <>
       {buttonLink && (
         <a href={buttonLink}>
-          <Button type="button" className="button-text">
+          <button type="button" className="button-text" onClick={onClick}>
             {children}
-          </Button>
+          </button>
         </a>
       )}
       {internalLink && (
         <Link href={internalLink}>
-          <button type="button" className="button-text">
+          <button type="button" className="button-text" onClick={onClick}>
             {children}
           </button>
         </Link>
