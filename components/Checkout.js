@@ -25,8 +25,8 @@ const CheckoutFormStyles = styled.form`
 `;
 
 const CREATE_ORDER_MUTATION = gql`
-  mutation CREATE_ORDER_MUTATION($token: String!) {
-    checkout(token: $token) {
+  mutation CREATE_ORDER_MUTATION($token: String!, $shippingId: ID) {
+    checkout(token: $token, shippingId: $shippingId) {
       id
       charge
       total
@@ -40,7 +40,7 @@ const CREATE_ORDER_MUTATION = gql`
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-function CheckoutForm() {
+function CheckoutForm({ shippingId }) {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
@@ -53,6 +53,7 @@ function CheckoutForm() {
       refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
+  console.log('this is the shippingId', shippingId);
   async function handleSubmit(e) {
     // 1. Stop the form from submitting and turn the loader on
     e.preventDefault();
@@ -78,6 +79,7 @@ function CheckoutForm() {
     const order = await checkout({
       variables: {
         token: paymentMethod.id,
+        shippingId,
       },
     });
     console.log('finished with the order');
@@ -104,10 +106,10 @@ function CheckoutForm() {
   );
 }
 
-function Checkout() {
+function Checkout({ shippingId }) {
   return (
     <Elements stripe={stripeLib}>
-      <CheckoutForm />
+      <CheckoutForm shippingId={shippingId} />
     </Elements>
   );
 }
