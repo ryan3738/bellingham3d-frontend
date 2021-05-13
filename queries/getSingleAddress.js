@@ -14,6 +14,9 @@ const SINGLE_ADDRESS_QUERY = gql`
       country
       zip
       phone
+      isDefaultShipping {
+        id
+      }
     }
   }
 `;
