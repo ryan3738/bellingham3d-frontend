@@ -1,12 +1,12 @@
 import { FaCheck, FaEdit, FaTrash } from 'react-icons/fa';
 import { useMenu } from '../../lib/menuState';
-import CreateAddress from './CreateAddress';
 import DeleteAddress from './DeleteAddress';
 import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
+import Button from '../Button';
 
-export default function Address({ address, updateAddress }) {
+export default function Address({ address, updateAddress, selectAddress }) {
   const { menuOpen, openMenu } = useMenu();
   // function handleClick(e) {
   //   updateShipping(address);
@@ -22,10 +22,10 @@ export default function Address({ address, updateAddress }) {
               <>
                 <DisplayAddress address={address} />
                 <div className="buttonList">
-                  {updateAddress && (
+                  {selectAddress && (
                     <button
                       type="button"
-                      onClick={() => returnAddress(updateAddress, address)}
+                      onClick={() => returnAddress(selectAddress, address)}
                     >
                       <FaCheck />
                     </button>
@@ -40,7 +40,9 @@ export default function Address({ address, updateAddress }) {
                 </div>
               </>
             )}
-            {menuOpen && <UpdateAddress id={address.id} />}
+            {menuOpen && (
+              <UpdateAddress id={address.id} updateAddress={updateAddress} />
+            )}
           </>
         </div>
       )}
