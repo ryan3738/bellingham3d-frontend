@@ -8,26 +8,13 @@ import Grid4Styles from '../styles/Grid4Styles';
 import CreateAddress from './CreateAddress';
 import Address from './Address';
 import { MenuStateProvider } from '../../lib/menuState';
+import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 
-export const USER_ADDRESSES_QUERY = gql`
-  query USER_ADDRESSES_QUERY {
-    allCustomerAddresses {
-      id
-      firstName
-      lastName
-      company
-      address1
-      address2
-      city
-      region
-      country
-      zip
-      phone
-    }
-  }
-`;
-
-export default function Addresses() {
+export default function Addresses({
+  showCreateNew,
+  updateAddress,
+  selectAddress,
+}) {
   const { data, loading, error } = useQuery(USER_ADDRESSES_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
@@ -43,11 +30,15 @@ export default function Addresses() {
       <Grid4Styles>
         {addresses.map((address) => (
           <MenuStateProvider key={address.id}>
-            <Address address={address} />
+            <Address
+              address={address}
+              updateAddress={updateAddress}
+              selectAddress={selectAddress}
+            />
           </MenuStateProvider>
         ))}
         {/* <Button internalLink="/account/createaddress">Add A New Address</Button> */}
-        <CreateAddress />
+        {showCreateNew && <CreateAddress />}
       </Grid4Styles>
       <style jsx>{`
         .wrapper {
