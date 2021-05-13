@@ -1,17 +1,19 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import Router from 'next/router';
-import { USER_ADDRESSES_QUERY } from '.';
+import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
+import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
 
 import Form from '../styles/Form';
+import { useUser } from '../User';
 
 const CREATE_ADDRESS_MUTATION = gql`
   mutation CREATE_ADDRESS_MUTATION(
     #   Which variables are getting passed in and what types are they
     $firstName: String!
-    $lastName: String!
+    $lastName: String
     $company: String
     $address1: String!
     $address2: String
@@ -20,6 +22,7 @@ const CREATE_ADDRESS_MUTATION = gql`
     $country: String!
     $zip: String!
     $phone: String
+    $isDefaultShipping: UserRelateToOneInput
   ) {
     createCustomerAddress(
       data: {
@@ -33,8 +36,10 @@ const CREATE_ADDRESS_MUTATION = gql`
         country: $country
         zip: $zip
         phone: $phone
+        isDefaultShipping: $isDefaultShipping
       }
     ) {
+      id
       firstName
       lastName
       company
@@ -45,12 +50,17 @@ const CREATE_ADDRESS_MUTATION = gql`
       country
       zip
       phone
+      isDefaultShipping {
+        id
+      }
     }
   }
 `;
 
 // Add make default functionality
 export default function CreateAddress() {
+  const user = useUser();
+  const [defaultAddress, setDefaultAddress] = useState(null);
   const { inputs, handleChange, clearForm } = useForm({
     firstName: '',
     lastName: '',
@@ -62,14 +72,32 @@ export default function CreateAddress() {
     country: '',
     zip: '',
     phone: '',
+    makeDefault: false,
   });
+  console.log('inputs', inputs);
   const [createCustomerAddress, { loading, error, data }] = useMutation(
     CREATE_ADDRESS_MUTATION,
     {
-      variables: inputs,
+      variables: {
+        ...inputs,
+        ...defaultAddress,
+      },
       refetchQueries: [{ query: USER_ADDRESSES_QUERY }],
     }
   );
+
+  useEffect(() => {
+    if (inputs.makeDefault === false) {
+      setDefaultAddress(() => null);
+    }
+    if (inputs.makeDefault === true) {
+      setDefaultAddress(() => ({
+        isDefaultShipping: { connect: { id: user.id } },
+      }));
+    }
+  }, [inputs.makeDefault, user.id]);
+
+  console.log('Create Address inputs', inputs, 'isDefaultShipping');
   return (
     <Form
       onSubmit={async (e) => {
@@ -209,6 +237,16 @@ export default function CreateAddress() {
             placeholder="Phone"
             autoComplete="phone"
             value={inputs.phone}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="makeDefault">
+          Make Default
+          <input
+            type="checkbox"
+            id="makeDefault"
+            name="makeDefault"
+            checked={inputs.makeDefault}
             onChange={handleChange}
           />
         </label>
