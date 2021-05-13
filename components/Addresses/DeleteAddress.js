@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import { USER_ADDRESSES_QUERY } from '.';
+import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 
 const DELETE_ADDRESS_MUTATION = gql`
   mutation DELETE_ADDRESS_MUTATION($id: ID!) {
