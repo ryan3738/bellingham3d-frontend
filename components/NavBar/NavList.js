@@ -13,18 +13,18 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
   return (
     <>
       <NavItem
-        href="/"
-        showOnLarge={showOnLarge}
-        burgerMenuLink={burgerMenuLink}
-      >
-        Home
-      </NavItem>
-      <NavItem
         href="/products"
         showOnLarge={showOnLarge}
         burgerMenuLink={burgerMenuLink}
       >
         Products
+      </NavItem>
+      <NavItem
+        href="/custom"
+        showOnLarge={showOnLarge}
+        burgerMenuLink={burgerMenuLink}
+      >
+        Custom
       </NavItem>
       <NavItem
         href="/about"
