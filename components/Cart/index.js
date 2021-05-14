@@ -37,6 +37,14 @@ export default function Cart() {
         <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
       <div>
+        {me.cart.length === 0 && (
+          <>
+            <h3>Your Cart is Empty</h3>
+            <Button onClick={closeCart} internalLink="/products">
+              See All Products
+            </Button>
+          </>
+        )}
         {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
