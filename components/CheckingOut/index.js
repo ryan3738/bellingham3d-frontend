@@ -48,6 +48,9 @@ function CheckingOutUser({ me }) {
 
   useEffect(() => {
     setShippingMenuState('default');
+    if (!me.defaultShipping) {
+      setShippingMenuState('new');
+    }
   }, [shippingAddress]);
 
   console.log(shippingMenuState === 'default');
@@ -67,7 +70,7 @@ function CheckingOutUser({ me }) {
         ))} */}
 
         <div>
-          <h4>Shipping Address</h4>
+          <h3>Shipping Address</h3>
 
           {/* <MenuStateProvider>
             <Address address={shippingAddress} />
@@ -123,7 +126,7 @@ function CheckingOutUser({ me }) {
         </div>
       </div>
       <footer>
-        <h4>Payment Details</h4>
+        <h3>Payment Details</h3>
         {shippingAddress && <Checkout shippingId={shippingAddress.id} />}
       </footer>
     </>

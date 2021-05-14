@@ -42,17 +42,20 @@ export default function Cart() {
         ))}
       </div>
       <footer>
-        <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
         {shippingRequired ? (
           <>
             {/* <p>Shipping: Check out to Add Shipping Info</p> */}
+            <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
             <CheckingOut />
             {/* <Button onClick={closeCart} internalLink="/checkingout">
               Check Out
             </Button> */}
           </>
         ) : (
-          <Checkout />
+          <>
+            <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+            <Checkout />
+          </>
         )}
       </footer>
     </CartStyles>
