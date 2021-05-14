@@ -20,10 +20,10 @@ import DisplayError from '../ErrorMessage';
 export default function CheckingOut() {
   const me = useUser();
   if (!me) return null;
-  return <CheckingOutUser me={me} defaultShippingId={me.defaultShipping.id} />;
+  return <CheckingOutUser me={me} />;
 }
 
-function CheckingOutUser({ me, defaultShippingId }) {
+function CheckingOutUser({ me }) {
   const [shippingMenuState, setShippingMenuState] = useState('default');
   const [shippingAddress, setShippingAddress] = useState();
 
