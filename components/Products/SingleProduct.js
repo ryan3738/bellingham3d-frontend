@@ -10,6 +10,10 @@ import Button from '../Button';
 import DisplayError from '../ErrorMessage';
 import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
+import { user } from '../Cart';
+import { useUser } from '../User';
+import SignIn from '../SignIn';
+import SignUp from '../SignUp';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -55,6 +59,7 @@ const SINGLE_ITEM_QUERY = gql`
 
 export default function SingleProduct({ id }) {
   const [variantsState, setVariantsState] = useState([]);
+  const me = useUser();
 
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
     variables: {
@@ -104,11 +109,20 @@ export default function SingleProduct({ id }) {
             addVariant={addVariant}
             updateVariant={updateVariant}
           />
-          <AddToCart
-            id={product.id}
-            variantIds={getVariantIds(variantsState)}
-          />
+          {me && (
+            <AddToCart
+              id={product.id}
+              variantIds={getVariantIds(variantsState)}
+            />
+          )}
+
           <p>{product.description}</p>
+          {!me && (
+            <div>
+              <h3>You must be signed in to add items to your cart</h3>
+              <p>Please create an account or login</p>
+            </div>
+          )}
           <Button internalLink="/products">Return to All Products</Button>
         </div>
 
