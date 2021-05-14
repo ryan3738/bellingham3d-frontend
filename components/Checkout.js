@@ -101,7 +101,7 @@ function CheckoutForm({ shippingId }) {
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       {graphQlError && <p style={{ fontSize: 12 }}>{error.message}</p>}
       <CardElement />
-      <LargeButton>Complete Checkout</LargeButton>
+      <LargeButton>Confirm Order</LargeButton>
     </CheckoutFormStyles>
   );
 }
