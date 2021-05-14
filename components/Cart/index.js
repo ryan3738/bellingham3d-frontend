@@ -36,36 +36,40 @@ export default function Cart() {
         <Supreme>{me.name}'s Cart</Supreme>
         <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
-      <div>
-        {me.cart.length === 0 && (
-          <>
-            <h3>Your Cart is Empty</h3>
-            <Button onClick={closeCart} internalLink="/products">
-              See All Products
-            </Button>
-          </>
-        )}
-        {me.cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
-      </div>
-      <footer>
-        {shippingRequired ? (
-          <>
-            {/* <p>Shipping: Check out to Add Shipping Info</p> */}
-            <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-            <CheckingOut />
-            {/* <Button onClick={closeCart} internalLink="/checkingout">
+
+      {me.cart.length === 0 ? (
+        <div>
+          <h3>Your Cart is Empty</h3>
+          <Button onClick={closeCart} internalLink="/products">
+            See All Products
+          </Button>
+        </div>
+      ) : (
+        <>
+          <div>
+            {me.cart.map((cartItem) => (
+              <CartItem key={cartItem.id} cartItem={cartItem} />
+            ))}
+          </div>
+          <footer>
+            {shippingRequired ? (
+              <>
+                {/* <p>Shipping: Check out to Add Shipping Info</p> */}
+                <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                <CheckingOut />
+                {/* <Button onClick={closeCart} internalLink="/checkingout">
               Check Out
             </Button> */}
-          </>
-        ) : (
-          <>
-            <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-            <Checkout />
-          </>
-        )}
-      </footer>
+              </>
+            ) : (
+              <>
+                <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                <Checkout />
+              </>
+            )}
+          </footer>
+        </>
+      )}
     </CartStyles>
   );
 }
