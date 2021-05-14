@@ -57,7 +57,9 @@ export default function OrderHistory() {
       <Head>
         <title>Your Orders ({allOrders.length}) </title>
       </Head>
-      <h2>You have {allOrders.length} orders! </h2>
+      <h2>{`You have ${allOrders.length} order${
+        allOrders.length === 1 ? '' : 's'
+      }! `}</h2>
       <p>Click an order below to see details</p>
       <OrderUl>
         {allOrders.map((order) => (
