@@ -4,7 +4,7 @@ import Supreme from '../styles/Supreme';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
 import calcTotalPrice from '../../lib/calcTotalPrice';
-import { Checkout } from '../Checkout';
+import { Checkout } from './Checkout';
 import Button from '../Button';
 import CartItem from '../Cart/CartItem';
 import UpdateAddress from '../Addresses/UpdateAddress';
@@ -58,13 +58,13 @@ function CheckingOutUser({ me }) {
 
   return (
     <>
-      <header>
+      {/* <header>
         <Supreme>Order Summary</Supreme>
-      </header>
+      </header> */}
       <div>
-        {me.cart.map((cartItem) => (
+        {/* {me.cart.map((cartItem) => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
+        ))} */}
 
         <div>
           <h4>Shipping Address</h4>

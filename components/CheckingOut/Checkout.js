@@ -11,9 +11,9 @@ import nProgress from 'nprogress';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
-import LargeButton from './styles/LargeButton';
-import { useCart } from '../lib/cartState';
-import { CURRENT_USER_QUERY } from './User';
+import LargeButton from '../styles/LargeButton';
+import { useCart } from '../../lib/cartState';
+import { CURRENT_USER_QUERY } from '../User';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);

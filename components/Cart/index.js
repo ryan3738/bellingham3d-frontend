@@ -6,9 +6,10 @@ import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
 import calcTotalPrice from '../../lib/calcTotalPrice';
 import { useCart } from '../../lib/cartState';
-import { Checkout } from '../Checkout';
+import { Checkout } from '../CheckingOut/Checkout';
 import Button from '../Button';
 import CartItem from './CartItem';
+import CheckingOut from '../CheckingOut';
 
 export const cartShippingAddress = makeVar();
 
@@ -44,10 +45,11 @@ export default function Cart() {
         <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
         {shippingRequired ? (
           <>
-            <p>Shipping: Check out to Add Shipping Info</p>
-            <Button onClick={closeCart} internalLink="/checkingout">
+            {/* <p>Shipping: Check out to Add Shipping Info</p> */}
+            <CheckingOut />
+            {/* <Button onClick={closeCart} internalLink="/checkingout">
               Check Out
-            </Button>
+            </Button> */}
           </>
         ) : (
           <Checkout />
