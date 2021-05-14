@@ -9,7 +9,7 @@ const CartStyles = styled.div`
   overflow-y: auto;
   top: 0;
   right: 0;
-  width: 90%;
+  width: 98%;
   min-width: 250px;
   max-width: 769px;
   bottom: 0;
