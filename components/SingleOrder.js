@@ -5,6 +5,7 @@ import formatMoney from '../lib/formatMoney';
 import DisplayError from './ErrorMessage';
 import OrderStyles from './styles/OrderStyles';
 import { formatDate } from '../lib/formatDate';
+import DisplayAddress from './Addresses/DisplayAddress';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
@@ -29,6 +30,19 @@ const SINGLE_ORDER_QUERY = gql`
           altText
         }
       }
+      shippingAddress {
+        id
+        firstName
+        lastName
+        company
+        address1
+        address2
+        city
+        region
+        country
+        zip
+        phone
+      }
     }
   }
 `;
@@ -42,7 +56,7 @@ export default function SingleOrder({ id }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { order } = data;
-  console.log('Order Date', order.createdAt);
+  console.log('Order Address', order.shippingAddress);
   return (
     <OrderStyles>
       <Head>
@@ -69,6 +83,12 @@ export default function SingleOrder({ id }) {
         <span>Order Items:</span>
         <span>{order.items.length}</span>
       </div>
+      <div className="summary-item">
+        <span>Shipping Address:</span>
+        <span style={{ textAlign: 'left' }}>
+          <DisplayAddress address={order.shippingAddress} />
+        </span>
+      </div>
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
@@ -88,6 +108,15 @@ export default function SingleOrder({ id }) {
         ))}
       </div>
       <p>Order Total: {formatMoney(order.total)}</p>
+      <style jsx>
+        {`
+          .pass-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 14px;
+          }
+        `}
+      </style>
     </OrderStyles>
   );
 }
