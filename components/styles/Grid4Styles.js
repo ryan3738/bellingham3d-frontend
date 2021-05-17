@@ -15,6 +15,7 @@ const Grid4Styles = styled.div`
   h5,
   h6 {
     margin-top: 0px;
+    text-align: center;
   }
   div {
     text-align: left;
@@ -24,7 +25,8 @@ const Grid4Styles = styled.div`
     box-shadow: var(--bs);
     border-radius: 1px;
     ul li {
-      padding-left: 5px;
+      padding-left: 0px;
+      margin-left: 0px;
     }
   }
 `;

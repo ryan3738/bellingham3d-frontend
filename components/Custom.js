@@ -25,15 +25,22 @@ export default function Custom() {
         <div>
           <h3>Design</h3>
           <p>
-            Got your own 3D CAD file you would like to have printed? Have an
-            idea but need help designing a 3D file to create a printable part?
-            Either way we can help you have a custom part made.
+            <ul>
+              <li>Got your own 3D CAD file you would like to have printed?</li>
+              <br />
+              <li>
+                Have an idea but need help designing a 3D file to create a
+                printable part?
+              </li>
+            </ul>
+            <br />
+            We can help you design and make a custom part.
           </p>
         </div>
         <div>
           <h3>Print</h3>
           <p>
-            We take care in printing each part to make sure it functions as
+            We take care when printing each part to make sure it functions as
             intended.
           </p>
         </div>
