@@ -36,22 +36,19 @@ export default function SignIn() {
     email: '',
     password: '',
   });
-  const [signin, { data, loading, error: mutationError }] = useMutation(
-    SIGNIN_MUTATION,
-    {
-      variables: inputs,
-      // refectch the currently logged in user
-      refetchQueries: [{ query: CURRENT_USER_QUERY }],
-    }
-  );
+  const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
+    variables: inputs,
+    // refectch the currently logged in user
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
+  });
   async function handleSubmit(e) {
     e.preventDefault(); // stop the form from submitting
     // console.log(inputs);
     const res = await signin();
-    console.log(res);
-    resetForm();
+    // console.log(res);
 
     if (res.data.authenticateUserWithPassword.item) {
+      resetForm();
       router.push({
         pathname: `/products`,
       });
@@ -69,11 +66,13 @@ export default function SignIn() {
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
   };
+
   return (
-    <>
+    <div>
       <Form method="POST" onSubmit={handleSubmit}>
         <h2>Sign Into Your Account</h2>
         <Error error={error} />
+
         <fieldset>
           <label htmlFor="email">
             Email
@@ -129,6 +128,6 @@ export default function SignIn() {
           }
         `}
       </style>
-    </>
+    </div>
   );
 }
