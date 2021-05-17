@@ -11,7 +11,6 @@ export default function About() {
         objectFit="cover"
       />
       <br />
-      <img src="public/images/ultimaker-closeup.jpg" alt="" />
       <div>
         <h2>DESIGNED AND PRINTED IN THE PNW</h2>
         <p>
