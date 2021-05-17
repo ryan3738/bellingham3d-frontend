@@ -40,9 +40,13 @@ export default function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault();
     // console.log(inputs);
-    await signup().catch(console.error);
-    // console.log(data, loading, error);
-    resetForm();
+    signup().catch(console.error);
+    console.log(data, loading, error);
+    // console.log(res);
+
+    if (data?.createUser) {
+      resetForm();
+    }
     // Send the email and password to the graphqlAPI
   }
   // const error =
@@ -69,7 +73,7 @@ export default function SignUp() {
             <h2>Sign Up For an Account</h2>
             <Error error={error} />
             <fieldset>
-              <label htmlFor="email">
+              <label htmlFor="name">
                 Name
                 <input
                   type="text"
@@ -83,6 +87,7 @@ export default function SignUp() {
               <label htmlFor="email">
                 Email
                 <input
+                  required
                   type="email"
                   name="email"
                   placeholder="Your Email Address"
@@ -95,6 +100,7 @@ export default function SignUp() {
                 <label htmlFor="password">
                   Password
                   <input
+                    required
                     type={passwordShown ? 'text' : 'password'}
                     name="password"
                     placeholder="6 characters minimum"
