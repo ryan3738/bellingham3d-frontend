@@ -36,20 +36,26 @@ export default function SignIn() {
     email: '',
     password: '',
   });
-  const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
-    variables: inputs,
-    // refectch the currently logged in user
-    refetchQueries: [{ query: CURRENT_USER_QUERY }],
-  });
+  const [signin, { data, loading, error: mutationError }] = useMutation(
+    SIGNIN_MUTATION,
+    {
+      variables: inputs,
+      // refectch the currently logged in user
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    }
+  );
   async function handleSubmit(e) {
     e.preventDefault(); // stop the form from submitting
     // console.log(inputs);
     const res = await signin();
-    // console.log(res);
+    console.log(res);
     resetForm();
-    router.push({
-      pathname: `/products`,
-    });
+
+    if (res.data.authenticateUserWithPassword.item) {
+      router.push({
+        pathname: `/products`,
+      });
+    }
 
     // Send the email and password to the graphqlAPI
   }
