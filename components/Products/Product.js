@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
@@ -13,6 +14,7 @@ export default function Product({ product }) {
           <img
             src={product?.image[0]?.image?.publicUrlTransformed}
             alt={product.name}
+            loading="lazy"
           />
 
           {/* TODO: next image component */}
