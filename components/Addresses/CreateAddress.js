@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
@@ -105,10 +104,6 @@ export default function CreateAddress() {
         // Submit the intput fields to the backend
         const res = await createCustomerAddress();
         clearForm();
-        // Go to the addresses page
-        Router.push({
-          pathname: `/account/addresses`,
-        });
       }}
     >
       <h2>Add A New Address</h2>
