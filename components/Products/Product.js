@@ -84,7 +84,7 @@ export default function Product({ product }) {
         .productText {
           font-size: 1.5rem;
           font-weight: bold;
-          padding: calc(var(--spacing) / 2) 0;
+          padding: calc(var(--spacing) / 2);
         }
         img {
           max-height: 240px;
