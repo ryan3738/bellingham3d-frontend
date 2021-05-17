@@ -35,7 +35,7 @@ export default function ImageSlider({ slides }) {
         </div>
       ))}
       {slides.length > 1 && (
-        <div>
+        <>
           <div className="slider-nav">
             <div className="left-arrow">
               <FaArrowAltCircleLeft onClick={prevSlide} />
@@ -44,20 +44,22 @@ export default function ImageSlider({ slides }) {
               <FaArrowAltCircleRight onClick={nextSlide} />
             </div>
           </div>
-        </div>
+        </>
       )}
 
       <style jsx>{`
         .slider {
-          height: 100%;
+          height: auto;
           width: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+
+          background: none;
         }
         .slider-nav {
-          height: 100%;
+          height: auto;
           width: 100%;
           display: flex;
           justify-content: center;
@@ -74,6 +76,7 @@ export default function ImageSlider({ slides }) {
         .right-arrow,
         .left-arrow {
           width: 100%;
+          height: auto;
           top: 50%;
           left: 32px;
           font-size: 2.5rem;
