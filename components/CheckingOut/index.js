@@ -51,9 +51,7 @@ function CheckingOutUser({ me }) {
     if (!me.defaultShipping) {
       setShippingMenuState('new');
     }
-  }, [shippingAddress]);
-
-  console.log(shippingMenuState === 'default');
+  }, [shippingAddress, me.defaultShipping]);
 
   function handleClick(e) {
     setShippingMenuState(() => e.target.value);

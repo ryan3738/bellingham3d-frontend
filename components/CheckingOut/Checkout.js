@@ -53,7 +53,7 @@ function CheckoutForm({ shippingId }) {
       refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
-  console.log('this is the shippingId', shippingId);
+  // console.log('this is the shippingId', shippingId);
   async function handleSubmit(e) {
     // 1. Stop the form from submitting and turn the loader on
     e.preventDefault();
@@ -68,7 +68,7 @@ function CheckoutForm({ shippingId }) {
       type: 'card',
       card: elements.getElement(CardElement),
     });
-    console.log(paymentMethod);
+    // console.log(paymentMethod);
     // 4. Handle any errors from stripe
     if (error) {
       setError(error);
@@ -83,7 +83,7 @@ function CheckoutForm({ shippingId }) {
       },
     });
     console.log('finished with the order');
-    console.log(order);
+    // console.log(order);
     // 6. Change the page to view the order
     // query params
     router.push({

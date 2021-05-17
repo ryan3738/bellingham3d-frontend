@@ -63,7 +63,7 @@ export default function OrderHistory() {
       <p>Click an order below to see details</p>
       <OrderUl>
         {allOrders.map((order) => (
-          <OrderHistoryStyles>
+          <OrderHistoryStyles key={order.id}>
             <Link href={`/order/${order.id}`}>
               <a>
                 <div className="order-meta">

@@ -56,7 +56,6 @@ export default function SingleOrder({ id }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { order } = data;
-  console.log('Order Address', order.shippingAddress);
   return (
     <OrderStyles>
       <Head>
