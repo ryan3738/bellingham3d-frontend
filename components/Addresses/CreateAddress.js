@@ -73,7 +73,7 @@ export default function CreateAddress() {
     phone: '',
     makeDefault: false,
   });
-  console.log('inputs', inputs);
+  // console.log('inputs', inputs);
   const [createCustomerAddress, { loading, error, data }] = useMutation(
     CREATE_ADDRESS_MUTATION,
     {
@@ -96,7 +96,7 @@ export default function CreateAddress() {
     }
   }, [inputs.makeDefault, user.id]);
 
-  console.log('Create Address inputs', inputs, 'isDefaultShipping');
+  // console.log('Create Address inputs', inputs, 'isDefaultShipping');
   return (
     <Form
       onSubmit={async (e) => {
