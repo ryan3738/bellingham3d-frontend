@@ -18,7 +18,7 @@ export default function ImageSlider({ slides }) {
   }
 
   return (
-    <section className="slider">
+    <div className="slider">
       {slides.map((slide, index) => (
         <div
           className={index === current ? 'slide active' : 'slide'}
@@ -29,6 +29,7 @@ export default function ImageSlider({ slides }) {
               src={slide.image.publicUrlTransformed}
               alt={slide.altText}
               className="image"
+              loading="lazy"
             />
           )}
         </div>
@@ -98,6 +99,6 @@ export default function ImageSlider({ slides }) {
           /* transform: scale(1.08); */
         }
       `}</style>
-    </section>
+    </div>
   );
 }
