@@ -35,7 +35,7 @@ export default function ImageSlider({ slides }) {
         </div>
       ))}
       {slides.length > 1 && (
-        <>
+        <div>
           <div className="slider-nav">
             <div className="left-arrow">
               <FaArrowAltCircleLeft onClick={prevSlide} />
@@ -44,7 +44,7 @@ export default function ImageSlider({ slides }) {
               <FaArrowAltCircleRight onClick={nextSlide} />
             </div>
           </div>
-        </>
+        </div>
       )}
 
       <style jsx>{`
