@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
+import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
@@ -40,15 +42,19 @@ export default function CartItem({
   if (!product) return null;
   return (
     <CartItemStyles>
-      {product.image[0]?.image?.publicUrlTransformed ? (
-        <img
-          width="100"
-          src={product.image[0]?.image?.publicUrlTransformed}
-          alt={product.name}
-        />
-      ) : (
-        <img width="100" src="/public/android-chrome-512x512.png" alt="" />
-      )}
+      <Link href={`/product/${product.id}`}>
+        <a>
+          {product.image[0]?.image?.publicUrlTransformed ? (
+            <img
+              width="100"
+              src={product.image[0]?.image?.publicUrlTransformed}
+              alt={product.name}
+            />
+          ) : (
+            <img width="100" src="/public/android-chrome-512x512.png" alt="" />
+          )}
+        </a>
+      </Link>
       <div>
         <h3>{product.name}</h3>
         {variants.map((variant) => (
