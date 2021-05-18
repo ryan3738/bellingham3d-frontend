@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import { IconContext } from 'react-icons';
 
 export default function ImageSlider({ slides }) {
   const [current, setCurrent] = useState(0);
