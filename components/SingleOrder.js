@@ -25,7 +25,7 @@ const SINGLE_ORDER_QUERY = gql`
           id
           image {
             id
-            publicUrlTransformed
+            publicUrlTransformed(transformation: { width: "600" })
           }
           altText
         }

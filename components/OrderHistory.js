@@ -23,7 +23,7 @@ const USER_ORDERS_QUERY = gql`
           id
           image {
             id
-            publicUrlTransformed
+            publicUrlTransformed(transformation: { width: "360" })
           }
           altText
         }
@@ -78,13 +78,10 @@ export default function OrderHistory() {
                   <p>{formatMoney(order.total)}</p>
                 </div>
                 <div className="images">
-                  {order.items.map((item) => (
-                    <img
-                      key={`image-${item.id}`}
-                      src={item.image?.image?.publicUrlTransformed}
-                      alt={item.name}
-                    />
-                  ))}
+                  <img
+                    src={order?.items[0].image?.image?.publicUrlTransformed}
+                    alt={order.items[0].name}
+                  />
                 </div>
               </a>
             </Link>
