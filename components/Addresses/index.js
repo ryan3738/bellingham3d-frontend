@@ -12,7 +12,8 @@ import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 
 export default function Addresses({
   showCreateNew,
-  updateAddress,
+  allowUpdate,
+  allowDelete,
   selectAddress,
 }) {
   const { data, loading, error } = useQuery(USER_ADDRESSES_QUERY);
@@ -32,7 +33,8 @@ export default function Addresses({
           <MenuStateProvider key={address.id}>
             <Address
               address={address}
-              updateAddress={updateAddress}
+              allowUpdate={allowUpdate}
+              allowDelete={allowDelete}
               selectAddress={selectAddress}
             />
           </MenuStateProvider>

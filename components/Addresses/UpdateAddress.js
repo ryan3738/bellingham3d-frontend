@@ -1,12 +1,13 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import { Router } from 'next/router';
-import { string } from 'prop-types';
+import { object } from 'prop-types';
+import { useEffect, useState } from 'react';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
-import { SINGLE_ADDRESS_QUERY } from '../../queries/getSingleAddress';
+import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form';
+import { useUser } from '../User';
 
 const UPDATE_ADDRESS_MUTATION = gql`
   mutation UPDATE_ADDRESS_MUTATION(
@@ -21,6 +22,7 @@ const UPDATE_ADDRESS_MUTATION = gql`
     $country: String
     $zip: String
     $phone: String
+    $isDefaultShipping: UserRelateToOneInput
   ) {
     updateCustomerAddress(
       id: $id
@@ -35,6 +37,7 @@ const UPDATE_ADDRESS_MUTATION = gql`
         country: $country
         zip: $zip
         phone: $phone
+        isDefaultShipping: $isDefaultShipping
       }
     ) {
       id
@@ -55,26 +58,62 @@ const UPDATE_ADDRESS_MUTATION = gql`
   }
 `;
 
-export default function UpdateAddress({ id }) {
+export default function UpdateAddress({ address }) {
+  const user = useUser();
   const { closeMenu } = useMenu();
-  // 1. We need to get the existing product
-  const { data, error, loading } = useQuery(SINGLE_ADDRESS_QUERY, {
-    variables: { id },
-  });
-  // console.log(data);
+  const [makeDefault, setMakeDefault] = useState(null);
+  const [isDefault, setIsDefault] = useState();
+
+  // 1. We need to get the existing address
+  // const { data, error, loading } = useQuery(SINGLE_ADDRESS_QUERY, {
+  //   variables: { id },
+  // });
 
   // 2. We need to get the mutation to update the product
   const [
     updateCustomerAddress,
     { data: updateData, error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_ADDRESS_MUTATION);
-  // 2.5 Create some state for the form inputs
-  const { inputs, handleChange, clearForm, resetForm } = useForm(
-    data?.CustomerAddress
+
+  // Check if current address is default and set state
+  useEffect(
+    (currentAddress = address) => {
+      if (currentAddress.isDefaultShipping?.id === undefined || null) {
+        setIsDefault(false);
+      }
+      if (currentAddress.isDefaultShipping?.id) {
+        setIsDefault(true);
+      }
+    },
+    [address]
   );
-  // console.log(inputs);
-  if (!data) return null;
-  if (loading) return <p>Loading...</p>;
+
+  // 2.5 Create some state for the form inputs
+  const { inputs, handleChange } = useForm({
+    ...address,
+    makeDefault: isDefault,
+  });
+
+  // console.log('inputs', inputs);
+  // console.log('isDefault?', isDefault);
+  // console.log('defaultAddress', makeDefault);
+
+  // Change makeDefault state depending on checkbox status
+  useEffect(() => {
+    if (inputs.makeDefault === false) {
+      setMakeDefault(() => null);
+    }
+    if (inputs.makeDefault === true) {
+      setMakeDefault(() => ({
+        isDefaultShipping: { connect: { id: user.id } },
+      }));
+    }
+  }, [inputs.makeDefault, user.id]);
+
+  // No longer needed because address data is passed in
+  // if (!data) return null;
+  // if (loading) return <p>Loading...</p>;
+
   // 3. We need the form to handle the updates
   return (
     <Form
@@ -82,7 +121,7 @@ export default function UpdateAddress({ id }) {
         e.preventDefault();
         const res = await updateCustomerAddress({
           variables: {
-            id,
+            id: address.id,
             firstName: inputs.firstName,
             lastName: inputs.lastName,
             company: inputs.company,
@@ -92,13 +131,16 @@ export default function UpdateAddress({ id }) {
             country: inputs.country,
             zip: inputs.zip,
             phone: inputs.phone,
+            ...makeDefault,
           },
         }).catch(console.error);
+        console.log('response', res);
         closeMenu();
       }}
     >
-      <DisplayError error={error || updateError} />
+      <DisplayError error={updateError} />
       <fieldset disabled={updateLoading} aria-busy={updateLoading}>
+        {address.isDefaultShipping?.id && <h4>Default Address</h4>}
         <label htmlFor="firstName">
           First Name
           <input
@@ -225,6 +267,16 @@ export default function UpdateAddress({ id }) {
             onChange={handleChange}
           />
         </label>
+        <label htmlFor="makeDefault">
+          Make Default
+          <input
+            type="checkbox"
+            id="makeDefault"
+            name="makeDefault"
+            checked={inputs.makeDefault}
+            onChange={handleChange}
+          />
+        </label>
         <button type="submit">Update Address</button>
         <button type="button" onClick={closeMenu}>
           Cancel
@@ -235,6 +287,6 @@ export default function UpdateAddress({ id }) {
 }
 
 UpdateAddress.propTypes = {
-  id: string.isRequired,
-  // variantIds: array.isRequired,
+  // id: string.isRequired,
+  address: object.isRequired,
 };

@@ -1,12 +1,18 @@
 import { FaCheck, FaEdit, FaTrash } from 'react-icons/fa';
+import { bool, func } from 'prop-types';
 import { useMenu } from '../../lib/menuState';
 import DeleteAddress from './DeleteAddress';
 import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
-import Button from '../Button';
+import { addressType } from '../../lib/types';
 
-export default function Address({ address, updateAddress, selectAddress }) {
+export default function Address({
+  address,
+  allowUpdate,
+  allowDelete,
+  selectAddress,
+}) {
   const { menuOpen, openMenu } = useMenu();
   // function handleClick(e) {
   //   updateShipping(address);
@@ -24,6 +30,7 @@ export default function Address({ address, updateAddress, selectAddress }) {
                 <div className="buttonList">
                   {selectAddress && (
                     <button
+                      className="button"
                       type="button"
                       onClick={() => returnAddress(selectAddress, address)}
                     >
@@ -31,18 +38,22 @@ export default function Address({ address, updateAddress, selectAddress }) {
                     </button>
                   )}
 
-                  <button type="button" onClick={openMenu}>
-                    <FaEdit />
-                  </button>
-                  <DeleteAddress id={address.id}>
-                    <FaTrash />
-                  </DeleteAddress>
+                  {allowUpdate && (
+                    <button className="button" type="button" onClick={openMenu}>
+                      <FaEdit />
+                    </button>
+                  )}
+                  {allowDelete && (
+                    <span className="button">
+                      <DeleteAddress id={address.id}>
+                        <FaTrash />
+                      </DeleteAddress>
+                    </span>
+                  )}
                 </div>
               </>
             )}
-            {menuOpen && (
-              <UpdateAddress id={address.id} updateAddress={updateAddress} />
-            )}
+            {menuOpen && <UpdateAddress address={address} />}
           </>
         </div>
       )}
@@ -60,12 +71,21 @@ export default function Address({ address, updateAddress, selectAddress }) {
         .buttonList {
           display: flex;
           align-items: center;
-          justify-content: space-evenly;
+          justify-content: flex-start;
           border: 0;
           box-shadow: none;
-          padding: var(--spacing);
+        }
+        .button {
+          margin: var(--spacing);
         }
       `}</style>
     </>
   );
 }
+Address.propTypes = {
+  // id: string.isRequired,
+  address: addressType,
+  allowUpdate: bool,
+  allowDelete: bool,
+  selectAddress: func,
+};

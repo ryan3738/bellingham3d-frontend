@@ -1,21 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
-import Supreme from '../styles/Supreme';
-import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
-import calcTotalPrice from '../../lib/calcTotalPrice';
 import { Checkout } from './Checkout';
-import Button from '../Button';
-import CartItem from '../Cart/CartItem';
-import UpdateAddress from '../Addresses/UpdateAddress';
-import DisplayAddress from '../Addresses/DisplayAddress';
 import Address from '../Addresses/Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
-import { returnAddress } from '../../lib/returnAddress';
-import { SINGLE_ADDRESS_QUERY } from '../../queries/getSingleAddress';
-import DisplayError from '../ErrorMessage';
+import { userType } from '../../lib/types';
 
 export default function CheckingOut() {
   const me = useUser();
@@ -76,15 +66,13 @@ function CheckingOutUser({ me }) {
           {/* <ShippingAddress /> */}
           {shippingMenuState === 'default' && (
             <MenuStateProvider>
-              <Address
-                address={shippingAddress}
-                updateAddress={setShippingAddress}
-              />
+              <Address address={shippingAddress} allowUpdate />
             </MenuStateProvider>
           )}
           {shippingMenuState === 'select' && (
             <Addresses
-              updateAddress={setShippingAddress}
+              allowUpdate
+              allowDelete
               selectAddress={setShippingAddress}
             />
           )}
@@ -130,3 +118,7 @@ function CheckingOutUser({ me }) {
     </>
   );
 }
+CheckingOutUser.propTypes = {
+  // id: string.isRequired,
+  me: userType,
+};
