@@ -33,7 +33,7 @@ const CURRENT_USER_QUERY = gql`
             description
             image {
               image {
-                publicUrlTransformed
+                publicUrlTransformed(transformation: { width: "120" })
               }
             }
             inventoryItem {
