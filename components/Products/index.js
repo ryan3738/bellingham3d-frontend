@@ -18,7 +18,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       image {
         id
         image {
-          publicUrlTransformed(transformation: { height: "240" })
+          publicUrlTransformed(transformation: { width: "360" })
         }
       }
     }
