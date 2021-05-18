@@ -10,10 +10,8 @@ import Button from '../Button';
 import DisplayError from '../ErrorMessage';
 import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
-import { user } from '../Cart';
 import { useUser } from '../User';
-import SignIn from '../SignIn';
-import SignUp from '../SignUp';
+import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -32,44 +30,24 @@ const ProductStyles = styled.div`
   }
 `;
 
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
-    Product(where: { id: $id }) {
-      id
-      name
-      price
-      description
-      variants {
-        id
-        name
-        variantType {
-          id
-          name
-        }
-      }
-      image {
-        altText
-        image {
-          publicUrlTransformed
-        }
-      }
-    }
-  }
-`;
-
 export default function SingleProduct({ id }) {
   const [variantsState, setVariantsState] = useState([]);
   const me = useUser();
 
-  const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
+  const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: {
       id,
     },
   });
 
+  console.log('data', data);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  const { Product: product } = data;
+  if (!data) return null;
+  const { Product: product } = data || null;
+
+  console.log('product', product);
 
   // Add a variant to the variantsState array for current product
   const addVariant = (name, value) => {
@@ -145,5 +123,5 @@ export default function SingleProduct({ id }) {
 }
 
 SingleProduct.propTypes = {
-  id: string.isRequired,
+  id: string,
 };
