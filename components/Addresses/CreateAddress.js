@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
-
 import Form from '../styles/Form';
 import { useUser } from '../User';
 
@@ -59,7 +58,7 @@ const CREATE_ADDRESS_MUTATION = gql`
 // Add make default functionality
 export default function CreateAddress() {
   const user = useUser();
-  const [defaultAddress, setDefaultAddress] = useState(null);
+  const [makeDefault, setMakeDefault] = useState(null);
   const { inputs, handleChange, clearForm } = useForm({
     firstName: '',
     lastName: '',
@@ -79,7 +78,7 @@ export default function CreateAddress() {
     {
       variables: {
         ...inputs,
-        ...defaultAddress,
+        ...makeDefault,
       },
       refetchQueries: [{ query: USER_ADDRESSES_QUERY }],
     }
@@ -87,10 +86,10 @@ export default function CreateAddress() {
 
   useEffect(() => {
     if (inputs.makeDefault === false) {
-      setDefaultAddress(() => null);
+      setMakeDefault(() => null);
     }
     if (inputs.makeDefault === true) {
-      setDefaultAddress(() => ({
+      setMakeDefault(() => ({
         isDefaultShipping: { connect: { id: user.id } },
       }));
     }
