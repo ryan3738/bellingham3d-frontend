@@ -24,7 +24,7 @@ export default function Custom() {
       <Grid4Styles>
         <div>
           <h3>Design</h3>
-          <p>
+          <span>
             <ul>
               <li>Got your own 3D CAD file you would like to have printed?</li>
               <br />
@@ -35,7 +35,7 @@ export default function Custom() {
             </ul>
             <br />
             We can help you design and make a custom part.
-          </p>
+          </span>
         </div>
         <div>
           <h3>Print</h3>
