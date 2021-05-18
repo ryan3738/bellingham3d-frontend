@@ -10,6 +10,7 @@ import { Checkout } from '../CheckingOut/Checkout';
 import Button from '../Button';
 import CartItem from './CartItem';
 import CheckingOut from '../CheckingOut';
+import SeeAllProducts from '../Products/SeeAllProducts';
 
 export const cartShippingAddress = makeVar();
 
@@ -40,9 +41,7 @@ export default function Cart() {
       {me.cart.length === 0 ? (
         <div>
           <h3>Your Cart is Empty</h3>
-          <Button onClick={closeCart} internalLink="/products">
-            See All Products
-          </Button>
+          <SeeAllProducts />
         </div>
       ) : (
         <>
@@ -50,6 +49,7 @@ export default function Cart() {
             {me.cart.map((cartItem) => (
               <CartItem key={cartItem.id} cartItem={cartItem} />
             ))}
+            <SeeAllProducts />
           </div>
           <footer>
             {shippingRequired ? (

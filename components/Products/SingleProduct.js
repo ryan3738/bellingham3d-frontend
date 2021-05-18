@@ -12,6 +12,7 @@ import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
 import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
+import SeeAllProducts from './SeeAllProducts';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -44,10 +45,10 @@ export default function SingleProduct({ id }) {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  if (!data) return null;
+  if (!data) return <SeeAllProducts />;
   const { Product: product } = data || null;
 
-  console.log('product', product);
+  // console.log('product', product);
 
   // Add a variant to the variantsState array for current product
   const addVariant = (name, value) => {
@@ -101,7 +102,7 @@ export default function SingleProduct({ id }) {
               <p>Please create an account or login</p>
             </div>
           )}
-          <Button internalLink="/products">Return to All Products</Button>
+          <SeeAllProducts />
         </div>
 
         <style jsx>{`
