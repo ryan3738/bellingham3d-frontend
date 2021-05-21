@@ -2,3 +2,5 @@
 export const endpoint = `http://localhost:3000/api/graphql`;
 export const prodEndpoint = `https://admin.bellingham3d.com/api/graphql`;
 export const perPage = 20;
+export const instagramUrl = 'https://www.instagram.com/bellingham.3d/';
+export const facebookUrl = 'https://www.facebook.com/';
