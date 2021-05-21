@@ -58,7 +58,7 @@ export default function Contact() {
         {/* <h3>For new product updates follow us on social media</h3> */}
         <div className="social-media-contents">
           <Social
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/bellingham.3d/"
             img="/images/instagram-logo.png"
             alt="instagram"
             color="--color-instagram"
