@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 
-export default function Social({ href, img, alt, color }) {
+export default function Social({ href, img, alt, color, socialSite }) {
   return (
     <div className="social">
       <a href={href} target="_blank" rel="noreferrer noopener">
@@ -40,4 +40,5 @@ Social.propTypes = {
   img: PropTypes.string,
   alt: PropTypes.string,
   color: PropTypes.string,
+  socialSite: PropTypes.oneOf(['Facebook', 'Instagram']),
 };
