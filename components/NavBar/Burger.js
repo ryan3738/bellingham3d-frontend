@@ -3,9 +3,11 @@ import { bool, func } from 'prop-types';
 export default function Burger({ open, setOpen }) {
   return (
     <>
-      <div
+      <button
         className="styled-burger"
-        role="button"
+        type="button"
+        tabIndex={!open ? '0' : '-1'}
+        name="open nav menu"
         open={open}
         onClick={() => setOpen(!open)}
       >
@@ -14,12 +16,6 @@ export default function Burger({ open, setOpen }) {
         <div className="bottom-bun" />
         <style jsx>{`
           .styled-burger {
-            /*
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-
-            */
             margin: 1rem;
             padding: 0;
             display: flex;
@@ -45,6 +41,7 @@ export default function Burger({ open, setOpen }) {
             transition: all 0.2s linear;
             position: relative;
             transform-origin: 0.2rem;
+            z-index: 11;
           }
         `}</style>
         {/* animation styles */}
@@ -66,7 +63,7 @@ export default function Burger({ open, setOpen }) {
             transform: ${open ? 'rotate(-45deg)' : 'rotate(0)'};
           }
         `}</style>
-      </div>
+      </button>
     </>
   );
 }
