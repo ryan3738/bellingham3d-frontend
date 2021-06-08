@@ -25,11 +25,9 @@ const CartStyles = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    align-content: space-around;
-    align-items: center;
-    justify-items: center;
-    width: auto;
-    height: 100%;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
     border-bottom: 5px solid var(--black);
     margin-bottom: var(--spacing);
   }

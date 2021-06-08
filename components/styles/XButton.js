@@ -8,7 +8,6 @@ const CloseButton = styled.button`
   cursor: pointer;
   text-decoration: none;
   background: none;
-
   :hover {
     opacity: 0.54;
   }
