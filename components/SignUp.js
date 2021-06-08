@@ -7,6 +7,7 @@ import Form from './styles/Form';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
 import SignIn from './SignIn';
+import ButtonStyles from './styles/ButtonStyles';
 
 const eye = <FaEye />;
 const eyeSlash = <FaEyeSlash />;
@@ -113,7 +114,7 @@ export default function SignUp() {
                   {passwordShown ? eyeSlash : eye}
                 </i>
               </div>
-              <button type="submit">Sign Up!</button>
+              <ButtonStyles type="submit">Sign Up!</ButtonStyles>
             </fieldset>
           </>
         )}

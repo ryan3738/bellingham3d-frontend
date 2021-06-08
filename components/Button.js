@@ -8,6 +8,7 @@ export default function Button({
   internalLink,
   onClick,
   disabled,
+  title,
 }) {
   return (
     <>
@@ -15,7 +16,7 @@ export default function Button({
         <a href={buttonLink}>
           <ButtonStyles
             type="button"
-            className="button-styles"
+            title={title}
             disabled={disabled}
             onClick={onClick}
           >
@@ -27,7 +28,7 @@ export default function Button({
         <Link href={internalLink}>
           <ButtonStyles
             type="button"
-            className="button-styles"
+            title={title}
             disabled={disabled}
             onClick={onClick}
           >
@@ -38,7 +39,7 @@ export default function Button({
       {button && (
         <ButtonStyles
           type="button"
-          className="button-styles"
+          title={title}
           disabled={disabled}
           onClick={onClick}
         >
@@ -47,7 +48,8 @@ export default function Button({
       )}
 
       <style jsx>{`
-        .button-styles {
+         {
+          /* .button-styles {
           padding: 5px;
           margin: var(--spacing) calc(var(--spacing) / 2);
           min-height: 44px;
@@ -58,6 +60,7 @@ export default function Button({
           animation-name: background-color;
           animation-duration: 500ms;
           opacity: 0.65;
+        } */
         }
       `}</style>
     </>

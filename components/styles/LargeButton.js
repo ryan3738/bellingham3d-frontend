@@ -12,7 +12,10 @@ const LargeButton = styled.button`
   display: inline-block;
   transition: all 0.5s;
   &[disabled] {
-    opacity: 0.5;
+    opacity: 0.38;
+  }
+  :hover {
+    opacity: 0.65;
   }
 `;
 

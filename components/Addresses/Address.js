@@ -6,6 +6,7 @@ import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
 import { addressType } from '../../lib/types';
+import ButtonStyles from '../styles/ButtonStyles';
 
 export default function Address({
   address,
@@ -29,26 +30,28 @@ export default function Address({
                 <DisplayAddress address={address} />
                 <div className="buttonList">
                   {selectAddress && (
-                    <button
-                      className="button"
+                    <ButtonStyles
                       type="button"
+                      title="Select Address"
                       onClick={() => returnAddress(selectAddress, address)}
                     >
                       <FaCheck />
-                    </button>
+                    </ButtonStyles>
                   )}
 
                   {allowUpdate && (
-                    <button className="button" type="button" onClick={openMenu}>
+                    <ButtonStyles
+                      type="button"
+                      title="Edit Address"
+                      onClick={openMenu}
+                    >
                       <FaEdit />
-                    </button>
+                    </ButtonStyles>
                   )}
                   {allowDelete && (
-                    <span className="button">
-                      <DeleteAddress id={address.id}>
-                        <FaTrash />
-                      </DeleteAddress>
-                    </span>
+                    <DeleteAddress id={address.id}>
+                      <FaTrash />
+                    </DeleteAddress>
                   )}
                 </div>
               </>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
+import ButtonStyles from '../styles/ButtonStyles';
 import Form from '../styles/Form';
 import { useUser } from '../User';
 
@@ -245,7 +246,7 @@ export default function CreateAddress() {
           />
         </label>
 
-        <button type="submit">+ Add Address</button>
+        <ButtonStyles type="submit">+ Add Address</ButtonStyles>
       </fieldset>
     </Form>
   );

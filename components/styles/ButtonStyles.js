@@ -5,9 +5,8 @@ const ButtonStyles = styled.button`
   margin: var(--spacing) calc(var(--spacing) / 2);
   min-height: 44px;
   min-width: 72px;
+  transition: all 0.25s;
   :hover {
-    animation-name: background-color;
-    animation-duration: 500ms;
     opacity: 0.65;
   }
 `;

@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
+import ButtonStyles from '../styles/ButtonStyles';
 
 const DELETE_ADDRESS_MUTATION = gql`
   mutation DELETE_ADDRESS_MUTATION($id: ID!) {
@@ -27,8 +28,9 @@ export default function DeleteAddress({ id, children }) {
     }
   );
   return (
-    <button
+    <ButtonStyles
       type="button"
+      title="Delete Address"
       disabled={loading}
       onClick={() => {
         if (confirm('Are you sure you want to delete this address?')) {
@@ -39,6 +41,6 @@ export default function DeleteAddress({ id, children }) {
       }}
     >
       {children}
-    </button>
+    </ButtonStyles>
   );
 }

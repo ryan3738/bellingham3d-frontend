@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { ALL_PRODUCTS_QUERY } from '.';
 import useForm from '../../lib/useForm';
 import DisplayError from '../ErrorMessage';
+import ButtonStyles from '../styles/ButtonStyles';
 
 import Form from '../styles/Form';
 
@@ -106,7 +107,7 @@ export default function CreateProduct() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">+ Add Product</button>
+        <ButtonStyles type="submit">+ Add Product</ButtonStyles>
       </fieldset>
     </Form>
   );

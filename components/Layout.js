@@ -82,10 +82,10 @@ button{
 
 }
 button:hover {
-  animation-name: background-color;
-  animation-duration: 500ms;
-  background-color: var(--lightBlue);
-  color: var(--navyBlue);
+  /* animation-name: background-color; */
+  /* animation-duration: 500ms; */
+  /* background-color: var(--lightBlue); */
+  /* color: var(--navyBlue); */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

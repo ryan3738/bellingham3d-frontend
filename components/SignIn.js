@@ -8,6 +8,7 @@ import Form from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
+import ButtonStyles from './styles/ButtonStyles';
 
 const eye = <FaEye />;
 const eyeSlash = <FaEyeSlash />;
@@ -104,7 +105,7 @@ export default function SignIn() {
             </i>
           </div>
 
-          <button type="submit">Sign In!</button>
+          <ButtonStyles type="submit">Sign In!</ButtonStyles>
           <div>
             <br />
             <Link href="/requestreset">Forgot password?</Link>

@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
+import ButtonStyles from './styles/ButtonStyles';
 
 const RESET_MUTATION = gql`
   mutation RESET_MUTATION(
@@ -77,7 +78,7 @@ export default function Reset({ token }) {
           />
         </label>
 
-        <button type="submit">Request Reset</button>
+        <ButtonStyles type="submit">Request Reset</ButtonStyles>
       </fieldset>
     </Form>
   );

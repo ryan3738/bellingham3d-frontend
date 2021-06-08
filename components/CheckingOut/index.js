@@ -6,6 +6,7 @@ import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
 import { userType } from '../../lib/types';
+import ButtonStyles from '../styles/ButtonStyles';
 
 export default function CheckingOut() {
   const me = useUser();
@@ -81,7 +82,7 @@ function CheckingOutUser({ me }) {
           {/* TODO change focus to currently selected button  */}
 
           <div>
-            <button
+            <ButtonStyles
               type="button"
               name="default"
               value="default"
@@ -89,8 +90,8 @@ function CheckingOutUser({ me }) {
               disabled={shippingMenuState === 'default'}
             >
               Return
-            </button>
-            <button
+            </ButtonStyles>
+            <ButtonStyles
               type="button"
               name="select"
               value="select"
@@ -98,8 +99,8 @@ function CheckingOutUser({ me }) {
               disabled={shippingMenuState === 'select'}
             >
               Select Address
-            </button>
-            <button
+            </ButtonStyles>
+            <ButtonStyles
               type="button"
               name="new"
               value="new"
@@ -107,7 +108,7 @@ function CheckingOutUser({ me }) {
               disabled={shippingMenuState === 'new'}
             >
               New Address
-            </button>
+            </ButtonStyles>
           </div>
         </div>
       </div>
