@@ -48,13 +48,13 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
             burgerMenuLink={burgerMenuLink}
           >
             <IconContext.Provider value={{ size: '24px' }}>
-              <div className="icons">
+              <div className="icons" title="Account Dashboard">
                 <FaUser />
               </div>
             </IconContext.Provider>
           </NavItem>
           <NavItem burgerMenuLink={burgerMenuLink}>
-            <button type="button" onClick={openCart}>
+            <button type="button" onClick={openCart} title="Open Cart">
               <IconContext.Provider value={{ size: '24px' }}>
                 <div className="icons">
                   <FaShoppingCart />

@@ -7,7 +7,7 @@ export default function Burger({ open, setOpen }) {
         className="styled-burger"
         type="button"
         tabIndex="0"
-        name="open nav menu"
+        title="Toggle menu"
         open={open}
         onClick={() => setOpen(!open)}
       >
