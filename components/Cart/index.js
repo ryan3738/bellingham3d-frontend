@@ -1,6 +1,8 @@
 import { makeVar } from '@apollo/client';
+import { FaWindowClose } from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
 import CartStyles from '../styles/CartStyles';
-import CloseButton from '../styles/CloseButton';
+import XButton from '../styles/XButton';
 import Supreme from '../styles/Supreme';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
@@ -35,7 +37,11 @@ export default function Cart() {
     <CartStyles open={cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
-        <CloseButton onClick={closeCart}>&times;</CloseButton>
+        <XButton onClick={closeCart}>
+          <IconContext.Provider value={{ size: '60px' }}>
+            <FaWindowClose />
+          </IconContext.Provider>
+        </XButton>
       </header>
 
       {me.cart.length === 0 ? (

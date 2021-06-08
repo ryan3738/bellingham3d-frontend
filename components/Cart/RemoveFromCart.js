@@ -1,6 +1,9 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import { FaWindowClose } from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
 import styled from 'styled-components';
+import XButton from '../styles/XButton';
 
 const BigButton = styled.button`
   max-width: 50px;
@@ -39,13 +42,15 @@ export default function RemoveFromCart({ id }) {
     // },
   });
   return (
-    <BigButton
+    <XButton
       onClick={removeFromCart}
       disabled={loading}
       type="button"
-      title="Remove this item from cart"
+      title="Remove item from cart"
     >
-      &times;
-    </BigButton>
+      <IconContext.Provider value={{ size: '42px' }}>
+        <FaWindowClose />
+      </IconContext.Provider>
+    </XButton>
   );
 }

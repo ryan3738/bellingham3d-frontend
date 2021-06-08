@@ -22,9 +22,16 @@ const CartStyles = styled.div`
   grid-template-rows: auto 1fr auto;
   ${(props) => props.open && `transform: translateX(0);`};
   header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: center;
+    justify-items: center;
+    width: auto;
+    height: 100%;
     border-bottom: 5px solid var(--black);
     margin-bottom: var(--spacing);
-    padding-bottom: var(--spacing);
   }
   footer {
     border-top: var(--spacing) double var(--black);
