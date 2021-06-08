@@ -63,12 +63,13 @@ export default function Contact() {
             alt="instagram"
             color="--color-instagram"
           />
-          <Social
+          {/* Add back in once facebook page is made */}
+          {/* <Social
             href={facebookUrl}
             img="/images/facebook-logo.png"
             alt="facebook"
             color="--color-facebook"
-          />
+          /> */}
         </div>
       </div>
 
