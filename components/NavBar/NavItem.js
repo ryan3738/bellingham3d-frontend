@@ -10,13 +10,13 @@ export default function NavItem({
     <>
       {href ? (
         <Link href={href}>
-          <div
+          <a
             className={`nav-link ${showOnLarge && 'show-on-large'} ${
               burgerMenuLink && 'burger-menu-link'
             }`}
           >
             {children}
-          </div>
+          </a>
         </Link>
       ) : (
         <div
@@ -37,6 +37,7 @@ export default function NavItem({
           margin: 0;
           font-weight: 900;
           cursor: pointer;
+          text-decoration: none;
         }
 
         .nav-link:hover {
