@@ -1,32 +1,63 @@
 import Link from 'next/link';
+import ButtonStyles from './styles/ButtonStyles';
 
 export default function Button({
   children,
+  button,
   buttonLink,
   internalLink,
   onClick,
+  disabled,
 }) {
   return (
     <>
       {buttonLink && (
         <a href={buttonLink}>
-          <button type="button" className="button-text" onClick={onClick}>
+          <ButtonStyles
+            type="button"
+            className="button-styles"
+            disabled={disabled}
+            onClick={onClick}
+          >
             {children}
-          </button>
+          </ButtonStyles>
         </a>
       )}
       {internalLink && (
         <Link href={internalLink}>
-          <button type="button" className="button-text" onClick={onClick}>
+          <ButtonStyles
+            type="button"
+            className="button-styles"
+            disabled={disabled}
+            onClick={onClick}
+          >
             {children}
-          </button>
+          </ButtonStyles>
         </Link>
+      )}
+      {button && (
+        <ButtonStyles
+          type="button"
+          className="button-styles"
+          disabled={disabled}
+          onClick={onClick}
+        >
+          {children}
+        </ButtonStyles>
       )}
 
       <style jsx>{`
-        .button-text {
+        .button-styles {
+          padding: 5px;
+          margin: var(--spacing) calc(var(--spacing) / 2);
           min-height: 44px;
           min-width: 72px;
+        }
+
+        .button-styles:hover {
+          animation-name: background-color;
+          animation-duration: 500ms;
+          opacity: 0.65;
         }
       `}</style>
     </>
