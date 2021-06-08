@@ -6,7 +6,7 @@ export default function Burger({ open, setOpen }) {
       <button
         className="styled-burger"
         type="button"
-        tabIndex={!open ? '0' : '-1'}
+        tabIndex="0"
         name="open nav menu"
         open={open}
         onClick={() => setOpen(!open)}
@@ -28,7 +28,7 @@ export default function Burger({ open, setOpen }) {
             /* box-shadow: 0 0 0 7px var(--secondary-color); */
             cursor: pointer;
 
-            z-index: 10;
+            z-index: 11;
             border-radius: 7px;
           }
           div:focus {
@@ -41,7 +41,7 @@ export default function Burger({ open, setOpen }) {
             transition: all 0.2s linear;
             position: relative;
             transform-origin: 0.2rem;
-            z-index: 11;
+            z-index: 10;
           }
         `}</style>
         {/* animation styles */}
