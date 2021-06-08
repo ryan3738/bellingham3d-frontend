@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import Button from '../Button';
+import { IconContext } from 'react-icons/lib';
 import { useUser } from '../User';
 import { useCart } from '../../lib/cartState';
 import CartCount from '../Cart/CartCount';
@@ -48,15 +47,19 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
             showOnLarge={showOnLarge}
             burgerMenuLink={burgerMenuLink}
           >
-            <div className="material-icons md-dark">
-              <FaUser />
-            </div>
+            <IconContext.Provider value={{ size: '24px' }}>
+              <div className="icons">
+                <FaUser />
+              </div>
+            </IconContext.Provider>
           </NavItem>
           <NavItem burgerMenuLink={burgerMenuLink}>
             <button type="button" onClick={openCart}>
-              <div className="material-icons md-dark">
-                <FaShoppingCart />
-              </div>
+              <IconContext.Provider value={{ size: '24px' }}>
+                <div className="icons">
+                  <FaShoppingCart />
+                </div>
+              </IconContext.Provider>
               <CartCount
                 count={user.cart.reduce(
                   (tally, cartItem) =>
@@ -88,7 +91,7 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
       )}
 
       <style jsx>{`
-        .material-icons.md-dark {
+        .icons {
           color: var(--navyBlue);
         }
 
