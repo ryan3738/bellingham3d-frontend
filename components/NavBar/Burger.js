@@ -18,28 +18,29 @@ export default function Burger({ open, setOpen }) {
           .styled-burger {
             margin: 1rem;
             padding: 0;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            width: 2rem;
-            height: 2rem;
+            width: 2.625rem;
+            height: 2.625rem;
             background: var(--white);
             border: 0;
             box-shadow: 0 0 0 7px var(--navyBlue));
             cursor: pointer;
-            z-index: 999;
+            z-index: 11;
             border-radius: 7px;
           }
           div:focus {
             outline: none;
           }
           div {
-            width: 2rem;
-            height: 0.25rem;
+            width: 2.625rem;
+            height: 0.35rem;
             border-radius: var(--borderRadius);
             transition: all 0.2s linear;
             position: relative;
-            transform-origin: 0.2rem;
+            transform-origin: 0.3rem;
             z-index: 10;
           }
         `}</style>

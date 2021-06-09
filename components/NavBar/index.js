@@ -124,8 +124,8 @@ export default function NavBar({ children }) {
           opacity: 0.97;
           width: 100%;
           height: 7em;
-          display: grid;
-          grid-template-columns: repeat(auto-fill, 1fr);
+          display: flex;
+          flex-direction: column;
           justify-content: stretch;
           align-items: stretch;
           align-content: stretch
@@ -145,7 +145,7 @@ export default function NavBar({ children }) {
           align-contents: center;
           width: 100%;
           height: 4em;
-          border-bottom: 2.5px solid var(--black, black);
+          border-bottom: 2.5px solid var(--navyBlue-800, black);
         }
 
 

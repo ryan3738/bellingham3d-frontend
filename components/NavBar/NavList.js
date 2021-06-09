@@ -7,7 +7,7 @@ import NavItem from './NavItem';
 import { ColorStateStyles } from '../styles/StateStyles';
 // import Image from 'next/image'
 
-export default function NavList({ showOnLarge, burgerMenuLink, props }) {
+export default function NavList({ showOnLarge, burgerMenuLink, props}) {
   const user = useUser();
   const { openCart } = useCart();
   return (
