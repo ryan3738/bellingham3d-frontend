@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import {
+  FaArrowAltCircleRight,
+  FaArrowAltCircleLeft,
+  FaArrowLeft,
+  FaArrowRight,
+} from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
+import { ButtonIconStyles, ColorStateStyles } from './styles/StateStyles';
 
 export default function ImageSlider({ slides }) {
   const [current, setCurrent] = useState(0);
@@ -37,10 +44,18 @@ export default function ImageSlider({ slides }) {
         <>
           <div className="slider-nav">
             <div className="left-arrow">
-              <FaArrowAltCircleLeft onClick={prevSlide} />
+              <ButtonIconStyles>
+                <IconContext.Provider value={{ size: '42px' }}>
+                  <FaArrowLeft onClick={prevSlide} />
+                </IconContext.Provider>
+              </ButtonIconStyles>
             </div>
-            <div className="right-arrow">
-              <FaArrowAltCircleRight onClick={nextSlide} />
+            <div className="right-arrow" title="Next Slide">
+              <ButtonIconStyles>
+                <IconContext.Provider value={{ size: '42px' }}>
+                  <FaArrowRight onClick={nextSlide} />
+                </IconContext.Provider>
+              </ButtonIconStyles>
             </div>
           </div>
         </>
@@ -78,16 +93,9 @@ export default function ImageSlider({ slides }) {
           height: auto;
           top: 50%;
           left: 32px;
-          font-size: 2.5rem;
-          color: var(--gray);
           z-index: 10;
-          cursor: pointer;
           user-select: none;
-        }
-
-        .left-arrow:hover,
-        .right-arrow:hover {
-          opacity: 0.5;
+          color: var(--navyBlue);
         }
 
         .slide {

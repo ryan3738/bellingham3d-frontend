@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import Error from './ErrorMessage';
-import ButtonStyles from './styles/ButtonStyles';
+import { ButtonStyles } from './styles/StateStyles';
 
 const RESET_MUTATION = gql`
   mutation RESET_MUTATION(

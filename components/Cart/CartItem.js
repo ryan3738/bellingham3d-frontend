@@ -6,6 +6,7 @@ import { IconContext } from 'react-icons/lib';
 import { FaMinusSquare, FaPlusSquare } from 'react-icons/fa';
 import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
+import { ButtonIconStyles } from '../styles/StateStyles';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
@@ -79,8 +80,7 @@ export default function CartItem({
             </div>
             <div className="quanity-container">
               <IconContext.Provider value={{ size: '42px' }}>
-                <button
-                  className="quantity-button"
+                <ButtonIconStyles
                   disabled={loading || quantity <= 1}
                   type="button"
                   tabIndex="0"
@@ -103,12 +103,12 @@ export default function CartItem({
                   }}
                 >
                   <FaMinusSquare />
-                </button>
+                </ButtonIconStyles>
               </IconContext.Provider>
               <div className="price-quantity-wrapper">{quantity}</div>
               <IconContext.Provider value={{ size: '42px' }}>
-                <button
-                  className="quantity-button"
+                <ButtonIconStyles
+                  // className="quantity-button"
                   disabled={loading}
                   type="button"
                   tabIndex="0"
@@ -131,7 +131,7 @@ export default function CartItem({
                   }}
                 >
                   <FaPlusSquare />
-                </button>
+                </ButtonIconStyles>
               </IconContext.Provider>
             </div>
             <div className="price-quantity-wrapper">
@@ -170,20 +170,12 @@ export default function CartItem({
           height: 100%;
           border: 1px solid var(--lightGrey);
         }
-        .quantity-button {
-          color: var(--navyBlue);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 0;
-          margin: 0;
-          font-weight: 900;
-          cursor: pointer;
-          text-decoration: none;
-          background: none;
-        }
         .quantity-button:hover {
-          opacity: 0.54;
+          opacity: var(--hover);
+        }
+        .quantity-button:disabled,
+        [disabled] {
+          opacity: var(--disabled);
         }
       `}</style>
     </CartItemStyles>

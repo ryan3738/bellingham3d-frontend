@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { bool, string } from 'prop-types';
+import { ColorStateStyles } from '../styles/StateStyles';
 
 export default function NavItem({
   href,
@@ -15,7 +17,7 @@ export default function NavItem({
               burgerMenuLink && 'burger-menu-link'
             }`}
           >
-            {children}
+            <ColorStateStyles>{children}</ColorStateStyles>
           </a>
         </Link>
       ) : (
@@ -24,25 +26,25 @@ export default function NavItem({
             burgerMenuLink && 'burger-menu-link'
           }`}
         >
-          {children}
+          <ColorStateStyles>{children}</ColorStateStyles>
         </div>
       )}
       <style jsx>{`
         .nav-link {
           display: flex;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
           text-transform: uppercase;
-          padding: 1rem;
+          padding: 0 var(--spacing);
+          min-width: 42px;
+          height: 56px;
+          width: auto;
           margin: 0;
           font-weight: 900;
-          cursor: pointer;
           text-decoration: none;
         }
 
-        .nav-link:hover {
-          opacity: 0.54;
-        }
         button {
           padding: 0;
           display: flex;
@@ -71,3 +73,9 @@ export default function NavItem({
     </>
   );
 }
+
+NavItem.propTypes = {
+  href: string,
+  showOnLarge: bool,
+  burgerMenuLink: bool,
+};

@@ -4,6 +4,7 @@ import { useUser } from '../User';
 import { useCart } from '../../lib/cartState';
 import CartCount from '../Cart/CartCount';
 import NavItem from './NavItem';
+import { ColorStateStyles } from '../styles/StateStyles';
 // import Image from 'next/image'
 
 export default function NavList({ showOnLarge, burgerMenuLink, props }) {
@@ -55,11 +56,13 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
           </NavItem>
           <NavItem burgerMenuLink={burgerMenuLink}>
             <button type="button" onClick={openCart} title="Open Cart">
-              <IconContext.Provider value={{ size: '24px' }}>
-                <div className="icons">
-                  <FaShoppingCart />
-                </div>
-              </IconContext.Provider>
+              <ColorStateStyles>
+                <IconContext.Provider value={{ size: '24px' }}>
+                  <div className="icons">
+                    <FaShoppingCart />
+                  </div>
+                </IconContext.Provider>
+              </ColorStateStyles>
               <CartCount
                 count={user.cart.reduce(
                   (tally, cartItem) =>
@@ -91,36 +94,23 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
       )}
 
       <style jsx>{`
-        .icons {
+         {
+          /* .icons {
           color: var(--navyBlue);
+        } */
         }
 
-        .nav-link {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-transform: uppercase;
-          padding: 1rem;
-          margin: auto;
-          font-weight: 900;
-          cursor: pointer;
-        }
         button {
           padding: 0;
           margin: 0;
           display: flex;
+          justify-content: center;
           align-items: center;
           position: relative;
           text-transform: uppercase;
           background: none;
           border: 0;
           cursor: pointer;
-        }
-
-        a:hover {
-          color: var(--medium-emphasis-text);
-          background: var(--primary-color-desaturated);
-          color: var(--background-color);
         }
       `}</style>
       <style jsx>{`

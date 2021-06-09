@@ -75,10 +75,11 @@ export default function Product({ product }) {
           border: 1px solid var(--lightGray);
           box-shadow: var(--bs);
           position: relative;
+          opacity: var(--hover);
         }
 
         .productWrapper :hover {
-          opacity: 0.5;
+          opacity: 1;
         }
 
         .productText {

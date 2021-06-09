@@ -10,19 +10,35 @@ import Search from '../Search';
 import Cart from '../Cart';
 import NavSpacer from './NavSpacer';
 
+const LogoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0 var(--spacing);
+  min-width: 42px;
+  height: 56px;
+  width: 200%;
+  margin: 0;
+  font-weight: 900;
+  text-decoration: none;
+  width: 100%;
+  height: auto;
+  padding: 0 var(--spacing);
+  margin: 0;
+
+  a {
+    color: var(--white);
+    text-transform: uppercase;
+    :hover {
+      text-decoration: none;
+    }
+  }
+`;
+
 const LogoStyles = styled.h1`
   --notchSize: 15px;
-  /* clip-path:
-    polygon(
-      0% 20px,                 top left
-      20px 0%,                 top left
-      calc(100% - 20px) 0%,    top right
-      100% 20px,               top right
-      100% calc(100% - 20px),  bottom right
-      calc(100% - 20px) 100%,  bottom right
-      20px 100%,               bottom left
-      0 calc(100% - 20px)      bottom left
-    ); */
   clip-path: polygon(
     0% var(--notchSize),
     var(--notchSize) 0%,
@@ -34,21 +50,17 @@ const LogoStyles = styled.h1`
     0% 100%
   );
 
-  /* font-size: 4rem; */
-  margin-left: 2rem;
-  line-height: 1;
-  position: relative;
-  z-index: 2;
-  background: var(--red);
+  background: var(--navyBlue-800);
   padding: 0.75rem;
   margin: 2.5px;
-  /* transform: skew(-7deg); */
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
 
-  a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
+  :hover {
+    opacity: var(--hover);
+    background: var(--navyBlue-600);
   }
 `;
 
@@ -68,9 +80,13 @@ export default function NavBar({ children }) {
               <BurgerMenu open={open} setOpen={setOpen} />
             </div>
             <div>
-              <LogoStyles>
-                <Link href="/">B-3D</Link>
-              </LogoStyles>
+              <LogoWrapper>
+                <Link href="/">
+                  <a title="Home">
+                    <LogoStyles>B-3D</LogoStyles>
+                  </a>
+                </Link>
+              </LogoWrapper>
             </div>
             <NavList showOnLarge />
           </div>
@@ -122,19 +138,17 @@ export default function NavBar({ children }) {
         }
         .nav-list {
           display: flex;
+          flex-direction: row;
           justify-content: space-between;
-          align-items: center;
-          align-content: center
           justify-items: center;
+          align-items: center;
+          align-contents: center;
           width: 100%;
           height: 4em;
           border-bottom: 2.5px solid var(--black, black);
         }
 
-        .nav-list a:hover {
-          background: var(--navyBlue);
-          color: var(--offWhite);
-        }
+
 
         @media (min-width: 769px) {
           .burger {

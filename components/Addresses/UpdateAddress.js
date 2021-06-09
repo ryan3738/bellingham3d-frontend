@@ -7,6 +7,7 @@ import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form';
+import { ButtonStyles } from '../styles/StateStyles';
 import { useUser } from '../User';
 
 const UPDATE_ADDRESS_MUTATION = gql`
@@ -267,7 +268,7 @@ export default function UpdateAddress({ address }) {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="makeDefault">
+        <label type="checkbox" htmlFor="makeDefault">
           Make Default
           <input
             type="checkbox"
@@ -277,10 +278,10 @@ export default function UpdateAddress({ address }) {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Update Address</button>
-        <button type="button" onClick={closeMenu}>
+        <ButtonStyles type="submit">Update Address</ButtonStyles>
+        <ButtonStyles type="button" onClick={closeMenu}>
           Cancel
-        </button>
+        </ButtonStyles>
       </fieldset>
     </Form>
   );

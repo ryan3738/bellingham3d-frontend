@@ -7,7 +7,7 @@ import Form from './styles/Form';
 import { CURRENT_USER_QUERY } from './User';
 import Error from './ErrorMessage';
 import SignIn from './SignIn';
-import ButtonStyles from './styles/ButtonStyles';
+import { ButtonStyles } from './styles/StateStyles';
 
 const eye = <FaEye />;
 const eyeSlash = <FaEyeSlash />;

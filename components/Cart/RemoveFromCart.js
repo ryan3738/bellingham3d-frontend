@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { FaWindowClose } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import styled from 'styled-components';
-import XButton from '../styles/XButton';
+import { ButtonIconStyles } from '../styles/StateStyles';
 
 const BigButton = styled.button`
   max-width: 50px;
@@ -42,7 +42,7 @@ export default function RemoveFromCart({ id }) {
     // },
   });
   return (
-    <XButton
+    <ButtonIconStyles
       onClick={removeFromCart}
       disabled={loading}
       type="button"
@@ -51,6 +51,6 @@ export default function RemoveFromCart({ id }) {
       <IconContext.Provider value={{ size: '42px' }}>
         <FaWindowClose />
       </IconContext.Provider>
-    </XButton>
+    </ButtonIconStyles>
   );
 }

@@ -23,12 +23,11 @@ export default function Burger({ open, setOpen }) {
             justify-content: space-evenly;
             width: 2rem;
             height: 2rem;
-            background: white;
+            background: var(--white);
             border: 0;
-            /* box-shadow: 0 0 0 7px var(--secondary-color); */
+            box-shadow: 0 0 0 7px var(--navyBlue));
             cursor: pointer;
-
-            z-index: 11;
+            z-index: 999;
             border-radius: 7px;
           }
           div:focus {
@@ -37,7 +36,7 @@ export default function Burger({ open, setOpen }) {
           div {
             width: 2rem;
             height: 0.25rem;
-            border-radius: 10px;
+            border-radius: var(--borderRadius);
             transition: all 0.2s linear;
             position: relative;
             transform-origin: 0.2rem;
@@ -47,7 +46,7 @@ export default function Burger({ open, setOpen }) {
         {/* animation styles */}
         <style jsx>{`
           div {
-            background: ${open ? 'var(--lightBlue)' : 'var(--navyBlue)'};
+            background: ${open ? 'var(--navyBlue-400)' : 'var(--navyBlue-800)'};
           }
 
           .top-bun {

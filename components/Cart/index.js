@@ -2,17 +2,16 @@ import { makeVar } from '@apollo/client';
 import { FaWindowClose } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import CartStyles from '../styles/CartStyles';
-import XButton from '../styles/XButton';
 import Supreme from '../styles/Supreme';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
 import calcTotalPrice from '../../lib/calcTotalPrice';
 import { useCart } from '../../lib/cartState';
 import { Checkout } from '../CheckingOut/Checkout';
-import Button from '../Button';
 import CartItem from './CartItem';
 import CheckingOut from '../CheckingOut';
 import SeeAllProducts from '../Products/SeeAllProducts';
+import { ButtonIconStyles } from '../styles/StateStyles';
 
 export const cartShippingAddress = makeVar();
 
@@ -37,11 +36,11 @@ export default function Cart() {
     <CartStyles open={cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
-        <XButton onClick={closeCart}>
+        <ButtonIconStyles onClick={closeCart}>
           <IconContext.Provider value={{ size: '60px' }}>
             <FaWindowClose />
           </IconContext.Provider>
-        </XButton>
+        </ButtonIconStyles>
       </header>
 
       {me.cart.length === 0 ? (

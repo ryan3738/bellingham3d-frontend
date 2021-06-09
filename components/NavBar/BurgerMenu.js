@@ -14,7 +14,7 @@ export default function BurgerMenu({ open }) {
           flex-direction: column;
           justify-content: center;
           justify-items: center;
-          background: white;
+          background: var(--white);
           height: 100vh;
           width: 100%;
           max-width: 450px;

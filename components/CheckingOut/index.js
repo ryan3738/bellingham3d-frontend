@@ -6,7 +6,7 @@ import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
 import { userType } from '../../lib/types';
-import ButtonStyles from '../styles/ButtonStyles';
+import { ButtonStyles } from '../styles/StateStyles';
 
 export default function CheckingOut() {
   const me = useUser();
@@ -89,7 +89,7 @@ function CheckingOutUser({ me }) {
               onClick={handleClick}
               disabled={shippingMenuState === 'default'}
             >
-              Return
+              Continue
             </ButtonStyles>
             <ButtonStyles
               type="button"

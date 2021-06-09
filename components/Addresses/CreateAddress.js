@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
-import ButtonStyles from '../styles/ButtonStyles';
+import { ButtonStyles } from '../styles/StateStyles';
 import Form from '../styles/Form';
 import { useUser } from '../User';
 
@@ -235,7 +235,7 @@ export default function CreateAddress() {
             onChange={handleChange}
           />
         </label>
-        <label htmlFor="makeDefault">
+        <label type="checkbox" htmlFor="makeDefault">
           Make Default
           <input
             type="checkbox"
@@ -245,7 +245,6 @@ export default function CreateAddress() {
             onChange={handleChange}
           />
         </label>
-
         <ButtonStyles type="submit">+ Add Address</ButtonStyles>
       </fieldset>
     </Form>
