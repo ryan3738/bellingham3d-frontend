@@ -46,7 +46,7 @@ export default function RemoveFromCart({ id }) {
       onClick={removeFromCart}
       disabled={loading}
       type="button"
-      title="Remove item from cart"
+      title="Remove from cart"
     >
       <IconContext.Provider value={{ size: '42px' }}>
         <FaWindowClose />
