@@ -57,6 +57,7 @@ const LogoStyles = styled.h1`
   position: relative;
   cursor: pointer;
   z-index: 2;
+  transition: all 0.25s;
 
   :hover {
     opacity: var(--hover);
