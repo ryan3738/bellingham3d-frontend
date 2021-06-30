@@ -1,6 +1,6 @@
 Full Stack Next.JS E-Commerce App
 
-Bellingham 3D is a 3D printing and design service based in Bellingham WA. With the need to showcase products and allow customers to order an array of products, this application dynamically renders item pages and maintains a detailed cart that stores their orders and customizations. This intricate project employs multiple modern web development tools and techniques, including Server Side Rendering, interacting with a GraphQL API, running server-less functions, and dynamically rendering individual item pages with Next JS’s dynamic routes.
+Bellingham 3D is a 3D printing and design service based in Bellingham WA. With the need to showcase products and allow customers to order an array of products, this application dynamically renders item pages and maintains a detailed cart that stores their orders and customizations. This project employs multiple modern web development tools and techniques, including Server Side Rendering, interacting with a GraphQL API, running server-less functions, and dynamically rendering individual item pages with Next JS’s dynamic routes.
 
 Tech used:
 
