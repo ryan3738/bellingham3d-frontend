@@ -13,17 +13,18 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
-  /* box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05); */
+  /* box-shadow: 4px 2px 5px 3px rgba(0, 0, 0, 0.40); */
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.16);
   background: none;
   border: 5px solid white;
-  padding: 20px;
+  padding: var(--spacing);
   /* font-size: 1rem; */
   line-height: 1.5;
   font-weight: 300;
   label {
     display: block;
     margin-bottom: 1rem;
-    color: var(--navyBlue-600);
+    color: var(--navyBlue-700);
     font-weight: 800;
   }
 
@@ -35,14 +36,14 @@ const Form = styled.form`
     font-size: 1rem;
     background: var(--navyBlue-50);
     border: none;
-    outline: 1px solid var(--navyBlue-100);
+    outline: 0.05rem solid var(--navyBlue-100);
     border-radius: var(--borderRadius);
     transition: all 0.25s;
     &:focus {
       outline: 0;
       /* border-color: var(--navyBlue-400); */
-      outline: 2px solid var(--navyBlue-400);
-      /* background: var(--navyBlue-100); */
+      outline: 0.15rem solid var(--navyBlue-500);
+      background: var(--navyBlue-50);
     }
   }
   label[type='checkbox'] {
@@ -87,7 +88,7 @@ const Form = styled.form`
       );
     }
     &[aria-busy='true']::before {
-      background-size: 50% auto;
+      background-size: 25% auto;
       animation: ${loading} 1s linear infinite;
     }
   }

@@ -18,6 +18,9 @@ const ButtonStyles = styled.button`
   :hover {
     background: var(--navyBlue-800);
   }
+  :focus {
+    outline: 0.15rem solid var(--navyBlue-900);
+  }
   :disabled,
   [disabled] {
     opacity: var(--disabled);
