@@ -23,7 +23,7 @@ const Form = styled.form`
   label {
     display: block;
     margin-bottom: 1rem;
-    color: var(--navyBlue-800);
+    color: var(--navyBlue-600);
     font-weight: 800;
   }
 
@@ -34,12 +34,15 @@ const Form = styled.form`
     padding: 0.5rem;
     font-size: 1rem;
     background: var(--navyBlue-50);
-    border: 1px solid var(--navyBlue-200);
+    border: none;
+    outline: 1px solid var(--navyBlue-100);
     border-radius: var(--borderRadius);
+    transition: all 0.25s;
     &:focus {
       outline: 0;
-      border-color: var(--navyBlue-400);
-      background: var(--navyBlue-100);
+      /* border-color: var(--navyBlue-400); */
+      outline: 2px solid var(--navyBlue-400);
+      /* background: var(--navyBlue-100); */
     }
   }
   label[type='checkbox'] {
