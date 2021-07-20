@@ -18,6 +18,7 @@ export default function Product({ product }) {
             layout="intrinsic"
             height="240"
             width="360"
+            objectFit="cover"
           />
 
           {/* TODO: next image component */}
@@ -72,8 +73,10 @@ export default function Product({ product }) {
           align-items: stretch;
           background: white;
           max-width: 360px;
-          width: 100vw;
+          max-height: 360px;
           height: auto;
+
+          width: 100vw;
           text-align: center;
           border: 1px solid var(--lightGray);
           box-shadow: var(--bs);
@@ -86,15 +89,12 @@ export default function Product({ product }) {
         }
 
         .productText {
+          display: block;
+          height: auto;
+          width: 100%;
           font-size: 1.5rem;
           font-weight: bold;
           padding: calc(var(--spacing) / 2);
-        }
-        img {
-          max-height: 240px;
-          width: 100%;
-          height: auto;
-          object-fit: cover;
         }
       `}</style>
     </div>
