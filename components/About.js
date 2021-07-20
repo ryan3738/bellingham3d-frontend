@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import aboutHeroImage from '../public/images/ultimaker-closeup.jpg'
+import aboutHeroImage from '../public/images/ultimaker-closeup.jpg';
 
 export default function About() {
   return (
