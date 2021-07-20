@@ -11,10 +11,13 @@ export default function Product({ product }) {
     <div className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
-          <img
+          <Image
             src={product?.image[0]?.image?.publicUrlTransformed}
             alt={product.name}
             loading="lazy"
+            layout="intrinsic"
+            height="240"
+            width="360"
           />
 
           {/* TODO: next image component */}
