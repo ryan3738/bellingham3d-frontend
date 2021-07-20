@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 const Grid4Styles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   grid-gap: var(--spacing);
   justify-content: center;
   justify-items: center;
   margin-bottom: var(--spacing);
+  margin: 0;
+  padding: 0;
 
   h1,
   h2,

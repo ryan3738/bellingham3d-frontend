@@ -52,10 +52,15 @@ export default function Custom() {
           complete.
         </div>
       </Grid4Styles>
+      <div className="gridSpacer" />
       <br />
       <br />
       <Contact />
       <style jsx>{`
+        .gridSpacer {
+          width: 100%;
+          height: 4rem;
+        }
         ul {
           padding-left: calc(2 * var(--spacing));
         }
