@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Social from './Social';
 import { siteData } from '../public/site-data';
 import { instagramUrl, facebookUrl } from '../config';
-import contactHeroImage from '../public/images/cad-screenshot.jpg'
+import contactHeroImage from '../public/images/cad-screenshot.jpg';
 
 export default function Contact() {
   return (
@@ -14,7 +14,6 @@ export default function Contact() {
         width={1100}
         height={500}
         quality={60}
-        priority
         placeholder="blur"
         objectFit="cover"
       />
@@ -30,36 +29,9 @@ export default function Contact() {
           <a href={`mailto: ${siteData.email}`}>{siteData.email}</a>
         </div>
         <br />
-        {/* <p>
-          <span className="medium-emphasis">
-            {`${siteData.address.street} ${siteData.address.street2}`}
-            <br />
-            {`${siteData.address.city}, ${siteData.address.state} ${siteData.address.zipCode}`}
-            <br />
-            <br />
-            <a href="tel:13601234567">{siteData.phoneNumber}</a> */}
-        {/* <br />
-            <br /> */}
-        {/* <b>
-              <a
-                href={siteData.address.directions}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Get Directions
-              </a>
-            </b> */}
-        {/* </span> */}
-        {/* </p> */}
       </div>
 
       <div className="social-media-container">
-        {/* <h3>Sign up for our newsletter to receive updates</h3>
-        <Button buttonText="SIGN UP" buttonLink="" />
-        <br />
-        <br />
-        <p>We respect your privacy</p> */}
-        {/* <h3>For new product updates follow us on social media</h3> */}
         <div className="social-media-contents">
           <Social
             href={instagramUrl}
@@ -78,19 +50,9 @@ export default function Contact() {
       </div>
 
       <style jsx>{`
-        /* .contact-container {
-          display: flex;
-          flex-direction: column;
-        } */
-        /* .contact-header {
-          padding: 3rem 0 0;
-        } */
-
         .social-media-container {
           display: flex;
           flex-direction: column;
-          /* justify-content: flex-start; */
-          /* align-items: flex-start; */
           margin-top: var(--spacing);
         }
         .social-media-contents {
