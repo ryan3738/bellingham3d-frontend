@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Contact from './Contact';
 // import Gallery from './Gallery';
 import Grid4Styles from './styles/Grid4Styles';
-import customHeroImage from '../public/images/laptop-parts-printer.jpg'
+import customHeroImage from '../public/images/laptop-parts-printer.jpg';
 
 export default function Custom() {
   return (
