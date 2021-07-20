@@ -10,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
   src: url("/fonts/octin-college/octin-college-regular2.woff2") format("woff2"),url("/fonts/octin-college/octin-college-regular.woff") format("woff");
 font-weight: normal;
 font-style: normal;
-font-display: swap;
 }
 html {
   --navyBlue: var(--navyBlue-800);
