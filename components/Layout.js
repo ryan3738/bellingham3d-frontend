@@ -52,6 +52,7 @@ html {
  html,
  body{
   font-family:  'Octin College Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-display: swap;
   padding: 0;
   margin: 0;
   /* font-size: 1.6rem;
@@ -73,6 +74,7 @@ a:hover{
 }
 button{
   font-family:  'Octin College Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-display: swap;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
