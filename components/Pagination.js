@@ -30,7 +30,11 @@ export default function Pagination({ page }) {
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
-        <a aria-disabled={page <= 1} className="page-arrow">
+        <a
+          aria-disabled={page <= 1}
+          className="page-arrow"
+          title="Previous Page"
+        >
           <FaArrowLeft />
         </a>
       </Link>
@@ -39,7 +43,11 @@ export default function Pagination({ page }) {
       </div>
       {/* <div>{count} Items Total</div> */}
       <Link href={`/products/${page + 1}`}>
-        <a aria-disabled={page >= pageCount} className="page-arrow">
+        <a
+          aria-disabled={page >= pageCount}
+          className="page-arrow"
+          title="Next Page"
+        >
           <FaArrowRight />
         </a>
       </Link>
