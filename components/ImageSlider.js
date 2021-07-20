@@ -8,7 +8,7 @@ import {
 import { IconContext } from 'react-icons/lib';
 import { ButtonIconStyles, ColorStateStyles } from './styles/StateStyles';
 
-export default function ImageSlider({ slides }) {
+export default function ImageSlider({ slides, alt }) {
   const [current, setCurrent] = useState(0);
   const { length } = slides;
 
@@ -33,7 +33,7 @@ export default function ImageSlider({ slides }) {
           {index === current && (
             <img
               src={slide.image.publicUrlTransformed}
-              alt={slide.altText}
+              alt={alt}
               className="image"
               loading="lazy"
             />

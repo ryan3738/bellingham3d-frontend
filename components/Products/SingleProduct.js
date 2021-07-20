@@ -77,7 +77,7 @@ export default function SingleProduct({ id }) {
         <Head>
           <title>Bellingham 3D | {product.name} </title>
         </Head>
-        <ImageSlider slides={product.image} />
+        <ImageSlider slides={product.image} alt={product.name} />
         <div className="details">
           <h2>{product.name}</h2>
           <h3>{formatMoney(product.price)}</h3>
