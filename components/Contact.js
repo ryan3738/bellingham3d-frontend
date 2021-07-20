@@ -3,16 +3,17 @@ import Image from 'next/image';
 import Social from './Social';
 import { siteData } from '../public/site-data';
 import { instagramUrl, facebookUrl } from '../config';
+import contactHeroImage from '../public/images/cad-screenshot.jpg'
 
 export default function Contact() {
   return (
     <>
       <Image
-        src="/images/cad-screenshot.jpg"
+        src={contactHeroImage}
         alt="Screenshot of a computer monitor with 3D CAD model"
         width={1100}
         height={500}
-        quality={75}
+        quality={60}
         priority
         placeholder="blur"
         objectFit="cover"

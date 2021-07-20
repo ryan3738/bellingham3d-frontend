@@ -1,14 +1,15 @@
 import Image from 'next/image';
+import aboutHeroImage from '../public/images/ultimaker-closeup.jpg'
 
 export default function About() {
   return (
     <>
       <Image
-        src="/images/ultimaker-closeup.jpg"
+        src={aboutHeroImage}
         alt="Ultimaker 3D printer closeup image"
         width={1100}
         height={500}
-        quality={75}
+        quality={60}
         priority
         placeholder="blur"
         objectFit="cover"
