@@ -12,6 +12,9 @@ export default function Contact() {
         alt="Screenshot of a computer monitor with 3D CAD model"
         width={1100}
         height={500}
+        quality={75}
+        priority
+        placeholder="blur"
         objectFit="cover"
       />
 

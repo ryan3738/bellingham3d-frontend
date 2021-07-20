@@ -8,6 +8,9 @@ export default function About() {
         alt="Ultimaker 3D printer closeup image"
         width={1100}
         height={500}
+        quality={75}
+        priority
+        placeholder="blur"
         objectFit="cover"
       />
       <br />
