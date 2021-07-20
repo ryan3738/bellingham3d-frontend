@@ -31,13 +31,11 @@ export default function Custom() {
           <span>
             <ul>
               <li>Got your own 3D CAD file you would like to have printed?</li>
-              <br />
               <li>
                 Have an idea but need help designing a 3D file to create a
                 printable part?
               </li>
             </ul>
-            <br />
             We can help you design and make a custom part.
           </span>
         </div>
@@ -60,6 +58,9 @@ export default function Custom() {
       <style jsx>{`
         ul {
           padding-left: calc(2 * var(--spacing));
+        }
+        li {
+          margin: var(--spacing) 0;
         }
       `}</style>
     </>
