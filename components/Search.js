@@ -73,6 +73,7 @@ export default function Search() {
             placeholder: 'Search for an Item',
             id: 'search',
             className: loading ? 'loading' : '',
+            'aria-label': 'product search',
           })}
         />
       </div>
