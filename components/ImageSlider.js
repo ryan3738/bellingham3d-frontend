@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import {
   FaArrowAltCircleRight,
@@ -31,11 +32,15 @@ export default function ImageSlider({ slides, alt }) {
           key={index}
         >
           {index === current && (
-            <img
+            <Image
               src={slide.image.publicUrlTransformed}
               alt={alt}
-              className="image"
+              // className="image"
               loading="lazy"
+              layout="intrinsic"
+              height="600"
+              width="600"
+              // objectFit="cover"
             />
           )}
         </div>
