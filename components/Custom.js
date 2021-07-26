@@ -1,12 +1,17 @@
 import Image from 'next/image';
+import Head from 'next/head';
 import Contact from './Contact';
 // import Gallery from './Gallery';
 import Grid4Styles from './styles/Grid4Styles';
 import customHeroImage from '../public/images/laptop-parts-printer.jpg';
+import { siteData } from '../public/site-data';
 
 export default function Custom() {
   return (
     <>
+      <Head>
+        <title>Custom | {siteData.businessName}</title>
+      </Head>
       <Image
         src={customHeroImage}
         alt="Screenshot of a computer monitor with 3D CAD model"
