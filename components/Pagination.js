@@ -26,7 +26,7 @@ export default function Pagination({ page }) {
     <PaginationStyles>
       <Head>
         <title>
-          {siteData.businessName} Products - Page {page} of {pageCount}
+          {siteData.businessName} Products | Page {page} of {pageCount}
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>

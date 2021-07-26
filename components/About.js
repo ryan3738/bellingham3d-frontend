@@ -1,9 +1,14 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import aboutHeroImage from '../public/images/ultimaker-closeup.jpg';
+import { siteData } from '../public/site-data';
 
 export default function About() {
   return (
     <>
+      <Head>
+        <title>About | {siteData.businessName}</title>
+      </Head>
       <Image
         src={aboutHeroImage}
         alt="Ultimaker 3D printer closeup image"

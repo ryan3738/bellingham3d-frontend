@@ -1,13 +1,19 @@
 // import utilStyles from '../styles/utils.module.css'
 import Image from 'next/image';
+import Head from 'next/head';
 import Social from './Social';
 import { siteData } from '../public/site-data';
 import { instagramUrl, facebookUrl } from '../config';
 import contactHeroImage from '../public/images/cad-screenshot.jpg';
 
-export default function Contact() {
+export default function Contact(enableTitleTag) {
   return (
     <>
+      {enableTitleTag === true && (
+        <Head>
+          <title>Contact | {siteData.businessName}</title>
+        </Head>
+      )}
       <Image
         src={contactHeroImage}
         alt="Screenshot of a computer monitor with 3D CAD model"
@@ -17,7 +23,6 @@ export default function Contact() {
         placeholder="blur"
         objectFit="cover"
       />
-
       <h2>Contact Us</h2>
       <div id="contact-info">
         <h3>
@@ -30,7 +35,6 @@ export default function Contact() {
         </div>
         <br />
       </div>
-
       <div className="social-media-container">
         <div className="social-media-contents">
           <Social
@@ -48,7 +52,6 @@ export default function Contact() {
           /> */}
         </div>
       </div>
-
       <style jsx>{`
         .social-media-container {
           display: flex;

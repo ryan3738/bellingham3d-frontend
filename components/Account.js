@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import Link from 'next/link';
+import { siteData } from '../public/site-data';
 import DisplayAddress from './Addresses/DisplayAddress';
 import Button from './Button';
 import SignOut from './SignOut';
@@ -11,6 +13,11 @@ export default function Account(props) {
   // console.log(user);
   return (
     <ContainerGrid>
+      <Head>
+        <title>
+          {user.name || user.email} Dashboard | {siteData.businessName}
+        </title>
+      </Head>
       <h1>Account Dashboard</h1>
       <h2>{user?.name}</h2>
       <h3>{user.email}</h3>

@@ -7,7 +7,7 @@ import {
   FaArrowRight,
 } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import { ButtonIconStyles, ColorStateStyles } from './styles/StateStyles';
+import { ButtonIconStyles } from './styles/StateStyles';
 
 export default function ImageSlider({ slides, alt }) {
   const [current, setCurrent] = useState(0);
