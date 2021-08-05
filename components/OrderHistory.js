@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
+import { siteData } from '../public/site-data';
 import DisplayError from './ErrorMessage';
 import OrderHistoryStyles from './styles/OrderHistoryStyles';
 
@@ -55,7 +56,9 @@ export default function OrderHistory() {
   return (
     <div className="wrapper">
       <Head>
-        <title>Your Orders ({allOrders.length}) </title>
+        <title>
+          Orders ({allOrders.length}) | {siteData.businessName}
+        </title>
       </Head>
       <h2>{`You have ${allOrders.length} order${
         allOrders.length === 1 ? '' : 's'

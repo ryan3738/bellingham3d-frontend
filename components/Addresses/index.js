@@ -1,7 +1,5 @@
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import Head from 'next/head';
-import { useState } from 'react';
 import DisplayError from '../ErrorMessage';
 import ContainerGrid from '../styles/ContainerGrid';
 import Grid4Styles from '../styles/Grid4Styles';
@@ -9,6 +7,7 @@ import CreateAddress from './CreateAddress';
 import Address from './Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
+import { siteData } from '../../public/site-data';
 
 export default function Addresses({
   showCreateNew,
@@ -24,7 +23,7 @@ export default function Addresses({
   return (
     <ContainerGrid>
       <Head>
-        <title>Your Addresses </title>
+        <title>Addresses | {siteData.businessName}</title>
       </Head>
       <h2>Your Addresses</h2>
       {/* <p>Click an address below to see details</p> */}

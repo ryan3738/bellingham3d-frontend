@@ -11,6 +11,7 @@ import ProductVariants from './ProductVariants';
 import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
+import { siteData } from '../../public/site-data';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -75,7 +76,9 @@ export default function SingleProduct({ id }) {
     <>
       <ProductStyles>
         <Head>
-          <title>Bellingham 3D | {product.name} </title>
+          <title>
+            {product.name} | {siteData.businessName}
+          </title>
         </Head>
         <ImageSlider slides={product.image} alt={product.name} />
         <div className="details">
