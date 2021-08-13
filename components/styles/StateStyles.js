@@ -19,7 +19,7 @@ const ButtonStyles = styled.button`
     background: var(--navyBlue-800);
   }
   :focus {
-    outline: 0.15rem solid var(--navyBlue-900);
+    /* outline: 0.15rem solid var(--navyBlue-900); */
   }
   :disabled,
   [disabled] {
