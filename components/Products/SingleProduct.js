@@ -40,7 +40,7 @@ export default function SingleProduct({ id }) {
     },
   });
 
-  console.log('data', data);
+  // console.log('data', data);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
