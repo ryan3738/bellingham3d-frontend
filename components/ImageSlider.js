@@ -111,13 +111,14 @@ export default function ImageSlider({ slides, alt }) {
           min-width: 44px;
           min-height: 44px;
         }
+
         .slider-pagination-bullet {
           transition: opacity 500ms ease-in-out;
           background: black;
           opacity: 0.36;
           height: 12px;
           width: 12px;
-          border-radius: 10px;
+          border-radius: 6px;
         }
 
         .slider-pagination-bullet.active {
