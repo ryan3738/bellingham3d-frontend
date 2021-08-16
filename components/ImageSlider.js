@@ -45,7 +45,7 @@ export default function ImageSlider({ slides, alt }) {
           <div className="slider-nav">
             <div className="left-arrow">
               <ButtonIconStyles title="Previous Slide">
-                <IconContext.Provider value={{ size: '44px' }}>
+                <IconContext.Provider value={{ size: '24px' }}>
                   <FaArrowLeft onClick={prevSlide} />
                 </IconContext.Provider>
               </ButtonIconStyles>
@@ -69,7 +69,7 @@ export default function ImageSlider({ slides, alt }) {
             ))}
             <div className="right-arrow">
               <ButtonIconStyles title="Next Slide">
-                <IconContext.Provider value={{ size: '44px' }}>
+                <IconContext.Provider value={{ size: '24px' }}>
                   <FaArrowRight onClick={nextSlide} />
                 </IconContext.Provider>
               </ButtonIconStyles>
