@@ -1,11 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import {
-  FaArrowAltCircleRight,
-  FaArrowAltCircleLeft,
-  FaArrowLeft,
-  FaArrowRight,
-} from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { ButtonIconStyles } from './styles/StateStyles';
 
@@ -16,10 +11,11 @@ export default function ImageSlider({ slides, alt }) {
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
+
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
-
+  // Check if images are passed in
   if (!Array.isArray(slides) || slides.length <= 0) {
     return null;
   }
@@ -35,7 +31,6 @@ export default function ImageSlider({ slides, alt }) {
             <Image
               src={slide.image.publicUrlTransformed}
               alt={alt}
-              // className="image"
               loading="lazy"
               layout="intrinsic"
               height="600"
@@ -50,14 +45,31 @@ export default function ImageSlider({ slides, alt }) {
           <div className="slider-nav">
             <div className="left-arrow">
               <ButtonIconStyles title="Previous Slide">
-                <IconContext.Provider value={{ size: '42px' }}>
+                <IconContext.Provider value={{ size: '44px' }}>
                   <FaArrowLeft onClick={prevSlide} />
                 </IconContext.Provider>
               </ButtonIconStyles>
             </div>
+            {slides.map((slide, index) => (
+              <button
+                className="slider-pagination-bullet-wrapper"
+                aria-label={`Go to slide ${index + 1} of ${slides.length}`}
+                title={`Go to slide ${index + 1} of ${slides.length}`}
+                key={index}
+                type="button"
+                disabled={index === current}
+                onClick={() => setCurrent(index)}
+              >
+                <div
+                  className={`slider-pagination-bullet ${
+                    index === current ? ' active' : ''
+                  }`}
+                />
+              </button>
+            ))}
             <div className="right-arrow">
               <ButtonIconStyles title="Next Slide">
-                <IconContext.Provider value={{ size: '42px' }}>
+                <IconContext.Provider value={{ size: '44px' }}>
                   <FaArrowRight onClick={nextSlide} />
                 </IconContext.Provider>
               </ButtonIconStyles>
@@ -81,7 +93,7 @@ export default function ImageSlider({ slides, alt }) {
           height: auto;
           width: 100%;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
           align-content: center;
           text-align: center;
@@ -91,11 +103,31 @@ export default function ImageSlider({ slides, alt }) {
           height: 600px;
           border-radius: 10px; */
         }
+        .slider-pagination-bullet-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          min-width: 44px;
+          min-height: 44px;
+        }
+        .slider-pagination-bullet {
+          transition: opacity 500ms ease-in-out;
+          background: black;
+          opacity: 0.36;
+          height: 12px;
+          width: 12px;
+          border-radius: 10px;
+        }
+
+        .slider-pagination-bullet.active {
+          opacity: 1;
+        }
 
         .right-arrow,
         .left-arrow {
-          width: 100%;
-          height: auto;
+          width: 44px;
+          height: 44px;
           top: 50%;
           left: 32px;
           z-index: 10;
@@ -105,12 +137,13 @@ export default function ImageSlider({ slides, alt }) {
 
         .slide {
           opacity: 0;
-          transition-duration: 0.5s ease;
+          transition: opacity 500ms ease-in-out;
         }
 
         .slide.active {
           opacity: 1;
-          transition-duration: 0.5s;
+          transition-duration: 500ms;
+
           /* transform: scale(1.08); */
         }
       `}</style>

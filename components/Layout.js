@@ -75,6 +75,7 @@ button{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background: none;
   /* cursor: pointer; */
   /* background-color: var(--navyBlue); */
   /* border-radius: 5px; */
