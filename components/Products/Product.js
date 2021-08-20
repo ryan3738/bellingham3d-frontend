@@ -21,24 +21,6 @@ export default function Product({ product }) {
             objectFit="cover"
           />
 
-          {/* TODO: next image component */}
-
-          {/* <div
-            id="image-div"
-            // className={data.imageSize}
-          >
-            <Image
-              className="image"
-              src={product?.image[0]?.image?.publicUrlTransformed}
-              alt={product.name}
-              layout="responsive"
-              objectFit="cover"
-              height="560"
-              width="560"
-              // unoptimized={true}
-              // unsized='true'
-            />
-          </div> */}
           <div className="productText">
             {product.name}
 
