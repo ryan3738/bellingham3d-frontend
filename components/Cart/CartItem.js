@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import Link from 'next/link';
 import { IconContext } from 'react-icons/lib';
 import { FaMinusSquare, FaPlusSquare } from 'react-icons/fa';
+import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import { ButtonIconStyles } from '../styles/StateStyles';
@@ -41,32 +42,38 @@ const CartItemStyles = styled.div`
 export default function CartItem({
   cartItem: { product, quantity, id, variants },
 }) {
-  // const { product } = cartItem;
-  // const { quantity, id } = cartItem;
-  // console.log('Cart Variants', variants);
   const [updateCartItem, { loading }] = useMutation(UPDATE_CART_ITEM_MUTATION);
-  // console.log(cartItem);
   if (!product) return null;
   return (
     <CartItemStyles>
       <div className="item-container">
-        <Link href={`/product/${product.id}`}>
-          <a>
-            {product.image[0]?.image?.publicUrlTransformed ? (
-              <img
-                width="100"
-                src={product.image[0]?.image?.publicUrlTransformed}
-                alt={product.name}
-              />
-            ) : (
-              <img
-                width="100"
-                src="/public/android-chrome-512x512.png"
-                alt=""
-              />
-            )}
-          </a>
-        </Link>
+        <div className="cart-image">
+          <Link href={`/product/${product.id}`}>
+            <a>
+              {product.image[0]?.image?.publicUrlTransformed ? (
+                <Image
+                  src={product.image[0]?.image?.publicUrlTransformed}
+                  alt={product.name}
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                  layout="fixed"
+                  objectFit="contain"
+                />
+              ) : (
+                <Image
+                  src="/public/android-chrome-512x512.png"
+                  alt=""
+                  width="100"
+                  height="100"
+                  loading="lazy"
+                  layout="fixed"
+                  objectFit="contain"
+                />
+              )}
+            </a>
+          </Link>
+        </div>
         <div className="item-details-container">
           <h3>{product.name}</h3>
           {variants.map((variant) => (
@@ -147,6 +154,7 @@ export default function CartItem({
           flex-flow: row wrap;
           justify-content: flex-start;
           align-items: flex-start;
+          margin: 0.5rem;
         }
         .price-quantity-wrapper {
           padding: 0.5rem;
@@ -159,6 +167,13 @@ export default function CartItem({
           width: 100%;
           height: auto;
           padding: 0.25rem;
+          margin: 0.5rem;
+        }
+        .cart-image {
+          position: relative;
+          margin-right: 1rem;
+          width: 100px;
+          height: auto;
         }
 
         .quanity-container {
