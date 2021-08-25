@@ -2,20 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { FaWindowClose } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import styled from 'styled-components';
 import { ButtonIconStyles } from '../styles/StateStyles';
-
-const BigButton = styled.button`
-  max-width: 50px;
-  font-size: 3rem;
-  background: none;
-  border: 0;
-  color: var(--red);
-  &:hover {
-    color: var(--red);
-    cursor: pointer;
-  }
-`;
 
 const REMOVE_FROM_CART_MUTATION = gql`
   mutation REMOVE_FROM_CART_MUTATION($id: ID!) {
