@@ -18,7 +18,7 @@ export default function AddToCart({ id, variantIds }) {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   const handleClick = () => {
-    console.log('Addding item #', id, 'and variants to cart...', variantIds);
+    // console.log('Addding item #', id, 'and variants to cart...', variantIds);
   };
 
   return (
