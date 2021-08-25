@@ -21,17 +21,10 @@ export default function Cart() {
   const { cartOpen, closeCart } = useCart();
   if (!me) return null;
 
-  // useEffect(() => {
-  //   cartShippingAddress(me.defaultShipping);
-  //   console.log('Default Shipping', me.defaultShipping);
-  //   console.log('cartShippingAddress', cartShippingAddress());
-  // }, [me.defaultShipping]);
-
   const shippingRequired = me.cart.some(
     (cartItem) => cartItem.product.inventoryItem.requiresShipping === true
   );
-  // console.log('Is shipping required?', shippingRequired);
-  // console.log('Cart', me.cart);
+
   return (
     <CartStyles open={cartOpen}>
       <header>
