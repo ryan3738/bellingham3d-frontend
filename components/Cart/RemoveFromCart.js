@@ -42,15 +42,22 @@ export default function RemoveFromCart({ id }) {
     // },
   });
   return (
-    <ButtonIconStyles
-      onClick={removeFromCart}
-      disabled={loading}
-      type="button"
-      title="Remove from cart"
-    >
-      <IconContext.Provider value={{ size: '42px' }}>
-        <FaWindowClose />
-      </IconContext.Provider>
-    </ButtonIconStyles>
+    <div className="remove-from-cart-button">
+      <ButtonIconStyles
+        onClick={removeFromCart}
+        disabled={loading}
+        type="button"
+        title="Remove from cart"
+      >
+        <IconContext.Provider value={{ size: '42px' }}>
+          <FaWindowClose />
+        </IconContext.Provider>
+      </ButtonIconStyles>
+      <style jsx>{`
+        .remove-from-cart-button {
+          margin: 0.5rem;
+        }
+      `}</style>
+    </div>
   );
 }
