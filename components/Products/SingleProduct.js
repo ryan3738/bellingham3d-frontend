@@ -40,14 +40,10 @@ export default function SingleProduct({ id }) {
     },
   });
 
-  // console.log('data', data);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   if (!data) return <SeeAllProducts />;
-  const { Product: product } = data || null;
-
-  // console.log('product', product);
+  const { product } = data || null;
 
   // Add a variant to the variantsState array for current product
   const addVariant = (name, value) => {
