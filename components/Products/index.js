@@ -45,7 +45,6 @@ const ProductsListStyles = styled.div`
 
 export default function Products({ page }) {
   // Hook that will return query info
-  // console.log('PAGE', page);
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
