@@ -31,7 +31,7 @@ const CURRENT_USER_QUERY = gql`
             name
             price
             description
-            image {
+            images {
               image {
                 publicUrlTransformed(transformation: { width: "120" })
               }

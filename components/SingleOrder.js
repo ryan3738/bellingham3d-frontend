@@ -21,7 +21,7 @@ const SINGLE_ORDER_QUERY = gql`
         price
         quantity
         variants
-        image {
+        images {
           id
           image {
             id
@@ -91,7 +91,10 @@ export default function SingleOrder({ id }) {
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
-            <img src={item.image.image.publicUrlTransformed} alt={item.title} />
+            <img
+              src={item.images.image.publicUrlTransformed}
+              alt={item.title}
+            />
             <div className="item-details">
               <strong>
                 {item.name}

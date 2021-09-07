@@ -20,7 +20,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       category {
         name
       }
-      image {
+      images {
         id
         image {
           publicUrlTransformed(transformation: { width: "360" })

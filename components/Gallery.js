@@ -15,7 +15,7 @@ export const ALL_PRODUCTS_GALLERY_QUERY = gql`
       category {
         name
       }
-      image {
+      images {
         id
         image {
           publicUrlTransformed

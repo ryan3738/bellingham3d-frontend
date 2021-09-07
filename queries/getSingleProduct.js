@@ -15,7 +15,7 @@ export const SINGLE_PRODUCT_QUERY = gql`
           name
         }
       }
-      image {
+      images {
         altText
         image {
           publicUrlTransformed(transformation: { width: "600" })
