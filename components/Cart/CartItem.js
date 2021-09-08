@@ -11,7 +11,7 @@ import { ButtonIconStyles } from '../styles/StateStyles';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
-    updateCartItem(id: $id, data: { quantity: $quantity }) {
+    updateCartItem(where: { id: $id }, data: { quantity: $quantity }) {
       id
       quantity
     }
@@ -50,9 +50,9 @@ export default function CartItem({
         <div className="cart-image">
           <Link href={`/product/${product.id}`}>
             <a>
-              {product.image[0]?.image?.publicUrlTransformed ? (
+              {product.images[0]?.image?.publicUrlTransformed ? (
                 <Image
-                  src={product.image[0]?.image?.publicUrlTransformed}
+                  src={product.images[0]?.image?.publicUrlTransformed}
                   alt={product.name}
                   width="100"
                   height="100"
