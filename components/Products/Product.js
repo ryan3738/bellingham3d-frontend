@@ -12,7 +12,7 @@ export default function Product({ product }) {
       <Link href={`/product/${product.id}`}>
         <a>
           <Image
-            src={product?.image[0]?.image?.publicUrlTransformed}
+            src={product?.images[0]?.image?.publicUrlTransformed}
             alt={product.name}
             loading="lazy"
             layout="intrinsic"

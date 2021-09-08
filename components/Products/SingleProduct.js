@@ -76,7 +76,7 @@ export default function SingleProduct({ id }) {
             {product.name} | {siteData.businessName}
           </title>
         </Head>
-        <ImageSlider slides={product.image} alt={product.name} />
+        <ImageSlider slides={product.images} alt={product.name} />
         <div className="details">
           <h2>{product.name}</h2>
           <h3>{formatMoney(product.price)}</h3>
