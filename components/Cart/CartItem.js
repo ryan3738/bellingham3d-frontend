@@ -77,8 +77,8 @@ export default function CartItem({
         <div className="item-details-container">
           <h3>{product.name}</h3>
           {variants.map((variant) => (
-            <div key={variant.variantType.name}>
-              {variant.variantType.name} - {variant.name}
+            <div key={variant.Option.name}>
+              {variant.Option.name} - {variant.name}
             </div>
           ))}
           <div className="price-quanity-container">

@@ -10,7 +10,7 @@ export const SINGLE_PRODUCT_QUERY = gql`
       variants {
         id
         name
-        variantType {
+        Option {
           id
           name
         }
