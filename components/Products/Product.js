@@ -6,10 +6,7 @@ import { siteData } from '../../public/site-data';
 
 export default function Product({ product }) {
   const user = useUser();
-  console.log(siteData.backupPhoto.src);
   return (
-    // The question mark (?) is "optional chaining" that checks for nullish value at each level
-
     <div className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
