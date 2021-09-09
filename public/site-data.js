@@ -25,7 +25,7 @@ export const siteData = {
     instagram: '',
     mailingListSignup: '',
   },
-  backupPhoto: {
+  placeholderImage: {
     small: {
       src: '/android-chrome-192x192.png',
     },

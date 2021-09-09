@@ -56,7 +56,7 @@ export default function CartItem({
                 src={
                   product.images[0]
                     ? product?.images[0]?.image?.publicUrlTransformed
-                    : siteData.backupPhoto.small.src
+                    : siteData.placeholderImage.small.src
                 }
                 alt={product.name}
                 width="100"

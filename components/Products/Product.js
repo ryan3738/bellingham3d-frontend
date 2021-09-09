@@ -17,7 +17,7 @@ export default function Product({ product }) {
             src={
               product.images[0]
                 ? product?.images[0]?.image?.publicUrlTransformed
-                : siteData.backupPhoto.medium.src
+                : siteData.placeholderImage.medium.src
             }
             alt={product.name}
             loading="lazy"
