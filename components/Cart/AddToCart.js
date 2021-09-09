@@ -6,7 +6,7 @@ import { CURRENT_USER_QUERY } from '../User';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!, $variantIds: [ID]) {
-    addToCart(productId: $id, productVariantIds: $variantIds) {
+    addToCart(productId: $id, variantIds: $variantIds) {
       id
     }
   }
