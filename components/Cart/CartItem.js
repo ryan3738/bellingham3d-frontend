@@ -8,6 +8,7 @@ import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import { ButtonIconStyles } from '../styles/StateStyles';
+import { siteData } from '../../public/site-data';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
@@ -50,27 +51,20 @@ export default function CartItem({
         <div className="cart-image">
           <Link href={`/product/${product.id}`}>
             <a>
-              {product.images[0]?.image?.publicUrlTransformed ? (
-                <Image
-                  src={product.images[0]?.image?.publicUrlTransformed}
-                  alt={product.name}
-                  width="100"
-                  height="100"
-                  loading="lazy"
-                  layout="fixed"
-                  objectFit="contain"
-                />
-              ) : (
-                <Image
-                  src="/public/android-chrome-512x512.png"
-                  alt=""
-                  width="100"
-                  height="100"
-                  loading="lazy"
-                  layout="fixed"
-                  objectFit="contain"
-                />
-              )}
+              <Image
+                // src={product.images[0]?.image?.publicUrlTransformed}
+                src={
+                  product.images[0]
+                    ? product?.images[0]?.image?.publicUrlTransformed
+                    : siteData.backupPhoto.small.src
+                }
+                alt={product.name}
+                width="100"
+                height="100"
+                loading="lazy"
+                layout="fixed"
+                objectFit="contain"
+              />
             </a>
           </Link>
         </div>
