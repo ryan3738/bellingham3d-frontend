@@ -18,7 +18,7 @@ export default function Addresses({
   const { data, loading, error } = useQuery(USER_ADDRESSES_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  const addresses = data.allCustomerAddresses;
+  const addresses = data.customerAddresses;
 
   return (
     <ContainerGrid>

@@ -21,7 +21,7 @@ const CREATE_ADDRESS_MUTATION = gql`
     $country: String!
     $zip: String!
     $phone: String
-    $isDefaultShipping: UserRelateToOneInput
+    $isDefaultShipping: UserRelateToOneForCreateInput
   ) {
     createCustomerAddress(
       data: {

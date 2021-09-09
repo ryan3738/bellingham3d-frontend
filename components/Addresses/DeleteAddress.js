@@ -5,7 +5,7 @@ import { ButtonStyles } from '../styles/StateStyles';
 
 const DELETE_ADDRESS_MUTATION = gql`
   mutation DELETE_ADDRESS_MUTATION($id: ID!) {
-    deleteCustomerAddress(id: $id) {
+    deleteCustomerAddress(where: { id: $id }) {
       id
       firstName
     }
