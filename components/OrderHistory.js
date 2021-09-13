@@ -10,7 +10,7 @@ import OrderHistoryStyles from './styles/OrderHistoryStyles';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
-    allOrders {
+    orders {
       id
       charge
       total
@@ -20,7 +20,7 @@ const USER_ORDERS_QUERY = gql`
         description
         price
         quantity
-        images {
+        image {
           id
           image {
             id
@@ -52,20 +52,20 @@ export default function OrderHistory() {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  const { allOrders } = data;
+  const { orders } = data;
   return (
     <div className="wrapper">
       <Head>
         <title>
-          Orders ({allOrders.length}) | {siteData.businessName}
+          Orders ({orders.length}) | {siteData.businessName}
         </title>
       </Head>
-      <h2>{`You have ${allOrders.length} order${
-        allOrders.length === 1 ? '' : 's'
+      <h2>{`You have ${orders.length} order${
+        orders.length === 1 ? '' : 's'
       }! `}</h2>
       <p>Click an order below to see details</p>
       <OrderUl>
-        {allOrders.map((order) => (
+        {orders.map((order) => (
           <OrderHistoryStyles key={order.id}>
             <Link href={`/order/${order.id}`}>
               <a>
@@ -82,7 +82,7 @@ export default function OrderHistory() {
                 </div>
                 <div className="images">
                   <img
-                    src={order?.items[0].images?.image?.publicUrlTransformed}
+                    src={order?.items[0].image?.image?.publicUrlTransformed}
                     alt={order.items[0].name}
                   />
                 </div>

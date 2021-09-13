@@ -98,8 +98,8 @@ function CheckoutForm({ shippingId }) {
   }
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
-      {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
-      {graphQlError && <p style={{ fontSize: 12 }}>{error.message}</p>}
+      {error && <p style={{ fontSize: 12 }}>{error?.message}</p>}
+      {graphQlError && <p style={{ fontSize: 12 }}>{error?.message}</p>}
       <CardElement />
       <LargeButton>
         Confirm Order

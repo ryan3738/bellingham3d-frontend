@@ -9,7 +9,7 @@ import DisplayAddress from './Addresses/DisplayAddress';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
-    order: Order(where: { id: $id }) {
+    order(where: { id: $id }) {
       id
       charge
       total
@@ -21,7 +21,7 @@ const SINGLE_ORDER_QUERY = gql`
         price
         quantity
         variants
-        images {
+        image {
           id
           image {
             id
@@ -91,10 +91,7 @@ export default function SingleOrder({ id }) {
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
-            <img
-              src={item.images.image.publicUrlTransformed}
-              alt={item.title}
-            />
+            <img src={item.image.image.publicUrlTransformed} alt={item.title} />
             <div className="item-details">
               <strong>
                 {item.name}
