@@ -8,7 +8,7 @@ import { useUser } from '.';
 export default function Account(props) {
   const user = useUser();
   if (!user) return null;
-  // console.log(user);
+  console.log(user);
   return (
     <ContainerGrid>
       <Head>

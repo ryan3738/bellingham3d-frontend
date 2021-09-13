@@ -13,7 +13,7 @@ import CheckingOut from '../CheckingOut';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
 
-export const cartShippingAddress = makeVar();
+// export const cartShippingAddress = makeVar();
 
 export default function Cart() {
   const me = useUser();

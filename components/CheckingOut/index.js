@@ -26,7 +26,7 @@ function CheckingOutUser({ me }) {
   // if (error) return <DisplayError error={error} />;
   // console.log('address data', data);
 
-  // TODO Add billing address in if necessary
+  // TODO Add billing address when necessary
   // const [billingAddress, setBillingAddress] = useState(
   //   me.defaultShipping || newAddress
   // );
