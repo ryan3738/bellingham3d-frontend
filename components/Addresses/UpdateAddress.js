@@ -4,7 +4,6 @@ import { object } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
-import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayError from '../ErrorMessage';
 import Form from '../styles/Form';
 import { ButtonStyles } from '../styles/StateStyles';
@@ -23,10 +22,10 @@ const UPDATE_ADDRESS_MUTATION = gql`
     $country: String
     $zip: String
     $phone: String
-    $isDefaultShipping: UserRelateToOneForCreateInput
+    $isDefaultShipping: UserRelateToOneForUpdateInput
   ) {
     updateCustomerAddress(
-      id: $id
+      where: { id: $id }
       data: {
         firstName: $firstName
         lastName: $lastName
