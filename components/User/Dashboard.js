@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { siteData } from '../public/site-data';
-import Button from './Button';
+import { siteData } from '../../public/site-data';
+import Button from '../Button';
 import SignOut from './SignOut';
-import ContainerGrid from './styles/ContainerGrid';
-import { useUser } from './User';
+import ContainerGrid from '../styles/ContainerGrid';
+import { useUser } from '.';
 
 export default function Account(props) {
   const user = useUser();

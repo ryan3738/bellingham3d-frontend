@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import formatMoney from '../lib/formatMoney';
-import DisplayError from './ErrorMessage';
-import OrderStyles from './styles/OrderStyles';
-import { formatDate } from '../lib/formatDate';
-import DisplayAddress from './Addresses/DisplayAddress';
+import formatMoney from '../../lib/formatMoney';
+import DisplayError from '../ErrorMessage';
+import OrderStyles from '../styles/OrderStyles';
+import { formatDate } from '../../lib/formatDate';
+import DisplayAddress from '../Addresses/DisplayAddress';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {

@@ -3,10 +3,10 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import DisplayError from './ErrorMessage';
-import PaginationStyles from './styles/PaginationStyles';
-import { perPage } from '../config';
-import { siteData } from '../public/site-data';
+import DisplayError from '../ErrorMessage';
+import PaginationStyles from '../styles/PaginationStyles';
+import { perPage } from '../../config';
+import { siteData } from '../../public/site-data';
 
 export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {

@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import Button from './Button';
-import { CURRENT_USER_QUERY } from './User';
+import Button from '../Button';
+import { CURRENT_USER_QUERY } from '.';
 
 const SIGN_OUT_MUTATION = gql`
   mutation {
