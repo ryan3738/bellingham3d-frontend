@@ -33,7 +33,7 @@ export default function DeleteAddress({ id, children }) {
       title="Delete Address"
       disabled={loading}
       onClick={() => {
-        if (confirm('Are you sure you want to delete this address?')) {
+        if (window.confirm('Are you sure you want to delete this address?')) {
           // Go ahead and delete it
           console.log('Delete!...');
           deleteCustomerAddress().catch((err) => alert(err.message));

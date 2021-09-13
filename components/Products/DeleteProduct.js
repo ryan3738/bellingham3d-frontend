@@ -29,7 +29,7 @@ export default function DeleteProduct({ id, children }) {
       type="button"
       disabled={loading}
       onClick={() => {
-        if (confirm('Are you sure you want to delete this item?')) {
+        if (window.confirm('Are you sure you want to delete this item?')) {
           // Go ahead and delete it
           console.log('Delete!...1');
           deleteProduct().catch((err) => alert(err.message));
