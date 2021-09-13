@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { string } from 'prop-types';
 import { ButtonStyles } from '../styles/StateStyles';
-import { CURRENT_USER_QUERY } from '../User';
+import { CURRENT_USER_QUERY } from '../../queries/getUser';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!, $variantIds: [ID]) {

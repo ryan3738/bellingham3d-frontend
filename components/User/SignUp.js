@@ -5,7 +5,7 @@ import { useState } from 'react';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
 import Error from '../ErrorMessage';
-import SignIn from '../User/SignIn';
+import SignIn from './SignIn';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const eye = <FaEye />;

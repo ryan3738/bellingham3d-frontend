@@ -1,64 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
-
-const CURRENT_USER_QUERY = gql`
-  query {
-    authenticatedItem {
-      ... on User {
-        id
-        email
-        name
-        defaultShipping {
-          id
-          firstName
-          lastName
-          company
-          address1
-          address2
-          city
-          region
-          country
-          zip
-          phone
-          isDefaultShipping {
-            id
-          }
-        }
-        cart {
-          id
-          quantity
-          product {
-            id
-            name
-            price
-            description
-            images {
-              image {
-                publicUrlTransformed(transformation: { width: "120" })
-              }
-            }
-            inventoryItem {
-              id
-              requiresShipping
-            }
-          }
-          variants {
-            name
-            Option {
-              name
-            }
-          }
-        }
-        role {
-          canManageProducts
-        }
-      }
-    }
-  }
-`;
+import { useQuery } from '@apollo/client';
+import { CURRENT_USER_QUERY } from '../../queries/getUser';
 
 export function useUser() {
   const { data } = useQuery(CURRENT_USER_QUERY);
   return data?.authenticatedItem;
 }
-
-export { CURRENT_USER_QUERY };
