@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import { siteData } from '../../public/site-data';
 import DisplayError from '../ErrorMessage';
@@ -81,9 +82,19 @@ export default function OrderHistory() {
                   <p>{formatMoney(order.total)}</p>
                 </div>
                 <div className="images">
-                  <img
-                    src={order?.items[0].image?.image?.publicUrlTransformed}
+                  {console.log('ORDER!!!', order)}
+                  <Image
+                    src={
+                      order.items[0].image
+                        ? order.items[0].image.image.publicUrlTransformed
+                        : siteData.placeholderImage.medium.src
+                    }
                     alt={order.items[0].name}
+                    loading="lazy"
+                    layout="intrinsic"
+                    height="360"
+                    width="360"
+                    objectFit="cover"
                   />
                 </div>
               </a>
