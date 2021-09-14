@@ -61,7 +61,9 @@ export default function SingleOrder({ id }) {
   return (
     <OrderStyles>
       <Head>
-        <title>Sicks Fits | {order.id} </title>
+        <title>
+          Order {order.id} | {siteData.businessName}
+        </title>
       </Head>
       <h2>Order Summary</h2>
       <div className="summary-item">
