@@ -10,14 +10,14 @@ export default function ProductVariants({
 
   // Take all variants and make list of unique variants
   const uniqueVariants = [
-    ...new Set(variants?.map((productVariant) => productVariant.Option)),
+    ...new Set(variants?.map((productVariant) => productVariant.option)),
   ];
 
   const filteredVariants = uniqueVariants.map((uniqueVariant) => ({
     typeId: uniqueVariant.id,
     typeName: uniqueVariant.name,
     variants: variants
-      .filter((variant) => variant.Option.id === uniqueVariant.id)
+      .filter((variant) => variant.option.id === uniqueVariant.id)
       .map((variant) => ({
         id: variant.id,
         name: variant.name,

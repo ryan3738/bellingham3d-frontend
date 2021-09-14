@@ -43,7 +43,7 @@ const CURRENT_USER_QUERY = gql`
           }
           variants {
             name
-            Option {
+            option {
               name
             }
           }
