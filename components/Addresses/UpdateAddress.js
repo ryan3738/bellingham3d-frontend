@@ -150,7 +150,7 @@ export default function UpdateAddress({ address }) {
             name="firstName"
             placeholder="First Name"
             autoComplete="first name"
-            value={inputs.firstName?.toUpperCase()}
+            value={inputs.firstName}
             onChange={handleChange}
           />
         </label>
@@ -162,7 +162,7 @@ export default function UpdateAddress({ address }) {
             name="lastName"
             placeholder="Last Name"
             autoComplete="last name"
-            value={inputs.lastName?.toUpperCase()}
+            value={inputs.lastName}
             onChange={handleChange}
           />
         </label>
@@ -174,7 +174,7 @@ export default function UpdateAddress({ address }) {
             name="company"
             placeholder="Company"
             autoComplete="Company"
-            value={inputs.company?.toUpperCase()}
+            value={inputs.company}
             onChange={handleChange}
           />
         </label>
@@ -187,7 +187,7 @@ export default function UpdateAddress({ address }) {
             name="address1"
             placeholder="Address 1"
             autoComplete="address 1"
-            value={inputs.address1?.toUpperCase()}
+            value={inputs.address1}
             onChange={handleChange}
           />
         </label>
@@ -199,7 +199,7 @@ export default function UpdateAddress({ address }) {
             name="address2"
             placeholder="Address 2"
             autoComplete="address 2"
-            value={inputs.address2?.toUpperCase()}
+            value={inputs.address2}
             onChange={handleChange}
           />
         </label>
@@ -212,7 +212,7 @@ export default function UpdateAddress({ address }) {
             name="city"
             placeholder="City"
             autoComplete="city"
-            value={inputs.city?.toUpperCase()}
+            value={inputs.city}
             onChange={handleChange}
           />
         </label>
@@ -225,7 +225,7 @@ export default function UpdateAddress({ address }) {
             name="region"
             placeholder="State"
             autoComplete="region"
-            value={inputs.region?.toUpperCase()}
+            value={inputs.region}
             onChange={handleChange}
           />
         </label>
@@ -238,7 +238,7 @@ export default function UpdateAddress({ address }) {
             name="country"
             placeholder="Country"
             autoComplete="country"
-            value={inputs.country?.toUpperCase()}
+            value={inputs.country}
             onChange={handleChange}
           />
         </label>

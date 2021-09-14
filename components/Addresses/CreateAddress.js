@@ -118,7 +118,7 @@ export default function CreateAddress() {
             name="firstName"
             placeholder="First Name"
             autoComplete="first name"
-            value={inputs.firstName.toUpperCase()}
+            value={inputs.firstName}
             onChange={handleChange}
           />
         </label>
@@ -130,7 +130,7 @@ export default function CreateAddress() {
             name="lastName"
             placeholder="Last Name"
             autoComplete="last name"
-            value={inputs.lastName.toUpperCase()}
+            value={inputs.lastName}
             onChange={handleChange}
           />
         </label>
@@ -142,7 +142,7 @@ export default function CreateAddress() {
             name="company"
             placeholder="Company"
             autoComplete="Company"
-            value={inputs.company.toUpperCase()}
+            value={inputs.company}
             onChange={handleChange}
           />
         </label>
@@ -155,7 +155,7 @@ export default function CreateAddress() {
             name="address1"
             placeholder="Address 1"
             autoComplete="address 1"
-            value={inputs.address1.toUpperCase()}
+            value={inputs.address1}
             onChange={handleChange}
           />
         </label>
@@ -167,7 +167,7 @@ export default function CreateAddress() {
             name="address2"
             placeholder="Address 2"
             autoComplete="address 2"
-            value={inputs.address2.toUpperCase()}
+            value={inputs.address2}
             onChange={handleChange}
           />
         </label>
@@ -180,7 +180,7 @@ export default function CreateAddress() {
             name="city"
             placeholder="City"
             autoComplete="city"
-            value={inputs.city.toUpperCase()}
+            value={inputs.city}
             onChange={handleChange}
           />
         </label>
@@ -193,7 +193,7 @@ export default function CreateAddress() {
             name="region"
             placeholder="State"
             autoComplete="region"
-            value={inputs.region.toUpperCase()}
+            value={inputs.region}
             onChange={handleChange}
           />
         </label>
@@ -206,7 +206,7 @@ export default function CreateAddress() {
             name="country"
             placeholder="Country"
             autoComplete="country"
-            value={inputs.country.toUpperCase()}
+            value={inputs.country}
             onChange={handleChange}
           />
         </label>
