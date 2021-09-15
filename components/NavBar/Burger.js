@@ -67,7 +67,7 @@ export default function Burger({ open, setOpen }) {
     </>
   );
 }
-Burger.propTypes = {
-  open: bool.isRequired,
-  setOpen: func.isRequired,
-};
+// Burger.propTypes = {
+//   open: bool.isRequired,
+//   setOpen: func.isRequired,
+// };

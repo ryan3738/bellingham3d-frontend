@@ -121,5 +121,5 @@ function CheckingOutUser({ me }) {
 }
 CheckingOutUser.propTypes = {
   // id: string.isRequired,
-  me: userType,
+  // me: userType,
 };
