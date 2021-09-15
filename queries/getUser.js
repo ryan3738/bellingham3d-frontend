@@ -1,7 +1,7 @@
 const { default: gql } = require('graphql-tag');
 
 const CURRENT_USER_QUERY = gql`
-  query {
+  query CURRENT_USER_QUERY {
     authenticatedItem {
       ... on User {
         id
