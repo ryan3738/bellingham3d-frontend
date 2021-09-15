@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { bool, string } from 'prop-types';
 import { ColorStateStyles } from '../styles/StateStyles';
 
 type AppProps = {
@@ -80,9 +79,3 @@ export default function NavItem({
     </>
   );
 }
-
-NavItem.propTypes = {
-  href: string,
-  showOnLarge: bool,
-  showInBurgerMenu: bool,
-};

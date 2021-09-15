@@ -51,7 +51,3 @@ export default function BurgerMenu({ open }: { open: boolean }): JSX.Element {
     </>
   );
 }
-
-/* BurgerMenu.propTypes = {
-  open: bool.isRequired,
-}; */
