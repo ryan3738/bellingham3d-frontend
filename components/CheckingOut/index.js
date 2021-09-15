@@ -5,7 +5,7 @@ import Address from '../Addresses/Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
-import { userType } from '../../lib/types';
+import { userType } from '../../lib/propTypes';
 import { ButtonStyles } from '../styles/StateStyles';
 
 export default function CheckingOut() {
