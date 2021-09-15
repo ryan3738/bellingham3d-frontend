@@ -7,7 +7,15 @@ import NavItem from './NavItem';
 import { ColorStateStyles } from '../styles/StateStyles';
 // import Image from 'next/image'
 
-export default function NavList({ showOnLarge, burgerMenuLink, props }) {
+type AppProps = {
+  showOnLarge?: boolean;
+  showInBurgerMenu?: boolean;
+};
+
+export default function NavList({
+  showOnLarge,
+  showInBurgerMenu,
+}: AppProps): JSX.Element {
   const user = useUser();
   const { openCart } = useCart();
   return (
@@ -15,28 +23,28 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
       <NavItem
         href="/products"
         showOnLarge={showOnLarge}
-        burgerMenuLink={burgerMenuLink}
+        showInBurgerMenu={showInBurgerMenu}
       >
         Products
       </NavItem>
       <NavItem
         href="/custom"
         showOnLarge={showOnLarge}
-        burgerMenuLink={burgerMenuLink}
+        showInBurgerMenu={showInBurgerMenu}
       >
         Custom
       </NavItem>
       <NavItem
         href="/about"
         showOnLarge={showOnLarge}
-        burgerMenuLink={burgerMenuLink}
+        showInBurgerMenu={showInBurgerMenu}
       >
         About
       </NavItem>
       <NavItem
         href="/contact"
         showOnLarge={showOnLarge}
-        burgerMenuLink={burgerMenuLink}
+        showInBurgerMenu={showInBurgerMenu}
       >
         Contact
       </NavItem>
@@ -46,7 +54,7 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
           <NavItem
             href="/account"
             showOnLarge={showOnLarge}
-            burgerMenuLink={burgerMenuLink}
+            showInBurgerMenu={showInBurgerMenu}
           >
             <IconContext.Provider value={{ size: '24px' }}>
               <div className="icons" title="Account Dashboard">
@@ -54,7 +62,7 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
               </div>
             </IconContext.Provider>
           </NavItem>
-          <NavItem burgerMenuLink={burgerMenuLink}>
+          <NavItem showInBurgerMenu={showInBurgerMenu}>
             <button type="button" onClick={openCart} title="Open Cart">
               <ColorStateStyles>
                 <IconContext.Provider value={{ size: '24px' }}>
@@ -79,14 +87,14 @@ export default function NavList({ showOnLarge, burgerMenuLink, props }) {
           <NavItem
             href="/signin"
             showOnLarge={showOnLarge}
-            burgerMenuLink={burgerMenuLink}
+            showInBurgerMenu={showInBurgerMenu}
           >
             Sign In
           </NavItem>
           <NavItem
             href="/signup"
             showOnLarge={showOnLarge}
-            burgerMenuLink={burgerMenuLink}
+            showInBurgerMenu={showInBurgerMenu}
           >
             Sign Up
           </NavItem>
