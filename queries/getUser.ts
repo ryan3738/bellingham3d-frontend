@@ -1,4 +1,4 @@
-const { default: gql } = require('graphql-tag');
+import gql from 'graphql-tag';
 
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {

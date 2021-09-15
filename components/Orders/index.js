@@ -8,31 +8,7 @@ import formatMoney from '../../lib/formatMoney';
 import { siteData } from '../../public/site-data';
 import DisplayError from '../ErrorMessage';
 import OrderHistoryStyles from '../styles/OrderHistoryStyles';
-
-const USER_ORDERS_QUERY = gql`
-  query USER_ORDERS_QUERY {
-    orders {
-      id
-      charge
-      total
-      items {
-        id
-        name
-        description
-        price
-        quantity
-        image {
-          id
-          image {
-            id
-            publicUrlTransformed(transformation: { width: "360" })
-          }
-          altText
-        }
-      }
-    }
-  }
-`;
+import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
 
 const OrderUl = styled.ul`
   position: relative;
