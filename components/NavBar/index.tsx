@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
-// import Image from 'next/image'
 import styled from 'styled-components';
 import Burger from './Burger';
 import BurgerMenu from './BurgerMenu';
