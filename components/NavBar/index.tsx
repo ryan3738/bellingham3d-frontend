@@ -81,7 +81,7 @@ export default function NavBar({ children }: AppProps): JSX.Element {
               <div ref={node}>
                 <Burger open={open} setOpen={setOpen} />
               </div>
-              <BurgerMenu open={open} setOpen={setOpen} />
+              <BurgerMenu open={open} />
             </div>
             <div>
               <LogoWrapper>
