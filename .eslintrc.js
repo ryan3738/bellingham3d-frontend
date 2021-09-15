@@ -79,7 +79,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.tsx'],
       },
     ],
     radix: 0,
@@ -101,9 +101,12 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        trailingComma: 'es5',
-        singleQuote: true,
         printWidth: 80,
+        trailingComma: 'es5',
+        tabWidth: 2,
+        semi: true,
+        singleQuote: true,
+        useTabs: false,
         // below line only for windows users facing CLRF and eslint prettier error
         // non windows users feel free to delete it
         endOfLine: 'auto',
@@ -137,11 +140,25 @@ module.exports = {
   //       'plugin:react/recommended', // React rules
   //       'plugin:react-hooks/recommended', // React hooks rules
   //       'plugin:jsx-a11y/recommended', // Accessibility rules
-  //       'prettier/@typescript-eslint', // Prettier plugin
+  //       'prettier/prettier', // Prettier plugin
   //       'plugin:prettier/recommended', // Prettier recommended rules
   //     ],
   //     rules: {
-  //       'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+  //       'prettier/prettier': [
+  //         'error',
+  //         {
+  //           printWidth: 80,
+  //           trailingComma: 'es5',
+  //           tabWidth: 2,
+  //           semi: true,
+  //           singleQuote: true,
+  //           useTabs: false,
+  //           // below line only for windows users facing CLRF and eslint prettier error
+  //           // non windows users feel free to delete it
+  //           endOfLine: 'auto',
+  //         },
+  //       ],
+  //       // Includes .prettierrc.js rules
   //       // We will use TypeScript's types for component props instead
   //       'react/prop-types': 'off',
 
