@@ -1,4 +1,4 @@
-import { makeVar } from '@apollo/client';
+// import { makeVar } from '@apollo/client';
 import { FaWindowClose } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import CartStyles from '../styles/CartStyles';

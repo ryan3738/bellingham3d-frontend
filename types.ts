@@ -17,3 +17,17 @@ export type Address = {
   phone: string;
   isDefaultShipping: isDefaultShipping;
 };
+
+export type CartItem = {
+  id: string;
+  quantity?: number;
+  // product?: Product;
+  productId?: string;
+  // variants: Variant[];
+  saveForLater?: boolean;
+  // createdAt?: DateTime;
+  // user?: User;
+  userId?: string;
+};
+
+
