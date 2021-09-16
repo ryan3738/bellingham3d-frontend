@@ -1,15 +1,17 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import formatMoney from '../lib/formatMoney';
-import DisplayError from './ErrorMessage';
-import OrderStyles from './styles/OrderStyles';
-import { formatDate } from '../lib/formatDate';
-import DisplayAddress from './Addresses/DisplayAddress';
+import Image from 'next/image';
+import formatMoney from '../../lib/formatMoney';
+import DisplayError from '../ErrorMessage';
+import OrderStyles from '../styles/OrderStyles';
+import { formatDate } from '../../lib/formatDate';
+import DisplayAddress from '../Addresses/DisplayAddress';
+import { siteData } from '../../public/site-data';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
-    order: Order(where: { id: $id }) {
+    order(where: { id: $id }) {
       id
       charge
       total
@@ -59,7 +61,9 @@ export default function SingleOrder({ id }) {
   return (
     <OrderStyles>
       <Head>
-        <title>Sicks Fits | {order.id} </title>
+        <title>
+          Order {order.id} | {siteData.businessName}
+        </title>
       </Head>
       <h2>Order Summary</h2>
       <div className="summary-item">
@@ -91,7 +95,19 @@ export default function SingleOrder({ id }) {
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
-            <img src={item.image.image.publicUrlTransformed} alt={item.title} />
+            <Image
+              src={
+                item.image
+                  ? item.image.image.publicUrlTransformed
+                  : siteData.placeholderImage.medium.src
+              }
+              alt={item.title}
+              loading="lazy"
+              layout="intrinsic"
+              height="240"
+              width="360"
+              objectFit="cover"
+            />
             <div className="item-details">
               <strong>
                 {item.name}

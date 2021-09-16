@@ -3,35 +3,12 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
-import formatMoney from '../lib/formatMoney';
-import { siteData } from '../public/site-data';
-import DisplayError from './ErrorMessage';
-import OrderHistoryStyles from './styles/OrderHistoryStyles';
-
-const USER_ORDERS_QUERY = gql`
-  query USER_ORDERS_QUERY {
-    allOrders {
-      id
-      charge
-      total
-      items {
-        id
-        name
-        description
-        price
-        quantity
-        image {
-          id
-          image {
-            id
-            publicUrlTransformed(transformation: { width: "360" })
-          }
-          altText
-        }
-      }
-    }
-  }
-`;
+import Image from 'next/image';
+import formatMoney from '../../lib/formatMoney';
+import { siteData } from '../../public/site-data';
+import DisplayError from '../ErrorMessage';
+import OrderHistoryStyles from '../styles/OrderHistoryStyles';
+import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
 
 const OrderUl = styled.ul`
   position: relative;
@@ -52,20 +29,20 @@ export default function OrderHistory() {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
-  const { allOrders } = data;
+  const { orders } = data;
   return (
     <div className="wrapper">
       <Head>
         <title>
-          Orders ({allOrders.length}) | {siteData.businessName}
+          Orders ({orders.length}) | {siteData.businessName}
         </title>
       </Head>
-      <h2>{`You have ${allOrders.length} order${
-        allOrders.length === 1 ? '' : 's'
+      <h2>{`You have ${orders.length} order${
+        orders.length === 1 ? '' : 's'
       }! `}</h2>
       <p>Click an order below to see details</p>
       <OrderUl>
-        {allOrders.map((order) => (
+        {orders.map((order) => (
           <OrderHistoryStyles key={order.id}>
             <Link href={`/order/${order.id}`}>
               <a>
@@ -81,9 +58,19 @@ export default function OrderHistory() {
                   <p>{formatMoney(order.total)}</p>
                 </div>
                 <div className="images">
-                  <img
-                    src={order?.items[0].image?.image?.publicUrlTransformed}
+                  {console.log('ORDER!!!', order)}
+                  <Image
+                    src={
+                      order.items[0].image
+                        ? order.items[0].image.image.publicUrlTransformed
+                        : siteData.placeholderImage.medium.src
+                    }
                     alt={order.items[0].name}
+                    loading="lazy"
+                    layout="intrinsic"
+                    height="360"
+                    width="360"
+                    objectFit="cover"
                   />
                 </div>
               </a>

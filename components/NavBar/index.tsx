@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
-// import Image from 'next/image'
 import styled from 'styled-components';
 import Burger from './Burger';
 import BurgerMenu from './BurgerMenu';
@@ -65,7 +64,11 @@ const LogoStyles = styled.h1`
   }
 `;
 
-export default function NavBar({ children }) {
+type AppProps = {
+  children?: React.ReactNode;
+};
+
+export default function NavBar({ children }: AppProps): JSX.Element {
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
@@ -78,7 +81,7 @@ export default function NavBar({ children }) {
               <div ref={node}>
                 <Burger open={open} setOpen={setOpen} />
               </div>
-              <BurgerMenu open={open} setOpen={setOpen} />
+              <BurgerMenu open={open} />
             </div>
             <div>
               <LogoWrapper>
@@ -97,7 +100,6 @@ export default function NavBar({ children }) {
       </div>
       <NavSpacer />
       <style jsx>{`
-
         .welcome-logo {
           position: absolute;
           top: 0.5rem;
@@ -129,9 +131,8 @@ export default function NavBar({ children }) {
           flex-direction: column;
           justify-content: stretch;
           align-items: stretch;
-          align-content: stretch
+          align-content: stretch;
           justify-items: stretch;
-
         }
         .sub-bar {
           display: grid;
@@ -148,9 +149,6 @@ export default function NavBar({ children }) {
           height: 4em;
           border-bottom: 2.5px solid var(--navyBlue-800, black);
         }
-
-
-
         @media (min-width: 769px) {
           .burger {
             display: none;

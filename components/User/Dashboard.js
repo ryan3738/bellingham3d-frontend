@@ -1,16 +1,13 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import { siteData } from '../public/site-data';
-import DisplayAddress from './Addresses/DisplayAddress';
-import Button from './Button';
+import { siteData } from '../../public/site-data';
+import Button from '../Button';
 import SignOut from './SignOut';
-import ContainerGrid from './styles/ContainerGrid';
-import { useUser } from './User';
+import ContainerGrid from '../styles/ContainerGrid';
+import { useUser } from '.';
 
 export default function Account(props) {
   const user = useUser();
   if (!user) return null;
-  // console.log(user);
   return (
     <ContainerGrid>
       <Head>
@@ -26,9 +23,7 @@ export default function Account(props) {
       <Button internalLink="/account/addresses">Manage Addresses</Button>
       <Button internalLink="/account/orderhistory">Order History</Button>
       {user.role?.canManageProducts && (
-        <>
-          <Button internalLink="/sell">Add New Product</Button>
-        </>
+        <>{/* <Button internalLink="/sell">Add New Product</Button> */}</>
       )}
       <Button internalLink="/requestreset">Reset Your Password</Button>
 

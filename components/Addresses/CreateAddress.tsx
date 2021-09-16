@@ -21,7 +21,7 @@ const CREATE_ADDRESS_MUTATION = gql`
     $country: String!
     $zip: String!
     $phone: String
-    $isDefaultShipping: UserRelateToOneInput
+    $isDefaultShipping: UserRelateToOneForCreateInput
   ) {
     createCustomerAddress(
       data: {
@@ -57,7 +57,7 @@ const CREATE_ADDRESS_MUTATION = gql`
 `;
 
 // Add make default functionality
-export default function CreateAddress() {
+export default function CreateAddress(): JSX.Element {
   const user = useUser();
   const [makeDefault, setMakeDefault] = useState(null);
   const { inputs, handleChange, clearForm } = useForm({
@@ -102,7 +102,7 @@ export default function CreateAddress() {
       onSubmit={async (e) => {
         e.preventDefault();
         // Submit the intput fields to the backend
-        const res = await createCustomerAddress();
+        await createCustomerAddress();
         clearForm();
       }}
     >
@@ -117,8 +117,8 @@ export default function CreateAddress() {
             id="firstName"
             name="firstName"
             placeholder="First Name"
-            autoComplete="first name"
-            value={inputs.firstName.toUpperCase()}
+            autoComplete="given-name"
+            value={inputs.firstName}
             onChange={handleChange}
           />
         </label>
@@ -129,8 +129,8 @@ export default function CreateAddress() {
             id="lastName"
             name="lastName"
             placeholder="Last Name"
-            autoComplete="last name"
-            value={inputs.lastName.toUpperCase()}
+            autoComplete="family-name"
+            value={inputs.lastName}
             onChange={handleChange}
           />
         </label>
@@ -141,8 +141,8 @@ export default function CreateAddress() {
             id="company"
             name="company"
             placeholder="Company"
-            autoComplete="Company"
-            value={inputs.company.toUpperCase()}
+            autoComplete="organization"
+            value={inputs.company}
             onChange={handleChange}
           />
         </label>
@@ -154,8 +154,8 @@ export default function CreateAddress() {
             id="address1"
             name="address1"
             placeholder="Address 1"
-            autoComplete="address 1"
-            value={inputs.address1.toUpperCase()}
+            autoComplete="address-line1"
+            value={inputs.address1}
             onChange={handleChange}
           />
         </label>
@@ -166,8 +166,8 @@ export default function CreateAddress() {
             id="address2"
             name="address2"
             placeholder="Address 2"
-            autoComplete="address 2"
-            value={inputs.address2.toUpperCase()}
+            autoComplete="address-line2"
+            value={inputs.address2}
             onChange={handleChange}
           />
         </label>
@@ -179,8 +179,8 @@ export default function CreateAddress() {
             id="city"
             name="city"
             placeholder="City"
-            autoComplete="city"
-            value={inputs.city.toUpperCase()}
+            autoComplete="address-level2"
+            value={inputs.city}
             onChange={handleChange}
           />
         </label>
@@ -192,8 +192,8 @@ export default function CreateAddress() {
             id="region"
             name="region"
             placeholder="State"
-            autoComplete="region"
-            value={inputs.region.toUpperCase()}
+            autoComplete="address-level1"
+            value={inputs.region}
             onChange={handleChange}
           />
         </label>
@@ -206,7 +206,7 @@ export default function CreateAddress() {
             name="country"
             placeholder="Country"
             autoComplete="country"
-            value={inputs.country.toUpperCase()}
+            value={inputs.country}
             onChange={handleChange}
           />
         </label>
@@ -218,7 +218,7 @@ export default function CreateAddress() {
             id="zip"
             name="zip"
             placeholder="Zip"
-            autoComplete="zip"
+            autoComplete="postal-code"
             value={inputs.zip}
             onChange={handleChange}
           />
@@ -230,12 +230,12 @@ export default function CreateAddress() {
             id="phone"
             name="phone"
             placeholder="Phone"
-            autoComplete="phone"
+            autoComplete="tel"
             value={inputs.phone}
             onChange={handleChange}
           />
         </label>
-        <label type="checkbox" htmlFor="makeDefault">
+        <label className="checkbox" htmlFor="makeDefault">
           Make Default
           <input
             type="checkbox"

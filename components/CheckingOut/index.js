@@ -5,7 +5,7 @@ import Address from '../Addresses/Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
-import { userType } from '../../lib/types';
+import { userType } from '../../lib/propTypes';
 import { ButtonStyles } from '../styles/StateStyles';
 
 export default function CheckingOut() {
@@ -26,7 +26,7 @@ function CheckingOutUser({ me }) {
   // if (error) return <DisplayError error={error} />;
   // console.log('address data', data);
 
-  // TODO Add billing address in if necessary
+  // TODO Add billing address when necessary
   // const [billingAddress, setBillingAddress] = useState(
   //   me.defaultShipping || newAddress
   // );
@@ -121,5 +121,5 @@ function CheckingOutUser({ me }) {
 }
 CheckingOutUser.propTypes = {
   // id: string.isRequired,
-  me: userType,
+  // me: userType,
 };

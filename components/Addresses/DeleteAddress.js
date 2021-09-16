@@ -5,7 +5,7 @@ import { ButtonStyles } from '../styles/StateStyles';
 
 const DELETE_ADDRESS_MUTATION = gql`
   mutation DELETE_ADDRESS_MUTATION($id: ID!) {
-    deleteCustomerAddress(id: $id) {
+    deleteCustomerAddress(where: { id: $id }) {
       id
       firstName
     }
@@ -13,7 +13,6 @@ const DELETE_ADDRESS_MUTATION = gql`
 `;
 
 function update(cache, payload) {
-  console.log(payload);
   console.log('running the update function after delete');
   cache.evict(cache.identify(payload.data.deleteCustomerAddress));
 }
@@ -33,7 +32,7 @@ export default function DeleteAddress({ id, children }) {
       title="Delete Address"
       disabled={loading}
       onClick={() => {
-        if (confirm('Are you sure you want to delete this address?')) {
+        if (window.confirm('Are you sure you want to delete this address?')) {
           // Go ahead and delete it
           console.log('Delete!...');
           deleteCustomerAddress().catch((err) => alert(err.message));

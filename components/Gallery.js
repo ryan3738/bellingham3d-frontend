@@ -6,7 +6,7 @@ import GalleryItem from './GalleryItem';
 
 export const ALL_PRODUCTS_GALLERY_QUERY = gql`
   query ALL_PRODUCTS_GALLERY_QUERY($skip: Int = 0, $first: Int) {
-    allProducts(where: { status: "AVAILABLE" }, first: $first, skip: $skip) {
+    products(where: { status: "AVAILABLE" }, first: $first, skip: $skip) {
       id
       name
       price
@@ -15,7 +15,7 @@ export const ALL_PRODUCTS_GALLERY_QUERY = gql`
       category {
         name
       }
-      image {
+      images {
         id
         image {
           publicUrlTransformed
@@ -64,7 +64,7 @@ export default function Gallery({ page }) {
   return (
     <div className="products-wrapper">
       <ProductsListStyles>
-        {data.allProducts.map((product) => (
+        {data.products.map((product) => (
           <GalleryItem key={product.id} product={product} />
         ))}
       </ProductsListStyles>

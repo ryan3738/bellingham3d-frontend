@@ -1,12 +1,10 @@
-// import Link from 'next/link'
-import { bool } from 'prop-types';
 import NavList from './NavList';
 
-export default function BurgerMenu({ open }) {
+export default function BurgerMenu({ open }: { open: boolean }): JSX.Element {
   return (
     <>
       <nav className="styled-menu">
-        <NavList burgerMenuLink />
+        <NavList showInBurgerMenu />
       </nav>
       <style jsx>{`
         .styled-menu {
@@ -53,7 +51,3 @@ export default function BurgerMenu({ open }) {
     </>
   );
 }
-
-BurgerMenu.propTypes = {
-  open: bool.isRequired,
-};

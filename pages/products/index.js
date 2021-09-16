@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
-import Pagination from '../../components/Pagination';
+import Pagination from '../../components/Products/Pagination';
 import Products from '../../components/Products';
 
 export default function ProductsPage() {

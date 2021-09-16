@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';

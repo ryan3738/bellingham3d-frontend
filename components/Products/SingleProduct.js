@@ -13,6 +13,7 @@ import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
 
+
 const ProductStyles = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -40,14 +41,10 @@ export default function SingleProduct({ id }) {
     },
   });
 
-  // console.log('data', data);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   if (!data) return <SeeAllProducts />;
-  const { Product: product } = data || null;
-
-  // console.log('product', product);
+  const { product } = data || null;
 
   // Add a variant to the variantsState array for current product
   const addVariant = (name, value) => {
@@ -80,7 +77,7 @@ export default function SingleProduct({ id }) {
             {product.name} | {siteData.businessName}
           </title>
         </Head>
-        <ImageSlider slides={product.image} alt={product.name} />
+        <ImageSlider slides={product.images} alt={product.name} />
         <div className="details">
           <h2>{product.name}</h2>
           <h3>{formatMoney(product.price)}</h3>

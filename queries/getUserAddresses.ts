@@ -1,8 +1,8 @@
-const { default: gql } = require('graphql-tag');
+import gql from 'graphql-tag';
 
 const USER_ADDRESSES_QUERY = gql`
   query USER_ADDRESSES_QUERY {
-    allCustomerAddresses {
+    customerAddresses {
       id
       firstName
       lastName

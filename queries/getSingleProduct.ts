@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const SINGLE_PRODUCT_QUERY = gql`
   query SINGLE_PRODUCT_QUERY($id: ID!) {
-    Product(where: { id: $id }) {
+    product(where: { id: $id }) {
       id
       name
       price
@@ -10,12 +10,12 @@ export const SINGLE_PRODUCT_QUERY = gql`
       variants {
         id
         name
-        variantType {
+        option {
           id
           name
         }
       }
-      image {
+      images {
         altText
         image {
           publicUrlTransformed(transformation: { width: "600" })

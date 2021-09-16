@@ -1,4 +1,4 @@
-import { makeVar } from '@apollo/client';
+// import { makeVar } from '@apollo/client';
 import { FaWindowClose } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import CartStyles from '../styles/CartStyles';
@@ -13,7 +13,7 @@ import CheckingOut from '../CheckingOut';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
 
-export const cartShippingAddress = makeVar();
+// export const cartShippingAddress = makeVar();
 
 export default function Cart() {
   const me = useUser();
@@ -27,43 +27,51 @@ export default function Cart() {
 
   return (
     <CartStyles open={cartOpen}>
-      <header>
-        <Supreme>{me.name}'s Cart</Supreme>
-        <ButtonIconStyles onClick={closeCart}>
-          <IconContext.Provider value={{ size: '60px' }}>
-            <FaWindowClose />
-          </IconContext.Provider>
-        </ButtonIconStyles>
-      </header>
+      <div className="cart-content">
+        <header>
+          <Supreme>{me.name}'s Cart</Supreme>
+          <ButtonIconStyles onClick={closeCart}>
+            <IconContext.Provider value={{ size: '60px' }}>
+              <FaWindowClose />
+            </IconContext.Provider>
+          </ButtonIconStyles>
+        </header>
 
-      {me.cart.length === 0 ? (
-        <div>
-          <h3>Your Cart is Empty</h3>
-          <SeeAllProducts />
-        </div>
-      ) : (
-        <>
+        {me.cart.length === 0 ? (
           <div>
-            {me.cart.map((cartItem) => (
-              <CartItem key={cartItem.id} cartItem={cartItem} />
-            ))}
+            <h3>Your Cart is Empty</h3>
             <SeeAllProducts />
           </div>
-          <footer>
-            {shippingRequired ? (
-              <>
-                <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-                <CheckingOut />
-              </>
-            ) : (
-              <>
-                <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-                <Checkout />
-              </>
-            )}
-          </footer>
-        </>
-      )}
+        ) : (
+          <>
+            <div>
+              {me.cart.map((cartItem) => (
+                <CartItem key={cartItem.id} cartItem={cartItem} />
+              ))}
+              <SeeAllProducts />
+            </div>
+            <footer>
+              {shippingRequired ? (
+                <>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <CheckingOut />
+                </>
+              ) : (
+                <>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <Checkout />
+                </>
+              )}
+            </footer>
+          </>
+        )}
+      </div>
+      <button
+        type="button"
+        className="overlay"
+        onClick={closeCart}
+        aria-label="close cart button"
+      />
     </CartStyles>
   );
 }

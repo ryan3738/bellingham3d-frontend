@@ -8,10 +8,11 @@ import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import { ButtonIconStyles } from '../styles/StateStyles';
+import { siteData } from '../../public/site-data';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
-    updateCartItem(id: $id, data: { quantity: $quantity }) {
+    updateCartItem(where: { id: $id }, data: { quantity: $quantity }) {
       id
       quantity
     }
@@ -50,35 +51,28 @@ export default function CartItem({
         <div className="cart-image">
           <Link href={`/product/${product.id}`}>
             <a>
-              {product.image[0]?.image?.publicUrlTransformed ? (
-                <Image
-                  src={product.image[0]?.image?.publicUrlTransformed}
-                  alt={product.name}
-                  width="100"
-                  height="100"
-                  loading="lazy"
-                  layout="fixed"
-                  objectFit="contain"
-                />
-              ) : (
-                <Image
-                  src="/public/android-chrome-512x512.png"
-                  alt=""
-                  width="100"
-                  height="100"
-                  loading="lazy"
-                  layout="fixed"
-                  objectFit="contain"
-                />
-              )}
+              <Image
+                // src={product.images[0]?.image?.publicUrlTransformed}
+                src={
+                  product.images[0]
+                    ? product?.images[0]?.image?.publicUrlTransformed
+                    : siteData.placeholderImage.small.src
+                }
+                alt={product.name}
+                width="100"
+                height="100"
+                loading="lazy"
+                layout="fixed"
+                objectFit="contain"
+              />
             </a>
           </Link>
         </div>
         <div className="item-details-container">
           <h3>{product.name}</h3>
           {variants.map((variant) => (
-            <div key={variant.variantType.name}>
-              {variant.variantType.name} - {variant.name}
+            <div key={variant.option.name}>
+              {variant.option.name} - {variant.name}
             </div>
           ))}
           <div className="price-quanity-container">

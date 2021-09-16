@@ -5,7 +5,7 @@ import DeleteAddress from './DeleteAddress';
 import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
-import { addressType } from '../../lib/types';
+import { addressType } from '../../lib/propTypes';
 import { ButtonStyles } from '../styles/StateStyles';
 
 export default function Address({

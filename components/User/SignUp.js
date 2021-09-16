@@ -2,12 +2,11 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { useState } from 'react';
-import useForm from '../lib/useForm';
-import Form from './styles/Form';
-import { CURRENT_USER_QUERY } from './User';
-import Error from './ErrorMessage';
+import useForm from '../../lib/useForm';
+import Form from '../styles/Form';
+import Error from '../ErrorMessage';
 import SignIn from './SignIn';
-import { ButtonStyles } from './styles/StateStyles';
+import { ButtonStyles } from '../styles/StateStyles';
 
 const eye = <FaEye />;
 const eyeSlash = <FaEyeSlash />;
@@ -124,7 +123,6 @@ export default function SignUp() {
           .pass-wrapper {
             position: relative;
             width: 100%;
-
             margin-bottom: 14px;
           }
           i {

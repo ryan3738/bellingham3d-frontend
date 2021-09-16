@@ -1,26 +1,59 @@
 import styled from 'styled-components';
 
 const CartStyles = styled.div`
-  padding: var(--spacing);
-  position: relative;
-  background: white;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  top: 0;
-  right: 0;
-  width: 98%;
-  min-width: 250px;
-  max-width: 769px;
-  bottom: 0;
-  transform: translateX(100%);
-  transition: all 0.3s;
-  box-shadow: var(--bs);
-  border: 0.1rem solid var(--navyBlue);
-  z-index: 15;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  ${(props) => props.open && `transform: translateX(0);`};
+  .overlay {
+    /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 14; /* Sit on top */
+    left: 0;
+    top: 0;
+    border-radius: var(--radius);
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    transition: visibility 0s linear 0s, opacity 0.3s, transform 0.25s;
+    transition: all 3s ease-in-out;
+    ${
+      // if the cart is open, display: block
+      (props) =>
+        props.open
+          ? `
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    `
+          : `
+        display: none;
+        opacity: 0;
+        transform: scale(1.1);
+        `
+    }
+  }
+
+  .cart-content {
+    position: relative;
+    background: white;
+    position: fixed;
+    padding: var(--spacing);
+    border: 0.1rem solid var(--navyBlue);
+    min-width: 250px;
+    max-width: 769px;
+    width: 98%;
+    height: 100%;
+    box-shadow: var(--bs);
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+    transform: translateX(100%);
+    ${(props) => props.open && `transform: translateX(0);`};
+    z-index: 15;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
   header {
     display: flex;
     flex-flow: row nowrap;
@@ -47,6 +80,12 @@ const CartStyles = styled.div`
     padding: 0;
     list-style: none;
     overflow: scroll;
+  }
+  .show-modal {
+    opacity: 1;
+    display: block;
+    transform: scale(1);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   }
 `;
 

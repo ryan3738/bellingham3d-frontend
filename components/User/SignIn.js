@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
-import Form from './styles/Form';
-import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
-import Error from './ErrorMessage';
-import { ButtonStyles } from './styles/StateStyles';
+import Form from '../styles/Form';
+import useForm from '../../lib/useForm';
+import { CURRENT_USER_QUERY } from '../../queries/getUser';
+import Error from '../ErrorMessage';
+import { ButtonStyles } from '../styles/StateStyles';
 
 const eye = <FaEye />;
 const eyeSlash = <FaEyeSlash />;

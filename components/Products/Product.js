@@ -2,17 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User';
+import { siteData } from '../../public/site-data';
 
 export default function Product({ product }) {
   const user = useUser();
-  // console.log(user);
   return (
-    // The question mark (?) is "optional chaining" that checks for nullish value at each level
     <div className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
           <Image
-            src={product?.image[0]?.image?.publicUrlTransformed}
+            src={
+              product.images[0]
+                ? product?.images[0]?.image?.publicUrlTransformed
+                : siteData.placeholderImage.medium.src
+            }
             alt={product.name}
             loading="lazy"
             layout="intrinsic"

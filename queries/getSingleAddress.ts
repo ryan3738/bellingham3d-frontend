@@ -1,8 +1,8 @@
-const { default: gql } = require('graphql-tag');
+import gql from 'graphql-tag';
 
 const SINGLE_ADDRESS_QUERY = gql`
   query SINGLE_ADDRESS_QUERY($id: ID!) {
-    CustomerAddress(where: { id: $id }) {
+    customerAddress(where: { id: $id }) {
       id
       firstName
       lastName

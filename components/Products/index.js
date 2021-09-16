@@ -1,34 +1,8 @@
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../../config';
 import Product from './Product';
-
-export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
-    allProducts(
-      where: { status: "AVAILABLE" }
-      sortBy: createdAt_DESC
-      first: $first
-      skip: $skip
-    ) {
-      id
-      name
-      price
-      description
-      status
-      category {
-        name
-      }
-      image {
-        id
-        image {
-          publicUrlTransformed(transformation: { width: "360" })
-        }
-      }
-    }
-  }
-`;
+import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 
 const ProductsListStyles = styled.div`
   display: grid;
@@ -52,33 +26,34 @@ export default function Products({ page }) {
     },
   });
 
-  // console.log('data:', data);
-  function getCategoryList(productList = {}) {
-    const List = [];
-    try {
-      productList.map((products) =>
-        products.category.map((categories) => List.push(categories.name))
-      );
-      return [...new Set(List)];
-    } catch {
-      return console.error('getCategoryList function error');
-    }
-  }
-  // console.log('getCategoryList:', getCategoryList(data.allProducts));
+  // function getCategoryList(productList = {}) {
+  //   const List = [];
+  //   try {
+  //     productList.map((products) =>
+  //       products.category.map((categories) => List.push(categories.name))
+  //     );
+  //     return [...new Set(List)];
+  //   } catch {
+  //     return console.error('getCategoryList function error');
+  //   }
+  // }
+  // console.log('getCategoryList:', getCategoryList(data.products));
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  if (!data) return <p>No products found</p>;
+  const { products } = data || null;
   return (
     <div className="products-wrapper">
       {/* TODO: Add Category navigation */}
       {/* <div className="nav-list">
-        {getCategoryList(data.allProducts).map((category) => (
+        {getCategoryList(data.products).map((category) => (
           <div className="nav-link" key={category}>
             {category}
           </div>
         ))}
       </div> */}
       <ProductsListStyles>
-        {data.allProducts
+        {products
           // .filter((e) => e.status === 'AVAILABLE')
           .map((product) => (
             <Product key={product.id} product={product} />

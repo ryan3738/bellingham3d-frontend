@@ -1,9 +1,9 @@
-import Account from '../../components/Account';
+import Dashboard from '../../components/User/Dashboard';
 
 export default function AccountPage() {
   return (
     <div>
-      <Account />
+      <Dashboard />
     </div>
   );
 }

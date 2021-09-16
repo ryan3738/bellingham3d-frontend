@@ -46,7 +46,7 @@ const Form = styled.form`
       background: var(--navyBlue-50);
     }
   }
-  label[type='checkbox'] {
+  label.checkbox {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import LargeButton from '../styles/LargeButton';
 import { useCart } from '../../lib/cartState';
-import { CURRENT_USER_QUERY } from '../User';
+import { CURRENT_USER_QUERY } from '../../queries/getUser';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
@@ -98,8 +98,8 @@ function CheckoutForm({ shippingId }) {
   }
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
-      {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
-      {graphQlError && <p style={{ fontSize: 12 }}>{error.message}</p>}
+      {error && <p style={{ fontSize: 12 }}>{error?.message}</p>}
+      {graphQlError && <p style={{ fontSize: 12 }}>{error?.message}</p>}
       <CardElement />
       <LargeButton>
         Confirm Order

@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
 
 const CURRENT_USER_QUERY = gql`
   query CURRENT_USER_QUERY {
@@ -31,7 +31,7 @@ const CURRENT_USER_QUERY = gql`
             name
             price
             description
-            image {
+            images {
               image {
                 publicUrlTransformed(transformation: { width: "120" })
               }
@@ -43,7 +43,7 @@ const CURRENT_USER_QUERY = gql`
           }
           variants {
             name
-            variantType {
+            option {
               name
             }
           }
@@ -55,10 +55,5 @@ const CURRENT_USER_QUERY = gql`
     }
   }
 `;
-
-export function useUser() {
-  const { data } = useQuery(CURRENT_USER_QUERY);
-  return data?.authenticatedItem;
-}
 
 export { CURRENT_USER_QUERY };

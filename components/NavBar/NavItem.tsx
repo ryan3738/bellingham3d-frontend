@@ -1,20 +1,26 @@
 import Link from 'next/link';
-import { bool, string } from 'prop-types';
 import { ColorStateStyles } from '../styles/StateStyles';
+
+type AppProps = {
+  href?: string;
+  showOnLarge?: boolean;
+  showInBurgerMenu?: boolean;
+  children?: React.ReactNode;
+};
 
 export default function NavItem({
   href,
   showOnLarge,
-  burgerMenuLink,
+  showInBurgerMenu,
   children,
-}) {
+}: AppProps): JSX.Element {
   return (
     <>
       {href ? (
         <Link href={href}>
           <a
             className={`nav-link ${showOnLarge && 'show-on-large'} ${
-              burgerMenuLink && 'burger-menu-link'
+              showInBurgerMenu && 'burger-menu-link'
             }`}
           >
             <ColorStateStyles>{children}</ColorStateStyles>
@@ -23,7 +29,7 @@ export default function NavItem({
       ) : (
         <div
           className={`nav-link ${showOnLarge && 'show-on-large'} ${
-            burgerMenuLink && 'burger-menu-link'
+            showInBurgerMenu && 'burger-menu-link'
           }`}
         >
           <ColorStateStyles>{children}</ColorStateStyles>
@@ -73,9 +79,3 @@ export default function NavItem({
     </>
   );
 }
-
-NavItem.propTypes = {
-  href: string,
-  showOnLarge: bool,
-  burgerMenuLink: bool,
-};

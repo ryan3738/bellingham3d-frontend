@@ -1,14 +1,16 @@
-import { bool, func } from 'prop-types';
+type AppProps = {
+  open: boolean;
+  setOpen: Function;
+};
 
-export default function Burger({ open, setOpen }) {
+export default function Burger({ open, setOpen }: AppProps): JSX.Element {
   return (
     <>
       <button
         className="styled-burger"
         type="button"
-        tabIndex="0"
+        tabIndex={0}
         title="Toggle menu"
-        open={open}
         onClick={() => setOpen(!open)}
       >
         <div className="top-bun" />
@@ -67,7 +69,3 @@ export default function Burger({ open, setOpen }) {
     </>
   );
 }
-Burger.propTypes = {
-  open: bool.isRequired,
-  setOpen: func.isRequired,
-};

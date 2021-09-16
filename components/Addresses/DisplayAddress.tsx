@@ -1,6 +1,10 @@
-import { object } from 'prop-types';
+import { Address } from '../../types';
 
-export default function DisplayAddress({ address }) {
+export default function DisplayAddress({
+  address,
+}: {
+  address: Address;
+}): JSX.Element {
   return (
     <>
       {address && (
@@ -23,7 +27,3 @@ export default function DisplayAddress({ address }) {
     </>
   );
 }
-
-DisplayAddress.propTypes = {
-  address: object,
-};

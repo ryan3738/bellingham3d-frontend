@@ -25,4 +25,12 @@ export const siteData = {
     instagram: '',
     mailingListSignup: '',
   },
+  placeholderImage: {
+    small: {
+      src: '/android-chrome-192x192.png',
+    },
+    medium: {
+      src: '/android-chrome-512x512.png',
+    },
+  },
 };

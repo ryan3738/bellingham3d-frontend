@@ -1,4 +1,4 @@
-export default function NavSpacer() {
+export default function NavSpacer(): JSX.Element {
   return (
     <>
       <div className="header-spacer" />
