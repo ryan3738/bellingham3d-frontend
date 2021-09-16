@@ -3,32 +3,7 @@ import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../../config';
 import Product from './Product';
-
-export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
-    products(
-      where: { status: { equals: "AVAILABLE" } }
-      orderBy: { createdAt: desc }
-      take: $first
-      skip: $skip
-    ) {
-      id
-      name
-      price
-      description
-      status
-      category {
-        name
-      }
-      images {
-        id
-        image {
-          publicUrlTransformed(transformation: { width: "360" })
-        }
-      }
-    }
-  }
-`;
+import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 
 const ProductsListStyles = styled.div`
   display: grid;
