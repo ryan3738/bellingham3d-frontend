@@ -220,7 +220,11 @@ const InnerStyles = styled.div`
   min-height: 90vh;
 `;
 
-export default function Layout({ children }) {
+export default function Layout({
+  children,
+}: {
+  children?: React.ReactNode;
+}): JSX.Element {
   return (
     <div>
       <Head>

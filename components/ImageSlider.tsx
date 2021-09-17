@@ -3,16 +3,23 @@ import { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { ButtonIconStyles } from './styles/StateStyles';
+import { ProductImage } from '../types';
 
-export default function ImageSlider({ slides, alt }) {
+export default function ImageSlider({
+  slides,
+  alt,
+}: {
+  slides: ProductImage[];
+  alt: string;
+}): JSX.Element {
   const [current, setCurrent] = useState(0);
   const { length } = slides;
 
-  const nextSlide = () => {
+  const nextSlide = (): void => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
-  const prevSlide = () => {
+  const prevSlide = (): void => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
   // Check if images are passed in

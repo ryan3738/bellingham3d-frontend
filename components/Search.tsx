@@ -9,7 +9,7 @@ import { siteData } from '../public/site-data';
 import { SEARCH_PRODUCTS_QUERY } from '../queries/searchProducts';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
-export default function Search() {
+export default function Search(): JSX.Element {
   const router = useRouter();
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
@@ -43,7 +43,7 @@ export default function Search() {
         pathname: `/product/${selectedItem.id}`,
       });
     },
-    itemToString: (item) => item?.name || '',
+    itemToString: (item: any) => item?.name || '',
   });
   return (
     <SearchStyles>
@@ -86,7 +86,7 @@ export default function Search() {
               </DropDownItem>
             </Link>
           ))}
-        {isOpen && !items.length && !loading && (
+        {isOpen && !items.length && !loading && !error && (
           <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>
         )}
       </DropDown>
