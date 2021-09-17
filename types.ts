@@ -30,4 +30,15 @@ export type CartItem = {
   userId?: string;
 };
 
+export type CloudinaryImage = {
+  publicUrlTransformed: string;
+};
 
+export type ProductImage = {
+  id: string;
+  image: {
+    publicUrlTransformed: string;
+  };
+  altText: string;
+  createdAt: string;
+};
