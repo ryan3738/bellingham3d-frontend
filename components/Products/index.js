@@ -7,14 +7,12 @@ import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 const ProductsListStyles = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  /* grid-template-rows: repeat(auto-fill, 200px); */
   align-content: center;
   justify-content: space-evenly;
   align-items: stretch;
   justify-items: center;
   grid-gap: 5px;
   padding: 5px 0;
-  /* grid-auto-flow: dense; */
 `;
 
 export default function Products({ page }) {
@@ -25,39 +23,16 @@ export default function Products({ page }) {
       first: perPage,
     },
   });
-
-  // function getCategoryList(productList = {}) {
-  //   const List = [];
-  //   try {
-  //     productList.map((products) =>
-  //       products.category.map((categories) => List.push(categories.name))
-  //     );
-  //     return [...new Set(List)];
-  //   } catch {
-  //     return console.error('getCategoryList function error');
-  //   }
-  // }
-  // console.log('getCategoryList:', getCategoryList(data.products));
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   if (!data) return <p>No products found</p>;
   const { products } = data || null;
   return (
     <div className="products-wrapper">
-      {/* TODO: Add Category navigation */}
-      {/* <div className="nav-list">
-        {getCategoryList(data.products).map((category) => (
-          <div className="nav-link" key={category}>
-            {category}
-          </div>
-        ))}
-      </div> */}
       <ProductsListStyles>
-        {products
-          // .filter((e) => e.status === 'AVAILABLE')
-          .map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
       </ProductsListStyles>
       <style jsx>{`
         .products-wrapper {
