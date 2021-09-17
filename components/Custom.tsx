@@ -6,7 +6,7 @@ import Grid4Styles from './styles/Grid4Styles';
 import customHeroImage from '../public/images/laptop-parts-printer.jpg';
 import { siteData } from '../public/site-data';
 
-export default function Custom() {
+export default function Custom(): JSX.Element {
   return (
     <>
       <Head>

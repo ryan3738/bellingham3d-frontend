@@ -3,7 +3,7 @@ import Image from 'next/image';
 import aboutHeroImage from '../public/images/ultimaker-closeup.jpg';
 import { siteData } from '../public/site-data';
 
-export default function About() {
+export default function About(): JSX.Element {
   return (
     <>
       <Head>
