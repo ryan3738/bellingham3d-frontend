@@ -3,6 +3,7 @@ import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 import debounce from 'lodash.debounce';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { siteData } from '../public/site-data';
 import { SEARCH_PRODUCTS_QUERY } from '../queries/searchProducts';
@@ -57,26 +58,31 @@ export default function Search() {
           })}
         />
       </div>
-
       <DropDown {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
-            <Link href={`/product/${item.id}`} key={index}>
+            <Link href={`/product/${item.id}`} key={index} passHref>
               <DropDownItem
                 key={item.id}
                 {...getItemProps({ item })}
                 highlighted={index === highlightedIndex}
               >
-                <img
-                  src={
-                    item.images[0]
-                      ? item?.images[0]?.image?.publicUrlTransformed
-                      : siteData.placeholderImage.small.src
-                  }
-                  alt={item.name}
-                  width="50"
-                />
-                {item.name}
+                <div className="image">
+                  <Image
+                    src={
+                      item.images[0]
+                        ? item?.images[0]?.image?.publicUrlTransformed
+                        : siteData.placeholderImage.small.src
+                    }
+                    alt={item.name}
+                    width="50"
+                    height="50"
+                    loading="eager"
+                    layout="fixed"
+                    objectFit="contain"
+                  />
+                </div>
+                <div>{item.name}</div>
               </DropDownItem>
             </Link>
           ))}
