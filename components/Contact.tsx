@@ -3,10 +3,14 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Social from './Social';
 import { siteData } from '../public/site-data';
-import { instagramUrl, facebookUrl } from '../config';
+import { instagramUrl } from '../config';
 import contactHeroImage from '../public/images/cad-screenshot.jpg';
 
-export default function Contact(enableTitleTag) {
+export default function Contact({
+  enableTitleTag,
+}: {
+  enableTitleTag?: boolean;
+}): JSX.Element {
   return (
     <>
       {enableTitleTag === true && (
@@ -37,19 +41,9 @@ export default function Contact(enableTitleTag) {
       </div>
       <div className="social-media-container">
         <div className="social-media-contents">
-          <Social
-            href={instagramUrl}
-            img="/images/instagram-logo.png"
-            alt="instagram"
-            color="--color-instagram"
-          />
+          <Social href={instagramUrl} socialSite="instagram" />
           {/* Add back in once facebook page is made */}
-          {/* <Social
-            href={facebookUrl}
-            img="/images/facebook-logo.png"
-            alt="facebook"
-            color="--color-facebook"
-          /> */}
+          {/* <Social href={facebookUrl} socialSite="facebook" /> */}
         </div>
       </div>
       <style jsx>{`

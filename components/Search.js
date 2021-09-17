@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
@@ -12,8 +13,8 @@ const SEARCH_PRODUCTS_QUERY = gql`
     searchTerms: products(
       where: {
         OR: [
-          { name_contains_i: $searchTerm }
-          { description_contains_i: $searchTerm }
+          { name: { contains: $searchTerm } }
+          { description: { contains: $searchTerm } }
         ]
       }
     ) {
@@ -21,7 +22,7 @@ const SEARCH_PRODUCTS_QUERY = gql`
       name
       images {
         image {
-          publicUrlTransformed
+          publicUrlTransformed(transformation: { width: "120" })
         }
       }
     }
