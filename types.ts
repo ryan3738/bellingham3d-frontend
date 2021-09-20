@@ -1,7 +1,17 @@
-export type isDefaultShipping = {
-  id: string;
-  isDefaultShipping: boolean;
-};
+// export type DefaultShipping = {
+//   id: string;
+//   firstName:;
+//   lastName;
+//   company;
+//   address1;
+//   address2;
+//   city;
+//   region;
+//   country;
+//   zip;
+//   phone;
+//   isDefaultShipping: User;
+// };
 
 export type Address = {
   id: string;
@@ -15,7 +25,7 @@ export type Address = {
   country: string;
   zip: string;
   phone: string;
-  isDefaultShipping: isDefaultShipping;
+  isDefaultShipping: User;
 };
 
 export type CartItem = {
@@ -28,6 +38,18 @@ export type CartItem = {
   // createdAt?: DateTime;
   // user?: User;
   userId?: string;
+};
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  addresses: Address[];
+  defaultShipping: Address;
+  cart: CartItem[];
+  role: string;
+  createdAt: string;
 };
 
 export type CloudinaryImage = {
