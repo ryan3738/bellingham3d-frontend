@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
+import { IconContext } from 'react-icons/lib';
 import Form from '../styles/Form';
 import useForm from '../../lib/useForm';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
@@ -64,7 +65,7 @@ export default function SignIn(): JSX.Element {
       : undefined;
   // Toggle password visibility
   const [passwordShown, setPasswordShown] = useState(false);
-  const togglePasswordVisiblity = () => {
+  const togglePasswordVisiblity = (): void => {
     setPasswordShown(!passwordShown);
   };
 
@@ -101,9 +102,16 @@ export default function SignIn(): JSX.Element {
                 onChange={handleChange}
               />
             </label>
-            <i onClick={togglePasswordVisiblity}>
-              {passwordShown ? eyeSlash : eye}
-            </i>
+            <button
+              className="button-icon"
+              type="button"
+              title="Toggle Password Visibility"
+              onClick={togglePasswordVisiblity}
+            >
+              <IconContext.Provider value={{ size: '16px' }}>
+                <i>{passwordShown ? eyeSlash : eye}</i>
+              </IconContext.Provider>
+            </button>
           </div>
 
           <ButtonStyles type="submit" disabled={loading}>
@@ -123,12 +131,14 @@ export default function SignIn(): JSX.Element {
 
             margin-bottom: 14px;
           }
-          i {
+          .button-icon {
             position: absolute;
             top: 55%;
             right: 10%;
+            width: auto;
+            height: auto;
           }
-          i:hover {
+          .button-icon:hover {
             color: var(--lightBlue);
             cursor: pointer;
           }
