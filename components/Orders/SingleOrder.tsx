@@ -49,7 +49,7 @@ const SINGLE_ORDER_QUERY = gql`
   }
 `;
 
-export default function SingleOrder({ id }) {
+export default function SingleOrder({ id }: { id: string }): JSX.Element {
   const { data, loading, error } = useQuery(SINGLE_ORDER_QUERY, {
     variables: {
       id,

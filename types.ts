@@ -93,3 +93,28 @@ export type Product = {
   createdAt: string;
   user: User;
 };
+
+export type OrderItem = {
+  id: string;
+  name: string;
+  variants: string;
+  description: string;
+  image: ProductImage;
+  imageId: string;
+  price: number;
+  quantity: number;
+  order: Order;
+  orderId: string;
+};
+
+export type Order = {
+  id: string;
+  total: number;
+  items: OrderItem[];
+  user: User;
+  userId: string;
+  charge: string;
+  shippingAddress: Address;
+  shippingAddressId: string;
+  createdAt: string;
+};

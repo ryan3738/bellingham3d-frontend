@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -9,6 +8,7 @@ import { siteData } from '../../public/site-data';
 import DisplayApolloError from '../DisplayApolloError';
 import OrderHistoryStyles from '../styles/OrderHistoryStyles';
 import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
+import { Order } from '../../types';
 
 const OrderUl = styled.ul`
   position: relative;
@@ -21,11 +21,11 @@ const OrderUl = styled.ul`
   min-width: 100%;
 `;
 
-function countItemsInAnOrder(order) {
+function countItemsInAnOrder(order: Order): number {
   return order.items.reduce((tally, item) => tally + item.quantity, 0);
 }
 
-export default function OrderHistory() {
+export default function OrderHistory(): JSX.Element {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
