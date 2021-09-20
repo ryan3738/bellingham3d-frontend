@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
-
-import PropTypes from 'prop-types';
+import { ApolloError } from '@apollo/client';
 
 const ErrorStyles = styled.div`
   padding: 1rem;
@@ -21,8 +19,13 @@ const ErrorStyles = styled.div`
   }
 `;
 
-const DisplayError = ({ error }) => {
+type AppProps = {
+  error: ApolloError;
+};
+
+const DisplayError = ({ error }: AppProps): JSX.Element => {
   if (!error || !error.message) return null;
+  // console.log('ERROR', error);
   if (
     error.networkError &&
     error.networkError.result &&
@@ -40,19 +43,19 @@ const DisplayError = ({ error }) => {
   return (
     <ErrorStyles>
       <p data-test="graphql-error">
-        <strong>Error!</strong>
+        <strong>Error!!</strong>
         {error.message.replace('GraphQL error: ', '')}
       </p>
     </ErrorStyles>
   );
 };
 
-DisplayError.defaultProps = {
-  error: {},
-};
+// DisplayError.defaultProps = {
+//   error: {},
+// };
 
-DisplayError.propTypes = {
-  error: PropTypes.object,
-};
+// DisplayError.propTypes = {
+//   error: PropTypes.object,
+// };
 
 export default DisplayError;
