@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../DisplayApolloError';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const RESET_MUTATION = gql`
@@ -22,7 +22,7 @@ const RESET_MUTATION = gql`
   }
 `;
 
-export default function Reset({ token }) {
+export default function Reset({ token }: { token: string }): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
     password: '',
@@ -35,7 +35,7 @@ export default function Reset({ token }) {
     ? data?.redeemUserPasswordResetToken
     : undefined;
   // console.log(error);
-  async function handleSubmit(e) {
+  async function handleSubmit(e): Promise<void> {
     e.preventDefault();
     // console.log(inputs);
     const res = await reset().catch(console.error);
@@ -48,9 +48,10 @@ export default function Reset({ token }) {
   return (
     //   method="post" makes sure the password doesn't go to the url
     <Form method="post" onSubmit={handleSubmit}>
-      <h2>Reset Your Password</h2>
-      <Error error={error || successfulError} />
+      <h2>Enter A New Password</h2>
       <fieldset>
+        <DisplayApolloError error={error || successfulError} />
+        {loading && <p>Loading...</p>}
         {data?.redeemUserPasswordResetToken === null && (
           <p>Success! You can now sign in!</p>
         )}
@@ -72,13 +73,15 @@ export default function Reset({ token }) {
             type="password"
             name="password"
             placeholder="Enter a Password"
-            autoComplete="password"
+            autoComplete="new-password"
             value={inputs.password}
             onChange={handleChange}
           />
         </label>
 
-        <ButtonStyles type="submit">Request Reset</ButtonStyles>
+        <ButtonStyles type="submit" disabled={loading}>
+          Change Password
+        </ButtonStyles>
       </fieldset>
     </Form>
   );
