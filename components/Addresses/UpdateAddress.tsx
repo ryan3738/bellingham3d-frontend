@@ -58,7 +58,7 @@ const UPDATE_ADDRESS_MUTATION = gql`
   }
 `;
 
-export default function UpdateAddress({ address }) {
+export default function UpdateAddress({ address }): JSX.Element {
   const user = useUser();
   const { closeMenu } = useMenu();
   const [makeDefault, setMakeDefault] = useState(null);
@@ -149,7 +149,7 @@ export default function UpdateAddress({ address }) {
             id="firstName"
             name="firstName"
             placeholder="First Name"
-            autoComplete="first name"
+            autoComplete="given-name"
             value={inputs.firstName}
             onChange={handleChange}
           />
@@ -161,7 +161,7 @@ export default function UpdateAddress({ address }) {
             id="lastName"
             name="lastName"
             placeholder="Last Name"
-            autoComplete="last name"
+            autoComplete="family-name"
             value={inputs.lastName}
             onChange={handleChange}
           />
@@ -173,7 +173,7 @@ export default function UpdateAddress({ address }) {
             id="company"
             name="company"
             placeholder="Company"
-            autoComplete="Company"
+            autoComplete="organization"
             value={inputs.company}
             onChange={handleChange}
           />
@@ -186,7 +186,7 @@ export default function UpdateAddress({ address }) {
             id="address1"
             name="address1"
             placeholder="Address 1"
-            autoComplete="address 1"
+            autoComplete="address-line1"
             value={inputs.address1}
             onChange={handleChange}
           />
@@ -198,7 +198,7 @@ export default function UpdateAddress({ address }) {
             id="address2"
             name="address2"
             placeholder="Address 2"
-            autoComplete="address 2"
+            autoComplete="address-line2"
             value={inputs.address2}
             onChange={handleChange}
           />
@@ -211,7 +211,7 @@ export default function UpdateAddress({ address }) {
             id="city"
             name="city"
             placeholder="City"
-            autoComplete="city"
+            autoComplete="address-level2"
             value={inputs.city}
             onChange={handleChange}
           />
@@ -224,7 +224,7 @@ export default function UpdateAddress({ address }) {
             id="region"
             name="region"
             placeholder="State"
-            autoComplete="region"
+            autoComplete="address-level1"
             value={inputs.region}
             onChange={handleChange}
           />
@@ -250,7 +250,7 @@ export default function UpdateAddress({ address }) {
             id="zip"
             name="zip"
             placeholder="Zip"
-            autoComplete="zip"
+            autoComplete="postal-code"
             value={inputs.zip}
             onChange={handleChange}
           />
@@ -262,7 +262,7 @@ export default function UpdateAddress({ address }) {
             id="phone"
             name="phone"
             placeholder="Phone"
-            autoComplete="phone"
+            autoComplete="tel"
             value={inputs.phone}
             onChange={handleChange}
           />
