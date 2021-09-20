@@ -9,6 +9,7 @@ export default function EditButton({ id, children, pathname }) {
           id,
         },
       }}
+      passHref
     >
       <button type="button" className="button-text">
         {children}
