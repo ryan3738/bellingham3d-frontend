@@ -40,19 +40,19 @@ export default function SingleProduct({ id }: { id: string }): JSX.Element {
   });
 
   if (loading) return <p>Loading...</p>;
-  console.log('ERROR!!!', error);
   if (error) return <DisplayApolloError error={error} />;
   if (!data) return <SeeAllProducts />;
   const { product } = data || null;
 
   // Add a variant to the variantsState array for current product
-  const addVariant = (name, value): void => {
+  const addVariant = (name: string, value: string): void => {
+    console.log('NAME & VALUE', name, value);
     setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
   };
   // console.log('VariantsState Initial', variantsState);
 
   // Select variant from array and update state
-  const updateVariant = (name, value): void => {
+  const updateVariant = (name: string, value: string): void => {
     const newState = [...variantsState];
     const variantIndex = variantsState.findIndex((e) => e.name === name);
     newState[variantIndex] = {
