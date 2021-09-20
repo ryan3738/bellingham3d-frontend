@@ -15,7 +15,7 @@ const ProductsListStyles = styled.div`
   padding: 5px 0;
 `;
 
-export default function Products({ page }) {
+export default function Products({ page }: { page: number }): JSX.Element {
   // Hook that will return query info
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
