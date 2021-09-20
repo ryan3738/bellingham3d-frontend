@@ -121,6 +121,12 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    "react/jsx-props-no-spreading": {
+    "html": "enforce",
+    "custom": "ignore",
+    "explicitSpread": "enforce",
+
+},
   },
   plugins: ['html', 'prettier', 'react-hooks'],
   overrides: [
