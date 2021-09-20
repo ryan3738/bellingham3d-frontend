@@ -1,17 +1,4 @@
-// export type DefaultShipping = {
-//   id: string;
-//   firstName:;
-//   lastName;
-//   company;
-//   address1;
-//   address2;
-//   city;
-//   region;
-//   country;
-//   zip;
-//   phone;
-//   isDefaultShipping: User;
-// };
+/* eslint no-use-before-define: "off" */
 
 export type Address = {
   id: string;
@@ -25,18 +12,18 @@ export type Address = {
   country: string;
   zip: string;
   phone: string;
-  // isDefaultShipping: User;
+  isDefaultShipping: User;
 };
 
 export type CartItem = {
   id: string;
   quantity?: number;
-  // product?: Product;
+  product?: Product;
   productId?: string;
-  // variants: Variant[];
+  variants: Variant[];
   saveForLater?: boolean;
-  // createdAt?: DateTime;
-  // user?: User;
+  createdAt?: string;
+  user?: User;
   userId?: string;
 };
 
