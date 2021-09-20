@@ -27,6 +27,18 @@ export type CartItem = {
   userId?: string;
 };
 
+export type Role = {
+  id: string;
+  name: string;
+  canManageProducts: boolean;
+  canSeeOtherUsers: boolean;
+  canManageUsers: boolean;
+  canManageRoles: boolean;
+  canManageCart: boolean;
+  canManageOrders: boolean;
+  assignedTo: User[];
+};
+
 export type User = {
   id: string;
   name: string;
@@ -35,7 +47,7 @@ export type User = {
   addresses: Address[];
   defaultShipping: Address;
   cart: CartItem[];
-  role: string;
+  role: Role;
   createdAt: string;
 };
 
