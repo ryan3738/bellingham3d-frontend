@@ -9,7 +9,11 @@ const SIGN_OUT_MUTATION = gql`
   }
 `;
 
-export default function SignOut({ children }) {
+type AppProps = {
+  children: React.ReactNode;
+};
+
+export default function SignOut({ children }: AppProps): JSX.Element {
   const [signout] = useMutation(SIGN_OUT_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
