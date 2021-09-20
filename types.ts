@@ -66,8 +66,8 @@ export type ProductImage = {
 
 export type Option = {
   id: string;
-  name: string;
-  description: string;
+  name?: string;
+  description?: string;
 };
 
 export type Variant = {
