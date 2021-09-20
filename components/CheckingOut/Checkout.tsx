@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import LargeButton from '../styles/LargeButton';
 import { useCart } from '../../lib/cartState';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
+import { Address } from '../../types';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
@@ -40,8 +41,12 @@ const CREATE_ORDER_MUTATION = gql`
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-function CheckoutForm({ shippingId }) {
-  const [error, setError] = useState();
+function CheckoutForm({
+  shippingId,
+}: {
+  shippingId: Address['id'];
+}): JSX.Element {
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -54,10 +59,10 @@ function CheckoutForm({ shippingId }) {
     }
   );
   // console.log('this is the shippingId', shippingId);
-  async function handleSubmit(e) {
+  async function handleSubmit(e): Promise<void> {
     // 1. Stop the form from submitting and turn the loader on
     e.preventDefault();
-    setError();
+    setError(null);
     setLoading(true);
 
     console.log('Checking Out');
@@ -109,7 +114,7 @@ function CheckoutForm({ shippingId }) {
   );
 }
 
-function Checkout({ shippingId }) {
+function Checkout({ shippingId }: { shippingId?: Address['id'] }): JSX.Element {
   return (
     <Elements stripe={stripeLib}>
       <CheckoutForm shippingId={shippingId} />
