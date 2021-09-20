@@ -1,4 +1,4 @@
-import SingleProduct from '../../components/Products/SingleProduct';
+import ProductDetails from '../../components/Products/ProductDetails';
 
 export default function SingleProductPage({
   query,
@@ -7,5 +7,5 @@ export default function SingleProductPage({
     id: string;
   };
 }): JSX.Element {
-  return <SingleProduct id={query.id} />;
+  return <ProductDetails id={query.id} />;
 }

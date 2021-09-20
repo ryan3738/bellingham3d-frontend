@@ -29,7 +29,7 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function SingleProduct({ id }: { id: string }): JSX.Element {
+export default function ProductDetails({ id }: { id: string }): JSX.Element {
   const [variantsState, setVariantsState] = useState([]);
   const me = useUser();
 
