@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Variant } from '../../types';
 
 type AppProps = {
   addVariant: any;
