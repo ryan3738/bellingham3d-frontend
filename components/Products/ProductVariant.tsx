@@ -1,11 +1,17 @@
-import { func, object } from 'prop-types';
 import { useEffect, useState } from 'react';
+import { Variant } from '../../types';
+
+type AppProps = {
+  addVariant: any;
+  updateVariant: any;
+  filteredVariant: any;
+};
 
 export default function ProductVariant({
   filteredVariant,
   addVariant,
   updateVariant,
-}) {
+}: AppProps): JSX.Element {
   // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
   const [valueState, setValueState] = useState(filteredVariant.variants[0].id);
 
@@ -15,7 +21,7 @@ export default function ProductVariant({
     addVariant(typeName, valueState);
   }, []);
 
-  function handleChange(e) {
+  function handleChange(e): void {
     setValueState(e.target.value);
     updateVariant(typeName, e.target.value);
   }
@@ -56,9 +62,3 @@ export default function ProductVariant({
     </>
   );
 }
-
-ProductVariant.propTypes = {
-  filteredVariant: object.isRequired,
-  addVariant: func.isRequired,
-  updateVariant: func.isRequired,
-};

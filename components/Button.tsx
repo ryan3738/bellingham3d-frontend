@@ -1,6 +1,16 @@
 import Link from 'next/link';
 import { ButtonStyles } from './styles/StateStyles';
 
+type AppProps = {
+  children?: React.ReactNode;
+  button?: boolean;
+  buttonLink?: string;
+  internalLink?: string;
+  onClick?: any;
+  disabled?: boolean;
+  title?: string;
+};
+
 export default function Button({
   children,
   button,
@@ -9,7 +19,7 @@ export default function Button({
   onClick,
   disabled,
   title,
-}) {
+}: AppProps): JSX.Element {
   return (
     <>
       {buttonLink && (
@@ -25,7 +35,7 @@ export default function Button({
         </a>
       )}
       {internalLink && (
-        <Link href={internalLink}>
+        <Link href={internalLink} passHref>
           <ButtonStyles
             type="button"
             title={title}
@@ -46,11 +56,6 @@ export default function Button({
           {children}
         </ButtonStyles>
       )}
-
-      <style jsx>{`
-         {
-        }
-      `}</style>
     </>
   );
 }

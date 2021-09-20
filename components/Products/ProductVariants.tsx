@@ -1,16 +1,22 @@
-import { func, array } from 'prop-types';
+import { Variant } from '../../types';
 import ProductVariant from './ProductVariant';
+
+type AppProps = {
+  variants: Variant[];
+  addVariant: any;
+  updateVariant: any;
+};
 
 export default function ProductVariants({
   variants,
   addVariant,
   updateVariant,
-}) {
+}: AppProps): JSX.Element {
   // console.log('<ProductVariants /> variant:', variants);
 
   // Take all variants and make list of unique variants
   const uniqueVariants = [
-    ...new Set(variants?.map((productVariant) => productVariant.option)),
+    ...new Set(variants?.map((variant) => variant.option)),
   ];
 
   const filteredVariants = uniqueVariants.map((uniqueVariant) => ({
@@ -39,9 +45,3 @@ export default function ProductVariants({
     </div>
   );
 }
-
-ProductVariants.propTypes = {
-  variants: array.isRequired,
-  addVariant: func.isRequired,
-  updateVariant: func.isRequired,
-};

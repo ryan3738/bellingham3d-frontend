@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 import Head from 'next/head';
-import { string } from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 import formatMoney from '../../lib/formatMoney';
@@ -30,7 +29,7 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function SingleProduct({ id }) {
+export default function SingleProduct({ id }: { id: string }): JSX.Element {
   const [variantsState, setVariantsState] = useState([]);
   const me = useUser();
 
@@ -47,13 +46,13 @@ export default function SingleProduct({ id }) {
   const { product } = data || null;
 
   // Add a variant to the variantsState array for current product
-  const addVariant = (name, value) => {
+  const addVariant = (name, value): void => {
     setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
   };
   // console.log('VariantsState Initial', variantsState);
 
   // Select variant from array and update state
-  const updateVariant = (name, value) => {
+  const updateVariant = (name, value): void => {
     const newState = [...variantsState];
     const variantIndex = variantsState.findIndex((e) => e.name === name);
     newState[variantIndex] = {
@@ -63,7 +62,7 @@ export default function SingleProduct({ id }) {
     setVariantsState(newState);
   };
 
-  function getVariantIds(variantsList) {
+  function getVariantIds(variantsList): string[] {
     const variantIds = variantsList.map((variant) => variant.value);
     // console.log('variantIds', variantIds);
     return variantIds;
@@ -120,7 +119,3 @@ export default function SingleProduct({ id }) {
     </>
   );
 }
-
-SingleProduct.propTypes = {
-  id: string,
-};
