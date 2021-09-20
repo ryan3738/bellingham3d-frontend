@@ -25,7 +25,7 @@ export type Address = {
   country: string;
   zip: string;
   phone: string;
-  isDefaultShipping: User;
+  // isDefaultShipping: User;
 };
 
 export type CartItem = {
@@ -65,6 +65,34 @@ export type ProductImage = {
   createdAt: string;
 };
 
+export type Option = {
+  id: string;
+  name: string;
+  description: string;
+};
+
+export type Variant = {
+  id: string;
+  option: Option;
+  name: string;
+  description: string;
+};
+
+type InventoryItem = {
+  id: string;
+  price: number;
+  requiresShipping: boolean;
+  tracked: boolean;
+  quantity: number;
+  allowBackorder: boolean;
+};
+
+type Category = {
+  id: string;
+  name: string;
+  description: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -72,9 +100,9 @@ export type Product = {
   images: ProductImage[];
   status: string;
   price: number;
-  // category: Category[];
-  // inventoryItem: InventoryItem;
-  // variants: Variant[];
+  category: Category[];
+  inventoryItem: InventoryItem;
+  variants: Variant[];
   createdAt: string;
   user: User;
 };
