@@ -55,7 +55,6 @@ export default function CartItem({
           <Link href={`/product/${product.id}`}>
             <a>
               <Image
-                // src={product.images[0]?.image?.publicUrlTransformed}
                 src={
                   product.images[0]
                     ? product?.images[0]?.image?.publicUrlTransformed
