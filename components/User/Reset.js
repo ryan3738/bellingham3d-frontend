@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../ErrorMessage';
+import Error from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const RESET_MUTATION = gql`

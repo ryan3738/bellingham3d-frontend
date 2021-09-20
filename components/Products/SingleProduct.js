@@ -5,14 +5,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import formatMoney from '../../lib/formatMoney';
 import AddToCart from '../Cart/AddToCart';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
 import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
-
 
 const ProductStyles = styled.div`
   display: grid;
@@ -42,7 +41,8 @@ export default function SingleProduct({ id }) {
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <DisplayError error={error} />;
+  console.log('ERROR!!!', error);
+  if (error) return <DisplayApolloError error={error} />;
   if (!data) return <SeeAllProducts />;
   const { product } = data || null;
 

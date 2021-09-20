@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../../lib/useForm';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import Form from '../styles/Form';
 
 const SINGLE_PRODUCT_QUERY = gql`
@@ -74,7 +74,7 @@ export default function UpdateProduct({ id }) {
         // });
       }}
     >
-      <DisplayError error={error || updateError} />
+      <DisplayApolloError error={error || updateError} />
       <fieldset disabled={updateLoading} aria-busy={updateLoading}>
         {/* TODO: Add image editing abilities? */}
         {/* <label htmlFor="name">

@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import OrderStyles from '../styles/OrderStyles';
 import { formatDate } from '../../lib/formatDate';
 import DisplayAddress from '../Addresses/DisplayAddress';
@@ -56,7 +56,7 @@ export default function SingleOrder({ id }) {
     },
   });
   if (loading) return <p>Loading...</p>;
-  if (error) return <DisplayError error={error} />;
+  if (error) return <DisplayApolloError error={error} />;
   const { order } = data;
   return (
     <OrderStyles>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { perPage } from '../../config';
 import Product from './Product';
 import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
+import DisplayApolloError from '../DisplayApolloError';
 
 const ProductsListStyles = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ export default function Products({ page }: { page: number }): JSX.Element {
     },
   });
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <DisplayApolloError error={error} />;
   if (!data) return <p>No products found</p>;
   const { products } = data || null;
   return (

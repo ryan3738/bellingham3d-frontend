@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { useEffect, useState } from 'react';
 import useForm from '../../lib/useForm';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 import Form from '../styles/Form';
 import { useUser } from '../User';
@@ -107,7 +107,7 @@ export default function CreateAddress(): JSX.Element {
       }}
     >
       <h2>Add A New Address</h2>
-      <DisplayError error={error} />
+      <DisplayApolloError error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="firstName">
           First Name

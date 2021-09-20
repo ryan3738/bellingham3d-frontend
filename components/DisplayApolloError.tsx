@@ -23,7 +23,7 @@ type AppProps = {
   error: ApolloError;
 };
 
-const DisplayError = ({ error }: AppProps): JSX.Element => {
+const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
   if (!error || !error.message) return null;
   // console.log('ERROR', error);
   if (
@@ -58,4 +58,4 @@ const DisplayError = ({ error }: AppProps): JSX.Element => {
 //   error: PropTypes.object,
 // };
 
-export default DisplayError;
+export default DisplayApolloError;

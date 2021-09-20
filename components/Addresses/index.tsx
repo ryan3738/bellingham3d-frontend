@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import Head from 'next/head';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import ContainerGrid from '../styles/ContainerGrid';
 import Grid4Styles from '../styles/Grid4Styles';
 import CreateAddress from './CreateAddress';
@@ -25,7 +25,7 @@ export default function Addresses({
 }: AppProps): JSX.Element {
   const { data, loading, error } = useQuery(USER_ADDRESSES_QUERY);
   if (loading) return <p>Loading...</p>;
-  if (error) return <DisplayError error={error} />;
+  if (error) return <DisplayApolloError error={error} />;
   const addresses = data.customerAddresses;
 
   return (

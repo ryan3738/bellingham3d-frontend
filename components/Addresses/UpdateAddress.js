@@ -4,7 +4,7 @@ import { object } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import Form from '../styles/Form';
 import { ButtonStyles } from '../styles/StateStyles';
 import { useUser } from '../User';
@@ -138,7 +138,7 @@ export default function UpdateAddress({ address }) {
         closeMenu();
       }}
     >
-      <DisplayError error={updateError} />
+      <DisplayApolloError error={updateError} />
       <fieldset disabled={updateLoading} aria-busy={updateLoading}>
         {address.isDefaultShipping?.id && <h4>Default Address</h4>}
         <label htmlFor="firstName">

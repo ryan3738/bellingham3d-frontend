@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import formatMoney from '../../lib/formatMoney';
 import { siteData } from '../../public/site-data';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import OrderHistoryStyles from '../styles/OrderHistoryStyles';
 import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
 
@@ -28,7 +28,7 @@ function countItemsInAnOrder(order) {
 export default function OrderHistory() {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
-  if (error) return <DisplayError error={error} />;
+  if (error) return <DisplayApolloError error={error} />;
   const { orders } = data;
   return (
     <div className="wrapper">

@@ -4,7 +4,7 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { useState } from 'react';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../ErrorMessage';
+import Error from '../DisplayApolloError';
 import SignIn from './SignIn';
 import { ButtonStyles } from '../styles/StateStyles';
 

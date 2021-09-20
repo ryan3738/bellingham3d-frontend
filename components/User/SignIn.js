@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Form from '../styles/Form';
 import useForm from '../../lib/useForm';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
-import Error from '../ErrorMessage';
+import Error from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const eye = <FaEye />;

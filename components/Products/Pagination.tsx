@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import PaginationStyles from '../styles/PaginationStyles';
 import { perPage } from '../../config';
 import { siteData } from '../../public/site-data';
@@ -17,7 +17,7 @@ export const PAGINATION_QUERY = gql`
 export default function Pagination({ page }: { page: number }): JSX.Element {
   const { error, loading, data } = useQuery(PAGINATION_QUERY);
   if (loading) return <p>Loading...</p>;
-  if (error) return <DisplayError error={error} />;
+  if (error) return <DisplayApolloError error={error} />;
   const count = data.productsCount;
   const pageCount = Math.ceil(count / perPage);
   return (

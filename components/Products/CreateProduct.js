@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import Router from 'next/router';
 import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 import useForm from '../../lib/useForm';
-import DisplayError from '../ErrorMessage';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 import Form from '../styles/Form';
@@ -63,7 +63,7 @@ export default function CreateProduct() {
       }}
     >
       <h2>Add A New Product</h2>
-      <DisplayError error={error} />
+      <DisplayApolloError error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="name">
           Image
