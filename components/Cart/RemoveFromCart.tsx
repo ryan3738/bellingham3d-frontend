@@ -12,11 +12,11 @@ const REMOVE_FROM_CART_MUTATION = gql`
   }
 `;
 
-function update(cache, payload) {
+function update(cache, payload): void {
   cache.evict('cache.identify(payload.data.deleteCartItem)');
 }
 
-export default function RemoveFromCart({ id }) {
+export default function RemoveFromCart({ id }: { id: string }): JSX.Element {
   const [removeFromCart, { loading }] = useMutation(REMOVE_FROM_CART_MUTATION, {
     variables: { id },
     update,

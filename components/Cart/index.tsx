@@ -15,7 +15,7 @@ import { ButtonIconStyles } from '../styles/StateStyles';
 
 // export const cartShippingAddress = makeVar();
 
-export default function Cart() {
+export default function Cart(): JSX.Element {
   const me = useUser();
 
   const { cartOpen, closeCart } = useCart();
