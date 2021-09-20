@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../DisplayApolloError';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const REQUEST_RESET_MUTATION = gql`
@@ -14,7 +14,7 @@ const REQUEST_RESET_MUTATION = gql`
   }
 `;
 
-export default function RequestReset() {
+export default function RequestReset(): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
   });
@@ -27,7 +27,7 @@ export default function RequestReset() {
     }
   );
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e): Promise<void> {
     e.preventDefault();
     // console.log(inputs);
     await signup().catch(console.error);
@@ -45,8 +45,9 @@ export default function RequestReset() {
     //   method="post" makes sure the password doesn't go to the url
     <Form method="post" onSubmit={handleSubmit}>
       <h2>Request a Password Reset</h2>
-      <Error error={error} />
       <fieldset>
+        {loading && <p>Loading...</p>}
+        <DisplayApolloError error={error} />
         {data?.sendUserPasswordResetLink === null && (
           <p>Success! Check your email for a link!</p>
         )}
@@ -63,7 +64,9 @@ export default function RequestReset() {
           />
         </label>
 
-        <ButtonStyles type="submit">Request Reset</ButtonStyles>
+        <ButtonStyles type="submit" disabled={loading}>
+          Request Reset
+        </ButtonStyles>
       </fieldset>
     </Form>
   );
