@@ -23,7 +23,6 @@ export default function DisplayAddress({
           <p>{address.phone}</p>
         </>
       )}
-      {/* {!address && <CreateAddress />} */}
     </>
   );
 }
