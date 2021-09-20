@@ -74,7 +74,7 @@ export default function CreateAddress(): JSX.Element {
     makeDefault: false,
   });
   // console.log('inputs', inputs);
-  const [createCustomerAddress, { loading, error, data }] = useMutation(
+  const [createCustomerAddress, { loading, error }] = useMutation(
     CREATE_ADDRESS_MUTATION,
     {
       variables: {

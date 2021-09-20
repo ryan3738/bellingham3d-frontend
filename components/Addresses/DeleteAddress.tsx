@@ -12,12 +12,16 @@ const DELETE_ADDRESS_MUTATION = gql`
   }
 `;
 
-function update(cache, payload) {
+function update(cache, payload): void {
   console.log('running the update function after delete');
   cache.evict(cache.identify(payload.data.deleteCustomerAddress));
 }
+type AppProps = {
+  id: string;
+  children: React.ReactNode;
+};
 
-export default function DeleteAddress({ id, children }) {
+export default function DeleteAddress({ id, children }: AppProps): JSX.Element {
   const [deleteCustomerAddress, { loading, error }] = useMutation(
     DELETE_ADDRESS_MUTATION,
     {
@@ -26,6 +30,7 @@ export default function DeleteAddress({ id, children }) {
       refetchQueries: [{ query: USER_ADDRESSES_QUERY }],
     }
   );
+  console.error('Error', error);
   return (
     <ButtonStyles
       type="button"

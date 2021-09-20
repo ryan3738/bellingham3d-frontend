@@ -1,9 +1,9 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import { object } from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
+import { Address } from '../../types';
 import DisplayApolloError from '../DisplayApolloError';
 import Form from '../styles/Form';
 import { ButtonStyles } from '../styles/StateStyles';
@@ -58,11 +58,15 @@ const UPDATE_ADDRESS_MUTATION = gql`
   }
 `;
 
-export default function UpdateAddress({ address }): JSX.Element {
+export default function UpdateAddress({
+  address,
+}: {
+  address: Address;
+}): JSX.Element {
   const user = useUser();
   const { closeMenu } = useMenu();
   const [makeDefault, setMakeDefault] = useState(null);
-  const [isDefault, setIsDefault] = useState();
+  const [isDefault, setIsDefault] = useState(null);
 
   // 1. We need to get the existing address
   // const { data, error, loading } = useQuery(SINGLE_ADDRESS_QUERY, {
@@ -72,7 +76,7 @@ export default function UpdateAddress({ address }): JSX.Element {
   // 2. We need to get the mutation to update the product
   const [
     updateCustomerAddress,
-    { data: updateData, error: updateError, loading: updateLoading },
+    { error: updateError, loading: updateLoading },
   ] = useMutation(UPDATE_ADDRESS_MUTATION);
 
   // Check if current address is default and set state
@@ -267,7 +271,7 @@ export default function UpdateAddress({ address }): JSX.Element {
             onChange={handleChange}
           />
         </label>
-        <label type="checkbox" htmlFor="makeDefault">
+        <label className="checkbox" htmlFor="makeDefault">
           Make Default
           <input
             type="checkbox"
@@ -285,8 +289,3 @@ export default function UpdateAddress({ address }): JSX.Element {
     </Form>
   );
 }
-
-UpdateAddress.propTypes = {
-  // id: string.isRequired,
-  address: object.isRequired,
-};
