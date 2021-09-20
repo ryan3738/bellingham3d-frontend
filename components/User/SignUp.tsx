@@ -25,7 +25,7 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
-export default function SignUp() {
+export default function SignUp(): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     name: '',
     email: '',
@@ -37,7 +37,7 @@ export default function SignUp() {
     // refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e): Promise<void> {
     e.preventDefault();
     // console.log(inputs);
     signup().catch(console.error);
@@ -55,7 +55,7 @@ export default function SignUp() {
   //     ? data?.authenticateUserWithPassword
   //     : undefined;
   const [passwordShown, setPasswordShown] = useState(false);
-  const togglePasswordVisiblity = () => {
+  const togglePasswordVisiblity = (): void => {
     setPasswordShown(!passwordShown);
   };
 
@@ -104,7 +104,7 @@ export default function SignUp() {
                     type={passwordShown ? 'text' : 'password'}
                     name="password"
                     placeholder="6 characters minimum"
-                    autoComplete="password"
+                    autoComplete="new-password"
                     value={inputs.password}
                     onChange={handleChange}
                   />
