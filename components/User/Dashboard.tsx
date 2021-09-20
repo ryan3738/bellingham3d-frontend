@@ -5,7 +5,7 @@ import SignOut from './SignOut';
 import ContainerGrid from '../styles/ContainerGrid';
 import { useUser } from '.';
 
-export default function Account(props) {
+export default function Account(): JSX.Element {
   const user = useUser();
   if (!user) return null;
   return (
