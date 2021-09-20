@@ -64,3 +64,17 @@ export type ProductImage = {
   altText: string;
   createdAt: string;
 };
+
+export type Product = {
+  id: string;
+  name: string;
+  description: string;
+  images: ProductImage[];
+  status: string;
+  price: number;
+  // category: Category[];
+  // inventoryItem: InventoryItem;
+  // variants: Variant[];
+  createdAt: string;
+  user: User;
+};
