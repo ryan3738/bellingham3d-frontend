@@ -26,20 +26,39 @@ type AppProps = {
 const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
   if (!error || !error.message) return null;
   // console.log('ERROR', error);
-  if (
-    error.networkError &&
-    error.networkError.result &&
-    error.networkError.result.errors.length
-  ) {
-    return error.networkError.result.errors.map((error, i) => (
-      <ErrorStyles key={i}>
-        <p data-test="graphql-error">
-          <strong>Error!</strong>
-          {error.message.replace('GraphQL error: ', '')}
-        </p>
-      </ErrorStyles>
-    ));
-  }
+  // if (
+  //   error.networkError &&
+  //   error.networkError.message &&
+  //   error.networkError
+  // ) {
+  //   return (
+  //     <>
+  //       {error.graphQLErrors.map((graphQLError, i) => (
+  //         <ErrorStyles key={i}>
+  //           <p data-test="graphql-error">
+  //             <strong>GraphQL Error!</strong>
+  //             {graphQLError.message.replace('GraphQL error: ', '')}
+  //           </p>
+  //         </ErrorStyles>
+  //       ))}
+  //     </>
+  //   );
+  // }
+
+  // if (error.message && error.graphQLErrors && error.graphQLErrors.length) {
+  //   return (
+  //     <>
+  //       {error.graphQLErrors.map((graphQLError, i) => (
+  //         <ErrorStyles key={i}>
+  //           <p data-test="graphql-error">
+  //             <strong>GraphQL Error!</strong>
+  //             {graphQLError.message.replace('GraphQL error: ', '')}
+  //           </p>
+  //         </ErrorStyles>
+  //       ))}
+  //     </>
+  //   );
+  // }
   return (
     <ErrorStyles>
       <p data-test="graphql-error">
@@ -49,13 +68,5 @@ const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
     </ErrorStyles>
   );
 };
-
-// DisplayError.defaultProps = {
-//   error: {},
-// };
-
-// DisplayError.propTypes = {
-//   error: PropTypes.object,
-// };
 
 export default DisplayApolloError;
