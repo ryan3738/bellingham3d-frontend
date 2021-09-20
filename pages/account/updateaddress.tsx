@@ -1,6 +1,12 @@
 import UpdateAddress from '../../components/Addresses/UpdateAddress';
 
-export default function UpdateAddressPage({ query }) {
+export default function UpdateAddressPage({
+  query,
+}: {
+  query: {
+    id: string;
+  };
+}): JSX.Element {
   console.log(query);
   return (
     <div>
