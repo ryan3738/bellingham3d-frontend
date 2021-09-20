@@ -21,9 +21,6 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
     variables: { id, variantIds },
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-  // const handleClick = () => {
-  //   // console.log('Addding item #', id, 'and variants to cart...', variantIds);
-  // };
 
   return (
     <ButtonStyles
@@ -31,7 +28,6 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
       type="button"
       onClick={() => {
         addToCart();
-        // handleClick();
       }}
     >
       Add{loading && 'ing'} To Cart
