@@ -14,9 +14,9 @@ export const PAGINATION_QUERY = gql`
   }
 `;
 
-export default function Pagination({ page }) {
+export default function Pagination({ page }: { page: number }): JSX.Element {
   const { error, loading, data } = useQuery(PAGINATION_QUERY);
-  if (loading) return 'Loading...';
+  if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const count = data.productsCount;
   const pageCount = Math.ceil(count / perPage);
