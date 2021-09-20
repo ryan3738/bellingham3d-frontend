@@ -9,6 +9,7 @@ export default function ResetPage({
   };
 }): JSX.Element {
   if (!query?.token) {
+    console.log('query', query);
     return (
       <div>
         <p>Sorry you must supply a token</p>
