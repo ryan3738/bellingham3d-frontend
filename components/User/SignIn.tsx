@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Form from '../styles/Form';
 import useForm from '../../lib/useForm';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
-import Error from '../DisplayApolloError';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
 const eye = <FaEye />;
@@ -31,7 +31,7 @@ const SIGNIN_MUTATION = gql`
   }
 `;
 
-export default function SignIn() {
+export default function SignIn(): JSX.Element {
   const router = useRouter();
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
@@ -42,7 +42,7 @@ export default function SignIn() {
     // refectch the currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-  async function handleSubmit(e) {
+  async function handleSubmit(e): Promise<void> {
     e.preventDefault(); // stop the form from submitting
     // console.log(inputs);
     const res = await signin();
@@ -72,7 +72,8 @@ export default function SignIn() {
     <div>
       <Form method="POST" onSubmit={handleSubmit}>
         <h2>Sign Into Your Account</h2>
-        <Error error={error} />
+        <DisplayApolloError error={error} />
+        {loading && <p>Loading...</p>}
 
         <fieldset>
           <label htmlFor="email">
@@ -95,7 +96,7 @@ export default function SignIn() {
                 type={passwordShown ? 'text' : 'password'}
                 name="password"
                 placeholder="Password"
-                autoComplete="password"
+                autoComplete="current-password"
                 value={inputs.password}
                 onChange={handleChange}
               />
@@ -105,7 +106,9 @@ export default function SignIn() {
             </i>
           </div>
 
-          <ButtonStyles type="submit">Sign In!</ButtonStyles>
+          <ButtonStyles type="submit" disabled={loading}>
+            Sign In!
+          </ButtonStyles>
           <div>
             <br />
             <Link href="/requestreset">Forgot password?</Link>
