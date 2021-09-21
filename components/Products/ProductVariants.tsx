@@ -3,8 +3,6 @@ import ProductVariant from './ProductVariant';
 
 type AppProps = {
   variants: Variant[];
-  setVariants: any;
-  updateVariant: any;
   selectVariant: selectVariantType;
 };
 
@@ -35,8 +33,6 @@ const getFilteredVariants = ({
 
 export default function ProductVariants({
   variants,
-  setVariants,
-  updateVariant,
   selectVariant,
 }: AppProps): JSX.Element {
   return (
@@ -45,8 +41,6 @@ export default function ProductVariants({
         <ProductVariant
           variants={getFilteredVariants({ variants, option })}
           option={option}
-          setVariants={setVariants}
-          updateVariant={updateVariant}
           key={option.id}
           selectVariant={selectVariant}
         />
