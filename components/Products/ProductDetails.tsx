@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import formatMoney from '../../lib/formatMoney';
 import AddToCart from '../Cart/AddToCart';
@@ -11,7 +11,7 @@ import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
-import { Product, selectVariantType, Variant } from '../../types';
+import { Option, Product, selectVariantType, Variant } from '../../types';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -34,56 +34,58 @@ type AppProps = {
   id: Product['id'];
 };
 
+interface SelectedVariant extends Option {
+  variant: Variant;
+}
+
 export default function ProductDetails({ id }: AppProps): JSX.Element {
-  const [variantsState, setVariantsState] = useState([]);
+  const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const me = useUser();
 
-  console.log('VARIANTS STATE', variantsState);
+  const selectVariant: selectVariantType = useCallback(
+    ({ option, variant }) => {
+      // Take in options and variants
+      setVariantsState((previousState) => {
+        // If the option doesn't exist add it to state
+        if (!previousState.find((item) => item.id === option.id)) {
+          const newOption = {
+            id: option.id,
+            name: option.name,
+            variant: {
+              id: variant.id,
+              name: variant.name,
+            },
+          };
+          return [...previousState, newOption];
+        }
+        previousState.forEach((item) => {
+          // If option exists, update the variant state
+          if (item.name === option.name) {
+            item.variant.id = variant.id;
+            item.variant.name = variant.name;
+          }
+        });
+        return [...previousState];
+      });
+    },
+    []
+  );
 
   const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: {
       id,
     },
   });
-
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
   if (!data) return <SeeAllProducts />;
   const { product } = data || null;
 
-  // Add a variant to the variantsState array for current product
-  const setVariants = (name: string, value: string): void => {
-    // console.log('NAME & VALUE', name, value);
-    setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
-  };
-  // console.log('VariantsState Initial', variantsState);
-
-  // Select variant from array and update state
-  const updateVariant = (name: string, value: string): void => {
-    console.log('NAME & VALUE', name, value);
-    const newState = [...variantsState];
-    const variantIndex = variantsState.findIndex((item) => item.name === name);
-    newState[variantIndex] = {
-      ...variantsState[variantIndex],
-      value,
-    };
-    setVariantsState(newState);
-  };
-
-  const selectVariant: selectVariantType = ({ option, variant }) => {
-    // Take in options and variants
-    console.log('OPTION & VARIANT', option, variant);
-    // If the option doesn't exist add it to state
-    // If option exists, check if the variant is the same
-    // If it is, do nothing
-    // If it is not, update the variant state
-  };
-
-  function getVariantIds(variantsList: Variant[]): Variant['id'][] {
-    const variantIds = variantsList.map((variant) => variant.value);
+  const getVariantIds = (options: SelectedVariant[]): Variant['id'][] => {
+    const variantIds = options.map((option) => option.variant.id);
     // console.log('variantIds', variantIds);
     return variantIds;
-  }
+  };
 
   return (
     <>
@@ -99,8 +101,6 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
           <h3>{formatMoney(product.price)}</h3>
           <ProductVariants
             variants={product.variants}
-            setVariants={setVariants}
-            updateVariant={updateVariant}
             selectVariant={selectVariant}
           />
           {me && (
