@@ -130,3 +130,8 @@ export type Order = {
   shippingAddressId: string;
   createdAt: string;
 };
+
+export type selectVariantType = (parameters: {
+  option: Option;
+  variant: Variant;
+}) => void;
