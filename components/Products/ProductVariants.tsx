@@ -1,10 +1,19 @@
-import { Variant } from '../../types';
+import { Option, Variant } from '../../types';
 import ProductVariant from './ProductVariant';
 
 type AppProps = {
   variants: Variant[];
   addVariant: any;
   updateVariant: any;
+};
+
+const getOptions = (variants: Variant[]): Option[] => {
+  const options = variants.map((variant) => {
+    return variant.option;
+  });
+  const uniqueOptionsSet = new Set(options);
+  const uniqueOptionsArray = Array.from(uniqueOptionsSet);
+  return uniqueOptionsArray;
 };
 
 export default function ProductVariants({
@@ -14,10 +23,13 @@ export default function ProductVariants({
 }: AppProps): JSX.Element {
   // console.log('<ProductVariants /> variant:', variants);
 
+  console.log('OPTIONS!!!', getOptions(variants));
   // Take all variants and make list of unique variants
   const uniqueVariants = [
     ...new Set(variants?.map((variant) => variant.option)),
   ];
+
+  console.log('UNIQUE VARIANTS', uniqueVariants);
 
   const filteredVariants = uniqueVariants.map((uniqueVariant) => ({
     typeId: uniqueVariant.id,
@@ -30,7 +42,7 @@ export default function ProductVariants({
       })),
   }));
 
-  // console.log('filteredVariants:', filteredVariants);
+  console.log('filteredVariants:', filteredVariants);
 
   return (
     <div className="details">
