@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import Pagination from '../../components/Products/Pagination';
-import Products from '../../components/Products';
+import Products from '../../components/Products/Products';
 
 export default function ProductsPage(): JSX.Element {
   const { query } = useRouter();

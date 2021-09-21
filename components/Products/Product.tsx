@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 import { siteData } from '../../public/site-data';
 import * as types from '../../types';
 

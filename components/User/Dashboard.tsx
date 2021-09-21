@@ -3,7 +3,7 @@ import { siteData } from '../../public/site-data';
 import Button from '../Button';
 import SignOut from './SignOut';
 import ContainerGrid from '../styles/ContainerGrid';
-import { useUser } from '.';
+import { useUser } from './User';
 
 export default function Account(): JSX.Element {
   const user = useUser();

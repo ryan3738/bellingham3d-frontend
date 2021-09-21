@@ -7,7 +7,7 @@ import AddToCart from '../Cart/AddToCart';
 import DisplayApolloError from '../DisplayApolloError';
 import ImageSlider from '../ImageSlider';
 import ProductVariants from './ProductVariants';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';

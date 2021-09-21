@@ -6,7 +6,7 @@ import BurgerMenu from './BurgerMenu';
 import { useOnClickOutside } from '../../lib/hooks';
 import NavList from './NavList';
 import Search from '../Search';
-import Cart from '../Cart';
+import Cart from '../Cart/Cart';
 import NavSpacer from './NavSpacer';
 
 const LogoWrapper = styled.div`
@@ -76,6 +76,7 @@ export default function NavBar({ children }: AppProps): JSX.Element {
     <>
       <div className="bar">
         <nav>
+          {children}
           <div className="nav-list">
             <div className="burger">
               <div ref={node}>

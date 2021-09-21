@@ -121,7 +121,7 @@ function CheckoutForm({
   );
 }
 
-function Checkout({ shippingId }: { shippingId?: Address['id'] }): JSX.Element {
+function Payment({ shippingId }: { shippingId?: Address['id'] }): JSX.Element {
   return (
     <Elements stripe={stripeLib}>
       <CheckoutForm shippingId={shippingId} />
@@ -129,4 +129,4 @@ function Checkout({ shippingId }: { shippingId?: Address['id'] }): JSX.Element {
   );
 }
 
-export { Checkout };
+export { Payment };

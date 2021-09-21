@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
-import NavBar from './NavBar';
+import NavBar from './NavBar/NavBar';
 
 const GlobalStyles = createGlobalStyle`
 /* Add back in if a custom font is wanted */

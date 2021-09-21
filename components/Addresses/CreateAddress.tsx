@@ -6,7 +6,7 @@ import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 import Form from '../styles/Form';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 
 const CREATE_ADDRESS_MUTATION = gql`
   mutation CREATE_ADDRESS_MUTATION(

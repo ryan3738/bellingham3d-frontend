@@ -7,7 +7,7 @@ import { Address } from '../../types';
 import DisplayApolloError from '../DisplayApolloError';
 import Form from '../styles/Form';
 import { ButtonStyles } from '../styles/StateStyles';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 
 const UPDATE_ADDRESS_MUTATION = gql`
   mutation UPDATE_ADDRESS_MUTATION(
