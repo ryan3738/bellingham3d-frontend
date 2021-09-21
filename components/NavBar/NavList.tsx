@@ -1,6 +1,6 @@
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 import { useCart } from '../../lib/cartState';
 import CartCount from '../Cart/CartCount';
 import NavItem from './NavItem';

@@ -1,4 +1,4 @@
-import OrderHistory from '../../components/Orders';
+import OrderHistory from '../../components/Orders/Orders';
 
 export default function OrdersPage(): JSX.Element {
   return (

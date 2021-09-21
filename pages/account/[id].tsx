@@ -1,4 +1,4 @@
-import SingleOrder from '../../components/Orders/SingleOrder';
+import SingleOrder from '../../components/Orders/Order';
 
 export default function SingleOrderPage({
   query,

@@ -4,12 +4,12 @@ import { IconContext } from 'react-icons/lib';
 import CartStyles from '../styles/CartStyles';
 import Supreme from '../styles/Supreme';
 import formatMoney from '../../lib/formatMoney';
-import { useUser } from '../User';
+import { useUser } from '../User/User';
 import calcTotalPrice from '../../lib/calcTotalPrice';
 import { useCart } from '../../lib/cartState';
-import { Checkout } from '../CheckingOut/Checkout';
+import { Payment } from '../CheckOut/Payment';
 import CartItem from './CartItem';
-import CheckingOut from '../CheckingOut';
+import Shipping from '../CheckOut/Shipping';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
 
@@ -54,12 +54,12 @@ export default function Cart(): JSX.Element {
               {shippingRequired ? (
                 <>
                   <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-                  <CheckingOut />
+                  <Shipping />
                 </>
               ) : (
                 <>
                   <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
-                  <Checkout />
+                  <Payment />
                 </>
               )}
             </footer>

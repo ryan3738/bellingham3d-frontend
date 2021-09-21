@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useUser } from '../User';
-import { Checkout } from './Checkout';
+import { useUser } from '../User/User';
+import { Payment } from './Payment';
 import Address from '../Addresses/Address';
 import { MenuStateProvider } from '../../lib/menuState';
-import Addresses from '../Addresses';
+import Addresses from '../Addresses/Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
 import { ButtonStyles } from '../styles/StateStyles';
 import * as types from '../../types';
@@ -93,13 +93,13 @@ function CheckingOutUser({ me }: { me: types.User }): JSX.Element {
       </div>
       <footer>
         <h3>Payment Details</h3>
-        {shippingAddress && <Checkout shippingId={shippingAddress.id} />}
+        {shippingAddress && <Payment shippingId={shippingAddress.id} />}
       </footer>
     </>
   );
 }
 
-export default function CheckingOut(): JSX.Element {
+export default function Shipping(): JSX.Element {
   const me: types.User = useUser();
   if (!me) return null;
   return <CheckingOutUser me={me} />;

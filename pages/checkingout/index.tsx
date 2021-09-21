@@ -1,4 +1,4 @@
-import CheckingOut from '../../components/CheckingOut';
+import CheckingOut from '../../components/CheckOut/Shipping';
 
 export default function CheckingoutPage(): JSX.Element {
   return (
