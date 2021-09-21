@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { useEffect, useState } from 'react';
-import { Option, Variant } from '../../types';
+import { Option, selectVariantType, Variant } from '../../types';
 
 type AppProps = {
   option: Option;
   variants: Variant[];
   setVariants: any;
   updateVariant: any;
+  selectVariant: selectVariantType;
 };
 
 export default function ProductVariant({
@@ -14,6 +15,7 @@ export default function ProductVariant({
   variants,
   setVariants,
   updateVariant,
+  selectVariant,
 }: AppProps): JSX.Element {
   // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
   const [variantState, setVariantState] = useState(variants[0].id);
@@ -27,6 +29,7 @@ export default function ProductVariant({
   function handleChange(e): void {
     setVariantState(e.target.value);
     updateVariant(name, e.target.value);
+    selectVariant();
   }
 
   return (
