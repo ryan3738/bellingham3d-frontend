@@ -16,7 +16,7 @@ const getUniqueOptions = (variants: Variant[]): Option[] => {
   return uniqueOptionsArray;
 };
 
-const getVariants = ({
+const getFilteredVariants = ({
   optionId,
   variants,
 }: {
@@ -41,7 +41,7 @@ export default function ProductVariants({
     <div className="details">
       {getUniqueOptions(variants).map((option) => (
         <ProductVariant
-          variants={getVariants({ variants, optionId: option.id })}
+          variants={getFilteredVariants({ variants, optionId: option.id })}
           option={option}
           addVariant={addVariant}
           updateVariant={updateVariant}
