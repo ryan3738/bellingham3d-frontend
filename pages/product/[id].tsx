@@ -1,6 +1,6 @@
 import ProductDetails from '../../components/Products/ProductDetails';
 
-export default function SingleProductPage({
+export default function ProductDetailsPage({
   query,
 }: {
   query: {
