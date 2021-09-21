@@ -23,7 +23,7 @@ function CheckingOutUser({ me }: { me: types.User }): JSX.Element {
     }
   }, [shippingAddress, me.defaultShipping]);
 
-  function handleClick(e: any): void {
+  function handleClick(e): void {
     setShippingMenuState(() => e.target.value);
   }
 
