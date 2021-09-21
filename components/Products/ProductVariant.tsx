@@ -5,14 +5,14 @@ import { Option, Variant } from '../../types';
 type AppProps = {
   option: Option;
   variants: Variant[];
-  addVariant: any;
+  setVariants: any;
   updateVariant: any;
 };
 
 export default function ProductVariant({
   option,
   variants,
-  addVariant,
+  setVariants,
   updateVariant,
 }: AppProps): JSX.Element {
   // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
@@ -21,7 +21,7 @@ export default function ProductVariant({
   const { name } = option;
 
   useEffect(() => {
-    addVariant(name, variantState);
+    setVariants(name, variantState);
   }, []);
 
   function handleChange(e): void {

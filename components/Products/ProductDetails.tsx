@@ -52,7 +52,7 @@ export default function ProductDetails({
   const { product } = data || null;
 
   // Add a variant to the variantsState array for current product
-  const addVariant = (name: string, value: string): void => {
+  const setVariants = (name: string, value: string): void => {
     // console.log('NAME & VALUE', name, value);
     setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
   };
@@ -90,7 +90,7 @@ export default function ProductDetails({
           <h3>{formatMoney(product.price)}</h3>
           <ProductVariants
             variants={product.variants}
-            addVariant={addVariant}
+            addVariant={setVariants}
             updateVariant={updateVariant}
           />
           {me && (
