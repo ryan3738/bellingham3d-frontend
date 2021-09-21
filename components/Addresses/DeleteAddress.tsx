@@ -30,7 +30,11 @@ export default function DeleteAddress({ id, children }: AppProps): JSX.Element {
       refetchQueries: [{ query: USER_ADDRESSES_QUERY }],
     }
   );
-  console.error('Error', error);
+
+  if (error) {
+    console.error('Error', error);
+  }
+
   return (
     <ButtonStyles
       type="button"
