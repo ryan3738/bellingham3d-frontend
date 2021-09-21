@@ -11,7 +11,7 @@ import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
-import { Product, Variant } from '../../types';
+import { Product, selectVariantType, Variant } from '../../types';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -30,11 +30,11 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function ProductDetails({
-  id,
-}: {
+type AppProps = {
   id: Product['id'];
-}): JSX.Element {
+};
+
+export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState([]);
   const me = useUser();
 
@@ -70,6 +70,15 @@ export default function ProductDetails({
     setVariantsState(newState);
   };
 
+  const selectVariant: selectVariantType = ({ option, variant }) => {
+    // Take in options and variants
+    console.log('OPTION & VARIANT', option, variant);
+    // If the option doesn't exist add it to state
+    // If option exists, check if the variant is the same
+    // If it is, do nothing
+    // If it is not, update the variant state
+  };
+
   function getVariantIds(variantsList: Variant[]): Variant['id'][] {
     const variantIds = variantsList.map((variant) => variant.value);
     // console.log('variantIds', variantIds);
@@ -90,8 +99,9 @@ export default function ProductDetails({
           <h3>{formatMoney(product.price)}</h3>
           <ProductVariants
             variants={product.variants}
-            addVariant={setVariants}
+            setVariants={setVariants}
             updateVariant={updateVariant}
+            selectVariant={selectVariant}
           />
           {me && (
             <AddToCart
