@@ -17,19 +17,27 @@ export default function ProductVariant({
   updateVariant,
   selectVariant,
 }: AppProps): JSX.Element {
-  // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
-  const [variantState, setVariantState] = useState(variants[0].id);
+  const [variantState, setVariantState] = useState(variants[0]);
 
   const { name } = option;
 
+  // console.log('VARIANT STATE in ProductVariant', variantState);
+
   useEffect(() => {
-    setVariants(name, variantState);
+    setVariants(option, variantState);
   }, []);
 
   function handleChange(e): void {
-    setVariantState(e.target.value);
-    updateVariant(name, e.target.value);
-    selectVariant();
+    const index = e.target.selectedIndex;
+    setVariantState({
+      id: e.target.value,
+      name: e.target.options[index].text,
+    });
+    updateVariant(option, {
+      id: e.target.value,
+      name: e.target.options[index].text,
+    });
+    selectVariant({ option, variant: variantState });
   }
 
   return (
@@ -40,7 +48,7 @@ export default function ProductVariant({
           <select
             name={name}
             id={option.id}
-            value={variantState}
+            value={variantState.id}
             onChange={handleChange}
           >
             {variants.map((variant) => (
