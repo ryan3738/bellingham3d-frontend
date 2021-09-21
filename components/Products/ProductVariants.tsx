@@ -7,7 +7,7 @@ type AppProps = {
   updateVariant: any;
 };
 
-const getOptions = (variants: Variant[]): Option[] => {
+const getUniqueOptions = (variants: Variant[]): Option[] => {
   const options = variants.map((variant) => {
     return variant.option;
   });
@@ -39,7 +39,7 @@ export default function ProductVariants({
 }: AppProps): JSX.Element {
   return (
     <div className="details">
-      {getOptions(variants).map((option) => (
+      {getUniqueOptions(variants).map((option) => (
         <ProductVariant
           variants={getVariants({ variants, optionId: option.id })}
           option={option}
