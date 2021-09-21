@@ -72,9 +72,9 @@ export type Option = {
 
 export type Variant = {
   id: string;
-  option: Option;
   name: string;
-  description: string;
+  option?: Option;
+  description?: string;
 };
 
 type InventoryItem = {
