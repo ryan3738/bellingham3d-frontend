@@ -5,27 +5,22 @@ import { Option, selectVariantType, Variant } from '../../types';
 type AppProps = {
   option: Option;
   variants: Variant[];
-  setVariants: any;
-  updateVariant: any;
   selectVariant: selectVariantType;
 };
 
 export default function ProductVariant({
   option,
   variants,
-  setVariants,
-  updateVariant,
+
   selectVariant,
 }: AppProps): JSX.Element {
-  const [variantState, setVariantState] = useState(variants[0]);
+  const [variantState, setVariantState] = useState<Variant>(variants[0]);
 
   const { name } = option;
 
-  // console.log('VARIANT STATE in ProductVariant', variantState);
-
   useEffect(() => {
-    setVariants(option, variantState);
-  }, []);
+    selectVariant({ option, variant: variantState });
+  }, [variantState, option, selectVariant]);
 
   function handleChange(e): void {
     const index = e.target.selectedIndex;
@@ -33,11 +28,6 @@ export default function ProductVariant({
       id: e.target.value,
       name: e.target.options[index].text,
     });
-    updateVariant(option, {
-      id: e.target.value,
-      name: e.target.options[index].text,
-    });
-    selectVariant({ option, variant: variantState });
   }
 
   return (
