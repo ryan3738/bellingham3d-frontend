@@ -1,29 +1,31 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { useEffect, useState } from 'react';
+import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
-import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
+import { Address } from '../../types';
 import DisplayApolloError from '../DisplayApolloError';
-import { ButtonStyles } from '../styles/StateStyles';
 import Form from '../styles/Form';
+import { ButtonStyles } from '../styles/StateStyles';
 import { useUser } from '../User';
 
-const CREATE_ADDRESS_MUTATION = gql`
-  mutation CREATE_ADDRESS_MUTATION(
-    #   Which variables are getting passed in and what types are they
-    $firstName: String!
+const UPDATE_ADDRESS_MUTATION = gql`
+  mutation UPDATE_ADDRESS_MUTATION(
+    $id: ID!
+    $firstName: String
     $lastName: String
     $company: String
-    $address1: String!
+    $address1: String
     $address2: String
-    $city: String!
-    $region: String!
-    $country: String!
-    $zip: String!
+    $city: String
+    $region: String
+    $country: String
+    $zip: String
     $phone: String
-    $isDefaultShipping: UserRelateToOneForCreateInput
+    $isDefaultShipping: UserRelateToOneForUpdateInput
   ) {
-    createCustomerAddress(
+    updateCustomerAddress(
+      where: { id: $id }
       data: {
         firstName: $firstName
         lastName: $lastName
@@ -56,35 +58,51 @@ const CREATE_ADDRESS_MUTATION = gql`
   }
 `;
 
-// Add make default functionality
-export default function CreateAddress(): JSX.Element {
+export default function UpdateAddress({
+  address,
+}: {
+  address: Address;
+}): JSX.Element {
   const user = useUser();
+  const { closeMenu } = useMenu();
   const [makeDefault, setMakeDefault] = useState(null);
-  const { inputs, handleChange, clearForm } = useForm({
-    firstName: '',
-    lastName: '',
-    company: '',
-    address1: '',
-    address2: '',
-    city: '',
-    region: '',
-    country: '',
-    zip: '',
-    phone: '',
-    makeDefault: false,
-  });
-  // console.log('inputs', inputs);
-  const [createCustomerAddress, { loading, error }] = useMutation(
-    CREATE_ADDRESS_MUTATION,
-    {
-      variables: {
-        ...inputs,
-        ...makeDefault,
-      },
-      refetchQueries: [{ query: USER_ADDRESSES_QUERY }],
-    }
+  const [isDefault, setIsDefault] = useState(null);
+
+  // 1. We need to get the existing address
+  // const { data, error, loading } = useQuery(SINGLE_ADDRESS_QUERY, {
+  //   variables: { id },
+  // });
+
+  // 2. We need to get the mutation to update the product
+  const [
+    updateCustomerAddress,
+    { error: updateError, loading: updateLoading },
+  ] = useMutation(UPDATE_ADDRESS_MUTATION);
+
+  // Check if current address is default and set state
+  useEffect(
+    (currentAddress = address) => {
+      if (currentAddress.isDefaultShipping?.id === undefined || null) {
+        setIsDefault(false);
+      }
+      if (currentAddress.isDefaultShipping?.id) {
+        setIsDefault(true);
+      }
+    },
+    [address]
   );
 
+  // 2.5 Create some state for the form inputs
+  const { inputs, handleChange } = useForm({
+    ...address,
+    makeDefault: isDefault,
+  });
+
+  // console.log('inputs', inputs);
+  // console.log('isDefault?', isDefault);
+  // console.log('defaultAddress', makeDefault);
+
+  // Change makeDefault state depending on checkbox status
   useEffect(() => {
     if (inputs.makeDefault === false) {
       setMakeDefault(() => null);
@@ -96,19 +114,37 @@ export default function CreateAddress(): JSX.Element {
     }
   }, [inputs.makeDefault, user.id]);
 
-  // console.log('Create Address inputs', inputs, 'isDefaultShipping');
+  // No longer needed because address data is passed in
+  // if (!data) return null;
+  // if (loading) return <p>Loading...</p>;
+
+  // 3. We need the form to handle the updates
   return (
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
-        // Submit the intput fields to the backend
-        await createCustomerAddress();
-        clearForm();
+        const res = await updateCustomerAddress({
+          variables: {
+            id: address.id,
+            firstName: inputs.firstName,
+            lastName: inputs.lastName,
+            company: inputs.company,
+            address1: inputs.address1,
+            address2: inputs.address2,
+            city: inputs.city,
+            country: inputs.country,
+            zip: inputs.zip,
+            phone: inputs.phone,
+            ...makeDefault,
+          },
+        }).catch(console.error);
+        console.log('response', res);
+        closeMenu();
       }}
     >
-      <h2>Add A New Address</h2>
-      <DisplayApolloError error={error} />
-      <fieldset disabled={loading} aria-busy={loading}>
+      <DisplayApolloError error={updateError} />
+      <fieldset disabled={updateLoading} aria-busy={updateLoading}>
+        {address.isDefaultShipping?.id && <h4>Default Address</h4>}
         <label htmlFor="firstName">
           First Name
           <input
@@ -245,7 +281,10 @@ export default function CreateAddress(): JSX.Element {
             onChange={handleChange}
           />
         </label>
-        <ButtonStyles type="submit">+ Add Address</ButtonStyles>
+        <ButtonStyles type="submit">Update Address</ButtonStyles>
+        <ButtonStyles type="button" onClick={closeMenu}>
+          Cancel
+        </ButtonStyles>
       </fieldset>
     </Form>
   );

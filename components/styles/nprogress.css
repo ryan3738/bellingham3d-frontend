@@ -21,9 +21,7 @@
   right: 0px;
   width: 100px;
   height: 100%;
-  
   opacity: 1.0;
-
   -webkit-transform: rotate(3deg) translate(0px, -4px);
       -ms-transform: rotate(3deg) translate(0px, -4px);
           transform: rotate(3deg) translate(0px, -4px);
