@@ -16,42 +16,36 @@ const getOptions = (variants: Variant[]): Option[] => {
   return uniqueOptionsArray;
 };
 
+const getVariants = ({
+  optionId,
+  variants,
+}: {
+  optionId: Option['id'];
+  variants: Variant[];
+}): Variant[] => {
+  const filteredVariants = variants
+    .filter((variant) => variant.option.id === optionId)
+    .map((variant) => ({
+      id: variant.id,
+      name: variant.name,
+    }));
+  return filteredVariants;
+};
+
 export default function ProductVariants({
   variants,
   addVariant,
   updateVariant,
 }: AppProps): JSX.Element {
-  // console.log('<ProductVariants /> variant:', variants);
-
-  console.log('OPTIONS!!!', getOptions(variants));
-  // Take all variants and make list of unique variants
-  const uniqueVariants = [
-    ...new Set(variants?.map((variant) => variant.option)),
-  ];
-
-  console.log('UNIQUE VARIANTS', uniqueVariants);
-
-  const filteredVariants = uniqueVariants.map((uniqueVariant) => ({
-    typeId: uniqueVariant.id,
-    typeName: uniqueVariant.name,
-    variants: variants
-      .filter((variant) => variant.option.id === uniqueVariant.id)
-      .map((variant) => ({
-        id: variant.id,
-        name: variant.name,
-      })),
-  }));
-
-  console.log('filteredVariants:', filteredVariants);
-
   return (
     <div className="details">
-      {filteredVariants.map((filteredVariant) => (
+      {getOptions(variants).map((option) => (
         <ProductVariant
-          filteredVariant={filteredVariant}
+          variants={getVariants({ variants, optionId: option.id })}
+          option={option}
           addVariant={addVariant}
           updateVariant={updateVariant}
-          key={filteredVariant.typeId}
+          key={option.id}
         />
       ))}
     </div>

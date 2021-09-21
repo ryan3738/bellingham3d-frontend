@@ -1,42 +1,46 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import { useEffect, useState } from 'react';
+import { Option, Variant } from '../../types';
 
 type AppProps = {
+  option: Option;
+  variants: Variant[];
   addVariant: any;
   updateVariant: any;
-  filteredVariant: any;
 };
 
 export default function ProductVariant({
-  filteredVariant,
+  option,
+  variants,
   addVariant,
   updateVariant,
 }: AppProps): JSX.Element {
   // console.log('<filteredVariant /> filteredVariant:', filteredVariant);
-  const [valueState, setValueState] = useState(filteredVariant.variants[0].id);
+  const [valueState, setValueState] = useState(variants[0].id);
 
-  const { typeName } = filteredVariant;
+  const { name } = option;
 
   useEffect(() => {
-    addVariant(typeName, valueState);
+    addVariant(name, valueState);
   }, []);
 
   function handleChange(e): void {
     setValueState(e.target.value);
-    updateVariant(typeName, e.target.value);
+    updateVariant(name, e.target.value);
   }
 
   return (
     <>
       <div className="details">
-        <div key={filteredVariant.typeId}>
-          <label htmlFor={filteredVariant.typeId}>{typeName}</label>
+        <div key={option.id}>
+          <label htmlFor={option.id}>{name}</label>
           <select
-            name={typeName}
-            id={filteredVariant.typeId}
+            name={name}
+            id={option.id}
             value={valueState}
             onChange={handleChange}
           >
-            {filteredVariant.variants.map((variant) => (
+            {variants.map((variant) => (
               <option value={variant.id} key={variant.id}>
                 {variant.name}
               </option>
