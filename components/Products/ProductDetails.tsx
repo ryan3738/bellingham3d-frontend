@@ -11,6 +11,7 @@ import { useUser } from '../User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
+import { Product, Variant } from '../../types';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -29,9 +30,15 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function ProductDetails({ id }: { id: string }): JSX.Element {
+export default function ProductDetails({
+  id,
+}: {
+  id: Product['id'];
+}): JSX.Element {
   const [variantsState, setVariantsState] = useState([]);
   const me = useUser();
+
+  console.log('VARIANTS STATE', variantsState);
 
   const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: {
@@ -46,15 +53,16 @@ export default function ProductDetails({ id }: { id: string }): JSX.Element {
 
   // Add a variant to the variantsState array for current product
   const addVariant = (name: string, value: string): void => {
-    console.log('NAME & VALUE', name, value);
+    // console.log('NAME & VALUE', name, value);
     setVariantsState((prevVariants) => prevVariants.concat({ name, value }));
   };
   // console.log('VariantsState Initial', variantsState);
 
   // Select variant from array and update state
   const updateVariant = (name: string, value: string): void => {
+    console.log('NAME & VALUE', name, value);
     const newState = [...variantsState];
-    const variantIndex = variantsState.findIndex((e) => e.name === name);
+    const variantIndex = variantsState.findIndex((item) => item.name === name);
     newState[variantIndex] = {
       ...variantsState[variantIndex],
       value,
@@ -62,7 +70,7 @@ export default function ProductDetails({ id }: { id: string }): JSX.Element {
     setVariantsState(newState);
   };
 
-  function getVariantIds(variantsList): string[] {
+  function getVariantIds(variantsList: Variant[]): Variant['id'][] {
     const variantIds = variantsList.map((variant) => variant.value);
     // console.log('variantIds', variantIds);
     return variantIds;
