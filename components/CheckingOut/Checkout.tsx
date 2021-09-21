@@ -67,7 +67,7 @@ function CheckoutForm({
 
     console.log('Checking Out');
     // 2. Start the page transition
-    nProgress.start();
+
     // 3. Create the payment method via stripe (Token comes back here if successful)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
@@ -77,7 +77,7 @@ function CheckoutForm({
     // 4. Handle any errors from stripe
     if (error) {
       setError(error);
-      nProgress.done();
+      setLoading(false);
       return; // stops the checkout from happening if there is an error
     }
     // 5. Send the token from step 3 to our keystone server, via a custom mutation!
@@ -99,8 +99,15 @@ function CheckoutForm({
     closeCart();
     // 8. Turn the loader off
     setLoading(false);
+  }
+
+  if (loading) {
+    nProgress.start();
+  }
+  if (!loading) {
     nProgress.done();
   }
+
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
       {error && <p style={{ fontSize: 12 }}>{error?.message}</p>}
