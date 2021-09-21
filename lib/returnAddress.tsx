@@ -1,4 +1,6 @@
-const returnAddress = (returnFunction, address) => {
+import { Address } from '../types';
+
+const returnAddress = (returnFunction: any, address: Address): void => {
   if (!returnFunction) {
     console.error('No callback function was supplied');
     return null;
