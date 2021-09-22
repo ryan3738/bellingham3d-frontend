@@ -1,23 +1,35 @@
 import { createContext, useContext, useState } from 'react';
 
-const LocalStateContext = createContext();
+interface CartContextInterface {
+  menuOpen: boolean;
+  setMenuOpen: (boolean) => void;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+  openMenu: () => void;
+}
+
+const LocalStateContext = createContext<CartContextInterface | null>(null);
 const LocalStateProvider = LocalStateContext.Provider;
 
-function MenuStateProvider({ children }) {
+type AppProps = {
+  children?: React.ReactNode;
+};
+
+function MenuStateProvider({ children }: AppProps): JSX.Element {
   // This is our own custom provider! We will store data (state) and functionality (updaters) in here and anyone can access it via the consumer!
 
   // Close by default
   const [menuOpen, setMenuOpen] = useState(false);
 
-  function toggleMenu() {
+  function toggleMenu(): void {
     setMenuOpen(!menuOpen);
   }
 
-  function closeMenu() {
+  function closeMenu(): void {
     setMenuOpen(false);
   }
 
-  function openMenu() {
+  function openMenu(): void {
     setMenuOpen(true);
   }
 
@@ -37,7 +49,7 @@ function MenuStateProvider({ children }) {
 }
 
 // make a custom hook for accessing the menu
-function useMenu() {
+function useMenu(): CartContextInterface {
   // We use a consumer here to access the local state
   const all = useContext(LocalStateContext);
   return all;
