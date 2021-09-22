@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 interface DropDownItemProps {
-  highlighted: boolean;
+  highlighted?: boolean;
 }
 
 const DropDown = styled.div`
