@@ -1,8 +1,19 @@
 import { useEffect, useState } from 'react';
 
-export default function useForm(initial = {}) {
+interface EventInterface {
+  target: { value: string; name: string; type: string };
+}
+
+interface FormInterface {
+  inputs: Record<string, any>;
+  handleChange: (event: EventInterface) => void;
+  resetForm: () => void;
+  clearForm: () => void;
+}
+
+export default function useForm(initial = {}): FormInterface {
   // create a state object for our inputs
-  const [inputs, setInputs] = useState(initial);
+  const [inputs, setInputs] = useState({});
   const initialValues = Object.values(initial).join('');
 
   // Monitors state data and updates
@@ -17,16 +28,16 @@ export default function useForm(initial = {}) {
   //       price: 1000
   //   }
 
-  function handleChange(e) {
-    let { value, name, type } = e.target;
+  function handleChange(event): void {
+    let { value, name, type } = event.target;
     if (type === 'number') {
       value = parseInt(value);
     }
     if (type === 'file') {
-      [value] = e.target.files;
+      [value] = event.target.files;
     }
     if (type === 'checkbox') {
-      value = e.target.checked;
+      value = event.target.checked;
     }
     setInputs({
       // copy the existing state
@@ -35,11 +46,11 @@ export default function useForm(initial = {}) {
     });
   }
 
-  function resetForm() {
+  function resetForm(): void {
     setInputs(initial);
   }
 
-  function clearForm() {
+  function clearForm(): void {
     const blankState = Object.fromEntries(
       Object.entries(inputs).map(([key, value]) => [key, ''])
     );
