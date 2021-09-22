@@ -86,7 +86,7 @@ export default function CartItem({
                 <ButtonIconStyles
                   disabled={loading || quantity <= 1}
                   type="button"
-                  tabIndex="0"
+                  tabIndex={0}
                   title="decrement item quantity"
                   onClick={() => {
                     updateCartItem({
