@@ -1,6 +1,10 @@
 import { FieldPolicy } from '@apollo/client/cache';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
 
+type DataType = {
+  productsCount: number;
+};
+
 export default function paginationField(): FieldPolicy {
   return {
     keyArgs: false, // Tells Apollo we will take care of everything
@@ -8,7 +12,9 @@ export default function paginationField(): FieldPolicy {
       // console.log(existing, args, cache);
       const { skip, take } = args;
       // Read the number of items on the page from the cache
-      const data = cache.readQuery({ query: PAGINATION_QUERY });
+      const data: DataType = cache.readQuery({
+        query: PAGINATION_QUERY,
+      });
       const count = data?.productsCount || 0;
       const page = skip / take + 1;
       const pages = Math.ceil(count / take);
@@ -44,7 +50,7 @@ export default function paginationField(): FieldPolicy {
       // The other thing we can do is to return false from here, (network request)
     },
     merge(existing, incoming, { args }) {
-      const { skip, take } = args;
+      const { skip } = args;
       // This runs when the Apollo client comes back from the network with our products
       // console.log(`Merging items from the network ${incoming.length}`);
       const merged = existing ? existing.slice(0) : [];
