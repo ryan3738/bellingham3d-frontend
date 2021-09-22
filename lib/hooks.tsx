@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 
-export const useOnClickOutside = (ref, handler) => {
+interface HookInterface {
+  ref: React.RefObject<HTMLInputElement>;
+  handler: (event) => void;
+}
+
+export const useOnClickOutside = ({ ref, handler }: HookInterface): void => {
   useEffect(() => {
-    const listener = (event) => {
+    const listener = (event): void => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
