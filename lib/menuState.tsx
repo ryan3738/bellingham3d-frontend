@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-interface CartContextInterface {
+interface MenuContextInterface {
   menuOpen: boolean;
   setMenuOpen: (boolean) => void;
   toggleMenu: () => void;
@@ -8,8 +8,8 @@ interface CartContextInterface {
   openMenu: () => void;
 }
 
-const LocalStateContext = createContext<CartContextInterface | null>(null);
-const LocalStateProvider = LocalStateContext.Provider;
+const MenuContext = createContext<MenuContextInterface | null>(null);
+const MenuProvider = MenuContext.Provider;
 
 type AppProps = {
   children?: React.ReactNode;
@@ -34,7 +34,7 @@ function MenuStateProvider({ children }: AppProps): JSX.Element {
   }
 
   return (
-    <LocalStateProvider
+    <MenuProvider
       value={{
         menuOpen,
         setMenuOpen,
@@ -44,14 +44,14 @@ function MenuStateProvider({ children }: AppProps): JSX.Element {
       }}
     >
       {children}
-    </LocalStateProvider>
+    </MenuProvider>
   );
 }
 
 // make a custom hook for accessing the menu
-function useMenu(): CartContextInterface {
+function useMenu(): MenuContextInterface {
   // We use a consumer here to access the local state
-  const all = useContext(LocalStateContext);
+  const all = useContext(MenuContext);
   return all;
 }
 
