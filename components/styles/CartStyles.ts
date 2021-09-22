@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-interface StyledDivProps {
-  props: {
-    open: boolean;
-  };
+interface CartStylesProps {
+  open: boolean;
 }
 
-const CartStyles = styled.div<StyledDivProps>`
+const CartStyles = styled.div<CartStylesProps>`
   .overlay {
     /* Hidden by default */
     position: fixed; /* Stay in place */
