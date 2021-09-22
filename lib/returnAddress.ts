@@ -1,4 +1,14 @@
-const returnAddress = (returnFunction, address) => {
+import { Address } from '../types';
+
+interface ReturnAddressInterface {
+  returnFunction: (address: Address) => void;
+  address: Address;
+}
+
+const returnAddress = ({
+  returnFunction,
+  address,
+}: ReturnAddressInterface): void => {
   if (!returnFunction) {
     console.error('No callback function was supplied');
     return null;

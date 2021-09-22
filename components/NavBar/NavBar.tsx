@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Burger from './Burger';
 import BurgerMenu from './BurgerMenu';
@@ -71,7 +71,7 @@ type AppProps = {
 export default function NavBar({ children }: AppProps): JSX.Element {
   const [open, setOpen] = useState(false);
   const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
+  useOnClickOutside({ ref: node, handler: () => setOpen(false) });
   return (
     <>
       <div className="bar">
@@ -82,7 +82,9 @@ export default function NavBar({ children }: AppProps): JSX.Element {
               <div ref={node}>
                 <Burger open={open} setOpen={setOpen} />
               </div>
-              <BurgerMenu open={open} />
+              <div>
+                <BurgerMenu open={open} />
+              </div>
             </div>
             <div>
               <LogoWrapper>

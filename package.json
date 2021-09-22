@@ -1,7 +1,7 @@
 {
   "name": "bellingham-3d-frontend",
   "author": "Ryan Fraser",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Bellingham 3D e-commerce website! Tech used includes: React, GraphQL, Next and Apollo",
   "keywords": [
     "website",
@@ -50,7 +50,9 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.0",
     "@types/node": "^16.9.1",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.21",
+    "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "babel-eslint": "^10.1.0",

@@ -39,7 +39,12 @@ export default function Address({
                     <ButtonStyles
                       type="button"
                       title="Select Address"
-                      onClick={() => returnAddress(selectAddress, address)}
+                      onClick={() =>
+                        returnAddress({
+                          returnFunction: selectAddress,
+                          address,
+                        })
+                      }
                     >
                       <FaCheck />
                     </ButtonStyles>

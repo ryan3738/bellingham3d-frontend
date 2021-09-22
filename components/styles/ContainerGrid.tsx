@@ -1,4 +1,4 @@
-const { default: styled } = require('styled-components');
+import styled from 'styled-components';
 
 const ContainerGrid = styled.div`
   max-width: 1120px;

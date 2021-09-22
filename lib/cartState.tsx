@@ -1,28 +1,39 @@
 import { createContext, useContext, useState } from 'react';
 
-const LocalStateContext = createContext();
-const LocalStateProvider = LocalStateContext.Provider;
+interface CartContextInterface {
+  cartOpen: boolean;
+  setCartOpen: (boolean) => void;
+  toggleCart: () => void;
+  closeCart: () => void;
+  openCart: () => void;
+}
+const CartContext = createContext<CartContextInterface | null>(null);
+const CartProvider = CartContext.Provider;
 
-function CartStateProvider({ children }) {
+type AppProps = {
+  children?: React.ReactNode;
+};
+
+function CartStateProvider({ children }: AppProps): JSX.Element {
   // This is our own custom provider! We will store data (state) and functionality (updaters) in here and anyone can access it via the consumer!
 
   // Close by default
   const [cartOpen, setCartOpen] = useState(false);
 
-  function toggleCart() {
+  function toggleCart(): void {
     setCartOpen(!cartOpen);
   }
 
-  function closeCart() {
+  function closeCart(): void {
     setCartOpen(false);
   }
 
-  function openCart() {
+  function openCart(): void {
     setCartOpen(true);
   }
 
   return (
-    <LocalStateProvider
+    <CartProvider
       value={{
         cartOpen,
         setCartOpen,
@@ -32,14 +43,14 @@ function CartStateProvider({ children }) {
       }}
     >
       {children}
-    </LocalStateProvider>
+    </CartProvider>
   );
 }
 
 // make a custom hook for accessing the cart
-function useCart() {
+function useCart(): CartContextInterface {
   // We use a consumer here to access the local state
-  const all = useContext(LocalStateContext);
+  const all = useContext(CartContext);
   return all;
 }
 
