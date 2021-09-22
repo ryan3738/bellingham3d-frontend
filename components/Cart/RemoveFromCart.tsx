@@ -31,7 +31,7 @@ export default function RemoveFromCart({ id }: { id: string }): JSX.Element {
   return (
     <div className="remove-from-cart-button">
       <ButtonIconStyles
-        onClick={removeFromCart}
+        onClick={() => removeFromCart()}
         disabled={loading}
         type="button"
         title="Remove from cart"
