@@ -1,7 +1,7 @@
-import { mergeOptions } from '@apollo/client';
+import { FieldPolicy } from '@apollo/client/cache';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
 
-export default function paginationField() {
+export default function paginationField(): FieldPolicy {
   return {
     keyArgs: false, // Tells Apollo we will take care of everything
     read(existing = [], { args, cache }) {

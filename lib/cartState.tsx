@@ -9,15 +9,15 @@ function CartStateProvider({ children }) {
   // Close by default
   const [cartOpen, setCartOpen] = useState(false);
 
-  function toggleCart() {
+  function toggleCart(): void {
     setCartOpen(!cartOpen);
   }
 
-  function closeCart() {
+  function closeCart(): void {
     setCartOpen(false);
   }
 
-  function openCart() {
+  function openCart(): void {
     setCartOpen(true);
   }
 
