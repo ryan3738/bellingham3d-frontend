@@ -5,7 +5,7 @@ import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
 import { ButtonStyles } from '../styles/StateStyles';
-import * as types from '../../types';
+import * as types from '../../types/types';
 
 export type AppProps = {
   address: types.Address;

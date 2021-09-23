@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { useEffect, useState } from 'react';
-import { Option, selectVariantType, Variant } from '../../types';
+import { Option, selectVariantType, Variant } from '../../types/types';
 
 type AppProps = {
   option: Option;

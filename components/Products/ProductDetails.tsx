@@ -11,7 +11,7 @@ import { useUser } from '../User/User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
-import { Option, Product, selectVariantType, Variant } from '../../types';
+import { Option, Product, selectVariantType, Variant } from '../../types/types';
 
 const ProductStyles = styled.div`
   display: grid;

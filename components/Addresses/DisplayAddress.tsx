@@ -1,4 +1,4 @@
-import { Address } from '../../types';
+import { Address } from '../../types/types';
 
 export default function DisplayAddress({
   address,

@@ -9,7 +9,7 @@ import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import { ButtonIconStyles } from '../styles/StateStyles';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types';
+import * as types from '../../types/types';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {

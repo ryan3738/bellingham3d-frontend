@@ -1,4 +1,4 @@
-import { Option, selectVariantType, Variant } from '../../types';
+import { Option, selectVariantType, Variant } from '../../types/types';
 import ProductVariant from './ProductVariant';
 
 type AppProps = {

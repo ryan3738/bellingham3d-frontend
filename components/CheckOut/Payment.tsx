@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import LargeButton from '../styles/LargeButton';
 import { useCart } from '../../lib/cartState';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
-import { Address } from '../../types';
+import { Address } from '../../types/types';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);

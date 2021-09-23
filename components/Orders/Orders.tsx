@@ -8,7 +8,7 @@ import { siteData } from '../../public/site-data';
 import DisplayApolloError from '../DisplayApolloError';
 import OrderHistoryStyles from '../styles/OrderHistoryStyles';
 import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
-import { Order } from '../../types';
+import { Order } from '../../types/types';
 
 const OrderUl = styled.ul`
   position: relative;

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User/User';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types';
+import * as types from '../../types/types';
 
 export default function Product({
   product,

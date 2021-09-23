@@ -1,4 +1,4 @@
-import { Address } from '../types';
+import { Address } from '../types/types';
 
 interface ReturnAddressInterface {
   returnFunction: (address: Address) => void;

@@ -6,7 +6,7 @@ import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses/Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
 import { ButtonStyles } from '../styles/StateStyles';
-import * as types from '../../types';
+import * as types from '../../types/types';
 
 function CheckingOutUser({ me }: { me: types.User }): JSX.Element {
   const [shippingMenuState, setShippingMenuState] = useState('default');

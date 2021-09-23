@@ -8,7 +8,7 @@ import Address from './Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types';
+import * as types from '../../types/types';
 
 type AppProps = {
   showCreateNew?: boolean;
