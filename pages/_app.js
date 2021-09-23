@@ -4,7 +4,7 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import Layout from '../components/Layout';
 import '../components/styles/nprogress.css';
-import withData from '../lib/withData';
+import apolloClient from '../lib/apolloClient';
 import { CartStateProvider } from '../lib/cartState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -32,4 +32,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
   return { pageProps };
 };
 
-export default withData(MyApp);
+export default apolloClient(MyApp);

@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "config.js", "pages/_document.js", "components/Cart/CartItem.js", "lib/withData.tsx"  ],
+, "config.js", "pages/_document.js", "components/Cart/CartItem.js", "lib/withData.tsx", "lib/apolloClient.js"  ],
   "exclude": [
     "node_modules"
   ]
