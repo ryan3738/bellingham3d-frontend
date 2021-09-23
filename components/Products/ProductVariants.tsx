@@ -1,9 +1,9 @@
-import { Option, selectVariantType, Variant } from '../../types/types';
+import { Option, SelectVariantType, Variant } from '../../types/types';
 import ProductVariant from './ProductVariant';
 
 type AppProps = {
   variants: Variant[];
-  selectVariant: selectVariantType;
+  selectVariant: SelectVariantType;
 };
 
 const getUniqueOptions = (variants: Variant[]): Option[] => {

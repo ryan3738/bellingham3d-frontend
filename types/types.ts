@@ -1,4 +1,7 @@
+/* eslint-disable camelcase */
 /* eslint no-use-before-define: "off" */
+
+import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 
 export type Address = {
   id: string;
@@ -92,19 +95,21 @@ type Category = {
   description: string;
 };
 
-export type Product = {
-  id: string;
-  name: string;
-  description: string;
-  images: ProductImage[];
-  status: string;
-  price: number;
-  category: Category[];
-  inventoryItem: InventoryItem;
-  variants: Variant[];
-  createdAt: string;
-  user: User;
-};
+// export type Product = {
+//   id: string;
+//   name: string;
+//   description: string;
+//   images: ProductImage[];
+//   status: string;
+//   price: number;
+//   category: Category[];
+//   inventoryItem: InventoryItem;
+//   variants: Variant[];
+//   createdAt: string;
+//   user: User;
+// };
+
+export type ProductType = ALL_PRODUCTS_QUERY_products;
 
 export type OrderItem = {
   id: string;
@@ -131,7 +136,7 @@ export type Order = {
   createdAt: string;
 };
 
-export type selectVariantType = (parameters: {
+export type SelectVariantType = (parameters: {
   option: Option;
   variant: Variant;
 }) => void;

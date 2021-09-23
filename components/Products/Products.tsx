@@ -4,7 +4,10 @@ import { perPage } from '../../config';
 import Product from './Product';
 import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 import DisplayApolloError from '../DisplayApolloError';
-import * as types from '../../types/types';
+import {
+  ALL_PRODUCTS_QUERY as ALL_PRODUCTS_QUERY_TYPE,
+  ALL_PRODUCTS_QUERYVariables as ALL_PRODUCTS_QUERY_VARIABLES,
+} from '../../types/generated/ALL_PRODUCTS_QUERY';
 
 const ProductsListStyles = styled.div`
   display: grid;
@@ -19,7 +22,10 @@ const ProductsListStyles = styled.div`
 
 export default function Products({ page }: { page: number }): JSX.Element {
   // Hook that will return query info
-  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
+  const { data, error, loading } = useQuery<
+    ALL_PRODUCTS_QUERY_TYPE,
+    ALL_PRODUCTS_QUERY_VARIABLES
+  >(ALL_PRODUCTS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,
@@ -32,7 +38,7 @@ export default function Products({ page }: { page: number }): JSX.Element {
   return (
     <div className="products-wrapper">
       <ProductsListStyles>
-        {products.map((product: types.Product) => (
+        {products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>

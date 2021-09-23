@@ -11,7 +11,12 @@ import { useUser } from '../User/User';
 import { SINGLE_PRODUCT_QUERY } from '../../queries/getSingleProduct';
 import SeeAllProducts from './SeeAllProducts';
 import { siteData } from '../../public/site-data';
-import { Option, Product, selectVariantType, Variant } from '../../types/types';
+import {
+  Option,
+  ProductType,
+  SelectVariantType,
+  Variant,
+} from '../../types/types';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -31,7 +36,7 @@ const ProductStyles = styled.div`
 `;
 
 type AppProps = {
-  id: Product['id'];
+  id: ProductType['id'];
 };
 
 interface SelectedVariant extends Option {
@@ -42,7 +47,7 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const me = useUser();
 
-  const selectVariant: selectVariantType = useCallback(
+  const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
       // Take in options and variants
       setVariantsState((previousState) => {
