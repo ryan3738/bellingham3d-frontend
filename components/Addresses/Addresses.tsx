@@ -8,13 +8,13 @@ import Address from './Address';
 import { MenuStateProvider } from '../../lib/menuState';
 import { USER_ADDRESSES_QUERY } from '../../queries/getUserAddresses';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types/types';
+import { AddressType } from '../../types/types';
 
 type AppProps = {
   showCreateNew?: boolean;
   allowUpdate?: boolean;
   allowDelete?: boolean;
-  selectAddress?: (address: types.Address) => void;
+  selectAddress?: (address: AddressType) => void;
 };
 
 export default function Addresses({
@@ -36,7 +36,7 @@ export default function Addresses({
       <h2>Your Addresses</h2>
       {/* <p>Click an address below to see details</p> */}
       <Grid4Styles>
-        {addresses.map((address) => (
+        {addresses.map((address: AddressType) => (
           <MenuStateProvider key={address.id}>
             <Address
               address={address}

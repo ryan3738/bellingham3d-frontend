@@ -2,21 +2,9 @@
 /* eslint no-use-before-define: "off" */
 
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
+import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
 
-export type Address = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  company: string;
-  address1: string;
-  address2: string;
-  city: string;
-  region: string;
-  country: string;
-  zip: string;
-  phone: string;
-  isDefaultShipping: User;
-};
+export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
 export type CartItem = {
   id: string;
@@ -47,8 +35,8 @@ export type User = {
   name: string;
   email: string;
   password: string;
-  addresses: Address[];
-  defaultShipping: Address;
+  addresses: AddressType[];
+  defaultShipping: AddressType;
   cart: CartItem[];
   role: Role;
   createdAt: string;
@@ -131,7 +119,7 @@ export type Order = {
   user: User;
   userId: string;
   charge: string;
-  shippingAddress: Address;
+  shippingAddress: AddressType;
   shippingAddressId: string;
   createdAt: string;
 };
