@@ -1,22 +1,16 @@
 /* eslint-disable camelcase */
 /* eslint no-use-before-define: "off" */
 
+import {
+  CURRENT_USER_QUERY_authenticatedItem,
+  CURRENT_USER_QUERY_authenticatedItem_cart,
+} from './generated/CURRENT_USER_QUERY';
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
-export type CartItem = {
-  id: string;
-  quantity?: number;
-  product?: ProductType;
-  productId?: string;
-  variants: Variant[];
-  saveForLater?: boolean;
-  createdAt?: string;
-  user?: User;
-  userId?: string;
-};
+export type CartItem = CURRENT_USER_QUERY_authenticatedItem_cart;
 
 export type Role = {
   id: string;
@@ -27,20 +21,10 @@ export type Role = {
   canManageRoles: boolean;
   canManageCart: boolean;
   canManageOrders: boolean;
-  assignedTo: User[];
+  assignedTo: UserType[];
 };
 
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  addresses: AddressType[];
-  defaultShipping: AddressType;
-  cart: CartItem[];
-  role: Role;
-  createdAt: string;
-};
+export type UserType = CURRENT_USER_QUERY_authenticatedItem;
 
 export type CloudinaryImage = {
   publicUrlTransformed: string;
@@ -68,20 +52,20 @@ export type Variant = {
   description?: string;
 };
 
-type InventoryItem = {
-  id: string;
-  price: number;
-  requiresShipping: boolean;
-  tracked: boolean;
-  quantity: number;
-  allowBackorder: boolean;
-};
+// type InventoryItem = {
+//   id: string;
+//   price: number;
+//   requiresShipping: boolean;
+//   tracked: boolean;
+//   quantity: number;
+//   allowBackorder: boolean;
+// };
 
-type Category = {
-  id: string;
-  name: string;
-  description: string;
-};
+// type Category = {
+//   id: string;
+//   name: string;
+//   description: string;
+// };
 
 // export type Product = {
 //   id: string;
@@ -94,7 +78,7 @@ type Category = {
 //   inventoryItem: InventoryItem;
 //   variants: Variant[];
 //   createdAt: string;
-//   user: User;
+//   user: UserType;
 // };
 
 export type ProductType = ALL_PRODUCTS_QUERY_products;
@@ -116,7 +100,7 @@ export type Order = {
   id: string;
   total: number;
   items: OrderItem[];
-  user: User;
+  user: UserType;
   userId: string;
   charge: string;
   shippingAddress: AddressType;
