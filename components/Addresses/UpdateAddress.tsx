@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { useEffect, useState } from 'react';
 import { useMenu } from '../../lib/menuState';
 import useForm from '../../lib/useForm';
-import { Address } from '../../types/types';
+import { AddressType } from '../../types/types';
 import DisplayApolloError from '../DisplayApolloError';
 import Form from '../styles/Form';
 import { ButtonStyles } from '../styles/StateStyles';
@@ -61,7 +61,7 @@ const UPDATE_ADDRESS_MUTATION = gql`
 export default function UpdateAddress({
   address,
 }: {
-  address: Address;
+  address: AddressType;
 }): JSX.Element {
   const user = useUser();
   const { closeMenu } = useMenu();
@@ -77,7 +77,7 @@ export default function UpdateAddress({
   const [
     updateCustomerAddress,
     { error: updateError, loading: updateLoading },
-  ] = useMutation(UPDATE_ADDRESS_MUTATION);
+  ] = useMutation<AddressType>(UPDATE_ADDRESS_MUTATION);
 
   // Check if current address is default and set state
   useEffect(

@@ -1,9 +1,9 @@
-import { Address } from '../../types/types';
+import { AddressType } from '../../types/types';
 
 export default function DisplayAddress({
   address,
 }: {
-  address: Address;
+  address: AddressType;
 }): JSX.Element {
   return (
     <>
