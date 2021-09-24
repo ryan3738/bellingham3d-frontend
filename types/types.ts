@@ -21,7 +21,7 @@ export type Address = {
 export type CartItem = {
   id: string;
   quantity?: number;
-  product?: Product;
+  product?: ProductType;
   productId?: string;
   variants: Variant[];
   saveForLater?: boolean;
