@@ -22,10 +22,7 @@ const ProductsListStyles = styled.div`
 
 export default function Products({ page }: { page: number }): JSX.Element {
   // Hook that will return query info
-  const { data, error, loading } = useQuery<
-    ALL_PRODUCTS_QUERY_TYPE,
-    ALL_PRODUCTS_QUERY_VARIABLES
-  >(ALL_PRODUCTS_QUERY, {
+  const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,

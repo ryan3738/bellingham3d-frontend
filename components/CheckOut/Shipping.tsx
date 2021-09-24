@@ -6,11 +6,11 @@ import { MenuStateProvider } from '../../lib/menuState';
 import Addresses from '../Addresses/Addresses';
 import CreateAddress from '../Addresses/CreateAddress';
 import { ButtonStyles } from '../styles/StateStyles';
-import * as types from '../../types/types';
+import { AddressType, UserType } from '../../types/types';
 
-function CheckingOutUser({ me }: { me: types.User }): JSX.Element {
+function CheckingOutUser({ me }: { me: UserType }): JSX.Element {
   const [shippingMenuState, setShippingMenuState] = useState('default');
-  const [shippingAddress, setShippingAddress] = useState<types.Address>();
+  const [shippingAddress, setShippingAddress] = useState<AddressType>();
 
   useEffect(() => {
     setShippingAddress(me.defaultShipping);
@@ -100,7 +100,7 @@ function CheckingOutUser({ me }: { me: types.User }): JSX.Element {
 }
 
 export default function Shipping(): JSX.Element {
-  const me: types.User = useUser();
+  const me = useUser();
   if (!me) return null;
   return <CheckingOutUser me={me} />;
 }

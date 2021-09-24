@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import LargeButton from '../styles/LargeButton';
 import { useCart } from '../../lib/cartState';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
-import { Address } from '../../types/types';
+import { AddressType } from '../../types/types';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
@@ -44,7 +44,7 @@ const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 function CheckoutForm({
   shippingId,
 }: {
-  shippingId: Address['id'];
+  shippingId: AddressType['id'];
 }): JSX.Element {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -121,7 +121,11 @@ function CheckoutForm({
   );
 }
 
-function Payment({ shippingId }: { shippingId?: Address['id'] }): JSX.Element {
+function Payment({
+  shippingId,
+}: {
+  shippingId?: AddressType['id'];
+}): JSX.Element {
   return (
     <Elements stripe={stripeLib}>
       <CheckoutForm shippingId={shippingId} />
