@@ -3,7 +3,7 @@ module.exports = {
     includes: [
       './mutations/**/*.ts',
       './queries/**/*.ts',
-      './components/**/*.ts',
+      './components/**/*.tsx',
     ], // array of glob patterns
     excludes: ['**/.next/**/*', '**/pages/**/*', '**/public/**/*'], // array of glob patterns
     service: {
