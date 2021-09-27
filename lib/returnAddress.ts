@@ -1,8 +1,8 @@
-import { Address } from '../types';
+import { AddressType } from '../types/types';
 
 interface ReturnAddressInterface {
-  returnFunction: (address: Address) => void;
-  address: Address;
+  returnFunction: (address: AddressType) => void;
+  address: AddressType;
 }
 
 const returnAddress = ({

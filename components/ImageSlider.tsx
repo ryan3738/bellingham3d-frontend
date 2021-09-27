@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { ButtonIconStyles } from './styles/StateStyles';
-import { ProductImage } from '../types';
+import { ProductImage } from '../types/types';
 
 export default function ImageSlider({
   slides,

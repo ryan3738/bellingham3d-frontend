@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "config.js", "pages/_document.js", "components/Cart/CartItem.js", "lib/withData.tsx"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

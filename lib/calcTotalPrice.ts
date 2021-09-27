@@ -1,4 +1,4 @@
-import { CartItem } from '../types';
+import { CartItem } from '../types/types';
 
 export default function calcTotalPrice(cart: CartItem[]): number {
   return cart.reduce((tally, cartItem) => {

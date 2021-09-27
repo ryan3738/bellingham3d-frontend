@@ -3,12 +3,13 @@ import Link from 'next/link';
 import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User/User';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types';
+import { ProductType } from '../../types/types';
+// import { ALL_PRODUCTS_QUERY_products as ProductType } from '../../types/generated/ALL_PRODUCTS_QUERY';
 
 export default function Product({
   product,
 }: {
-  product: types.Product;
+  product: ProductType;
 }): JSX.Element {
   const user = useUser();
   return (

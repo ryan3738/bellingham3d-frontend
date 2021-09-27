@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { useEffect, useState } from 'react';
-import { Option, selectVariantType, Variant } from '../../types';
+import { Option, SelectVariantType, Variant } from '../../types/types';
 
 type AppProps = {
   option: Option;
   variants: Variant[];
-  selectVariant: selectVariantType;
+  selectVariant: SelectVariantType;
 };
 
 export default function ProductVariant({

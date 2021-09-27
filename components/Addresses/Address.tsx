@@ -5,13 +5,13 @@ import DisplayAddress from './DisplayAddress';
 import UpdateAddress from './UpdateAddress';
 import { returnAddress } from '../../lib/returnAddress';
 import { ButtonStyles } from '../styles/StateStyles';
-import * as types from '../../types';
+import { AddressType } from '../../types/types';
 
 export type AppProps = {
-  address: types.Address;
+  address: AddressType;
   allowUpdate?: boolean;
   allowDelete?: boolean;
-  selectAddress?: (address: types.Address) => void;
+  selectAddress?: (address: AddressType) => void;
 };
 
 export default function Address({

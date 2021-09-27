@@ -449,14 +449,23 @@ input ProductWhereInput {
   OR: [ProductWhereInput!]
   NOT: [ProductWhereInput!]
   id: IDFilter
+  name: StringNullableFilter
+  description: StringNullableFilter
   status: StringNullableFilter
   category: CategoryManyRelationFilter
+  variants: VariantManyRelationFilter
 }
 
 input CategoryManyRelationFilter {
   every: CategoryWhereInput
   some: CategoryWhereInput
   none: CategoryWhereInput
+}
+
+input VariantManyRelationFilter {
+  every: VariantWhereInput
+  some: VariantWhereInput
+  none: VariantWhereInput
 }
 
 input ProductOrderByInput {
@@ -684,12 +693,6 @@ input CartItemWhereInput {
   product: ProductWhereInput
   variants: VariantManyRelationFilter
   user: UserWhereInput
-}
-
-input VariantManyRelationFilter {
-  every: VariantWhereInput
-  some: VariantWhereInput
-  none: VariantWhereInput
 }
 
 input CartItemOrderByInput {
@@ -933,6 +936,8 @@ input VariantWhereInput {
   OR: [VariantWhereInput!]
   NOT: [VariantWhereInput!]
   id: IDFilter
+  option: OptionWhereInput
+  name: StringNullableFilter
 }
 
 input VariantOrderByInput {
