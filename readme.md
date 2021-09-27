@@ -1,13 +1,13 @@
 Full Stack Next.JS E-Commerce App
 
-Bellingham 3D is a 3D printing and design service based in Bellingham WA. With the need to showcase products and allow customers to order an array of products, this application dynamically renders item pages and maintains a detailed cart that stores their orders and customizations. This project employs multiple modern web development tools and techniques, including Server Side Rendering, interacting with a GraphQL API, running server-less functions, and dynamically rendering individual item pages with Next JS’s dynamic routes.
+Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With the need to showcase products and allow customers to order an array of products, this application dynamically renders item pages and maintains a detailed cart that stores their orders and customizations. This project employs multiple modern web development tools and techniques, including Server Side Rendering, interacting with a GraphQL API, running server-less functions, and dynamically rendering individual item pages with Next JS’s dynamic routes.
 
 Tech used:
 
     Next.js
     React
     GraphQL
-    MongoDB
+    PostgreSQL
     Apollo Client
     Styled-Components
     React-Transition-Group
@@ -18,7 +18,7 @@ Tech used:
 
 Server Side Rendering with Next.js
 
-Next.js allows for choosing between Server Side Rendering and Static Page Generation on a page-by-page basis. For this application, assuming owners may need to post notice that an item has sold out, I’ve opted for SSR. On the server, the application grabs the data it needs and renders the html that will be sent to the client. This process alone took a considerable amount of fine tuning as the application needs to interact with Apollo’s cache and await results from MongoDB.
+Next.js allows for choosing between Server Side Rendering and Static Page Generation on a page-by-page basis. I’ve opted for SSR so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
 Crafting API Resolvers in Keystone-next
 
