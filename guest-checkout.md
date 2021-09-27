@@ -1,4 +1,9 @@
+# Plan to impliment guest checkout   
+
 1. Create a device id cookie for user if they add an item to the cart but are not logged in.
+   1.    Look for device id cookie
+   2.    If no cookie, create a device-id using uuid function
+   
 2. When checking out if not logged in ask if they would like to:
    1. Create an account
    2. Sign in
