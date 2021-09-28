@@ -15,21 +15,38 @@ import { ButtonIconStyles } from '../styles/StateStyles';
 
 // export const cartShippingAddress = makeVar();
 
-export default function Cart(): JSX.Element {
-  const user = useUser();
-
-  const { cartOpen, closeCart } = useCart();
-  if (!user) return null;
-
-  const shippingRequired = user.cart.some(
+const isShippingRequired = (cart): boolean => {
+  return cart.some(
     (cartItem) => cartItem.product.inventoryItem.requiresShipping === true
   );
+};
+
+const getCart = (user): [] => {
+  if (user) {
+    return user.cart;
+  }
+  return [];
+};
+
+const getName = (user): string => {
+  if (user) {
+    return user.name;
+  }
+  return 'Guest';
+};
+
+export default function Cart(): JSX.Element {
+  const user = useUser();
+  const { cartOpen, closeCart } = useCart();
+
+  const name = getName(user);
+  const cart = getCart(user);
 
   return (
     <CartStyles open={cartOpen}>
       <div className="cart-content">
         <header>
-          <Supreme>{user.name}'s Cart</Supreme>
+          <Supreme>{name}'s Cart</Supreme>
           <ButtonIconStyles onClick={closeCart}>
             <IconContext.Provider value={{ size: '60px' }}>
               <FaWindowClose />
@@ -37,33 +54,33 @@ export default function Cart(): JSX.Element {
           </ButtonIconStyles>
         </header>
 
-        {user.cart.length === 0 ? (
-          <div>
-            <h3>Your Cart is Empty</h3>
-            <SeeAllProducts />
-          </div>
-        ) : (
+        {cart.length > 0 ? (
           <>
             <div>
-              {user.cart.map((cartItem) => (
+              {cart.map((cartItem) => (
                 <CartItem key={cartItem.id} cartItem={cartItem} />
               ))}
               <SeeAllProducts />
             </div>
             <footer>
-              {shippingRequired ? (
+              {isShippingRequired(cart) ? (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(user.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(cart))}</p>
                   <Shipping />
                 </>
               ) : (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(user.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(cart))}</p>
                   <Payment />
                 </>
               )}
             </footer>
           </>
+        ) : (
+          <div>
+            <h3>Your Cart is Empty</h3>
+            <SeeAllProducts />
+          </div>
         )}
       </div>
       <button
