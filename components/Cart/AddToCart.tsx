@@ -8,6 +8,8 @@ import {
   ADD_TO_CART_MUTATION as ADD_TO_CART_MUTATION_TYPE,
   ADD_TO_CART_MUTATIONVariables as ADD_TO_CART_MUTATION_VARIABLES,
 } from '../../types/generated/ADD_TO_CART_MUTATION';
+import { getDeviceId } from '../../lib/deviceId';
+import { updateLocalStorage } from '../../lib/localStorage';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!, $variantIds: [ID]) {
@@ -40,7 +42,9 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
     }
     // If !user present check for device-id
     if (!user) {
-      alert('Please login to add to cart');
+      const deviceId = getDeviceId();
+      console.log(`Your device id is: ${deviceId}`);
+      // updateLocalStorage({ key: 'device-id', value: deviceId });
     }
   };
   // If !device-id present create a device id
