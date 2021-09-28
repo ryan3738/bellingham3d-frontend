@@ -9,7 +9,7 @@ import {
   ADD_TO_CART_MUTATIONVariables as ADD_TO_CART_MUTATION_VARIABLES,
 } from '../../types/generated/ADD_TO_CART_MUTATION';
 import { getDeviceId } from '../../lib/deviceId';
-import { updateLocalStorage } from '../../lib/localStorage';
+import { addCartItem } from '../../lib/localCart';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!, $variantIds: [ID]) {
@@ -44,6 +44,7 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
     if (!user) {
       const deviceId = getDeviceId();
       console.log(`Your device id is: ${deviceId}`);
+      addCartItem({ id, variantIds });
       // updateLocalStorage({ key: 'device-id', value: deviceId });
     }
   };
