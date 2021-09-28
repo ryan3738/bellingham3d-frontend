@@ -86,25 +86,6 @@ export default function NavList({
         </NavItem>
       </>
 
-      {!user && (
-        <>
-          <NavItem
-            href="/signin"
-            showOnLarge={showOnLarge}
-            showInBurgerMenu={showInBurgerMenu}
-          >
-            Sign In
-          </NavItem>
-          <NavItem
-            href="/signup"
-            showOnLarge={showOnLarge}
-            showInBurgerMenu={showInBurgerMenu}
-          >
-            Sign Up
-          </NavItem>
-        </>
-      )}
-
       <style jsx>{`
          {
           /* .icons {
