@@ -28,25 +28,19 @@ const getCart = (user): [] => {
   return [];
 };
 
-const getName = (user): string => {
-  if (user) {
-    return user.name;
-  }
-  return 'Guest';
-};
+
 
 export default function Cart(): JSX.Element {
   const user = useUser();
   const { cartOpen, closeCart } = useCart();
 
-  const name = getName(user);
   const cart = getCart(user);
 
   return (
     <CartStyles open={cartOpen}>
       <div className="cart-content">
         <header>
-          <Supreme>{name}'s Cart</Supreme>
+          <Supreme>Your Cart</Supreme>
           <ButtonIconStyles onClick={closeCart}>
             <IconContext.Provider value={{ size: '60px' }}>
               <FaWindowClose />
