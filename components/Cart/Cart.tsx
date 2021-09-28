@@ -12,29 +12,32 @@ import CartItem from './CartItem';
 import Shipping from '../CheckOut/Shipping';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
+import { CartItemType, UserType } from '../../types/types';
 
 // export const cartShippingAddress = makeVar();
 
-const isShippingRequired = (cart): boolean => {
+const isShippingRequired = (cart: CartItemType[]): boolean => {
   return cart.some(
-    (cartItem) => cartItem.product.inventoryItem.requiresShipping === true
+    (cartItem: CartItemType) =>
+      cartItem.product.inventoryItem.requiresShipping === true
   );
 };
 
-const getCart = (user): [] => {
+// TODO create query for users cart or local cart
+const getCart = (user: UserType): CartItemType[] | [] => {
   if (user) {
     return user.cart;
   }
+  // TODO Create local cart query
+  console.log(getLocalCart());
   return [];
 };
-
-
-
 export default function Cart(): JSX.Element {
   const user = useUser();
   const { cartOpen, closeCart } = useCart();
 
   const cart = getCart(user);
+  console.log(cart);
 
   return (
     <CartStyles open={cartOpen}>

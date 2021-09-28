@@ -9,7 +9,7 @@ import formatMoney from '../../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import { ButtonIconStyles } from '../styles/StateStyles';
 import { siteData } from '../../public/site-data';
-import * as types from '../../types/types';
+import { CartItemType } from '../../types/types';
 
 const UPDATE_CART_ITEM_MUTATION = gql`
   mutation UPDATE_CART_ITEM_MUTATION($id: ID!, $quantity: Int) {
@@ -44,7 +44,7 @@ const CartItemStyles = styled.div`
 export default function CartItem({
   cartItem: { product, quantity, id, variants },
 }: {
-  cartItem: types.CartItem;
+  cartItem: CartItemType;
 }): JSX.Element {
   const [updateCartItem, { loading }] = useMutation(UPDATE_CART_ITEM_MUTATION);
   // if (!product) return null;

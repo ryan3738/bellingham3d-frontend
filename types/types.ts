@@ -10,7 +10,7 @@ import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
-export type CartItem = CURRENT_USER_QUERY_authenticatedItem_cart;
+export type CartItemType = CURRENT_USER_QUERY_authenticatedItem_cart;
 
 export type Role = {
   id: string;
