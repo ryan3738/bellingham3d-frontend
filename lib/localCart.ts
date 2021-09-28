@@ -1,25 +1,41 @@
-const getLocalCart = (): => {
-  if (typeof Storage !== 'undefined') {
-    // Store
-    const list = [];
-    list.push('<h1>John<h1>');
-    list.push('<h2>David<h2>');
-    localStorage.setItem('list', JSON.stringify(list));
+import { USER_CART_QUERY } from '../types/generated/USER_CART_QUERY';
+import { getLocalStorage, updateLocalStorage } from './localStorage';
 
-    // Retrieve
-    document.getElementById('result').innerHTML = JSON.parse(
-      localStorage.getItem('list')
-    );
+const key = 'localCart';
+const localCart: USER_CART_QUERY | [] = [];
+
+const getCart = (): USER_CART_QUERY | [] => {
+  if (typeof Storage !== 'undefined') {
+    const cart = getLocalStorage(key);
+    console.log('LOCAL CART', cart);
   } else {
-    document.getElementById('result').innerHTML =
-      'Sorry, your browser does not support Web Storage...';
+    console.log('Sorry! No Web Storage support..');
   }
+  return localCart;
 };
 
-const addLocalCartItem = (item) => {};
+const addCartItem = ({
+  id,
+  variantIds,
+}: {
+  id: string;
+  variantIds: string[];
+}): void => {
+  updateLocalStorage({
+    key,
+    value: { cart: [{ id, variantIds, quantity: 1 }] },
+  });
+};
 
-const createLocalCartItem = (item) => {};
+const removeCartItem = (item) => {};
 
-const removeLocalCartItem = (item) => {};
+const incrementCartItem = () => {};
+const decrementCartItem = () => {};
 
-export { getLocalCart };
+export {
+  getCart,
+  addCartItem,
+  removeCartItem,
+  incrementCartItem,
+  decrementCartItem,
+};
