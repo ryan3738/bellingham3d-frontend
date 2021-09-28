@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { ButtonStyles } from '../styles/StateStyles';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
 import { ProductType, Variant } from '../../types/types';
+import { useUser } from '../User/User';
 import {
   ADD_TO_CART_MUTATION as ADD_TO_CART_MUTATION_TYPE,
   ADD_TO_CART_MUTATIONVariables as ADD_TO_CART_MUTATION_VARIABLES,
@@ -22,6 +23,7 @@ type AppProps = {
 };
 
 export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
+  const user = useUser();
   const [addToCart, { loading }] = useMutation<
     ADD_TO_CART_MUTATION_TYPE,
     ADD_TO_CART_MUTATION_VARIABLES
@@ -30,12 +32,26 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
+  // Create add to cart function that checks if user is logged in
+  const addToCartFunction = (): void => {
+    // If user is present add item to cart using the addToCart mutation
+    if (user) {
+      addToCart();
+    }
+    // If !user present check for device-id
+    if (!user) {
+      alert('Please login to add to cart');
+    }
+  };
+  // If !device-id present create a device id
+  // If device-id is present add item to cart using the addToCart mutation
+
   return (
     <ButtonStyles
       disabled={loading}
       type="button"
       onClick={() => {
-        addToCart();
+        addToCartFunction();
       }}
     >
       Add{loading && 'ing'} To Cart
