@@ -45,7 +45,7 @@ interface SelectedVariant extends Option {
 
 export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
-  const me = useUser();
+  const user = useUser();
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
@@ -108,7 +108,7 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
             variants={product.variants}
             selectVariant={selectVariant}
           />
-          {me && (
+          {user && (
             <AddToCart
               id={product.id}
               variantIds={getVariantIds(variantsState)}
@@ -116,7 +116,7 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
           )}
 
           <p>{product.description}</p>
-          {!me && (
+          {!user && (
             <div>
               <h3>You must be signed in to add items to your cart</h3>
               <p>Please create an account or login</p>
