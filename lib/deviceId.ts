@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getLocalStorage, updateLocalStorage } from './localStorage';
 
-const key = 'device-id';
+const key = 'deviceId';
 
 const createDeviceId = (): string => {
   return uuidv4();
