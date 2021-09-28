@@ -1,5 +1,6 @@
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+
 import { useUser } from '../User/User';
 import { useCart } from '../../lib/cartState';
 import CartCount from '../Cart/CartCount';
@@ -10,6 +11,16 @@ import { ColorStateStyles } from '../styles/StateStyles';
 type AppProps = {
   showOnLarge?: boolean;
   showInBurgerMenu?: boolean;
+};
+
+const getCartCount = (cart): number => {
+  if (cart) {
+    return cart.reduce(
+      (tally, cartItem) => tally + (cartItem.product ? cartItem.quantity : 0),
+      0
+    );
+  }
+  if (!cart) return 0;
 };
 
 export default function NavList({
@@ -49,39 +60,32 @@ export default function NavList({
         Contact
       </NavItem>
 
-      {user && (
-        <>
-          <NavItem
-            href="/account"
-            showOnLarge={showOnLarge}
-            showInBurgerMenu={showInBurgerMenu}
-          >
-            <IconContext.Provider value={{ size: '24px' }}>
-              <div className="icons" title="Account Dashboard">
-                <FaUser />
-              </div>
-            </IconContext.Provider>
-          </NavItem>
-          <NavItem showInBurgerMenu={showInBurgerMenu}>
-            <button type="button" onClick={openCart} title="Open Cart">
-              <ColorStateStyles>
-                <IconContext.Provider value={{ size: '24px' }}>
-                  <div className="icons">
-                    <FaShoppingCart />
-                  </div>
-                </IconContext.Provider>
-              </ColorStateStyles>
-              <CartCount
-                count={user.cart.reduce(
-                  (tally, cartItem) =>
-                    tally + (cartItem.product ? cartItem.quantity : 0),
-                  0
-                )}
-              />
-            </button>
-          </NavItem>
-        </>
-      )}
+      <>
+        <NavItem
+          href="/account"
+          showOnLarge={showOnLarge}
+          showInBurgerMenu={showInBurgerMenu}
+        >
+          <IconContext.Provider value={{ size: '24px' }}>
+            <div className="icons" title="Account Dashboard">
+              <FaUser />
+            </div>
+          </IconContext.Provider>
+        </NavItem>
+        <NavItem showInBurgerMenu={showInBurgerMenu}>
+          <button type="button" onClick={openCart} title="Open Cart">
+            <ColorStateStyles>
+              <IconContext.Provider value={{ size: '24px' }}>
+                <div className="icons">
+                  <FaShoppingCart />
+                </div>
+              </IconContext.Provider>
+            </ColorStateStyles>
+            <CartCount count={getCartCount(user?.cart)} />
+          </button>
+        </NavItem>
+      </>
+
       {!user && (
         <>
           <NavItem
