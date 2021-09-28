@@ -9,7 +9,6 @@ import SignIn from './SignIn';
 
 export default function Account(): JSX.Element {
   const user = useUser();
-  // if (!user) return null;
   return (
     <>
       {user ? (
