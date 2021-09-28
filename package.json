@@ -13,7 +13,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start -p 7777",
-    "test": "NODE_ENV=test jest --watch",
+    "test": "jest --watch",
     "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=[**/*.tsx,**/*.ts] --tagName=gql --outputFlat types/generated --passthroughCustomScalars --customScalarsPrefix Db",
     "type": "tsc --watch"
   },
@@ -77,11 +77,6 @@
     "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.2",
     "typescript": "^4.4.3"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./jest.setup.js"
-    ]
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
   "babel": {

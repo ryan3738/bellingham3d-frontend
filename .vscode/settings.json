@@ -4,5 +4,22 @@
     "titleBar.inactiveForeground": "#f0f6fcCC",
     "titleBar.activeBackground": "#bb8009",
     "titleBar.inactiveBackground": "#bb8009CC"
-  }
+  },
+  "grammarly.overrides": [
+    {
+      "files": [
+        "**/readme.md"
+      ],
+      "config": {
+        "audience": "knowledgeable",
+        "dialect": "american",
+        "domain": "general",
+        "emotions": [],
+        "goals": [
+          "inform",
+          "describe"
+        ]
+      }
+    }
+  ]
 }
