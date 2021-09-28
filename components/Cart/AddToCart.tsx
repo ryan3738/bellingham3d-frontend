@@ -4,7 +4,7 @@ import { ButtonStyles } from '../styles/StateStyles';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
 import { ProductType, Variant } from '../../types/types';
 import {
-  ADD_TO_CART_MUTATION,
+  ADD_TO_CART_MUTATION as ADD_TO_CART_MUTATION_TYPE,
   ADD_TO_CART_MUTATIONVariables as ADD_TO_CART_MUTATION_VARIABLES,
 } from '../../types/generated/ADD_TO_CART_MUTATION';
 
@@ -23,7 +23,7 @@ type AppProps = {
 
 export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
   const [addToCart, { loading }] = useMutation<
-    ADD_TO_CART_MUTATION,
+    ADD_TO_CART_MUTATION_TYPE,
     ADD_TO_CART_MUTATION_VARIABLES
   >(ADD_TO_CART_MUTATION, {
     variables: { id, variantIds },
