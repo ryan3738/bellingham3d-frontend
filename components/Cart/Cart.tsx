@@ -16,12 +16,12 @@ import { ButtonIconStyles } from '../styles/StateStyles';
 // export const cartShippingAddress = makeVar();
 
 export default function Cart(): JSX.Element {
-  const me = useUser();
+  const user = useUser();
 
   const { cartOpen, closeCart } = useCart();
-  if (!me) return null;
+  if (!user) return null;
 
-  const shippingRequired = me.cart.some(
+  const shippingRequired = user.cart.some(
     (cartItem) => cartItem.product.inventoryItem.requiresShipping === true
   );
 
@@ -29,7 +29,7 @@ export default function Cart(): JSX.Element {
     <CartStyles open={cartOpen}>
       <div className="cart-content">
         <header>
-          <Supreme>{me.name}'s Cart</Supreme>
+          <Supreme>{user.name}'s Cart</Supreme>
           <ButtonIconStyles onClick={closeCart}>
             <IconContext.Provider value={{ size: '60px' }}>
               <FaWindowClose />
@@ -37,7 +37,7 @@ export default function Cart(): JSX.Element {
           </ButtonIconStyles>
         </header>
 
-        {me.cart.length === 0 ? (
+        {user.cart.length === 0 ? (
           <div>
             <h3>Your Cart is Empty</h3>
             <SeeAllProducts />
@@ -45,7 +45,7 @@ export default function Cart(): JSX.Element {
         ) : (
           <>
             <div>
-              {me.cart.map((cartItem) => (
+              {user.cart.map((cartItem) => (
                 <CartItem key={cartItem.id} cartItem={cartItem} />
               ))}
               <SeeAllProducts />
@@ -53,12 +53,12 @@ export default function Cart(): JSX.Element {
             <footer>
               {shippingRequired ? (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(user.cart))}</p>
                   <Shipping />
                 </>
               ) : (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(user.cart))}</p>
                   <Payment />
                 </>
               )}
