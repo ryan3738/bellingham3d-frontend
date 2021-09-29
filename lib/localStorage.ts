@@ -1,6 +1,6 @@
-const getIndexFromId = (id: number, array: []): number => {
+const getIndexFromId = (id: string, array: [{ id: string }]): number => {
   // TODO Create function that finds index from id
-  const index = array.findIndex((item) => item.id === parseInt(id));
+  const index = array.findIndex((item) => item.id === id);
   return index;
 };
 
@@ -19,21 +19,21 @@ const updateLocalStorage = ({
 // * Project CRUD functions
 const getLocalStorage = (key: string): any => {
   // Check local storage for items
-  let localStoredItem = localStorage.getItem(key);
-  // If no items exist return nothing
+  const localStoredItem = localStorage.getItem(key);
 
+  // If no items exist return nothing
   //   TODO Remove after done testing
   if (!localStoredItem) {
     return console.log('No items match that key in local storage');
   }
   // Return items if they exist
   if (localStoredItem) {
-    localStoredItem = JSON.parse(localStoredItem);
+    const parsedItem = JSON.parse(localStoredItem);
     console.log('Item LOADED...', localStoredItem);
+    return parsedItem;
   }
-  return localStoredItem;
 };
-export { getLocalStorage, updateLocalStorage };
+export { getLocalStorage, updateLocalStorage, getIndexFromId };
 
 // const getProject = (id) =>
 //   getLocalStorage().find((project) => project.id === parseInt(id));
