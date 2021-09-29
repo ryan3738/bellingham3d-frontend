@@ -13,6 +13,7 @@ import Shipping from '../CheckOut/Shipping';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
 import { CartItemType, UserType } from '../../types/types';
+import * as localCart from '../../lib/localCart';
 
 // export const cartShippingAddress = makeVar();
 
@@ -26,10 +27,11 @@ const isShippingRequired = (cart: CartItemType[]): boolean => {
 // TODO create query for users cart or local cart
 const getCart = (user: UserType): CartItemType[] | [] => {
   if (user) {
+    console.log('USERS CART', user.cart);
     return user.cart;
   }
   // TODO Create local cart query
-  console.log(getLocalCart());
+  console.log('LOCAL CART', localCart.getCart());
   return [];
 };
 export default function Cart(): JSX.Element {
@@ -37,7 +39,6 @@ export default function Cart(): JSX.Element {
   const { cartOpen, closeCart } = useCart();
 
   const cart = getCart(user);
-  console.log(cart);
 
   return (
     <CartStyles open={cartOpen}>
