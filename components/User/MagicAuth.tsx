@@ -6,6 +6,7 @@ import Form from '../styles/Form';
 import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
+import Message from '../Message';
 
 const MAGIC_AUTH_MUTATION = gql`
   mutation MAGIC_AUTH_MUTATION($email: String!, $token: String!) {
@@ -25,10 +26,15 @@ const MAGIC_AUTH_MUTATION = gql`
   }
 `;
 
-export default function MagicAuth({ token }: { token: string }): JSX.Element {
+type AppProps = {
+  token: string;
+  email: string;
+};
+
+export default function MagicAuth({ token, email }: AppProps): JSX.Element {
   const router = useRouter();
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
+    email: email || '',
     token,
   });
   const [signin, { data, loading }] = useMutation(MAGIC_AUTH_MUTATION, {
@@ -62,11 +68,9 @@ export default function MagicAuth({ token }: { token: string }): JSX.Element {
       <h2>Enter Email to Sign In</h2>
       <fieldset>
         <DisplayApolloError error={error} />
-        {loading && <p>Loading...</p>}
-        {data?.redeemUserMagicAuthToken === null && (
-          <p>Success! You can now sign in!</p>
-        )}
-
+        <Message loading={loading}>
+          {data?.redeemUserMagicAuthToken === null && 'You are signed in!'}
+        </Message>
         <label htmlFor="email">
           Email
           <input

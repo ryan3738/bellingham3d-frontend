@@ -1,3 +1,4 @@
+import { QueryDocumentKeys } from 'graphql/language/visitor';
 import MagicAuth from '../components/User/MagicAuth';
 import RequestMagicAuth from '../components/User/RequestMagicAuth';
 
@@ -6,6 +7,7 @@ export default function MagicAuthPage({
 }: {
   query: {
     token: string;
+    email: string;
   };
 }): JSX.Element {
   if (!query?.token) {
@@ -19,7 +21,7 @@ export default function MagicAuthPage({
   }
   return (
     <div>
-      <MagicAuth token={query.token} />
+      <MagicAuth token={query.token} email={query.email} />
     </div>
   );
 }
