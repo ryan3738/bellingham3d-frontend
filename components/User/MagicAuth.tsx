@@ -51,9 +51,9 @@ export default function MagicAuth({ token }: { token: string }): JSX.Element {
   }
 
   const error =
-    data?.authenticateUserWithPassword.__typename ===
-    'UserAuthenticationWithPasswordFailure'
-      ? data?.authenticateUserWithPassword
+    data?.redeemUserMagicAuthToken.__typename ===
+    'RedeemUserMagicAuthTokenFailure'
+      ? data?.redeemUserMagicAuthToken
       : undefined;
 
   return (
