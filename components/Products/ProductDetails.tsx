@@ -25,9 +25,8 @@ const ProductStyles = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   align-content: center;
   justify-content: space-evenly;
-  align-items: stretch;
   justify-items: center;
-  align-items: top;
+  align-items: start;
   width: 100%;
   height: auto;
   gap: 2rem;
