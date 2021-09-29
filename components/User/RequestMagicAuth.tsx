@@ -49,6 +49,7 @@ export default function RequestMagicAuth(): JSX.Element {
         <label htmlFor="email">
           Email
           <input
+            required
             type="email"
             name="email"
             placeholder="Your Email Address"

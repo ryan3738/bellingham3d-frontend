@@ -48,6 +48,7 @@ interface SelectedVariant extends Option {
 export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const user = useUser();
+  console.log('ID', id);
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
@@ -86,8 +87,8 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
   if (!data) return <SeeAllProducts />;
-  const { product } = data || null;
 
+  const { product } = data || null;
   const getVariantIds = (options: SelectedVariant[]): Variant['id'][] => {
     const variantIds = options.map((option) => option.variant.id);
     // console.log('variantIds', variantIds);
