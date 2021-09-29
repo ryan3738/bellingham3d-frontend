@@ -12,24 +12,38 @@ import CartItem from './CartItem';
 import Shipping from '../CheckOut/Shipping';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
+import { CartItemType, UserType } from '../../types/types';
+import SignUpMagicAuth from '../User/SignUpMagicAuth';
+import RequestMagicAuth from '../User/RequestMagicAuth';
 
 // export const cartShippingAddress = makeVar();
 
-export default function Cart(): JSX.Element {
-  const me = useUser();
-
-  const { cartOpen, closeCart } = useCart();
-  if (!me) return null;
-
-  const shippingRequired = me.cart.some(
-    (cartItem) => cartItem.product.inventoryItem.requiresShipping === true
+const isShippingRequired = (cart: CartItemType[]): boolean => {
+  return cart.some(
+    (cartItem: CartItemType) =>
+      cartItem.product.inventoryItem.requiresShipping === true
   );
+};
+
+// TODO create query for users cart or local cart
+const getCart = (user: UserType): CartItemType[] | [] => {
+  if (user) {
+    return user.cart;
+  }
+  // TODO Create local cart query
+  return [];
+};
+export default function Cart(): JSX.Element {
+  const user = useUser();
+  const { cartOpen, closeCart } = useCart();
+
+  const cart = getCart(user);
 
   return (
     <CartStyles open={cartOpen}>
       <div className="cart-content">
         <header>
-          <Supreme>{me.name}'s Cart</Supreme>
+          <Supreme>Your Cart</Supreme>
           <ButtonIconStyles onClick={closeCart}>
             <IconContext.Provider value={{ size: '60px' }}>
               <FaWindowClose />
@@ -37,33 +51,42 @@ export default function Cart(): JSX.Element {
           </ButtonIconStyles>
         </header>
 
-        {me.cart.length === 0 ? (
-          <div>
-            <h3>Your Cart is Empty</h3>
-            <SeeAllProducts />
-          </div>
-        ) : (
+        {cart.length > 0 ? (
           <>
             <div>
-              {me.cart.map((cartItem) => (
+              {cart.map((cartItem) => (
                 <CartItem key={cartItem.id} cartItem={cartItem} />
               ))}
               <SeeAllProducts />
             </div>
             <footer>
-              {shippingRequired ? (
+              {isShippingRequired(cart) ? (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(cart))}</p>
                   <Shipping />
                 </>
               ) : (
                 <>
-                  <p>Subtotal: {formatMoney(calcTotalPrice(me.cart))}</p>
+                  <p>Subtotal: {formatMoney(calcTotalPrice(cart))}</p>
                   <Payment />
                 </>
               )}
             </footer>
           </>
+        ) : (
+          <div>
+            {!user && (
+              <>
+                <div>
+                  <h3>You must be signed in to add items to your cart</h3>
+                  <p>Please create an account or login</p>
+                </div>
+                <SignUpMagicAuth /> <RequestMagicAuth />
+              </>
+            )}
+            <h3>Your Cart is Empty</h3>
+            <SeeAllProducts />
+          </div>
         )}
       </div>
       <button

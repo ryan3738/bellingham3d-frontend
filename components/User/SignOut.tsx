@@ -4,7 +4,7 @@ import Button from '../Button';
 import { CURRENT_USER_QUERY } from '../../queries/getUser';
 
 const SIGN_OUT_MUTATION = gql`
-  mutation {
+  mutation SIGN_OUT_MUTATION {
     endSession
   }
 `;

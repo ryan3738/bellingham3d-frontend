@@ -17,6 +17,8 @@ import {
   SelectVariantType,
   Variant,
 } from '../../types/types';
+import SignUpMagicAuth from '../User/SignUpMagicAuth';
+import RequestMagicAuth from '../User/RequestMagicAuth';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -45,7 +47,7 @@ interface SelectedVariant extends Option {
 
 export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
-  const me = useUser();
+  const user = useUser();
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
@@ -108,19 +110,21 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
             variants={product.variants}
             selectVariant={selectVariant}
           />
-          {me && (
+          {user && (
             <AddToCart
               id={product.id}
               variantIds={getVariantIds(variantsState)}
             />
           )}
-
           <p>{product.description}</p>
-          {!me && (
-            <div>
-              <h3>You must be signed in to add items to your cart</h3>
-              <p>Please create an account or login</p>
-            </div>
+          {!user && (
+            <>
+              <div>
+                <h3>You must be signed in to add items to your cart</h3>
+                <p>Please create an account or login</p>
+              </div>
+              <SignUpMagicAuth /> <RequestMagicAuth />
+            </>
           )}
           <SeeAllProducts />
         </div>

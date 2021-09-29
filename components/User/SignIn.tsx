@@ -45,18 +45,16 @@ export default function SignIn(): JSX.Element {
   });
   async function handleSubmit(e): Promise<void> {
     e.preventDefault(); // stop the form from submitting
-    // console.log(inputs);
+    // Send the email and password to the graphqlAPI
     const res = await signin();
-    // console.log(res);
 
+    // If the response is successful, redirect to the home page
     if (res.data.authenticateUserWithPassword.item) {
       resetForm();
       router.push({
         pathname: `/products`,
       });
     }
-
-    // Send the email and password to the graphqlAPI
   }
   const error =
     data?.authenticateUserWithPassword.__typename ===
