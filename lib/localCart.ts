@@ -1,15 +1,14 @@
 import { USER_CART_QUERY } from '../types/generated/USER_CART_QUERY';
+import { CartItemType } from '../types/types';
 import { getLocalStorage, updateLocalStorage } from './localStorage';
 
 const key = 'localCart';
-const localCart: USER_CART_QUERY | [] = [];
 
 const getCart = (): USER_CART_QUERY | [] => {
+  let localCart: USER_CART_QUERY | [] = [];
   if (typeof Storage !== 'undefined') {
-    const cart = getLocalStorage(key);
-    console.log('LOCAL CART', cart);
-  } else {
-    console.log('Sorry! No Web Storage support..');
+    localCart = getLocalStorage(key);
+    // console.log('LOCAL CART', localCart);
   }
   return localCart;
 };
@@ -23,14 +22,21 @@ const addCartItem = ({
 }): void => {
   updateLocalStorage({
     key,
-    value: { cart: [{ id, variantIds, quantity: 1 }] },
+    value: [{ id, variantIds, quantity: 1 }],
   });
 };
 
-const removeCartItem = (item) => {};
+const removeCartItem = (cartItem: CartItemType['id']): void => {
+  // Remove an item from the local cart
+  console.log(cartItem);
+};
 
-const incrementCartItem = () => {};
-const decrementCartItem = () => {};
+const incrementCartItem = (): void => {
+  // increment a cart item
+};
+const decrementCartItem = (): void => {
+  // decrement a cart item
+};
 
 export {
   getCart,
