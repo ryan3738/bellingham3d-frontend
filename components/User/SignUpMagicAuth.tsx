@@ -2,9 +2,10 @@ import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../DisplayApolloError';
-import SignIn from './SignIn';
+import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
+import { REQUEST_MAGIC_AUTH_MUTATION } from './RequestMagicAuth';
+import Message from '../Message';
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION($email: String!, $name: String!) {
@@ -21,67 +22,73 @@ export default function SignUpMagicAuth(): JSX.Element {
     name: '',
     email: '',
   });
-  const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
+  const [
+    signup,
+    { data: singupData, loading: singupLoading, error: singupError },
+  ] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
-    // refetch the currently logged in user
-    // refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
+
+  const [requestMagicAuth, { data, loading, error }] = useMutation(
+    REQUEST_MAGIC_AUTH_MUTATION,
+    {
+      variables: inputs,
+    }
+  );
 
   async function handleSubmit(e): Promise<void> {
     e.preventDefault();
-    // console.log(inputs);
     // Send the email and name to the graphqlAPI
     signup().catch(console.error);
-    console.log(data, loading, error);
-    // console.log(res);
 
-    if (data?.createUser) {
-      resetForm();
+    if (singupData?.createUser) {
+      console.log(
+        `A user with email ${inputs.email} already exists. Sending a login link.`
+      );
+    }
+    await requestMagicAuth().catch(console.error);
+    if (data) {
+      // resetForm();
     }
   }
+  // const isLoading = true;
 
   return (
     //   method="post" makes sure the password doesn't go to the url
     <>
       <Form method="post" onSubmit={handleSubmit}>
-        {data?.createUser ? (
-          <>
-            <p>Signed up with {data.createUser.email} - Please sign in!</p>
-            <SignIn />
-          </>
-        ) : (
-          <>
-            <h2>Sign Up For an Account</h2>
-            <Error error={error} />
-            <fieldset>
-              <label htmlFor="name">
-                Name
-                <input
-                  required
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  autoComplete="name"
-                  value={inputs.name}
-                  onChange={handleChange}
-                />
-              </label>
-              <label htmlFor="email">
-                Email
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  placeholder="Your Email Address"
-                  autoComplete="email"
-                  value={inputs.email}
-                  onChange={handleChange}
-                />
-              </label>
-              <ButtonStyles type="submit">Sign Up!</ButtonStyles>
-            </fieldset>
-          </>
-        )}
+        <h2>Sign Up For an Account</h2>
+        <DisplayApolloError error={singupError || error} />
+        <Message loading={singupLoading || loading}>
+          {data?.sendUserMagicAuthLink === null &&
+            `Success! Check ${inputs.email} for a sign in link!`}
+        </Message>
+        <fieldset>
+          <label htmlFor="name">
+            Name
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              autoComplete="name"
+              value={inputs.name}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="email">
+            Email
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Your Email Address"
+              autoComplete="email"
+              value={inputs.email}
+              onChange={handleChange}
+            />
+          </label>
+          <ButtonStyles type="submit">Sign Up!</ButtonStyles>
+        </fieldset>
       </Form>
       <style jsx>
         {`
