@@ -55,6 +55,7 @@ export default function RequestReset(): JSX.Element {
         <label htmlFor="email">
           Email
           <input
+            required
             type="email"
             name="email"
             placeholder="Your Email Address"
