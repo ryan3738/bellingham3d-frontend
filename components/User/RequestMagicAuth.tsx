@@ -5,7 +5,7 @@ import Form from '../styles/Form';
 import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
 
-const REQUEST_MAGIC_AUTH_MUTATION = gql`
+export const REQUEST_MAGIC_AUTH_MUTATION = gql`
   mutation REQUEST_MAGIC_AUTH_MUTATION($email: String!) {
     sendUserMagicAuthLink(email: $email) {
       code
@@ -18,7 +18,7 @@ export default function RequestMagicAuth(): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
   });
-  const [signup, { data, loading, error }] = useMutation(
+  const [requestMagicAuth, { data, loading, error }] = useMutation(
     REQUEST_MAGIC_AUTH_MUTATION,
     {
       variables: inputs,
@@ -29,17 +29,10 @@ export default function RequestMagicAuth(): JSX.Element {
 
   async function handleSubmit(e): Promise<void> {
     e.preventDefault();
-    // console.log(inputs);
-    await signup().catch(console.error);
-    // console.log(data, loading, error);
-    resetForm();
     // Send the email and password to the graphqlAPI
+    await requestMagicAuth().catch(console.error);
+    // resetForm();
   }
-  // const error =
-  //   data?.authenticateUserWithPassword.__typename ===
-  //   'UserAuthenticationWithPasswordFailure'
-  //  data?.authenticateUserWithPassword
-  //     : undefined;
 
   return (
     //   method="post" makes sure the password doesn't go to the url
@@ -49,7 +42,7 @@ export default function RequestMagicAuth(): JSX.Element {
         {loading && <p>Loading...</p>}
         <DisplayApolloError error={error} />
         {data?.sendUserMagicAuthLink === null && (
-          <p>Success! Check your email for a link!</p>
+          <p>Success! Check {inputs.email} for a sign in link!</p>
         )}
 
         <label htmlFor="email">

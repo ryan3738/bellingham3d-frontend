@@ -4,7 +4,7 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { useState } from 'react';
 import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
-import Error from '../DisplayApolloError';
+import DisplayApolloError from '../DisplayApolloError';
 import SignIn from './SignIn';
 import { ButtonStyles } from '../styles/StateStyles';
 
@@ -39,21 +39,15 @@ export default function SignUp(): JSX.Element {
 
   async function handleSubmit(e): Promise<void> {
     e.preventDefault();
-    // console.log(inputs);
+
+    // Send the email and password to the graphqlAPI
     signup().catch(console.error);
-    console.log(data, loading, error);
-    // console.log(res);
 
     if (data?.createUser) {
       resetForm();
     }
-    // Send the email and password to the graphqlAPI
   }
-  // const error =
-  //   data?.authenticateUserWithPassword.__typename ===
-  //   'UserAuthenticationWithPasswordFailure'
-  //     ? data?.authenticateUserWithPassword
-  //     : undefined;
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = (): void => {
     setPasswordShown(!passwordShown);
@@ -71,7 +65,8 @@ export default function SignUp(): JSX.Element {
         ) : (
           <>
             <h2>Sign Up For an Account</h2>
-            <Error error={error} />
+            {loading && <p>Loading...</p>}
+            <DisplayApolloError error={error} />
             <fieldset>
               <label htmlFor="name">
                 Name
