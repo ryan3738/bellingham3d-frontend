@@ -4,6 +4,7 @@ import useForm from '../../lib/useForm';
 import Form from '../styles/Form';
 import DisplayApolloError from '../DisplayApolloError';
 import { ButtonStyles } from '../styles/StateStyles';
+import Message from '../Message';
 
 export const REQUEST_MAGIC_AUTH_MUTATION = gql`
   mutation REQUEST_MAGIC_AUTH_MUTATION($email: String!) {
@@ -39,11 +40,11 @@ export default function RequestMagicAuth(): JSX.Element {
     <Form method="post" onSubmit={handleSubmit}>
       <h2>Request a Sign In Link</h2>
       <fieldset>
-        {loading && <p>Loading...</p>}
         <DisplayApolloError error={error} />
-        {data?.sendUserMagicAuthLink === null && (
-          <p>Success! Check {inputs.email} for a sign in link!</p>
-        )}
+        <Message loading={loading}>
+          {data?.sendUserMagicAuthLink === null &&
+            `Success! Check ${inputs.email} for a sign in link!`}
+        </Message>
 
         <label htmlFor="email">
           Email
