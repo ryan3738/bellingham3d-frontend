@@ -33,17 +33,8 @@ function CheckingOutUser({ me }: { me: UserType }): JSX.Element {
         <Supreme>Order Summary</Supreme>
       </header> */}
       <div>
-        {/* {me.cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))} */}
-
         <div>
           <h3>Shipping Address</h3>
-
-          {/* <MenuStateProvider>
-            <Address address={shippingAddress} />
-          </MenuStateProvider> */}
-          {/* <ShippingAddress /> */}
           {shippingMenuState === 'default' && (
             <MenuStateProvider>
               <Address address={shippingAddress} allowUpdate />
