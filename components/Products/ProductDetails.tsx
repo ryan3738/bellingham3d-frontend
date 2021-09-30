@@ -104,6 +104,7 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
         <ImageSlider slides={product.images} alt={product.name} />
         <div className="details">
           <h2>{product.name}</h2>
+          <p>{product.description}</p>
           <h3>{formatMoney(product.price)}</h3>
           <ProductVariants
             variants={product.variants}
@@ -123,7 +124,6 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
               <AuthTabs />
             </>
           )}
-          <p>{product.description}</p>
           <SeeAllProducts />
         </div>
 
