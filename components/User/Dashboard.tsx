@@ -22,7 +22,7 @@ export default function Account(): JSX.Element {
           <h3>{user.email}</h3>
           <Button internalLink="/account/addresses">Manage Addresses</Button>
           <Button internalLink="/account/orderhistory">Order History</Button>
-          <Button internalLink="/requestreset">Reset Your Password</Button>
+          {/* <Button internalLink="/requestreset">Reset Your Password</Button> */}
           <SignOut>Sign Out</SignOut>
         </ContainerGrid>
       ) : (
