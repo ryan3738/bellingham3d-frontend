@@ -17,8 +17,6 @@ import {
   SelectVariantType,
   Variant,
 } from '../../types/types';
-import SignUpMagicAuth from '../User/SignUpMagicAuth';
-import RequestMagicAuth from '../User/RequestMagicAuth';
 import AuthTabs from '../User/AuthTabs';
 
 const ProductStyles = styled.div`
@@ -111,18 +109,18 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
             variants={product.variants}
             selectVariant={selectVariant}
           />
-          {user && (
-            <AddToCart
-              id={product.id}
-              variantIds={getVariantIds(variantsState)}
-            />
-          )}
+
+          <AddToCart
+            id={product.id}
+            variantIds={getVariantIds(variantsState)}
+            disabled={!user}
+          />
+
           <p>{product.description}</p>
           {!user && (
             <>
               <div>
                 <h3>You must be signed in to add items to your cart</h3>
-                <p>Please create an account or login</p>
               </div>
               <AuthTabs />
             </>
