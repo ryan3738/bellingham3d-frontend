@@ -115,16 +115,15 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
             variantIds={getVariantIds(variantsState)}
             disabled={!user}
           />
-
-          <p>{product.description}</p>
           {!user && (
             <>
               <div>
-                <h3>You must be signed in to add items to your cart</h3>
+                <strong>You must be signed in to add items to your cart</strong>
               </div>
               <AuthTabs />
             </>
           )}
+          <p>{product.description}</p>
           <SeeAllProducts />
         </div>
 
