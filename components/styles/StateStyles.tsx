@@ -30,6 +30,7 @@ const TabStyles = styled(ButtonStyles)`
   margin: 0;
   padding: calc(var(--spacing) * 1.5);
   border-radius: 0;
+  width: 100%;
 `;
 
 const ButtonIconStyles = styled(ButtonStyles)`
