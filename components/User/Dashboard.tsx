@@ -31,6 +31,7 @@ export default function Account(): JSX.Element {
             <title>Account Dashboard | {siteData.businessName}</title>
           </Head>
           <h1>Account Dashboard</h1>
+          <p>Please sign in or sign up to see your dashboard</p>
           <AuthTabs />
         </>
       )}
