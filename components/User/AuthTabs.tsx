@@ -39,9 +39,9 @@ const Auth = (): JSX.Element => {
             >
               Sign In
             </TabStyles>
+            {tab === 'signup' && <SignUpMagicAuth />}
+            {tab === 'signin' && <RequestMagicAuth />}
           </div>
-          {tab === 'signup' && <SignUpMagicAuth />}
-          {tab === 'signin' && <RequestMagicAuth />}
         </div>
       </div>
     </>
