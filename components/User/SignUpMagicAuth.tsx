@@ -57,7 +57,7 @@ export default function SignUpMagicAuth(): JSX.Element {
     //   method="post" makes sure the password doesn't go to the url
     <>
       <Form method="post" onSubmit={handleSubmit}>
-        <h2>Sign Up For an Account</h2>
+        {/* <h2>Sign Up For an Account</h2> */}
         <DisplayApolloError error={singupError || error} />
         <Message loading={singupLoading || loading}>
           {data?.sendUserMagicAuthLink === null &&

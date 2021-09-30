@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { MenuStateProvider, useMenu } from '../../lib/menuState';
-import { ButtonStyles } from '../styles/StateStyles';
+import { TabStyles } from '../styles/StateStyles';
 import RequestMagicAuth from './RequestMagicAuth';
 import SignUpMagicAuth from './SignUpMagicAuth';
 
@@ -21,7 +21,7 @@ const Auth = (): JSX.Element => {
       <div>
         <div>
           <div>
-            <ButtonStyles
+            <TabStyles
               type="button"
               name="default"
               value="signup"
@@ -29,8 +29,8 @@ const Auth = (): JSX.Element => {
               disabled={tab === 'signup'}
             >
               Sign Up
-            </ButtonStyles>
-            <ButtonStyles
+            </TabStyles>
+            <TabStyles
               type="button"
               name="select"
               value="signin"
@@ -38,7 +38,7 @@ const Auth = (): JSX.Element => {
               disabled={tab === 'signin'}
             >
               Sign In
-            </ButtonStyles>
+            </TabStyles>
           </div>
           {tab === 'signup' && <SignUpMagicAuth />}
           {tab === 'signin' && <RequestMagicAuth />}
