@@ -26,6 +26,12 @@ const ButtonStyles = styled.button`
     opacity: var(--disabled);
   }
 `;
+const TabStyles = styled(ButtonStyles)`
+  margin: 0;
+  padding: calc(var(--spacing) * 1.5);
+  border-radius: 0;
+`;
+
 const ButtonIconStyles = styled(ButtonStyles)`
   padding: 0;
   margin: 0;
@@ -74,4 +80,5 @@ export {
   ButtonIconStyles,
   ButtonStyles,
   BackgroundStateStyles,
+  TabStyles,
 };

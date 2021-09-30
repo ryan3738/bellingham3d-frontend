@@ -38,14 +38,13 @@ export default function RequestMagicAuth(): JSX.Element {
   return (
     //   method="post" makes sure the password doesn't go to the url
     <Form method="post" onSubmit={handleSubmit}>
-      <h2>Request a Sign In Link</h2>
+      {/* <h2>Request a Sign In Link</h2> */}
+      <DisplayApolloError error={error} />
+      <Message loading={loading}>
+        {data?.sendUserMagicAuthLink === null &&
+          `Success! Check ${inputs.email} for a sign in link!`}
+      </Message>
       <fieldset>
-        <DisplayApolloError error={error} />
-        <Message loading={loading}>
-          {data?.sendUserMagicAuthLink === null &&
-            `Success! Check ${inputs.email} for a sign in link!`}
-        </Message>
-
         <label htmlFor="email">
           Email
           <input
