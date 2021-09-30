@@ -6,8 +6,8 @@ interface MenuContextInterface {
   toggleMenu: () => void;
   closeMenu: () => void;
   openMenu: () => void;
-  tab: number;
-  setTab: (number) => void;
+  tab: string;
+  setTab: (string) => void;
 }
 
 const MenuContext = createContext<MenuContextInterface | null>(null);
@@ -22,7 +22,7 @@ function MenuStateProvider({ children }: AppProps): JSX.Element {
 
   // Close by default
   const [menuOpen, setMenuOpen] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState();
 
   function toggleMenu(): void {
     setMenuOpen(!menuOpen);
