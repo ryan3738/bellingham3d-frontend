@@ -22,9 +22,14 @@ const ADD_TO_CART_MUTATION = gql`
 type AppProps = {
   id: ProductType['id'];
   variantIds: Variant['id'][];
+  disabled?: boolean;
 };
 
-export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
+export default function AddToCart({
+  id,
+  variantIds,
+  disabled,
+}: AppProps): JSX.Element {
   const user = useUser();
   const [addToCart, { loading }] = useMutation<
     ADD_TO_CART_MUTATION_TYPE,
@@ -53,7 +58,7 @@ export default function AddToCart({ id, variantIds }: AppProps): JSX.Element {
 
   return (
     <ButtonStyles
-      disabled={loading}
+      disabled={loading || disabled}
       type="button"
       onClick={() => {
         addToCartFunction();

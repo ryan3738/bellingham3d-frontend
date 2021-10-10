@@ -13,8 +13,7 @@ import Shipping from '../CheckOut/Shipping';
 import SeeAllProducts from '../Products/SeeAllProducts';
 import { ButtonIconStyles } from '../styles/StateStyles';
 import { CartItemType, UserType } from '../../types/types';
-import SignUpMagicAuth from '../User/SignUpMagicAuth';
-import RequestMagicAuth from '../User/RequestMagicAuth';
+import AuthTabs from '../User/AuthTabs';
 
 // export const cartShippingAddress = makeVar();
 
@@ -81,7 +80,7 @@ export default function Cart(): JSX.Element {
                   <h3>You must be signed in to add items to your cart</h3>
                   <p>Please create an account or login</p>
                 </div>
-                <SignUpMagicAuth /> <RequestMagicAuth />
+                <AuthTabs />
               </>
             )}
             <h3>Your Cart is Empty</h3>

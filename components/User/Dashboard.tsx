@@ -4,10 +4,7 @@ import Button from '../Button';
 import SignOut from './SignOut';
 import ContainerGrid from '../styles/ContainerGrid';
 import { useUser } from './User';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
-import RequestMagicAuth from './RequestMagicAuth';
-import SignUpMagicAuth from './SignUpMagicAuth';
+import AuthTabs from './AuthTabs';
 
 export default function Account(): JSX.Element {
   const user = useUser();
@@ -25,7 +22,7 @@ export default function Account(): JSX.Element {
           <h3>{user.email}</h3>
           <Button internalLink="/account/addresses">Manage Addresses</Button>
           <Button internalLink="/account/orderhistory">Order History</Button>
-          <Button internalLink="/requestreset">Reset Your Password</Button>
+          {/* <Button internalLink="/requestreset">Reset Your Password</Button> */}
           <SignOut>Sign Out</SignOut>
         </ContainerGrid>
       ) : (
@@ -34,8 +31,8 @@ export default function Account(): JSX.Element {
             <title>Account Dashboard | {siteData.businessName}</title>
           </Head>
           <h1>Account Dashboard</h1>
-          <SignUpMagicAuth />
-          <RequestMagicAuth />
+          <p>Please sign in or sign up to see your dashboard</p>
+          <AuthTabs />
         </>
       )}
     </>

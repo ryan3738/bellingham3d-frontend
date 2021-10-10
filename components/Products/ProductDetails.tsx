@@ -17,8 +17,7 @@ import {
   SelectVariantType,
   Variant,
 } from '../../types/types';
-import SignUpMagicAuth from '../User/SignUpMagicAuth';
-import RequestMagicAuth from '../User/RequestMagicAuth';
+import AuthTabs from '../User/AuthTabs';
 
 const ProductStyles = styled.div`
   display: grid;
@@ -105,25 +104,24 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
         <ImageSlider slides={product.images} alt={product.name} />
         <div className="details">
           <h2>{product.name}</h2>
+          <p>{product.description}</p>
           <h3>{formatMoney(product.price)}</h3>
           <ProductVariants
             variants={product.variants}
             selectVariant={selectVariant}
           />
-          {user && (
-            <AddToCart
-              id={product.id}
-              variantIds={getVariantIds(variantsState)}
-            />
-          )}
-          <p>{product.description}</p>
+
+          <AddToCart
+            id={product.id}
+            variantIds={getVariantIds(variantsState)}
+            disabled={!user}
+          />
           {!user && (
             <>
               <div>
-                <h3>You must be signed in to add items to your cart</h3>
-                <p>Please create an account or login</p>
+                <strong>You must be signed in to add items to your cart</strong>
               </div>
-              <SignUpMagicAuth /> <RequestMagicAuth />
+              <AuthTabs />
             </>
           )}
           <SeeAllProducts />
