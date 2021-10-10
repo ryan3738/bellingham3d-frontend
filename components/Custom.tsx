@@ -34,14 +34,8 @@ export default function Custom(): JSX.Element {
         <div>
           <h3>Design</h3>
           <span>
-            <ul>
-              <li>Got your own 3D CAD file you would like to have printed?</li>
-              <li>
-                Have an idea but need help designing a 3D file to create a
-                printable part?
-              </li>
-            </ul>
-            We can help you design and make a custom part.
+            If have your own 3D CAD file or an idea but need help designing a
+            printable part. We can help you design and make a custom part.
           </span>
         </div>
         <div>
