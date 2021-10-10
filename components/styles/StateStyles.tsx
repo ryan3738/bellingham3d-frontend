@@ -12,6 +12,7 @@ const ButtonStyles = styled.button`
   width: auto;
   font-size: 1rem;
   font-weight: 500;
+  letter-spacing: 0.1rem;
   background: var(--navyBlue-600);
   border-radius: var(--borderRadius);
   transition: all 0.25s;
@@ -24,6 +25,7 @@ const ButtonStyles = styled.button`
   :disabled,
   [disabled] {
     opacity: var(--disabled);
+    cursor: auto;
   }
 `;
 const TabStyles = styled(ButtonStyles)`
@@ -31,6 +33,18 @@ const TabStyles = styled(ButtonStyles)`
   padding: calc(var(--spacing) * 1.5);
   border-radius: 0;
   width: 100%;
+  background: var(--navyBlue-50);
+  color: var(--navyBlue-900);
+  :hover {
+    background: var(--navyBlue-200);
+    /* color: var(--offWhite); */
+  }
+  :disabled,
+  [disabled] {
+    opacity: 1;
+    background: var(--navyBlue-800);
+    color: var(--offWhite);
+  }
 `;
 
 const ButtonIconStyles = styled(ButtonStyles)`
