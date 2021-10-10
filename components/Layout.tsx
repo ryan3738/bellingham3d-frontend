@@ -60,7 +60,7 @@ html {
   min-height: 100%;
   font-size: 100%;
   line-height: 1.5rem;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 0.1rem;
  }
 
 a{
