@@ -12,7 +12,6 @@ const TabContainerStyles = styled.div`
 const TabButtonsStyles = styled.div`
   display: flex;
   flex-direction: row;
-
 `;
 
 const Auth = (): JSX.Element => {
