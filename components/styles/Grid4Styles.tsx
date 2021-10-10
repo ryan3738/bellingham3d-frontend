@@ -22,7 +22,7 @@ const Grid4Styles = styled.div`
   div {
     text-align: left;
     border: 1px solid var(--lightGray);
-    padding: var(--spacing);
+    padding: calc(2 * var(--spacing));
     /* background: var(--lightBlue); */
     box-shadow: var(--bs);
     border-radius: 1px;
