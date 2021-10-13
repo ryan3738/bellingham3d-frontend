@@ -31,7 +31,7 @@ This project uses server side rendering so that products and inventory can be up
 As the user adds items it will be added to their cart and displayed in the cart modal.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
-| Cart Modal |
+<figcaption>Cart Modal</figcaption>
 
 ## Integration with Stripe API for Customer Checkout
 
