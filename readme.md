@@ -17,9 +17,13 @@ Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With 
 - Vercel
 - KeystoneJS
 
+# Site Features
+
 ## Server Side Rendering with Next.js
 
 This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
+
+![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
 
 ## Integration with Stripe API for Customer Checkout
 
