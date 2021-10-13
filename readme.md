@@ -27,7 +27,9 @@ This project uses server side rendering so that products and inventory can be up
 
 ## Integration with Stripe API for Customer Checkout
 
-To ensure a secure checkout, the final checkout mutation is handled on the server. On the server prices are recalculated with product information from the database to ensure correct pricing is charged. The cart is then converted to an order and saved to the database. Finally, an order is returned to the client with details on their purchase.
+If items require shipping address create/update options are displayed. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
+
+![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png )
 
 # Running the frontend
 
