@@ -45,7 +45,7 @@ The backend client for this project can be seen at [bellingham3d-backend](https:
         npm run dev
         # or
         yarn dev
-5. Open http://localhost:3000 with your browser to see the frontend
+5. Open [localhost:7777](http://localhost:7777) with your browser to see the frontend
 
 ## Deploy
 
