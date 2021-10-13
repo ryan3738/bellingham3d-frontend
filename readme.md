@@ -27,7 +27,7 @@ To ensure a secure checkout, the final checkout mutation is handled on the serve
 
 # Running the frontend
 
-> **NOTE** you'll need Stripe credentials and a graphQL endpoint set up in your `.env` file or environment variables to run this example. See the `.env.sample` file for required fields.
+> **NOTE** you'll need Stripe credentials and a graphQL endpoint set up in your `.env` file or environment variables to run this project. See the `.env.sample` file for required fields.
 
 The backend client for this project can be seen at [bellingham3d-backend](https://github.com/ryan3738/bellingham3d-backend)
 ## Getting Started
