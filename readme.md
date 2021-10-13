@@ -19,26 +19,57 @@ Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With 
 
 # Site Features
 
-## Server Side Rendering with Next.js
+
+## Server Side Rendering of Products with Next.js
 
 This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
-### Main product and home page
+
 ![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
+<figcaption>Products page</figcaption>
 
-## User cart
+## Navigation & Search
 
-As the user adds items it will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
+On larger screens the navbar consists of a list of links that allow the user to navigate the site. On mobile devices a burger menu is generated that opens a navigation modal. The search bar queries the graphQL database and allows the user to search for products by name or description. The search generates a list of products that match the search query.
+
+
+![Bellingham 3D burger navbar and search](/assets/images/bham3d-search.png)
+<figcaption>Burger menu for mobile and search bar</figcaption>
+
+## Individual Product Pages
+
+A product page is generated for each product with a title, descriptin, image and price. If the product has multiple images then an image slider with ability to cycle through images is generated. The page also includes option selectors for products with multiple variations.
+
+![Bellingham 3D product page](/assets/images/bham3d-product-page.png)
+<figcaption>Product page</figcaption>
+
+## Passwordless Login Component
+
+Users can sign up for an account using a passwordless login. This is done by sending a link to the user’s email. The user clicks the link and is logged in.
+
+![Bellingham 3D signup](/assets/images/bham3d-cart-signup.png)
+<figcaption>Signup/Singin component</figcaption>
+
+## User Cart
+
+As the user adds items they will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
 <figcaption>Cart Modal</figcaption>
 
-## Integration with Stripe API for Customer Checkout
+## Customer Checkout with Stripe API
 
-If items require shipping address create/update options are displayed. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
+If any item requires shipping the cart will display the option to select, create or update an address. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
 
-### Cart checkout page
-![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png )
+![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png)
+<figcaption>Cart checkout modal</figcaption>
+
+## Order History
+
+The customer can access their dashboard where they can see their order history. Including details on the order date, order number, shipping address, and stripe payment ID.
+
+![Bellingham 3D order history](/assets/images/bham3d-orders.png)
+<figcaption>Customer order history</figcaption>
 
 # Running the frontend
 
