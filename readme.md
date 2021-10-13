@@ -23,12 +23,20 @@ Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With 
 
 This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
+### Main product and home page
 ![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
+
+## User cart
+
+As the user adds items it will be added to their cart and displayed in the cart modal.
+### Cart modal
+![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
 
 ## Integration with Stripe API for Customer Checkout
 
 If items require shipping address create/update options are displayed. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
 
+### Cart checkout page
 ![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png )
 
 # Running the frontend
