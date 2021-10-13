@@ -28,7 +28,7 @@ This project uses server side rendering so that products and inventory can be up
 
 ## User cart
 
-As the user adds items it will be added to their cart and displayed in the cart modal.
+As the user adds items it will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
 <figcaption>Cart Modal</figcaption>
