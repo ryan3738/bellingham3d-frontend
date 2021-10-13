@@ -47,7 +47,7 @@ A product page is generated for each product with a title, descriptin, image and
 
 Users can sign up for an account using a passwordless login. This is done by sending a link to the user’s email. The user clicks the link and is logged in.
 
-![Bellingham 3D signup](/assets/images/bham3d-cart-singup.png)
+![Bellingham 3D signup](/assets/images/bham3d-cart-signup.png)
 <figcaption>Signup/Singin component</figcaption>
 
 ## User Cart
