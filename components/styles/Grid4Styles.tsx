@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 
-const Grid4Styles = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  grid-gap: var(--spacing);
-  justify-content: center;
-  justify-items: center;
-  margin-bottom: var(--spacing);
-  margin: 0;
-  padding: 0;
-
+const GridBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--lightGray);
+  padding: calc(2 * var(--spacing));
+  /* background: var(--lightBlue); */
+  min-width: 220px;
+  box-shadow: var(--bs);
+  border-radius: 1px;
+  ul li {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
   h1,
   h2,
   h3,
@@ -19,18 +24,26 @@ const Grid4Styles = styled.div`
     margin-top: 0px;
     text-align: center;
   }
-  div {
-    text-align: left;
-    border: 1px solid var(--lightGray);
-    padding: calc(2 * var(--spacing));
-    /* background: var(--lightBlue); */
-    box-shadow: var(--bs);
-    border-radius: 1px;
-    ul li {
-      padding-left: 0px;
-      margin-left: 0px;
-    }
+  .image {
   }
 `;
 
+const ImageWrapper = styled.div`
+  margin: 1.5rem;
+`;
+
+const Grid4Styles = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-gap: var(--spacing);
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  margin-bottom: var(--spacing);
+  margin: 0;
+  padding: 0;
+`;
+
 export default Grid4Styles;
+
+export { GridBox, ImageWrapper };

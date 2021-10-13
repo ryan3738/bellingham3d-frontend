@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Contact from './Contact';
 // import Gallery from './Gallery';
-import Grid4Styles from './styles/Grid4Styles';
+import Grid4Styles, { GridBox, ImageWrapper } from './styles/Grid4Styles';
 import customHeroImage from '../public/images/laptop-parts-printer.jpg';
 import { siteData } from '../public/site-data';
 
@@ -31,25 +31,61 @@ export default function Custom(): JSX.Element {
       </div>
       <h2>Custom Designs</h2>
       <Grid4Styles>
-        <div>
+        <GridBox>
+          <ImageWrapper>
+            <Image
+              src="/images/3d-modeling.png"
+              alt="Icon of computer with cad modeling"
+              // loading="lazy"
+              // layout="intrinsic"
+              height="175"
+              width="175"
+              // objectFit="cover"
+            />
+          </ImageWrapper>
           <h3>Design</h3>
           <span>
             If have your own 3D CAD file or an idea but need help designing a
             printable part. We can help you design and make a custom part.
           </span>
-        </div>
-        <div>
+        </GridBox>
+        <GridBox>
+          <ImageWrapper>
+            <Image
+              src="/images/3d-printer.png"
+              alt="Icon of 3D printer"
+              // loading="lazy"
+              // layout="intrinsic"
+              height="175"
+              width="175"
+              // objectFit="cover"
+            />
+          </ImageWrapper>
           <h3>Print</h3>
-          <p>
+          <span>
             We take care when printing each part to make sure it functions as
             intended.
-          </p>
-        </div>
-        <div>
+          </span>
+        </GridBox>
+        <GridBox>
+          <ImageWrapper>
+            <Image
+              src="/images/delivery-truck.png"
+              alt="Icon of delivery truck"
+              // loading="lazy"
+              // layout="intrinsic"
+              height="175"
+              width="175"
+              // objectFit="cover"
+            />
+          </ImageWrapper>
           <h3>Ship</h3>
-          We will ship your 3D printed parts to you once the printing process is
-          complete.
-        </div>
+
+          <span>
+            We will ship your 3D printed parts to you once the printing process
+            is complete.
+          </span>
+        </GridBox>
       </Grid4Styles>
       <div className="gridSpacer" />
       <br />
