@@ -1,7 +1,7 @@
 # Full Stack Next.JS E-Commerce App
 
 ## Description
-Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With the need to showcase and sell products, this application dynamically renders item pages and maintains a detailed cart that stores cutomers cart and orders. This project employs Server Side Rendering, interacting with a GraphQL API endpoint, and dynamically rendering individual item pages with NextJS’s dynamic routes.
+Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With the need to showcase and sell a multitude of products, this application dynamically renders item pages and maintains a detailed cart that stores customers itesm. In addition, there is a user dashboard that allows for looking at order history, and stored address information.
 
 ## Tech used:
 
@@ -19,7 +19,7 @@ KeystoneJS
 
 ## Server Side Rendering with Next.js
 
-Next.js allows for choosing between Server Side Rendering and Static Page Generation on a page-by-page basis. This project uses SSR so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
+This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
 ## Integration with Stripe API for Customer Checkout
 
