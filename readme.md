@@ -59,7 +59,7 @@ As the user adds items they will be added to their cart and displayed in the car
 
 ## Customer Checkout with Stripe API
 
-If any items requires shipping the cart will displa the option to select, create or update an address. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
+If any item requires shipping the cart will display the option to select, create or update an address. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png)
 <figcaption>Cart checkout modal</figcaption>
