@@ -5,17 +5,17 @@ Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With 
 
 ## Tech used:
 
-Next.js
-React
-TypeScript
-Javascript
-GraphQL
-Apollo Client
-Styled-Components
-React-Transition-Group
-Stripe
-Vercel
-KeystoneJS
+- Next.js
+- React
+- TypeScript
+- Javascript
+- GraphQL
+- Apollo Client
+- Styled-Components
+- React-Transition-Group
+- Stripe
+- Vercel
+- KeystoneJS
 
 ## Server Side Rendering with Next.js
 
