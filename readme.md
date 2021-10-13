@@ -28,13 +28,13 @@ This project uses server side rendering so that products and inventory can be up
 ![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
 <figcaption>Products page</figcaption>
 
-## Navbar and Search
+## Navigation & Search
 
-The web app includes a navbar and search bar. The navbar is a list of links that allow the user to navigate the site. On mobile devices a burger menu is generated that opens a navigation modal. The search bar queries the graphQL database and allows the user to search for products by name or description.
+On larger screens the navbar consists of a list of links that allow the user to navigate the site. On mobile devices a burger menu is generated that opens a navigation modal. The search bar queries the graphQL database and allows the user to search for products by name or description. The search generates a list of products that match the search query.
 
 
-![Bellingham 3D burger menu](/assets/images/bham3d-menu.png)
-<figcaption>Burger menu for mobile</figcaption>
+![Bellingham 3D burger navbar and search](/assets/images/bham3d-search.png)
+<figcaption>Burger menu for mobile and search bar</figcaption>
 
 ## Individual Product Pages
 
