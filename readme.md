@@ -19,13 +19,20 @@ Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With 
 
 # Site Features
 
-## Server Side Rendering with Next.js
+## Server Side Rendering of Products with Next.js
 
 This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
 
 ![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
 <figcaption>Products page</figcaption>
+
+## Passwordless Login Component
+
+Users can sign up for an account using a passwordless login. This is done by sending a link to the user’s email. The user clicks the link and is logged in.
+
+![Bellingham 3D signup](/assets/images/bham3d-cart-singup.png)
+<figcaption>Signup/Singin component</figcaption>
 
 ## User cart
 
