@@ -64,6 +64,13 @@ If any items requires shipping the cart will displa the option to select, create
 ![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png)
 <figcaption>Cart checkout modal</figcaption>
 
+## Order History
+
+The customer can access their dashboard where they can see their order history. Including details on the order date, order number, shipping address, and stripe payment ID.
+
+![Bellingham 3D order history](/assets/images/bham3d-orders.png)
+<figcaption>Customer order history</figcaption>
+
 # Running the frontend
 
 > **NOTE** you'll need Stripe credentials and a graphQL endpoint set up in your `.env` file or environment variables to run this project. See the `.env.sample` file for required fields.
