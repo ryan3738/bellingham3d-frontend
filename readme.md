@@ -29,7 +29,7 @@ This project uses server side rendering so that products and inventory can be up
 
 ## Individual Product Pages
 
-A product page is generated for each product with a title, descriptin and price. In addition the page includes an image slider with ability to cycle through images. The page also includes variation selectors for product options.
+A product page is generated for each product with a title, descriptin, image and price. If the product has multiple images then an image slider with ability to cycle through images is generated. The page also includes option selectors for products with multiple variations.
 
 ![Bellingham 3D product page](/assets/images/bham3d-product-page.png)
 <figcaption>Product page</figcaption>
