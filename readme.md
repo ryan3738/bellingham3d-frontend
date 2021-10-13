@@ -27,6 +27,13 @@ This project uses server side rendering so that products and inventory can be up
 ![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
 <figcaption>Products page</figcaption>
 
+## Individual Product Pages
+
+A product page is generated for each product with a title, descriptin and price. In addition the page includes an image slider with ability to cycle through images. The page also includes variation selectors for product options.
+
+![Bellingham 3D product page](/assets/images/bham3d-product-page.png)
+<figcaption>Product page</figcaption>
+
 ## Passwordless Login Component
 
 Users can sign up for an account using a passwordless login. This is done by sending a link to the user’s email. The user clicks the link and is logged in.
