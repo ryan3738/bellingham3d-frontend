@@ -34,16 +34,16 @@ Users can sign up for an account using a passwordless login. This is done by sen
 ![Bellingham 3D signup](/assets/images/bham3d-cart-singup.png)
 <figcaption>Signup/Singin component</figcaption>
 
-## User cart
+## User Cart
 
-As the user adds items it will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
+As the user adds items they will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
 <figcaption>Cart Modal</figcaption>
 
-## Integration with Stripe API for Customer Checkout
+## Customer Checkout with Stripe API
 
-If items require shipping address create/update options are displayed. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
+If any items requires shipping the cart will displa the option to select, create or update an address. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
 
 ![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png)
 <figcaption>Cart checkout modal</figcaption>
