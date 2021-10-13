@@ -36,11 +36,9 @@ export default function Custom(): JSX.Element {
             <Image
               src="/images/3d-modeling.png"
               alt="Icon of computer with cad modeling"
-              // loading="lazy"
-              // layout="intrinsic"
+              loading="lazy"
               height="175"
               width="175"
-              // objectFit="cover"
             />
           </ImageWrapper>
           <h3>Design</h3>
@@ -54,11 +52,9 @@ export default function Custom(): JSX.Element {
             <Image
               src="/images/3d-printer.png"
               alt="Icon of 3D printer"
-              // loading="lazy"
-              // layout="intrinsic"
+              loading="lazy"
               height="175"
               width="175"
-              // objectFit="cover"
             />
           </ImageWrapper>
           <h3>Print</h3>
@@ -72,11 +68,9 @@ export default function Custom(): JSX.Element {
             <Image
               src="/images/delivery-truck.png"
               alt="Icon of delivery truck"
-              // loading="lazy"
-              // layout="intrinsic"
+              loading="lazy"
               height="175"
               width="175"
-              // objectFit="cover"
             />
           </ImageWrapper>
           <h3>Ship</h3>
