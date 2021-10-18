@@ -4,10 +4,6 @@ import { perPage } from '../../config';
 import Product from './Product';
 import { ALL_PRODUCTS_QUERY } from '../../queries/getAllProducts';
 import DisplayApolloError from '../DisplayApolloError';
-import {
-  ALL_PRODUCTS_QUERY as ALL_PRODUCTS_QUERY_TYPE,
-  ALL_PRODUCTS_QUERYVariables as ALL_PRODUCTS_QUERY_VARIABLES,
-} from '../../types/generated/ALL_PRODUCTS_QUERY';
 
 const ProductsListStyles = styled.div`
   display: grid;

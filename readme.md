@@ -1,67 +1,100 @@
 # Full Stack Next.JS E-Commerce App
 
 ## Description
-Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With the need to showcase products and allow customers to order an array of products, this application dynamically renders item pages and maintains a detailed cart that stores their orders and customizations. This project employs multiple modern web development tools and techniques, including Server Side Rendering, interacting with a GraphQL API, running server-less functions, and dynamically rendering individual item pages with Next JS’s dynamic routes.
+Bellingham 3D is a 3D printing and design service based in Bellingham, WA. With the need to showcase and sell a multitude of products, this application dynamically renders item pages and maintains a detailed cart that stores customers itesm. In addition, there is a user dashboard that allows for looking at order history, and stored address information.
 
 ## Tech used:
 
-    Next.js
-    React
-    GraphQL
-    PostgreSQL
-    Apollo Client
-    Styled-Components
-    React-Transition-Group
-    Stripe
-    Frontend Deployed to Vercel
-    Keystone-next
-    Backend Deployed to Digital Ocean
+- Next.js
+- React
+- TypeScript
+- Javascript
+- GraphQL
+- Apollo Client
+- Styled-Components
+- React-Transition-Group
+- Stripe
+- Vercel
+- KeystoneJS
 
-## Server Side Rendering with Next.js
+# Site Features
 
-Next.js allows for choosing between Server Side Rendering and Static Page Generation on a page-by-page basis. This project uses SSR so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
-## Crafting API Resolvers in Keystone-next
+## Server Side Rendering of Products with Next.js
 
-The back end uses Keystone-next which is a node & Typescript based Graphql server-side client that uses Next.js for its front end. This is hosted on a Digital Ocean droplet. Keystone takes in GraphQL schemas and resolvers. The resolvers then fetch the data from MongoDB through interacting with Mongoose schemas. It can also be used as a cms for performing CRUD operations on database items.
+This project uses server side rendering so that products and inventory can be up to date. On the server, the application grabs the data it needs and renders the html to the client. The application interacts with Apollo’s cache and awaits results from the database.
 
-## Integration with Stripe API for Customer Checkout
 
-In the Stripe implementation. To ensure a secure checkout, the order is handled on the server. There, prices are recalculated with price information on items from the database to ensure correct charging. The order is then converted to a record in the database. Finally, an order is returned to the client with details on their purchase.
-Interacting with GraphQL API
+![Bellingham 3D main page](/assets/images/bham3d-homepage.png)
+<figcaption>Products page</figcaption>
 
-# Dependencies
+## Navigation & Search
 
-This projects requires a GraphQL API endpoint and a public Stripe key to enable the e-commerce features.
+On larger screens the navbar consists of a list of links that allow the user to navigate the site. On mobile devices a burger menu is generated that opens a navigation modal. The search bar queries the graphQL database and allows the user to search for products by name or description. The search generates a list of products that match the search query.
 
-# Getting Started
+
+![Bellingham 3D burger navbar and search](/assets/images/bham3d-search.png)
+<figcaption>Burger menu for mobile and search bar</figcaption>
+
+## Individual Product Pages
+
+A product page is generated for each product with a title, descriptin, image and price. If the product has multiple images then an image slider with ability to cycle through images is generated. The page also includes option selectors for products with multiple variations.
+
+![Bellingham 3D product page](/assets/images/bham3d-product-page.png)
+<figcaption>Product page</figcaption>
+
+## Passwordless Login Component
+
+Users can sign up for an account using a passwordless login. This is done by sending a link to the user’s email. The user clicks the link and is logged in.
+
+![Bellingham 3D signup](/assets/images/bham3d-cart-signup.png)
+<figcaption>Signup/Singin component</figcaption>
+
+## User Cart
+
+As the user adds items they will be added to their cart and displayed in the cart modal. The user has options to increment, decrement, and remove items from the cart.
+
+![Bellingham 3D checkout](/assets/images/bham3d-cart.png )
+<figcaption>Cart Modal</figcaption>
+
+## Customer Checkout with Stripe API
+
+If any item requires shipping the cart will display the option to select, create or update an address. Once an address is selected the stripe checkout is displayed. To ensure a secure checkout, the final checkout mutation is handled on the server.
+
+![Bellingham 3D checkout](/assets/images/bham3d-cart-checkout.png)
+<figcaption>Cart checkout modal</figcaption>
+
+## Order History
+
+The customer can access their dashboard where they can see their order history. Including details on the order date, order number, shipping address, and stripe payment ID.
+
+![Bellingham 3D order history](/assets/images/bham3d-orders.png)
+<figcaption>Customer order history</figcaption>
+
+# Running the frontend
+
+> **NOTE** you'll need Stripe credentials and a graphQL endpoint set up in your `.env` file or environment variables to run this project. See the `.env.sample` file for required fields.
+
+The backend client for this project can be seen at [bellingham3d-backend](https://github.com/ryan3738/bellingham3d-backend)
+## Getting Started
 
 1. Clone the repository locally
 2. Navigate to the root directory
 3. Install dependencies
+   
         npm install
         # or
         yarn
-4. Create a .env.local file the following env variables
-   1. NEXT_PUBLIC_STRIPE_KEY=pk_test_
-   2. API_ENDPOINT=http://localhost:3000/api/graphql
-5. 4. Run the development server
+
+4. Run the development server
    
         npm run dev
         # or
         yarn dev
-6. Open http://localhost:3000 with your browser to see the website
-
-## Next Steps
-
-Make changes to the website info in the public folder or the component files
-Deploy the application using Netlify, Vercel, or another service
+5. Open [localhost:7777](http://localhost:7777) with your browser to see the frontend
 
 ## Deploy
 
 The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details

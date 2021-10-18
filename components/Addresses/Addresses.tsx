@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import Head from 'next/head';
 import DisplayApolloError from '../DisplayApolloError';
 import ContainerGrid from '../styles/ContainerGrid';
-import Grid4Styles from '../styles/Grid4Styles';
+import Grid4Styles, { GridBox } from '../styles/Grid4Styles';
 import CreateAddress from './CreateAddress';
 import Address from './Address';
 import { MenuStateProvider } from '../../lib/menuState';
@@ -38,12 +38,14 @@ export default function Addresses({
       <Grid4Styles>
         {addresses.map((address: AddressType) => (
           <MenuStateProvider key={address.id}>
-            <Address
-              address={address}
-              allowUpdate={allowUpdate}
-              allowDelete={allowDelete}
-              selectAddress={selectAddress}
-            />
+            <GridBox>
+              <Address
+                address={address}
+                allowUpdate={allowUpdate}
+                allowDelete={allowDelete}
+                selectAddress={selectAddress}
+              />
+            </GridBox>
           </MenuStateProvider>
         ))}
         {/* <Button internalLink="/account/createaddress">Add A New Address</Button> */}
