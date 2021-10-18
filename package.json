@@ -13,7 +13,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start -p 7777",
-    "test": "jest --watch",
+    "test": "NODE_ENV=test jest --watch",
     "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=[**/*.tsx,**/*.ts] --tagName=gql --outputFlat types/generated --passthroughCustomScalars --customScalarsPrefix Db",
     "type": "tsc --watch"
   },
