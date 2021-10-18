@@ -15,7 +15,7 @@ describe('Format money function', () => {
     expect(formatMoney(40)).toEqual('$0.40');
   });
 
-  it("Leaves off cents when it's whole dollars", () => {
+  it('Leaves off cents when its whole dollars', () => {
     expect(formatMoney(5000)).toEqual('$50');
     expect(formatMoney(100)).toEqual('$1');
     expect(formatMoney(50000000)).toEqual('$500,000');
