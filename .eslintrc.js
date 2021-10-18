@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: ['airbnb', 'prettier', 'next'],
   parser: 'babel-eslint',
   parserOptions: {
