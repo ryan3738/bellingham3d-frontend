@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
+import { useRouter } from 'next/router';
 import NavBar from './NavBar/NavBar';
 
 const GlobalStyles = createGlobalStyle`
@@ -222,19 +223,45 @@ const InnerStyles = styled.div`
 
 export default function Layout({
   children,
+  meta: pageMeta,
 }: {
   children?: React.ReactNode;
+  meta?: [string];
 }): JSX.Element {
+  const router = useRouter();
+  const meta = {
+    title: 'Bellingham 3D',
+    description:
+      'A 3D printing and engineering design company based in Bellingham',
+    keywords: '3D, printing, design',
+    cardImage: '/og.png',
+    ...pageMeta,
+  };
   return (
     <div>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bellingham 3D</title>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta name="keywords" content={meta.keywords} />
+
+        {/* Social media information */}
         <meta
-          name="description"
-          content="A 3D printing and engineering design company based in Bellingham, Washington."
+          property="og:url"
+          content={`https://bellingham3d.com${router.asPath}`}
         />
-        <meta name="keywords" content="3D, printing, design" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.cardImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="website" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.cardImage} />
+
+        {/* Favicon information */}
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
