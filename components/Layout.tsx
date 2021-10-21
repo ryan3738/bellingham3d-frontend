@@ -244,8 +244,8 @@ export default function Layout({
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
         <meta name="keywords" content={meta.keywords} />
-
         {/* Social media information */}
+        {/* Open Graph */}
         <meta
           property="og:url"
           content={`https://bellingham3d.com${router.asPath}`}
@@ -255,13 +255,13 @@ export default function Layout({
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.cardImage} />
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="website" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.cardImage} />
-
-        {/* Favicon information */}
+        {/* Favicon info */}
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
