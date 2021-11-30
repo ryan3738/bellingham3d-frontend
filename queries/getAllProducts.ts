@@ -16,7 +16,7 @@ const ALL_PRODUCTS_QUERY = gql`
       images {
         id
         image {
-          publicUrlTransformed(transformation: { width: "360" })
+          publicUrlTransformed(transformation: { width: "400" })
         }
       }
     }
