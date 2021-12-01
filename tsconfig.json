@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "__tests__/Product.test.js"  ],
+, "__tests__/Product.test.js", "lib/withData.js"  ],
   "exclude": [
     "node_modules"
   ]
