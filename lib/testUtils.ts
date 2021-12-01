@@ -1,6 +1,15 @@
 import casual from 'casual';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
 
+interface Overrides {
+  id?: string;
+  name?: string;
+  email?: string;
+  permissions?: string[];
+  orders?: any[];
+  cart?: any[];
+}
+
 // seed it so we get consistent results
 casual.seed(777);
 
@@ -10,6 +19,8 @@ const fakeItem = () => ({
   price: 5000,
   user: null,
   photo: {
+    id: 'abc123',
+    altText: 'dogs are best',
     image: {
       publicUrlTransformed: 'dog.jpg',
     },
@@ -18,7 +29,7 @@ const fakeItem = () => ({
   description: 'dogs',
 });
 
-const fakeUser = (overrides) => ({
+const fakeUser = (overrides?: Overrides) => ({
   __typename: 'User',
   id: '4234',
   name: casual.name,
@@ -51,7 +62,7 @@ const fakeOrder = () => ({
   user: fakeUser(),
 });
 
-const fakeCartItem = (overrides) => ({
+const fakeCartItem = (overrides?: Overrides) => ({
   __typename: 'CartItem',
   id: 'omg123',
   quantity: 3,
@@ -70,7 +81,7 @@ class LocalStorageMock {
     this.store = {};
   }
 
-  getItem(key) {
+  getItem(key: string) {
     return this.store[key] || null;
   }
 
