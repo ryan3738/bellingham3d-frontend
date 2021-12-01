@@ -18,7 +18,6 @@ import {
   Variant,
 } from '../../types/types';
 
-
 import AuthTabs from '../User/AuthTabs';
 
 const ProductStyles = styled.div`
