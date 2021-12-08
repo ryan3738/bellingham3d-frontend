@@ -24,12 +24,11 @@ export default function BurgerMenu({ open }: { open: boolean }): JSX.Element {
           z-index: 9;
           transition: transform 0.2s ease-in-out;
         }
+
         @media (max-width: var(--medium-screen)) {
-          .styled-menu {
-            width: 100%;
-            font-size: 1.5rem;
-            text-align: center;
-          }
+          width: 100%;
+          font-size: 1.5rem;
+          text-align: center;
         }
 
         a {
