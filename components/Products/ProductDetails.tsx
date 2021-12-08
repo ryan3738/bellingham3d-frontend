@@ -17,6 +17,7 @@ import {
   SelectVariantType,
   Variant,
 } from '../../types/types';
+
 import AuthTabs from '../User/AuthTabs';
 
 const ProductStyles = styled.div`
@@ -46,7 +47,7 @@ interface SelectedVariant extends Option {
 export default function ProductDetails({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const user = useUser();
-  console.log('ID', id);
+  // console.log('ID', id);
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {

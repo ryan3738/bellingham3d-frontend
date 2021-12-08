@@ -96,10 +96,10 @@ export default function CartItem({
                       },
                       optimisticResponse: {
                         __typename: 'Mutation',
-                        updateComment: {
+                        updateCartItem: {
                           id,
                           __typename: 'Quantity',
-                          content: quantity - 1,
+                          quantity: quantity - 1,
                         },
                       },
                     });
@@ -124,10 +124,10 @@ export default function CartItem({
                       },
                       optimisticResponse: {
                         __typename: 'Mutation',
-                        updateComment: {
+                        updateCartItem: {
                           id,
                           __typename: 'Quantity',
-                          content: quantity + 1,
+                          quantity: quantity + 1,
                         },
                       },
                     });
