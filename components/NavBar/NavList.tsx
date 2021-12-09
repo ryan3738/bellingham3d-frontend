@@ -87,12 +87,6 @@ const NavList = function ({
       </>
 
       <style jsx>{`
-         {
-          /* .icons {
-          color: var(--navyBlue);
-        } */
-        }
-
         button {
           padding: 0;
           margin: 0;
