@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// Tempory fix for Apollo client v3.5.6
 const ClientOnly = function ({ children, ...delegated }): JSX.Element {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
@@ -14,7 +15,6 @@ const ClientOnly = function ({ children, ...delegated }): JSX.Element {
 
 export default ClientOnly;
 // then wrap Search
-
 /* <ClientOnly>
   <Search />
 </ClientOnly>; */
