@@ -26,9 +26,11 @@ const BurgerMenu = function ({ open }: { open: boolean }): JSX.Element {
         }
 
         @media (max-width: var(--medium-screen)) {
+          .styled-menu {
           width: 100%;
           font-size: 1.5rem;
           text-align: center;
+          }
         }
 
         a {
