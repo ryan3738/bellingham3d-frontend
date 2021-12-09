@@ -9,7 +9,7 @@ import { siteData } from '../public/site-data';
 import { SEARCH_PRODUCTS_QUERY } from '../queries/searchProducts';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
-export default function Search(): JSX.Element {
+const Search = function (): JSX.Element {
   const router = useRouter();
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
@@ -92,4 +92,6 @@ export default function Search(): JSX.Element {
       </DropDown>
     </SearchStyles>
   );
-}
+};
+
+export default Search;

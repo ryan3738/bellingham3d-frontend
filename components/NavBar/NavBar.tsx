@@ -8,6 +8,7 @@ import NavList from './NavList';
 import Search from '../Search';
 import Cart from '../Cart/Cart';
 import NavSpacer from './NavSpacer';
+import ClientOnly from '../../hooks/clientOnly';
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -68,7 +69,7 @@ type AppProps = {
   children?: React.ReactNode;
 };
 
-export default function NavBar({ children }: AppProps): JSX.Element {
+const NavBar = function ({ children }: AppProps): JSX.Element {
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside({ ref: node, handler: () => setOpen(false) });
@@ -98,7 +99,9 @@ export default function NavBar({ children }: AppProps): JSX.Element {
             <NavList showOnLarge />
           </div>
         </nav>
-        <Search />
+        <ClientOnly>
+          <Search />
+        </ClientOnly>
         <Cart />
       </div>
       <NavSpacer />
@@ -163,4 +166,6 @@ export default function NavBar({ children }: AppProps): JSX.Element {
       `}</style>
     </>
   );
-}
+};
+
+export default NavBar;

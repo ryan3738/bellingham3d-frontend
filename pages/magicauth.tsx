@@ -1,8 +1,7 @@
-import { QueryDocumentKeys } from 'graphql/language/visitor';
 import MagicAuth from '../components/User/MagicAuth';
 import RequestMagicAuth from '../components/User/RequestMagicAuth';
 
-export default function MagicAuthPage({
+const MagicAuthPage = function ({
   query,
 }: {
   query: {
@@ -24,4 +23,6 @@ export default function MagicAuthPage({
       <MagicAuth token={query.token} email={query.email} />
     </div>
   );
-}
+};
+
+export default MagicAuthPage;

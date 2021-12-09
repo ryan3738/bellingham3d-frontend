@@ -10,3 +10,4 @@ variables.env
 .keystone
 .env.local
 coverage/
+upgrades/
