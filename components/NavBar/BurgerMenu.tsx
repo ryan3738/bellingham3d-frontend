@@ -1,6 +1,6 @@
 import NavList from './NavList';
 
-export default function BurgerMenu({ open }: { open: boolean }): JSX.Element {
+const BurgerMenu = function ({ open }: { open: boolean }): JSX.Element {
   return (
     <>
       <nav className="styled-menu">
@@ -50,4 +50,6 @@ export default function BurgerMenu({ open }: { open: boolean }): JSX.Element {
       `}</style>
     </>
   );
-}
+};
+
+export default BurgerMenu;
