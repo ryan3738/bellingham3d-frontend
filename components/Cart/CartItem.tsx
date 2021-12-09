@@ -41,7 +41,7 @@ const CartItemStyles = styled.div`
   }
 `;
 
-export default function CartItem({
+const CartItem = function ({
   cartItem: { product, quantity, id, variants },
 }: {
   cartItem: CartItemType;
@@ -191,4 +191,6 @@ export default function CartItem({
       `}</style>
     </CartItemStyles>
   );
-}
+};
+
+export default CartItem;
