@@ -23,7 +23,7 @@ const getCartCount = (cart): number => {
   if (!cart) return 0;
 };
 
-export default function NavList({
+const NavList = function ({
   showOnLarge,
   showInBurgerMenu,
 }: AppProps): JSX.Element {
@@ -122,4 +122,6 @@ export default function NavList({
       `}</style>
     </>
   );
-}
+};
+
+export default NavList;
