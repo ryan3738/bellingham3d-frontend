@@ -3,20 +3,19 @@ type AppProps = {
   setOpen: Function;
 };
 
-export default function Burger({ open, setOpen }: AppProps): JSX.Element {
+const Burger = function ({ open, setOpen }: AppProps): JSX.Element {
   return (
-    <>
-      <button
-        className="styled-burger"
-        type="button"
-        tabIndex={0}
-        title="Toggle menu"
-        onClick={() => setOpen(!open)}
-      >
-        <div className="top-bun" />
-        <div className="patty" />
-        <div className="bottom-bun" />
-        <style jsx>{`
+    <button
+      className="styled-burger"
+      type="button"
+      tabIndex={0}
+      title="Toggle menu"
+      onClick={() => setOpen(!open)}
+    >
+      <div className="top-bun" />
+      <div className="patty" />
+      <div className="bottom-bun" />
+      <style jsx>{`
           .styled-burger {
             margin: 1rem;
             padding: 0;
@@ -28,7 +27,7 @@ export default function Burger({ open, setOpen }: AppProps): JSX.Element {
             height: 2.625rem;
             background: var(--white);
             border: 0;
-            box-shadow: 0 0 0 7px var(--navyBlue));
+            box-shadow: 0 0 0 7px var(--navyBlue);
             cursor: pointer;
             z-index: 11;
             border-radius: 7px;
@@ -46,26 +45,27 @@ export default function Burger({ open, setOpen }: AppProps): JSX.Element {
             z-index: 10;
           }
         `}</style>
-        {/* animation styles */}
-        <style jsx>{`
-          div {
-            background: ${open ? 'var(--navyBlue-400)' : 'var(--navyBlue-800)'};
-          }
+      {/* animation styles */}
+      <style jsx>{`
+        div {
+          background: ${open ? 'var(--navyBlue-400)' : 'var(--navyBlue-800)'};
+        }
 
-          .top-bun {
-            transform: ${open ? 'rotate(45deg)' : 'rotate(0)'};
-          }
+        .top-bun {
+          transform: ${open ? 'rotate(45deg)' : 'rotate(0)'};
+        }
 
-          .patty {
-            opacity: ${open ? '0' : '1'};
-            transform: ${open ? 'translateX(20px)' : 'translateX(0)'};
-          }
+        .patty {
+          opacity: ${open ? '0' : '1'};
+          transform: ${open ? 'translateX(20px)' : 'translateX(0)'};
+        }
 
-          .bottom-bun {
-            transform: ${open ? 'rotate(-45deg)' : 'rotate(0)'};
-          }
-        `}</style>
-      </button>
-    </>
+        .bottom-bun {
+          transform: ${open ? 'rotate(-45deg)' : 'rotate(0)'};
+        }
+      `}</style>
+    </button>
   );
-}
+};
+
+export default Burger;
