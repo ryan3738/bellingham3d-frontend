@@ -1,5 +1,6 @@
 // This is client side config only - don't put anything in here that shouldn't be public!
-export const developmentEndpoint = 'http://localhost:3000/api/graphql';
+export const localEndpoint = 'http://localhost:3000/api/graphql';
+export const developmentEndpoint = 'https://dev-admin.bellingham3d.com//api/graphql';
 export const previewEndpoint = `https://dev-admin.bellingham3d.com//api/graphql`;
 export const productionEndpoint = `https://admin.bellingham3d.com/api/graphql`;
 export const perPage = 20;
