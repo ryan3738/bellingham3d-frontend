@@ -8,10 +8,7 @@ import Message from '../Message';
 
 export const REQUEST_MAGIC_AUTH_MUTATION = gql`
   mutation REQUEST_MAGIC_AUTH_MUTATION($email: String!) {
-    sendUserMagicAuthLink(email: $email) {
-      code
-      message
-    }
+    sendUserMagicAuthLink(email: $email)
   }
 `;
 
@@ -19,12 +16,10 @@ const RequestMagicAuth = function (): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
   });
-  const [requestMagicAuth, { data, loading, error }] = useMutation(
+  const [requestMagicAuth, response] = useMutation(
     REQUEST_MAGIC_AUTH_MUTATION,
     {
       variables: inputs,
-      // refetch the currently logged in user
-      // refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
 
@@ -34,15 +29,20 @@ const RequestMagicAuth = function (): JSX.Element {
     await requestMagicAuth().catch(console.error);
     // resetForm();
   }
-
+  console.log('RESPONSE', response);
+  const { loading, error, data } = response;
   return (
     //   method="post" makes sure the password doesn't go to the url
     <Form method="post" onSubmit={handleSubmit}>
       {/* <h2>Request a Sign In Link</h2> */}
       <DisplayApolloError error={error} />
       <Message loading={loading}>
-        {data?.sendUserMagicAuthLink === null &&
-          `Success! Check ${inputs.email} for a sign in link!`}
+        {data?.sendUserMagicAuthLink === true && (
+          <div>
+            Success! Check <span className="email">{inputs.email}</span> for a
+            sign in link!
+          </div>
+        )}
       </Message>
       <fieldset>
         <label htmlFor="email">
@@ -62,6 +62,11 @@ const RequestMagicAuth = function (): JSX.Element {
           Request Sign In Link
         </ButtonStyles>
       </fieldset>
+      <style jsx>{`
+        .email {
+          font-weight: bold;
+        }
+      `}</style>
     </Form>
   );
 };
