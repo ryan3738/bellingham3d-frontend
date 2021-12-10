@@ -11,7 +11,7 @@ type AppProps = {
   title?: string;
 };
 
-export default function Button({
+const Button = function ({
   children,
   button,
   buttonLink,
@@ -58,4 +58,6 @@ export default function Button({
       )}
     </>
   );
-}
+};
+
+export default Button;

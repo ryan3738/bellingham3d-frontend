@@ -17,7 +17,7 @@ type AppProps = {
   children?: React.ReactNode;
 };
 
-function MenuStateProvider({ children }: AppProps): JSX.Element {
+const MenuStateProvider = function ({ children }: AppProps): JSX.Element {
   // This is our own custom provider! We will store data (state) and functionality (updaters) in here and anyone can access it via the consumer!
 
   // Close by default
@@ -51,7 +51,7 @@ function MenuStateProvider({ children }: AppProps): JSX.Element {
       {children}
     </MenuProvider>
   );
-}
+};
 
 // make a custom hook for accessing the menu
 function useMenu(): MenuContextInterface {
