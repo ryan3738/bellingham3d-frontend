@@ -15,7 +15,7 @@ export const REQUEST_MAGIC_AUTH_MUTATION = gql`
   }
 `;
 
-export default function RequestMagicAuth(): JSX.Element {
+const RequestMagicAuth = function (): JSX.Element {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
   });
@@ -64,4 +64,6 @@ export default function RequestMagicAuth(): JSX.Element {
       </fieldset>
     </Form>
   );
-}
+};
+
+export default RequestMagicAuth;
