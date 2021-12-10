@@ -6,7 +6,7 @@ import { siteData } from '../public/site-data';
 import { instagramUrl } from '../config';
 import contactHeroImage from '../public/images/cad-screenshot.jpg';
 
-export default function Contact({
+const Contact = function ({
   enableTitleTag,
 }: {
   enableTitleTag?: boolean;
@@ -42,8 +42,6 @@ export default function Contact({
       <div className="social-media-container">
         <div className="social-media-contents">
           <Social href={instagramUrl} socialSite="instagram" />
-          {/* Add back in once facebook page is made */}
-          {/* <Social href={facebookUrl} socialSite="facebook" /> */}
         </div>
       </div>
       <style jsx>{`
@@ -60,4 +58,6 @@ export default function Contact({
       `}</style>
     </>
   );
-}
+};
+
+export default Contact;
