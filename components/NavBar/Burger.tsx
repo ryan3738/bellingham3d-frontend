@@ -27,7 +27,6 @@ const Burger = function ({ open, setOpen }: AppProps): JSX.Element {
           height: 2.625rem;
           background: var(--white);
           border: 0;
-          box-shadow: 0 0 0 0 var(--navyBlue);
           cursor: pointer;
           z-index: 11;
           border-radius: 7px;
