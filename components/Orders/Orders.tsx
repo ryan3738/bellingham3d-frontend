@@ -25,7 +25,7 @@ function countItemsInAnOrder(order: Order): number {
   return order.items.reduce((tally, item) => tally + item.quantity, 0);
 }
 
-export default function OrderHistory(): JSX.Element {
+const OrderHistory = function (): JSX.Element {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
@@ -84,4 +84,6 @@ export default function OrderHistory(): JSX.Element {
       `}</style>
     </div>
   );
-}
+};
+
+export default OrderHistory;
