@@ -32,7 +32,7 @@ const getCart = (user: UserType): CartItemType[] | [] => {
   // TODO Create local cart query
   return [];
 };
-export default function Cart(): JSX.Element {
+const Cart = function (): JSX.Element {
   const user = useUser();
   const { cartOpen, closeCart } = useCart();
 
@@ -96,4 +96,6 @@ export default function Cart(): JSX.Element {
       />
     </CartStyles>
   );
-}
+};
+
+export default Cart;
