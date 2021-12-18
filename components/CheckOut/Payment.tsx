@@ -41,7 +41,7 @@ const CREATE_ORDER_MUTATION = gql`
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-function CheckoutForm({
+const CheckoutForm = function ({
   shippingId,
 }: {
   shippingId: AddressType['id'];
@@ -119,9 +119,9 @@ function CheckoutForm({
       </LargeButton>
     </CheckoutFormStyles>
   );
-}
+};
 
-function Payment({
+const Payment = function ({
   shippingId,
 }: {
   shippingId?: AddressType['id'];
@@ -131,6 +131,6 @@ function Payment({
       <CheckoutForm shippingId={shippingId} />
     </Elements>
   );
-}
+};
 
 export { Payment };
