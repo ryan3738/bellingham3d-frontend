@@ -47,7 +47,6 @@ interface SelectedVariant extends Option {
 const ProductDetails = function ({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const user = useUser();
-  // console.log('ID', id);
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
@@ -106,6 +105,16 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <h3>{formatMoney(product.price)}</h3>
+        <div>
+          {product.downloads.map((download) => {
+            return (
+              <>
+                <h3 key={download.id}>{download.title}</h3>
+                <a href={download.file.url}>{download.file.url}</a>
+              </>
+            );
+          })}
+        </div>
         <ProductVariants
           variants={product.variants}
           selectVariant={selectVariant}
@@ -117,7 +126,7 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
           disabled={!user}
         />
         {!user && (
-          <strong>
+          <>
             <div>
               <strong>You must be signed in to add items to your cart</strong>
             </div>
