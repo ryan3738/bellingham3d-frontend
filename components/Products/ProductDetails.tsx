@@ -44,7 +44,7 @@ interface SelectedVariant extends Option {
   variant: Variant;
 }
 
-export default function ProductDetails({ id }: AppProps): JSX.Element {
+const ProductDetails = function ({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const user = useUser();
   // console.log('ID', id);
@@ -95,53 +95,53 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
   };
 
   return (
-    <>
-      <ProductStyles>
-        <Head>
-          <title>
-            {product.name} | {siteData.businessName}
-          </title>
-        </Head>
-        <ImageSlider slides={product.images} alt={product.name} />
-        <div className="details">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <h3>{formatMoney(product.price)}</h3>
-          <ProductVariants
-            variants={product.variants}
-            selectVariant={selectVariant}
-          />
+    <ProductStyles>
+      <Head>
+        <title>
+          {product.name} | {siteData.businessName}
+        </title>
+      </Head>
+      <ImageSlider slides={product.images} alt={product.name} />
+      <div className="details">
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <h3>{formatMoney(product.price)}</h3>
+        <ProductVariants
+          variants={product.variants}
+          selectVariant={selectVariant}
+        />
 
-          <AddToCart
-            id={product.id}
-            variantIds={getVariantIds(variantsState)}
-            disabled={!user}
-          />
-          {!user && (
-            <>
-              <div>
-                <strong>You must be signed in to add items to your cart</strong>
-              </div>
-              <AuthTabs />
-            </>
-          )}
-          <SeeAllProducts />
-        </div>
+        <AddToCart
+          id={product.id}
+          variantIds={getVariantIds(variantsState)}
+          disabled={!user}
+        />
+        {!user && (
+          <strong>
+            <div>
+              <strong>You must be signed in to add items to your cart</strong>
+            </div>
+            <AuthTabs />
+          </>
+        )}
+        <SeeAllProducts />
+      </div>
 
-        <style jsx>{`
-          select {
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 1rem;
-            border: 1px solid black;
-            margin: 5px 0 20px 0;
-          }
-          select:focus {
-            outline: 0;
-            border-color: var(--navyBlue);
-          }
-        `}</style>
-      </ProductStyles>
-    </>
+      <style jsx>{`
+        select {
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid black;
+          margin: 5px 0 20px 0;
+        }
+        select:focus {
+          outline: 0;
+          border-color: var(--navyBlue);
+        }
+      `}</style>
+    </ProductStyles>
   );
-}
+};
+
+export default ProductDetails;
