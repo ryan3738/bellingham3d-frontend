@@ -105,16 +105,18 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <h3>{formatMoney(product.price)}</h3>
-        <div>
-          {product.downloads.map((download) => {
-            return (
-              <>
-                <h3 key={download.id}>{download.title}</h3>
-                <a href={download.file.url}>{download.file.url}</a>
-              </>
-            );
-          })}
-        </div>
+        {product.downloads && (
+          <>
+            <h3>Downloads</h3>
+            {product.downloads.map((download) => {
+              return (
+                <h4 key={download.id}>
+                  <a href={download.file.url}>{download.title}</a>
+                </h4>
+              );
+            })}
+          </>
+        )}
         <ProductVariants
           variants={product.variants}
           selectVariant={selectVariant}
