@@ -20,7 +20,7 @@ import AuthTabs from '../User/AuthTabs';
 const isShippingRequired = (cart: CartItemType[]): boolean => {
   return cart.some(
     (cartItem: CartItemType) =>
-      cartItem.product.inventoryItem.requiresShipping === true
+      cartItem?.product?.inventoryItem?.requiresShipping === true
   );
 };
 
@@ -37,6 +37,7 @@ const Cart = function (): JSX.Element {
   const { cartOpen, closeCart } = useCart();
 
   const cart = getCart(user);
+  console.log('CART', cart);
 
   return (
     <CartStyles open={cartOpen}>
