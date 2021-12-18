@@ -1,7 +1,6 @@
-import { useRouter } from 'next/dist/client/router';
+import Downloads from '../../components/Downloads/Downloads';
 
 const DownloadsPage = function (): JSX.Element {
-  const { query } = useRouter();
   return <Downloads />;
 };
 
