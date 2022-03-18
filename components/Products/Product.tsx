@@ -6,11 +6,7 @@ import { siteData } from '../../public/site-data';
 import { ProductType } from '../../types/types';
 // import { ALL_PRODUCTS_QUERY_products as ProductType } from '../../types/generated/ALL_PRODUCTS_QUERY';
 
-export default function Product({
-  product,
-}: {
-  product: ProductType;
-}): JSX.Element {
+const Product = function ({ product }: { product: ProductType }): JSX.Element {
   const user = useUser();
   return (
     <div className="productWrapper">
@@ -66,7 +62,6 @@ export default function Product({
           max-width: 360px;
           max-height: 360px;
           height: auto;
-
           width: 100vw;
           text-align: center;
           border: 1px solid var(--lightGray);
@@ -74,11 +69,9 @@ export default function Product({
           position: relative;
           opacity: var(--hover);
         }
-
         .productWrapper :hover {
           opacity: 1;
         }
-
         .productText {
           display: block;
           height: auto;
@@ -90,4 +83,6 @@ export default function Product({
       `}</style>
     </div>
   );
-}
+};
+
+export default Product;
