@@ -4,16 +4,20 @@ import { PAGINATION_QUERY } from '../components/Products/Pagination';
 // seed it so we get consistent results
 casual.seed(777);
 
-const fakeItem = () => ({
+const fakeProduct = () => ({
   // __typename: 'Item',
   id: 'abc123',
   price: 5000,
   user: null,
-  photo: {
+  images: [
+    {
+    id: 'abc123',
+    altText: 'dogs are best',
     image: {
-      publicUrlTransformed: 'dog.jpg',
+      publicUrlTransformed: '/dog.jpg',
     },
-  },
+  }
+],
   name: 'dogs are best',
   description: 'dogs',
 });
@@ -108,7 +112,7 @@ function makePaginationMocksFor(length) {
 export {
   makePaginationMocksFor,
   LocalStorageMock,
-  fakeItem,
+  fakeProduct,
   fakeUser,
   fakeCartItem,
   fakeOrder,

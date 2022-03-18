@@ -24,7 +24,7 @@
     "**/*.ts",
     "**/*.tsx",
     "__tests__/Product.test.js"
-  ],
+, "lib/testUtils.js"  ],
   "exclude": [
     "node_modules"
   ]
