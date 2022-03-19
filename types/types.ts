@@ -7,6 +7,7 @@ import {
 } from './generated/CURRENT_USER_QUERY';
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
+import { SINGLE_PRODUCT_QUERY_product } from './generated/SINGLE_PRODUCT_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
@@ -81,9 +82,11 @@ export type Variant = {
 //   user: UserType;
 // };
 
-export type ProductType = ALL_PRODUCTS_QUERY_products;
+export type ProductType = SINGLE_PRODUCT_QUERY_product;
 
-export type OrderItem = {
+export type AllProductsType = ALL_PRODUCTS_QUERY_products;
+
+export type OrderItemType = {
   id: string;
   name: string;
   variants: string;
@@ -99,7 +102,7 @@ export type OrderItem = {
 export type Order = {
   id: string;
   total: number;
-  items: OrderItem[];
+  items: OrderItemType[];
   user: UserType;
   userId: string;
   charge: string;

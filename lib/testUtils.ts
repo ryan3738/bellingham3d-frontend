@@ -1,6 +1,6 @@
 import casual from 'casual';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
-import { ProductType } from '../types/types';
+import { OrderItemType, ProductType, UserType } from '../types/types';
 
 // seed it so we get consistent results
 casual.seed(777);
@@ -9,15 +9,16 @@ const fakeProduct = (): ProductType => ({
   __typename: 'Product',
   id: 'abc123',
   price: 5000,
-  status: 'AVAILABLE',
+  // status: 'AVAILABLE',
+  variants: [],
   images: [
     {
       __typename: 'ProductImage',
-      id: 'abc123',
+      // id: 'abc123',
+      altText: 'dogs are best',
       image: {
         __typename: 'CloudinaryImage_File',
         publicUrlTransformed: '/dog.jpg',
-        // altText: 'dogs are best',
       },
     },
   ],
@@ -25,7 +26,7 @@ const fakeProduct = (): ProductType => ({
   description: 'dogs',
 });
 
-const fakeUser = (overrides) => ({
+const fakeUser = (overrides): UserType => ({
   __typename: 'User',
   id: '4234',
   name: casual.name,
@@ -36,10 +37,10 @@ const fakeUser = (overrides) => ({
   ...overrides,
 });
 
-const fakeOrderItem = () => ({
-  __typename: 'OrderItem',
+const fakeOrderItem = (): OrderItemType => ({
+  // __typename: 'OrderItem',
   id: casual.uuid,
-  image: {
+  images: {
     image: `${casual.word}.jpg`,
   },
   name: casual.words(),
@@ -55,15 +56,15 @@ const fakeOrder = () => ({
   total: 40000,
   items: [fakeOrderItem(), fakeOrderItem()],
   createdAt: '2022-12-11T20:16:13.797Z',
-  user: fakeUser(),
+  user: fakeUser(null),
 });
 
 const fakeCartItem = (overrides) => ({
   __typename: 'CartItem',
   id: 'omg123',
   quantity: 3,
-  product: fakeItem(),
-  user: fakeUser(),
+  product: fakeProduct(),
+  user: fakeUser(null),
   ...overrides,
 });
 
