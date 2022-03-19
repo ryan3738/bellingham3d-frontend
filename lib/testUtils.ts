@@ -37,8 +37,11 @@ const fakeUser = (overrides?: UserType): UserType => ({
   id: '4234',
   name: casual.name,
   email: casual.email,
-  role: ['ADMIN'],
-  // orders: [],
+  defaultShipping: null,
+  role: {
+    __typename: 'Role',
+    canManageProducts: true,
+  },
   cart: [],
   ...overrides,
 });
@@ -60,6 +63,7 @@ const fakeOrderItem = (): OrderItemType => ({
   price: 4234,
   quantity: 1,
   description: casual.words(),
+  variants: 'regular',
 });
 
 const fakeOrder = (): OrderType => ({
@@ -90,8 +94,11 @@ const fakeCartItem = (overrides?: CartItemType): CartItemType => ({
   __typename: 'CartItem',
   id: 'omg123',
   quantity: 3,
-  product: fakeProduct(),
-  // user: fakeUser(),
+  product: {
+    inventoryItem: null,
+    ...fakeProduct(),
+  },
+  variants: [],
   ...overrides,
 });
 

@@ -8,7 +8,10 @@ import {
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
 import { SINGLE_PRODUCT_QUERY_product } from './generated/SINGLE_PRODUCT_QUERY';
-import { SINGLE_ORDER_QUERY_order } from './generated/SINGLE_ORDER_QUERY';
+import {
+  SINGLE_ORDER_QUERY_order,
+  SINGLE_ORDER_QUERY_order_items,
+} from './generated/SINGLE_ORDER_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
