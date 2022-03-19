@@ -20,7 +20,7 @@ import AuthTabs from '../User/AuthTabs';
 const isShippingRequired = (cart: CartItemType[]): boolean => {
   return cart.some(
     (cartItem: CartItemType) =>
-      cartItem.product.inventoryItem.requiresShipping === true
+      cartItem?.product?.inventoryItem?.requiresShipping === true
   );
 };
 
@@ -32,11 +32,12 @@ const getCart = (user: UserType): CartItemType[] | [] => {
   // TODO Create local cart query
   return [];
 };
-export default function Cart(): JSX.Element {
+const Cart = function (): JSX.Element {
   const user = useUser();
   const { cartOpen, closeCart } = useCart();
 
   const cart = getCart(user);
+  console.log('CART', cart);
 
   return (
     <CartStyles open={cartOpen}>
@@ -96,4 +97,6 @@ export default function Cart(): JSX.Element {
       />
     </CartStyles>
   );
-}
+};
+
+export default Cart;

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductDetails /> renders with proper data 1`] = `
+<div>
+  <div
+    class="ProductDetails__ProductStyles-sc-xqwt7f-0 htxGUr"
+    data-testid="productDetails"
+  >
+    <div
+      class="jsx-1005620270 slider"
+    >
+      <div
+        class="jsx-1005620270 slide active"
+      >
+        <span
+          style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+        >
+          <span
+            style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27600%27%20height=%27600%27/%3e"
+              style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+            />
+          </span>
+          <img
+            alt="dogs are best"
+            data-nimg="intrinsic"
+            decoding="async"
+            src="/_next/image?url=%2Fdog.jpg&w=1200&q=75"
+            srcset="/_next/image?url=%2Fdog.jpg&w=640&q=75 1x, /_next/image?url=%2Fdog.jpg&w=1200&q=75 2x"
+            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+          />
+          <noscript />
+        </span>
+      </div>
+    </div>
+    <div
+      class="jsx-550922915 details"
+    >
+      <h2
+        class="jsx-550922915"
+      >
+        dogs are best
+      </h2>
+      <p
+        class="jsx-550922915"
+      >
+        dogs
+      </p>
+      <h3
+        class="jsx-550922915"
+      >
+        $50
+      </h3>
+      <div
+        class="details"
+      />
+      <button
+        class="StateStyles__ButtonStyles-sc-1rtfr0y-0 fTnNMI"
+        disabled=""
+        type="button"
+      >
+        Add
+         To Cart
+      </button>
+      <div
+        class="jsx-550922915"
+      >
+        <strong
+          class="jsx-550922915"
+        >
+          You must be signed in to add items to your cart
+        </strong>
+      </div>
+      <div
+        class="AuthTabs__TabContainerStyles-sc-ovdjsg-0 brbQT"
+      >
+        <div
+          class="AuthTabs__TabButtonsStyles-sc-ovdjsg-1 BhBkv"
+        >
+          <button
+            class="StateStyles__ButtonStyles-sc-1rtfr0y-0 StateStyles__TabStyles-sc-1rtfr0y-1 fTnNMI gNeQwd"
+            name="default"
+            type="button"
+            value="signup"
+          >
+            Sign Up
+          </button>
+          <button
+            class="StateStyles__ButtonStyles-sc-1rtfr0y-0 StateStyles__TabStyles-sc-1rtfr0y-1 fTnNMI gNeQwd"
+            name="select"
+            type="button"
+            value="signin"
+          >
+            Sign In
+          </button>
+        </div>
+        <div />
+      </div>
+    </div>
+  </div>
+</div>
+`;

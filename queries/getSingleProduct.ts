@@ -15,6 +15,16 @@ export const SINGLE_PRODUCT_QUERY = gql`
           name
         }
       }
+      downloads {
+        id
+        title
+        file {
+          filename
+          filesize
+          url
+        }
+        createdAt
+      }
       images {
         altText
         image {

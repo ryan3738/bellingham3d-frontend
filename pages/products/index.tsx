@@ -2,7 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import Pagination from '../../components/Products/Pagination';
 import Products from '../../components/Products/Products';
 
-export default function ProductsPage(): JSX.Element {
+const ProductsPage = function (): JSX.Element {
   const { query } = useRouter();
   const page = typeof query.page === 'string' ? parseInt(query.page) : null;
   return (
@@ -12,4 +12,6 @@ export default function ProductsPage(): JSX.Element {
       <Pagination page={page || 1} />
     </>
   );
-}
+};
+
+export default ProductsPage;

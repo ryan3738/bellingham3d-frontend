@@ -1,11 +1,9 @@
 import Head from 'next/head';
-import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useRouter } from 'next/router';
 import NavBar from './NavBar/NavBar';
 
 const GlobalStyles = createGlobalStyle`
-/* Add back in if a custom font is wanted */
 @font-face {
   font-family: "Octin College Regular" ;
   src: url("/fonts/octin-college/octin-college-regular2.woff2") format("woff2"),url("/fonts/octin-college/octin-college-regular.woff") format("woff");
@@ -54,9 +52,6 @@ html {
   font-family:  'Octin College Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0;
   margin: 0;
-  /* font-size: 1.6rem;
-  line-height: 2;
-  letter-spacing: 1px; */
   height: 100%;
   min-height: 100%;
   font-size: 100%;
@@ -77,29 +72,9 @@ button{
   -moz-appearance: none;
   appearance: none;
   background: none;
-  /* cursor: pointer; */
-  /* background-color: var(--navyBlue); */
-  /* border-radius: 5px; */
-  /* color: var(--white); */
-  /* padding: 5px; */
-  /* margin: 1rem 0; */
-  /* width: auto; */
-  /* background: var(--red); */
-  /* color: white; */
   border: 0;
-  /* font-size: 1rem; */
-  /* font-weight: 500; */
-  /* padding: var(--spacing); */
-  /* min-height: 44px; */
-  /* min-width: 72px; */
-  /* margin: 10px 5px; */
-
 }
 button:hover {
-  /* animation-name: background-color; */
-  /* animation-duration: 500ms; */
-  /* background-color: var(--lightBlue); */
-  /* color: var(--navyBlue); */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -221,13 +196,15 @@ const InnerStyles = styled.div`
   min-height: 90vh;
 `;
 
-export default function Layout({
-  children,
-  meta: pageMeta,
-}: {
+type LayoutProps = {
   children?: React.ReactNode;
   meta?: [string];
-}): JSX.Element {
+}
+
+const Layout = function ({
+  children,
+  meta: pageMeta,
+}: LayoutProps ): JSX.Element {
   const router = useRouter();
   const meta = {
     title: 'Bellingham 3D',
@@ -287,8 +264,6 @@ export default function Layout({
       <InnerStyles>{children}</InnerStyles>
     </div>
   );
-}
-
-Layout.propTypes = {
-  children: PropTypes.any,
 };
+
+export default Layout;

@@ -7,6 +7,11 @@ import {
 } from './generated/CURRENT_USER_QUERY';
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
+import { SINGLE_PRODUCT_QUERY_product } from './generated/SINGLE_PRODUCT_QUERY';
+import {
+  SINGLE_ORDER_QUERY_order,
+  SINGLE_ORDER_QUERY_order_items,
+} from './generated/SINGLE_ORDER_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
@@ -52,61 +57,13 @@ export type Variant = {
   description?: string;
 };
 
-// type InventoryItem = {
-//   id: string;
-//   price: number;
-//   requiresShipping: boolean;
-//   tracked: boolean;
-//   quantity: number;
-//   allowBackorder: boolean;
-// };
+export type ProductType = SINGLE_PRODUCT_QUERY_product;
 
-// type Category = {
-//   id: string;
-//   name: string;
-//   description: string;
-// };
+export type AllProductsType = ALL_PRODUCTS_QUERY_products;
 
-// export type Product = {
-//   id: string;
-//   name: string;
-//   description: string;
-//   images: ProductImage[];
-//   status: string;
-//   price: number;
-//   category: Category[];
-//   inventoryItem: InventoryItem;
-//   variants: Variant[];
-//   createdAt: string;
-//   user: UserType;
-// };
+export type OrderItemType = SINGLE_ORDER_QUERY_order_items;
 
-export type ProductType = ALL_PRODUCTS_QUERY_products;
-
-export type OrderItem = {
-  id: string;
-  name: string;
-  variants: string;
-  description: string;
-  image: ProductImage;
-  imageId: string;
-  price: number;
-  quantity: number;
-  order: Order;
-  orderId: string;
-};
-
-export type Order = {
-  id: string;
-  total: number;
-  items: OrderItem[];
-  user: UserType;
-  userId: string;
-  charge: string;
-  shippingAddress: AddressType;
-  shippingAddressId: string;
-  createdAt: string;
-};
+export type OrderType = SINGLE_ORDER_QUERY_order;
 
 export type SelectVariantType = (parameters: {
   option: Option;

@@ -8,7 +8,7 @@ import CreateAddress from '../Addresses/CreateAddress';
 import { ButtonStyles } from '../styles/StateStyles';
 import { AddressType, UserType } from '../../types/types';
 
-function CheckingOutUser({ me }: { me: UserType }): JSX.Element {
+const CheckingOutUser = function ({ me }: { me: UserType }): JSX.Element {
   const [shippingMenuState, setShippingMenuState] = useState('default');
   const [shippingAddress, setShippingAddress] = useState<AddressType>();
 
@@ -88,10 +88,12 @@ function CheckingOutUser({ me }: { me: UserType }): JSX.Element {
       </footer>
     </>
   );
-}
+};
 
-export default function Shipping(): JSX.Element {
+const Shipping = function (): JSX.Element {
   const me = useUser();
   if (!me) return null;
   return <CheckingOutUser me={me} />;
-}
+};
+
+export default Shipping;

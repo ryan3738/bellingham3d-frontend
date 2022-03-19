@@ -14,7 +14,7 @@ export const PAGINATION_QUERY = gql`
   }
 `;
 
-export default function Pagination({ page }: { page: number }): JSX.Element {
+const Pagination = function ({ page }: { page: number }): JSX.Element {
   const { error, loading, data } = useQuery(PAGINATION_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
@@ -62,4 +62,6 @@ export default function Pagination({ page }: { page: number }): JSX.Element {
       `}</style>
     </PaginationStyles>
   );
-}
+};
+
+export default Pagination;

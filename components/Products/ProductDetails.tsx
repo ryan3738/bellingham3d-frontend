@@ -44,10 +44,9 @@ interface SelectedVariant extends Option {
   variant: Variant;
 }
 
-export default function ProductDetails({ id }: AppProps): JSX.Element {
+const ProductDetails = function ({ id }: AppProps): JSX.Element {
   const [variantsState, setVariantsState] = useState<SelectedVariant[]>([]);
   const user = useUser();
-  // console.log('ID', id);
 
   const selectVariant: SelectVariantType = useCallback(
     ({ option, variant }) => {
@@ -85,7 +84,7 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
-  if (!data) return <SeeAllProducts />;
+  if (!data) return <SeeAllProducts data-testid="productDetails" />;
 
   const { product } = data || null;
   const getVariantIds = (options: SelectedVariant[]): Variant['id'][] => {
@@ -95,53 +94,65 @@ export default function ProductDetails({ id }: AppProps): JSX.Element {
   };
 
   return (
-    <>
-      <ProductStyles>
-        <Head>
-          <title>
-            {product.name} | {siteData.businessName}
-          </title>
-        </Head>
-        <ImageSlider slides={product.images} alt={product.name} />
-        <div className="details">
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <h3>{formatMoney(product.price)}</h3>
-          <ProductVariants
-            variants={product.variants}
-            selectVariant={selectVariant}
-          />
+    <ProductStyles data-testid="productDetails">
+      <Head>
+        <title>
+          {product.name} | {siteData.businessName}
+        </title>
+      </Head>
+      <ImageSlider slides={product.images} alt={product.name} />
+      <div className="details">
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <h3>{formatMoney(product.price)}</h3>
+        {product.downloads && (
+          <>
+            <h3>Downloads</h3>
+            {product.downloads.map((download) => {
+              return (
+                <h4 key={download.id}>
+                  <a href={download.file.url}>{download.title}</a>
+                </h4>
+              );
+            })}
+          </>
+        )}
+        <ProductVariants
+          variants={product.variants}
+          selectVariant={selectVariant}
+        />
 
-          <AddToCart
-            id={product.id}
-            variantIds={getVariantIds(variantsState)}
-            disabled={!user}
-          />
-          {!user && (
-            <>
-              <div>
-                <strong>You must be signed in to add items to your cart</strong>
-              </div>
-              <AuthTabs />
-            </>
-          )}
-          <SeeAllProducts />
-        </div>
+        <AddToCart
+          id={product.id}
+          variantIds={getVariantIds(variantsState)}
+          disabled={!user}
+        />
+        {!user && (
+          <>
+            <div>
+              <strong>You must be signed in to add items to your cart</strong>
+            </div>
+            <AuthTabs />
+          </>
+        )}
+        {/* <SeeAllProducts />s */}
+      </div>
 
-        <style jsx>{`
-          select {
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 1rem;
-            border: 1px solid black;
-            margin: 5px 0 20px 0;
-          }
-          select:focus {
-            outline: 0;
-            border-color: var(--navyBlue);
-          }
-        `}</style>
-      </ProductStyles>
-    </>
+      <style jsx>{`
+        select {
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid black;
+          margin: 5px 0 20px 0;
+        }
+        select:focus {
+          outline: 0;
+          border-color: var(--navyBlue);
+        }
+      `}</style>
+    </ProductStyles>
   );
-}
+};
+
+export default ProductDetails;

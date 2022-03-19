@@ -1,9 +1,10 @@
 module.exports = {
   root: true,
   extends: ['airbnb', 'prettier', 'next'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2020,
+    requireConfigFile: false,
     // Can I remove these now?
     ecmaFeatures: {
       impliedStrict: true,
