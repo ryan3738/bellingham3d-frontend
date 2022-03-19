@@ -38,7 +38,7 @@ const cleanupError = (error): AppProps => {
   return error;
 };
 
-const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
+function DisplayApolloError({ error }: AppProps): JSX.Element {
   if (!error || !error.message) return null;
   cleanupError(error);
   if (
@@ -48,17 +48,12 @@ const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
     isError
   ) {
     return (
-      <>
-        <ErrorStyles>
-          <p data-test="graphql-error">
-            {/* <strong>Network Error!</strong> */}
-            {error.networkError.message.replace(
-              'NetworkError',
-              'Network Error'
-            )}
-          </p>
-        </ErrorStyles>
-      </>
+      <ErrorStyles>
+        <p data-test="graphql-error">
+          {/* <strong>Network Error!</strong> */}
+          {error.networkError.message.replace('NetworkError', 'Network Error')}
+        </p>
+      </ErrorStyles>
     );
   }
   return (
@@ -69,6 +64,6 @@ const DisplayApolloError = ({ error }: AppProps): JSX.Element => {
       </p>
     </ErrorStyles>
   );
-};
+}
 
 export default DisplayApolloError;
