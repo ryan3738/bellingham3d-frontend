@@ -58,7 +58,7 @@ function DisplayApolloError({ error }: AppProps): JSX.Element {
   }
   return (
     <ErrorStyles>
-      <p data-test="graphql-error">
+      <p data-testid="graphql-error">
         {isError && <strong>Error!!</strong>}
         {error.message}
       </p>
