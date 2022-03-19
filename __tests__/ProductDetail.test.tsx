@@ -8,7 +8,7 @@ const product = fakeProduct();
 
 const mocks = [
   {
-    // When somoen requests this query and variable combo
+    // When someone requests this query and variable combo
     request: {
       query: SINGLE_PRODUCT_QUERY,
       variables: {
@@ -23,6 +23,24 @@ const mocks = [
     },
   },
 ];
+const errorMock = [
+  // When someone requests item that does not exist
+  {
+    request: {
+      query: SINGLE_PRODUCT_QUERY,
+      variables: {
+        id: '123',
+      },
+    },
+    result: {
+      errors: [
+        {
+          message: 'Item not found',
+        },
+      ],
+    },
+  },
+];
 
 describe('<ProductDetails />', () => {
   it('renders with proper data', async () => {
@@ -33,6 +51,17 @@ describe('<ProductDetails />', () => {
     );
     // Wait for the test ID to show up
     await screen.findByTestId('productDetails');
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Errors out when an item is not found', async () => {
+    const { container, debug } = render(
+      <MockedProvider mocks={errorMock}>
+        <ProductDetails id="123" />
+      </MockedProvider>
+    );
+    await screen.findByTestId('graphql-error');
+    expect(container).toHaveTextContent('Item not found');
     debug();
   });
 });

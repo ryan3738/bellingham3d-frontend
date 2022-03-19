@@ -135,7 +135,7 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
             <AuthTabs />
           </>
         )}
-        <SeeAllProducts />
+        {/* <SeeAllProducts />s */}
       </div>
 
       <style jsx>{`
