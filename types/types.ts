@@ -8,6 +8,10 @@ import {
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
 import { SINGLE_PRODUCT_QUERY_product } from './generated/SINGLE_PRODUCT_QUERY';
+import {
+  USER_ORDERS_QUERY_orders,
+  USER_ORDERS_QUERY_orders_items,
+} from './generated/USER_ORDERS_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
@@ -86,30 +90,9 @@ export type ProductType = SINGLE_PRODUCT_QUERY_product;
 
 export type AllProductsType = ALL_PRODUCTS_QUERY_products;
 
-export type OrderItemType = {
-  id: string;
-  name: string;
-  variants: string;
-  description: string;
-  image: ProductImage;
-  imageId: string;
-  price: number;
-  quantity: number;
-  order: Order;
-  orderId: string;
-};
+export type OrderItemType = USER_ORDERS_QUERY_orders_items;
 
-export type Order = {
-  id: string;
-  total: number;
-  items: OrderItemType[];
-  user: UserType;
-  userId: string;
-  charge: string;
-  shippingAddress: AddressType;
-  shippingAddressId: string;
-  createdAt: string;
-};
+export type Order = USER_ORDERS_QUERY_orders;
 
 export type SelectVariantType = (parameters: {
   option: Option;
