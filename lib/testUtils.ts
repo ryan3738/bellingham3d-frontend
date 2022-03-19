@@ -104,28 +104,30 @@ const fakeCartItem = (overrides?: CartItemType): CartItemType => ({
 
 // Fake LocalStorage
 class LocalStorageMock {
+  store: Record<string, string>;
+
   constructor() {
     this.store = {};
   }
 
-  clear() {
+  clear(): void {
     this.store = {};
   }
 
-  getItem(key) {
+  getItem(key): string | null {
     return this.store[key] || null;
   }
 
-  setItem(key, value) {
+  setItem(key: string, value: string): void {
     this.store[key] = value.toString();
   }
 
-  removeItem(key) {
+  removeItem(key): void {
     delete this.store[key];
   }
 }
 
-function makePaginationMocksFor(length) {
+function makePaginationMocksFor(length: number): any {
   return [
     {
       request: { query: PAGINATION_QUERY },
