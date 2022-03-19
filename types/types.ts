@@ -92,7 +92,7 @@ export type AllProductsType = ALL_PRODUCTS_QUERY_products;
 
 export type OrderItemType = USER_ORDERS_QUERY_orders_items;
 
-export type Order = USER_ORDERS_QUERY_orders;
+export type OrderType = USER_ORDERS_QUERY_orders;
 
 export type SelectVariantType = (parameters: {
   option: Option;

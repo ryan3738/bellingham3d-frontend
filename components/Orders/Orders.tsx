@@ -8,7 +8,7 @@ import { siteData } from '../../public/site-data';
 import DisplayApolloError from '../DisplayApolloError';
 import OrderHistoryStyles from '../styles/OrderHistoryStyles';
 import { USER_ORDERS_QUERY } from '../../queries/getUserOrders';
-import { Order } from '../../types/types';
+import { OrderType } from '../../types/types';
 
 const OrderUl = styled.ul`
   position: relative;
@@ -21,7 +21,7 @@ const OrderUl = styled.ul`
   min-width: 100%;
 `;
 
-function countItemsInAnOrder(order: Order): number {
+function countItemsInAnOrder(order: OrderType): number {
   return order.items.reduce((tally, item) => tally + item.quantity, 0);
 }
 
