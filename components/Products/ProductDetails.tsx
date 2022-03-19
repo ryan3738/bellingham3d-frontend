@@ -94,7 +94,7 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
   };
 
   return (
-    <ProductStyles>
+    <ProductStyles data-testid="productDetails">
       <Head>
         <title>
           {product.name} | {siteData.businessName}

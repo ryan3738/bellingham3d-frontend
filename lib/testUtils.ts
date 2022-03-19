@@ -1,23 +1,26 @@
 import casual from 'casual';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
+import { ProductType } from '../types/types';
 
 // seed it so we get consistent results
 casual.seed(777);
 
-const fakeProduct = () => ({
-  // __typename: 'Item',
+const fakeProduct = (): ProductType => ({
+  __typename: 'Product',
   id: 'abc123',
   price: 5000,
-  user: null,
+  status: 'AVAILABLE',
   images: [
     {
-    id: 'abc123',
-    altText: 'dogs are best',
-    image: {
-      publicUrlTransformed: '/dog.jpg',
+      __typename: 'ProductImage',
+      id: 'abc123',
+      image: {
+        __typename: 'CloudinaryImage_File',
+        publicUrlTransformed: '/dog.jpg',
+        // altText: 'dogs are best',
+      },
     },
-  }
-],
+  ],
   name: 'dogs are best',
   description: 'dogs',
 });

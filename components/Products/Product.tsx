@@ -4,12 +4,11 @@ import formatMoney from '../../lib/formatMoney';
 import { useUser } from '../User/User';
 import { siteData } from '../../public/site-data';
 import { ProductType } from '../../types/types';
-// import { ALL_PRODUCTS_QUERY_products as ProductType } from '../../types/generated/ALL_PRODUCTS_QUERY';
 
 const Product = function ({ product }: { product: ProductType }): JSX.Element {
   const user = useUser();
   return (
-    <div className="productWrapper">
+    <section className="productWrapper">
       <Link href={`/product/${product.id}`}>
         <a>
           <Image
@@ -26,11 +25,10 @@ const Product = function ({ product }: { product: ProductType }): JSX.Element {
             objectFit="cover"
           />
 
-          <div className="productText">
+          <span className="productText">
             {product.name}
-
-            <div>{formatMoney(product.price)}</div>
-          </div>
+            <span>{formatMoney(product.price)}</span>
+          </span>
         </a>
       </Link>
       {/* <p>{product.description}</p> */}
@@ -81,7 +79,7 @@ const Product = function ({ product }: { product: ProductType }): JSX.Element {
           padding: calc(var(--spacing) / 2);
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 
