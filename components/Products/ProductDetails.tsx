@@ -84,7 +84,7 @@ const ProductDetails = function ({ id }: AppProps): JSX.Element {
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayApolloError error={error} />;
-  if (!data) return <SeeAllProducts />;
+  if (!data) return <SeeAllProducts data-testid="productDetails" />;
 
   const { product } = data || null;
   const getVariantIds = (options: SelectedVariant[]): Variant['id'][] => {

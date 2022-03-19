@@ -18,7 +18,7 @@ const mocks = [
     // Return this data
     result: {
       data: {
-        Product: product,
+        product,
       },
     },
   },
