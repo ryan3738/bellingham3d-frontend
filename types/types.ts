@@ -8,10 +8,7 @@ import {
 import { ALL_PRODUCTS_QUERY_products } from './generated/ALL_PRODUCTS_QUERY';
 import { SINGLE_ADDRESS_QUERY_customerAddress } from './generated/SINGLE_ADDRESS_QUERY';
 import { SINGLE_PRODUCT_QUERY_product } from './generated/SINGLE_PRODUCT_QUERY';
-import {
-  USER_ORDERS_QUERY_orders,
-  USER_ORDERS_QUERY_orders_items,
-} from './generated/USER_ORDERS_QUERY';
+import { SINGLE_ORDER_QUERY_order } from './generated/SINGLE_ORDER_QUERY';
 
 export type AddressType = SINGLE_ADDRESS_QUERY_customerAddress;
 
@@ -57,42 +54,13 @@ export type Variant = {
   description?: string;
 };
 
-// type InventoryItem = {
-//   id: string;
-//   price: number;
-//   requiresShipping: boolean;
-//   tracked: boolean;
-//   quantity: number;
-//   allowBackorder: boolean;
-// };
-
-// type Category = {
-//   id: string;
-//   name: string;
-//   description: string;
-// };
-
-// export type Product = {
-//   id: string;
-//   name: string;
-//   description: string;
-//   images: ProductImage[];
-//   status: string;
-//   price: number;
-//   category: Category[];
-//   inventoryItem: InventoryItem;
-//   variants: Variant[];
-//   createdAt: string;
-//   user: UserType;
-// };
-
 export type ProductType = SINGLE_PRODUCT_QUERY_product;
 
 export type AllProductsType = ALL_PRODUCTS_QUERY_products;
 
-export type OrderItemType = USER_ORDERS_QUERY_orders_items;
+export type OrderItemType = SINGLE_ORDER_QUERY_order_items;
 
-export type OrderType = USER_ORDERS_QUERY_orders;
+export type OrderType = SINGLE_ORDER_QUERY_order;
 
 export type SelectVariantType = (parameters: {
   option: Option;

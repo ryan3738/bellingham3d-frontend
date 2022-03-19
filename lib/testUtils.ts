@@ -1,6 +1,12 @@
 import casual from 'casual';
 import { PAGINATION_QUERY } from '../components/Products/Pagination';
-import { OrderItemType, ProductType, UserType } from '../types/types';
+import {
+  CartItemType,
+  OrderItemType,
+  OrderType,
+  ProductType,
+  UserType,
+} from '../types/types';
 
 // seed it so we get consistent results
 casual.seed(777);
@@ -26,22 +32,29 @@ const fakeProduct = (): ProductType => ({
   description: 'dogs',
 });
 
-const fakeUser = (overrides): UserType => ({
+const fakeUser = (overrides?: UserType): UserType => ({
   __typename: 'User',
   id: '4234',
   name: casual.name,
   email: casual.email,
-  permissions: ['ADMIN'],
-  orders: [],
+  role: ['ADMIN'],
+  // orders: [],
   cart: [],
   ...overrides,
 });
 
 const fakeOrderItem = (): OrderItemType => ({
-  // __typename: 'OrderItem',
+  __typename: 'OrderItem',
   id: casual.uuid,
-  images: {
-    image: `${casual.word}.jpg`,
+  image: {
+    __typename: 'ProductImage',
+    id: 'abc123',
+    altText: 'dogs are best',
+    image: {
+      id: 'abc123',
+      __typename: 'CloudinaryImage_File',
+      publicUrlTransformed: `${casual.word}.jpg`,
+    },
   },
   name: casual.words(),
   price: 4234,
@@ -49,22 +62,36 @@ const fakeOrderItem = (): OrderItemType => ({
   description: casual.words(),
 });
 
-const fakeOrder = () => ({
+const fakeOrder = (): OrderType => ({
   __typename: 'Order',
   id: 'ord123',
   charge: 'ch_123',
   total: 40000,
   items: [fakeOrderItem(), fakeOrderItem()],
   createdAt: '2022-12-11T20:16:13.797Z',
-  user: fakeUser(null),
+  shippingAddress: {
+    __typename: 'CustomerAddress',
+    id: casual.uuid,
+    firstName: casual.first_name,
+    lastName: casual.last_name,
+    company: casual.company_name,
+    address1: casual.address1,
+    address2: casual.address2,
+    city: casual.city,
+    region: casual.state_abbr,
+    country: casual.country,
+    zip: casual.zip({}),
+    phone: casual.phone,
+  },
+  // user: fakeUser(),
 });
 
-const fakeCartItem = (overrides) => ({
+const fakeCartItem = (overrides?: CartItemType): CartItemType => ({
   __typename: 'CartItem',
   id: 'omg123',
   quantity: 3,
   product: fakeProduct(),
-  user: fakeUser(null),
+  // user: fakeUser(),
   ...overrides,
 });
 
