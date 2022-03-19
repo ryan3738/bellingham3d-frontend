@@ -1,22 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductDetails /> Errors out when an item is not found 1`] = `
-<div>
-  <div
-    class="DisplayApolloError__ErrorStyles-sc-yc1ztr-0 iSnxOG"
-  >
-    <p
-      data-testid="graphql-error"
-    >
-      <strong>
-        Error!!
-      </strong>
-      Item not found
-    </p>
-  </div>
-</div>
-`;
-
 exports[`<ProductDetails /> renders with proper data 1`] = `
 <div>
   <div
